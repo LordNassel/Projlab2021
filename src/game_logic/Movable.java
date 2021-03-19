@@ -8,7 +8,7 @@ public abstract class Movable {
 	
 	private int radiation;
 	
-	private Asteroid currentField;
+	protected Asteroid currentField;
 	
 	public Movable(Asteroid onField)
 	{
@@ -49,7 +49,8 @@ public abstract class Movable {
 	
 	public void HitBySunStorm()
 	{
-		
+		System.out.println("HitBySunStorm");
+		Die();
 	}
 	
 	public void Step()
@@ -62,7 +63,8 @@ public abstract class Movable {
 	 */
 	public void Hide()
 	{
-		
+		System.out.println("Hide");
+		this.Hide();
 	}
 	
 	public void SetTurn()
@@ -72,6 +74,8 @@ public abstract class Movable {
 	
 	public void SetRadiation()
 	{
+		System.out.println("SetRadiation");
+		
 		
 	}
 	
