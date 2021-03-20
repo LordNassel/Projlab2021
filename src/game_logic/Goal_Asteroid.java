@@ -15,10 +15,12 @@ public class Goal_Asteroid extends Asteroid  {
 	private Set<Material> CurrentMaterials = new Set<Material>();
 	//Constructor itt will need a list of materials, these materials if collected will win the game
 	Goal_Asteroid(Set<Material> list){
+		System.out.println("Goal_Asteroid.Constructor Called");
 		CurrentMaterials = list;
 	}
 	
 	public void CompleteMaterial(Material M) {
+		System.out.println("CompleteMaterial Called");
 		CurrentMaterials.add(M);
 		if(GoalMaterials.equals(CurrentMaterials))
 			Game.Wingame();
