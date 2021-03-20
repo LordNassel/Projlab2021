@@ -8,7 +8,7 @@ public abstract class Movable {
 	
 	private int radiation;
 	
-	protected Asteroid currentField;
+	protected Field currentField;
 	
 	public Movable(Asteroid onField)
 	{
@@ -18,7 +18,7 @@ public abstract class Movable {
 		isHidden = false;
 	}
 	
-	public void Move(Asteroid a)
+	public void Move(Field a)
 	{
 		System.out.println("Move()");
 		Asteroid neighbor = a.FindNeighbor();
@@ -64,7 +64,7 @@ public abstract class Movable {
 	public void Hide()
 	{
 		System.out.println("Hide");
-		this.Hide();
+		this.isHidden = true;
 	}
 	
 	public void SetTurn()
@@ -77,6 +77,16 @@ public abstract class Movable {
 		System.out.println("SetRadiation");
 		
 		
+	}
+	
+	public Field GetCurrentField()
+	{
+		return this.currentField;
+	}
+	
+	public void SetCurrentField(Field field)
+	{
+		this.currentField=field;
 	}
 	
 }
