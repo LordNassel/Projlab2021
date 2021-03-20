@@ -68,7 +68,9 @@ public abstract class Movable implements Steppable {
 	public void Hide()
 	{
 		System.out.println("Hide");
-		this.isHidden = true;
+		// Bocs ezt kikommenteztem, ez az aszteroida dolga, hogy eldontse, hogy a movable elbujhat. 
+		//edit. lattam hogy irtal erre, sajnos ez nem egy technikalitás, csak akkor tudlak befogadni, ha ures az aszteroida
+		//this.isHidden = true;
 	}
 	
 	public void SetTurn()
@@ -92,5 +94,6 @@ public abstract class Movable implements Steppable {
 	{
 		this.currentField=field;
 	}
-	
+	//Ez a hidden setterje sajnos kell.
+	public void Sethidden(boolean b) {b= this.isHidden;}
 }

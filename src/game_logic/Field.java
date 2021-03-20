@@ -38,6 +38,7 @@ public void AcceptPlayer (Movable M) {
 	System.out.println("Field.AcceptPlayer Called");
 	M.SetCurrentField(this);
 	MovableList.add(M);
+	M.Sethidden(false);
 	}
 public void RemovePlayer(Movable M) {
 	System.out.println("RemovePlayer Called");
