@@ -6,13 +6,14 @@ import java.util.*;
  */
 public class Teleport extends Field{
     private boolean IsActive;
-    private Teleport TeleportPair;
+    private Teleport Pair;
     protected Vector<Teleport> TeleportPair = new Vector<Teleport>();
     /**
      *Default Constructor
      */
     public Teleport(){
-        setIsActive(false);
+        //setIsActive(false);
+    	IsActive = false;
     }
 
     /**
@@ -35,8 +36,8 @@ public class Teleport extends Field{
     }
 
     
-    public void setIsActive(boolean isActive) { /* Miért adunk paraméterben át bármit is itt? */
-        IsActive = isActive;
+    public void setIsActive(/*boolean isActive*/) { /* Miért adunk paraméterben át bármit is itt? */
+        IsActive = true;
     }
 
     /**
@@ -44,10 +45,10 @@ public class Teleport extends Field{
      * @param givenTeleport
      */
     public void setPair(Teleport givenTeleport) {
-        TeleportPair = givenTeleport;
+        Pair = givenTeleport;
     }
 
     public Teleport getPair(){
-        return TeleportPair;
+        return Pair;
     }
 }

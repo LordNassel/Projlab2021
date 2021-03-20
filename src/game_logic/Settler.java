@@ -60,7 +60,7 @@ public class Settler extends Movable {
 	public void ActivateTeleport(Teleport teleport)
 	{
 		System.out.println("ActivateTeleport");
-		teleport.setActive(true);			//Sry, blejavítottam egy true-val - Lévai Gábor 03.20 15.30
+		teleport.setIsActive();			//Sry, blejavítottam egy true-val - Lévai Gábor 03.20 15.30
 		inventoryTeleport.remove(teleport);
 	}
 	
