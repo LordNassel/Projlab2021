@@ -1,11 +1,11 @@
 package game_logic;
 
-import java.util.*
+import java.util.*;
 /**
  * This class specifies the variables and methods to be implemented for the Teleports
  */
 public class Teleport extends Field{
-    private bool IsActive;
+    private boolean IsActive;
     private Teleport TeleportPair;
     protected Vector<Teleport> TeleportPair = new Vector<Teleport>();
     /**
@@ -30,13 +30,12 @@ public class Teleport extends Field{
     /**
     * Getters and Setters
     */
-    @Override
-    public bool getActive(){
+    public boolean getIsActive(){
         return IsActive;
     }
 
-    @Override
-    public void setActive(bool isActive) {
+    
+    public void setIsActive(boolean isActive) {
         IsActive = isActive;
     }
 
@@ -44,12 +43,10 @@ public class Teleport extends Field{
      * We need this, so two teleport pairs cannot be crafted and set each other's mixed neighbors
      * @param givenTeleport
      */
-    @Override
     public void setPair(Teleport givenTeleport) {
         TeleportPair = givenTeleport;
     }
 
-    @Override
     public Teleport getPair(){
         return TeleportPair;
     }
