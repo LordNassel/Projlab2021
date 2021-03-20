@@ -10,7 +10,7 @@ public abstract class Movable {
 	
 	protected Field currentField;
 	
-	public Movable(Asteroid onField)
+	public Movable(Field onField)
 	{
 		currentField = onField;
 		radiation = 1;
@@ -29,7 +29,7 @@ public abstract class Movable {
 	public void Drill()
 	{
 		System.out.println("Drill()");
-		currentField.GetDrilled();
+		((Asteroid)currentField).GetDrilled();
 		
 	}
 	
