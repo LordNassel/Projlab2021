@@ -71,6 +71,7 @@ public abstract class Movable implements Steppable {
 		// Bocs ezt kikommenteztem, ez az aszteroida dolga, hogy eldontse, hogy a movable elbujhat. 
 		//edit. lattam hogy irtal erre, sajnos ez nem egy technikalitás, csak akkor tudlak befogadni, ha ures az aszteroida
 		//this.isHidden = true;
+		((Asteroid)currentField).GetHidden(this);
 	}
 	
 	public void SetTurn()
