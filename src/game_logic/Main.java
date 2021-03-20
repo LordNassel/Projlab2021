@@ -2,11 +2,11 @@
 package game_logic;
 import game_logic.Asteroid;
 
-public class Main implements Steppable {
+public class Main/* implements Steppable */{
 	
 	 public static void main(String[] args) {
 		 System.out.println("Every man's sky");
-	        Step();
+	       // Step();
 		 }
 
 }

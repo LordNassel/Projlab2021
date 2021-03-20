@@ -51,4 +51,10 @@ public class Teleport extends Field{
     public Teleport getPair(){
         return Pair;
     }
+
+	@Override
+	public void Step() {
+		// TODO Auto-generated method stub
+		
+	}
 }

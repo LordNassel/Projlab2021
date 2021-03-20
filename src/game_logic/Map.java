@@ -16,7 +16,7 @@ public class Map implements Steppable {
     }
 
    
-    private bool AnyoneAlive;
+    private boolean AnyoneAlive;
 
     /**
      * 
@@ -41,18 +41,21 @@ public class Map implements Steppable {
      */
     public void StartSunstorm() {
     	System.out.println("SunStorm called");
-        Movable mov = new Movable();
-        Asteroid a = new Asteroid(mat);
-        Material mat = new Material();
+       /* Movable mov = new Movable();
+        Material mat = new Material();*/ 	//Absztrakt osztály nem lehet példányosítani
+    	Iron i = new Iron();
+        Asteroid a = new Asteroid(i);
+        Settler s = new Settler(a);
     }
 
     /**
      * @return
      */
-    public Field Place_teleport() {
+    public void /*Field*/ Place_teleport() { //Ha Field-et ad vissza (miért?) akkor return kell
         System.out.println("Place Teleport called");
-        Material m = new Material();
-        Asteroid a = new Asteroid(m);
+        //Material m = new Material();
+        Coal c = new Coal();
+        Asteroid a = new Asteroid(c);
         Teleport t1 = new Teleport();
         Teleport t2 = new Teleport();
         Settler s = new Settler(a);

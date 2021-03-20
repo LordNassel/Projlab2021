@@ -11,9 +11,14 @@ public class Game {
      */
     public Game() {
     	Map map = new Map();
-    	Material mat = new Material();
-    	Asteroid a = new Asteroid(mat);
-    	Settler s = new Settler();
+    	//Material mat = new Material();
+    	Coal c = new Coal();
+    	Iron i = new Iron();
+    	Uranium u = new Uranium();
+    	Ice ice = new Ice();
+    	Asteroid a = new Asteroid(i);
+    	Settler s = new Settler(a);
+    	//...
     }
 
 

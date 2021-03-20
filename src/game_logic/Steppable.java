@@ -1,6 +1,6 @@
 package game_logic;
 
-import java.util.*
+import java.util.*;
 
 /**
  * This interface specifies the methods to be implemented for the step strategies
@@ -15,9 +15,9 @@ public interface Steppable {
      * @param movables - The list of Movables
      */
 
- public void Step() {
-        //void execute (map.Map m){};
-        //void execute (game.Game g){};
-        //void execute (ArrayList < movable.Movable > movables){};
-    }
+ public void Step();/* {
+        void execute (map.Map m){};
+        void execute (game.Game g){};
+        void execute (ArrayList < movable.Movable > movables){};
+    }*/
 }
