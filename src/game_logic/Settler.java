@@ -1,5 +1,6 @@
 package game_logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Settler extends Movable {
@@ -13,13 +14,15 @@ public class Settler extends Movable {
 	public Settler(Asteroid position)
 	{
 		super(position);
+		inventoryMain = new ArrayList<Material>();
+		inventoryTeleport = new ArrayList<Teleport>();
 	}
 	
 	public void Mine()
 	{
 		System.out.println("Mine");
 		//TO-DO opt check
-		Material minedMaterial=currentField.GetMined();
+		Material minedMaterial=((Asteroid)currentField).GetMined();
 		this.Store(minedMaterial);
 	}
 	
@@ -29,10 +32,10 @@ public class Settler extends Movable {
 		inventoryMain.add(material);
 	}
 	
-	public void GetMaterail(Material material)
+	/*public void GetMaterail(Material material)
 	{
 		
-	}
+	}*/
 	
 	public void CraftRobot()
 	{
@@ -65,7 +68,7 @@ public class Settler extends Movable {
 	{
 		System.out.println("PutMaterial");
 		//TO-DO opt check
-		currentField.Put(material);
+		((Asteroid)currentField).StoreMaterial(material);
 		inventoryMain.remove(material);
 	}
 	
