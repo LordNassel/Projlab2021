@@ -35,7 +35,7 @@ public class Teleport extends Field{
     }
 
     
-    public void setIsActive(boolean isActive) {
+    public void setIsActive(boolean isActive) { /* Miért adunk paraméterben át bármit is itt? */
         IsActive = isActive;
     }
 

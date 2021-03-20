@@ -41,8 +41,8 @@ public class Settler extends Movable {
 	{
 		System.out.println("CraftRobot");
 		//TO-DO opt check
-		Robot craftedRobot = new Robot();
-		currentField.AcceptPalyer(craftedRobot);
+		Robot craftedRobot = new Robot((Asteroid)currentField);
+		currentField.AcceptPlayer(craftedRobot);
 	}
 	
 	public void CraftTeleports()
