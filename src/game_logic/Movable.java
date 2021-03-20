@@ -1,7 +1,5 @@
 package game_logic;
 
-import java.util.Vector;
-
 public abstract class Movable implements Steppable {
 	
 	private boolean isTurn;
@@ -23,9 +21,8 @@ public abstract class Movable implements Steppable {
 	public void Move(Field a)
 	{
 		System.out.println("Move()");
-		Vector<Field> neighbors = a.FindNeighbor();
-		//Asteroid neighbor = a.FindNeighbor();
-		neighbors.firstElement().AcceptPlayer(this);
+		Asteroid neighbor = a.FindNeighbor();
+		neighbor.AcceptPlayer(this);
 		a.RemovePlayer(this);		
 	}	
 	
