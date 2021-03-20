@@ -36,9 +36,12 @@ protected void BroadCastRadiation() {System.out.println("Field.BroadCastRadiatio
 
 public void AcceptPlayer (Movable M) {
 	System.out.println("Field.AcceptPlayer Called");
+	M.SetCurrentField(this);
+	MovableList.add(M);
 	}
 public void RemovePlayer(Movable M) {
 	System.out.println("RemovePlayer Called");
+	M.SetCurrentField(null);
 	MovableList.remove(M);
 }
 
