@@ -1,11 +1,11 @@
 package game_logic;
 
-import java.util.*
+
 /**
  * This class specifies the variables and methods to be implemented for the Teleports
  */
 public class Teleport extends Field{
-    private bool IsActive;
+    private boolean IsActive;
     private Teleport TeleportPair;
     protected Vector<Teleport> TeleportPair = new Vector<Teleport>();
     /**
@@ -35,8 +35,8 @@ public class Teleport extends Field{
         return IsActive;
     }
 
-    @Override
-    public void setActive(bool isActive) {
+    
+    public void setActive(boolean isActive) {
         IsActive = isActive;
     }
 
