@@ -3,7 +3,7 @@ package game_logic;
 import java.util.Vector;
 
 
-abstract class Field {
+abstract class Field implements Steppable{
 //Vector storage for convenience, an array would work too since <=300
 protected Vector<Field> Neighbors = new Vector<Field>();
 protected Vector<Movable> MovableList = new Vector<Movable>();

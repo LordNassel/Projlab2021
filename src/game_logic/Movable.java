@@ -1,6 +1,6 @@
 package game_logic;
 
-public abstract class Movable {
+public abstract class Movable implements Steppable {
 	
 	private boolean isTurn;
 	
@@ -58,8 +58,8 @@ public abstract class Movable {
 		
 	}
 	
-	/*Osztálydiagram alapján kap egy aszteroida paramétert, de ez szerintem felesleges
-	 *ha úgy kezeljük, hogy az aktuális aszteroidán amin van elbújik
+	/*Osztï¿½lydiagram alapjï¿½n kap egy aszteroida paramï¿½tert, de ez szerintem felesleges
+	 *ha ï¿½gy kezeljï¿½k, hogy az aktuï¿½lis aszteroidï¿½n amin van elbï¿½jik
 	 */
 	public void Hide()
 	{
