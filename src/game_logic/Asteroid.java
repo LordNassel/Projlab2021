@@ -37,7 +37,7 @@ public class Asteroid extends Field{
 	//incredibly simple thing to check if the asteroid is empty
 	private boolean isempty() {
 		System.out.println("Asteroid.isempty Called");
-		if(CoreMaterial[0]==null && CoreMaterial1]==null && CoreMaterial[2]==null)
+		if(CoreMaterial[0]==null && CoreMateria[1]==null && CoreMaterial[2]==null)
 			return false;
 		return true;
 	}

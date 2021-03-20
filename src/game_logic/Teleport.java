@@ -9,7 +9,7 @@ public class Teleport extends Field{
     private Teleport TeleportPair;
     protected Vector<Teleport> TeleportPair = new Vector<Teleport>();
     /**
-     *Defaul Constructor
+     *Default Constructor
      */
     public Teleport(){
         setIsActive(false);
