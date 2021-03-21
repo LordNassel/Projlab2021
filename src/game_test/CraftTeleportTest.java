@@ -1,7 +1,7 @@
-package game_logic;
 package game_test;
 
 import java.util.*;
+import game_logic.*;
 
 public class CraftTeleportTest{
 
