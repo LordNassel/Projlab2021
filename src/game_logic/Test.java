@@ -24,9 +24,7 @@ public class Test {
 		player.FindDirections();
 		
 		//kiiras hogy ellenorizheto legyen
-		System.out.println("Sikeres Mozgas, a jelenlegi bolygo :");
-		System.out.println(player.GetCurrentField().Getname());
-		
+		System.out.println("Sikeres Mozgas, a jelenlegi bolygo :" + player.GetCurrentField().Getname() + "\n");
 		this.TestMgr();
 	}
 	
@@ -43,13 +41,8 @@ public class Test {
 		while(this.inputmanager()!=0) {
 			player.Drill();
 		}
-		
-		System.out.println("Nyomj barmilyen szamot banyaszashoz, 0-t a befejezeshez");
-		while(this.inputmanager()!=0) {
-			player.Mine();
-		}
-		
-		System.out.println("Banyaszas teszt kesz");
+			
+		System.out.println("Banyaszas teszt kesz \n");
 		
 		this.TestMgr();
 	}
