@@ -81,7 +81,9 @@ public abstract class Movable implements Steppable {
 	public void HitBySunStorm()
 	{
 		System.out.println("HitBySunStorm");
-		Die();
+		if (!isHidden) {
+			Die();
+		}
 	}
 	
 	public void Step()

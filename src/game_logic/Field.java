@@ -27,7 +27,7 @@ protected void Explode() {
 public void SunStorm() {
 	System.out.println("Field.SunStorm Called");
 		for(int i=0; i<MovableList.size(); i++)
-			MovableList.get(i).Die();
+			MovableList.get(i).HitBySunStorm();
 }
 
 //Simple getter function for all neighbors, used mostly for player and AI navigation 
