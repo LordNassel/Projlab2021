@@ -104,13 +104,13 @@ public class Test {
 
 	private void CraftRobotTest()
 	{
+		System.out.println("CraftRobotTest Started\n");
 		Iron iron = new Iron();
 		Coal coal = new Coal();
 		Uranium uran = new Uranium();
 		Asteroid a = new Asteroid("a", iron);
 		Settler player = new Settler(a);
 
-		System.out.println("CraftRobotTest Started\n");
 		System.out.println("Van elég nyersanyag?\n");
 		System.out.println("0. Igen");
 		System.out.println("1. Nem");
@@ -135,34 +135,34 @@ public class Test {
 	}
 	private void CraftTeleportTest()
 	{
-		/*protected int numIron = 0, numUranium = 0, numIce = 0, numCoal = 0;
-		Settler player = new Settler(settler1);
-
 		System.out.println("CraftTeleportTest Started\n");
-		System.out.println("Press T to Craft Teleport\n");
+		Iron iron = new Iron();
+		Ice ice = new Ice();
+		Uranium uran = new Uranium();
+		Asteroid a = new Asteroid("a", iron);
+		Settler player = new Settler(a);
 
-		while(this.inputmanager() == R) {
-			for (int i=0; i < player.InventoryMain.size(); i++){
-				if(getType(player.InventoryMain.i) == getType(Iron)){
-					numIron++;
-				}
-				if(getType(player.InventoryMain.i) == getType(Uranium)){
-					numUranium++;
-				}
-				if(getType(player.InventoryMain.i) == getType(Ice)){
-					numIce++;
-				}
-				if(getType(player.InventoryMain.i) == getType(Coal)){
-					numCoal++;
-				}
-			}
-
-			if(numIron = 2 && numIce == 2 && numUranium == 1){
-				System.out.println("CraftTeleportTest Finished\n");
-			}
+		System.out.println("Van elég nyersanyag?\n");
+		System.out.println("0. Igen");
+		System.out.println("1. Nem");
+		
+		switch(this.inputmanager())
+		{
+		case 0:
+			player.Store(iron);
+			player.Store(iron);
+			player.Store(ice);
+			player.Store(ice);
+			player.Store(uran);
+			player.CraftTeleports();
+			System.out.println("\n");
+			this.TestMgr();
+			break;
+		case 1:
+			player.CraftTeleports();
+			System.out.println("\n");
+			this.TestMgr();
 		}
-		this.TestMgr();
-	}*/
 }
 	
 	private void HideTest()

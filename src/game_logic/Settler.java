@@ -87,8 +87,12 @@ public class Settler extends Movable {
 			inventoryMain.remove(iron);
 			inventoryMain.remove(ice);
 			inventoryMain.remove(ice);
-			inventoryMain.remove(uranium);			
+			inventoryMain.remove(uranium);
+			
+			System.out.println("Teleport pair  created");
 		}
+		else
+			System.out.println("Failed: Not enough materials");
 	}
 	
 	public int getMaterialTypeNumber(Material m)
