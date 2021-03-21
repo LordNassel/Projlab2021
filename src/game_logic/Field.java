@@ -18,7 +18,7 @@ public Field(String Name) {
 protected void Explode() {
 	System.out.println("Field.Explode Called");
 	for(int i=0; i<MovableList.size(); i++)
-		MovableList.get(i).Die();
+		MovableList.get(i).HitByExplosion();
 	Neighbors =null;
 	//delete me from the map pls!!!
 	}
