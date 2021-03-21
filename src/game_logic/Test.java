@@ -137,9 +137,96 @@ public class Test {
 			this.TestMgr();		
 		}
 		
+	}
+	private void WinGameTest() 
+	{
+		System.out.println("Nyert játszma teszt\n");
+		Game g = new Game();
+		
+		System.out.println("\nMegvannak a nyersanyagok?\n");
+		System.out.println("0. Igen ");
+		System.out.println("1. Nem\n");
+		
+		switch(this.inputmanager())
+		{
+		case 0:
+			g.Wingame();
+			System.out.println("Nyertünk\n");
+			this.TestMgr();
+			break;
+		case 1:
+			System.out.println("Még nem nyertünk\n");
+			this.TestMgr();
+			break;
+		default:
+			this.TestMgr();	
+		}
+	}
+	private void LoseGameTest() 
+	{
+		System.out.println("Vesztett játszma teszt\n");
+		Game g = new Game();
+		System.out.println("Él e még valaki?\n");
+		
+		System.out.println("0. Igen");
+		System.out.println("1. Nem\n");
+		
+		switch(this.inputmanager())
+		{
+		case 0:
+			g.Losegame();
+			System.out.println("Vesztettünk\n");
+			this.TestMgr();
+			break;
+		case 1:
+			System.out.println("Még valaki életben van\n");
+			this.TestMgr();
+			break;
+		default:
+			this.TestMgr();	
+		}
+	}
+	
+	
+	private void StartGameTest() 
+	{
+		System.out.println("Játék kezdése teszt\n");
+		
+		Game g = new Game();
+		g.StartGame();
+	}
+	
+	private void AddMovableTest()
+	{
+		System.out.println("Felveszünk egy új movable objektumot a rendszerbe teszt\n");
+		
+		Game g = new Game();
+		
+		System.out.println("Elöször egy settlert veszünk fel\n");
+		Ice i = new Ice();
+		Asteroid a = new Asteroid("a1", i);
+		Settler s = new Settler(a);
+		
+		g.AddMovable(s);
 
+		System.out.println("Utána pedig egy robotot\n");
+		Asteroid a2 = new Asteroid("a2", i);
+		Robot r = new Robot(a2);
+		
+		g.AddMovable(r);
 		
 	}
+	
+	private void Place_TeleportTest()
+	{
+		System.out.println("Leteszünk egy teleportot teszt\n");
+		
+		Map m = new Map();
+		m.Place_teleport();
+		
+	}
+	
+	
 	
 	private int inputmanager(){
 		Scanner myinput =new Scanner(System.in);
@@ -162,6 +249,12 @@ public class Test {
 		System.out.println("4. CraftRobot Test");
 		System.out.println("5. Teleport Test");
 		System.out.println("6. Hide Test");
+		System.out.println("7. WinGame Test");
+		System.out.println("8. Losegame Test");
+		System.out.println("9. Startround Test");
+		System.out.println("10. AddMovable Test");
+		System.out.println("11. Place Teleport Test");
+		
 	}
 	//Igy van egy osszefoglalo testmanager amit lehet hivni
 	public void TestMgr() {
@@ -182,6 +275,16 @@ public class Test {
 			this.CraftTeleportTest();
 		case 6:
 			this.HideTest();
+		case 7: 
+			this.WinGameTest();
+		case 8:
+			this.LoseGameTest();
+		case 9:
+			this.StartGameTest();
+		case 10:
+			this.AddMovableTest();
+		case 11: 
+			this.Place_TeleportTest();
 		default:
 			return;
 		}

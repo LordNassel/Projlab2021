@@ -2,63 +2,45 @@ package game_logic;
 
 import java.util.*;
 
-/**
- * 
- */
+
 public class Map implements Steppable {
 
-    /**
-     * Default constructor
-     */
+	// Default constructor
     public Map() {
     	AnyoneAlive = true;
-    	
     }
+    
+    // Storage for the asteroids 
+    protected Vector<Asteroid> AsteroidList = new Vector<Asteroid>();
 
-   
+   // true, if at least 1 player is alive
     private boolean AnyoneAlive;
 
-    /**
-     * 
-     */
-    private Set<Field> Field;
 
-    /**
-     * 
-     */
-    private Game Map;
-
-
-    /**
-     * 
-     */
+   //
     public void Step() {
-    	
+    	Game g = new Game();
+    	if(!AnyoneAlive)
+    		g.Losegame();
     }
 
-    /**
-     * @return
-     */
+    // Starts the Sun storm for all asteroids
     public void StartSunstorm() {
-    	System.out.println("SunStorm called");
-       /* Movable mov = new Movable();
-        Material mat = new Material();*/ 	//Absztrakt osztály nem lehet példányosítani
-    	Iron i = new Iron();
-        Asteroid a = new Asteroid("name", i);
-        Settler s = new Settler(a);
+    	System.out.println("StartSunStorm called");
+    	for(int i = 0; i < AsteroidList.size(); i++)
+    		AsteroidList.get(i).SunStorm();
     }
 
-    /**
-     * @return
-     */
-    public void /*Field*/ Place_teleport() { //Ha Field-et ad vissza (miért?) akkor return kell
+    //place a teleport on a field
+    public void Place_teleport() {
         System.out.println("Place Teleport called");
-        //Material m = new Material();
+        
         Coal c = new Coal();
-        Asteroid a = new Asteroid("name", c);
-        Teleport t1 = new Teleport("name");
-        Teleport t2 = new Teleport("name");
-        Settler s = new Settler(a);
+        Asteroid a = new Asteroid("a", c);
+        Teleport t1 = new Teleport("tp1");
+        
+        t1.SetNeighbor(a);
+        
     }
 
 }
