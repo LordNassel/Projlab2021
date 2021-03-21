@@ -20,7 +20,22 @@ public class Asteroid extends Field{
 			CoreMaterial[n] = M;
 			n++;
 		}
+		this.isSunside =false;
 	}
+	//sunside constructor
+	public Asteroid(String name, Material M, boolean isSunside) {
+		super(name);
+		System.out.println("Asteroid.Constructor Called");
+		Random thicknessgen = new Random();
+		Thickness = thicknessgen.nextInt(11);
+		int n=0;
+		while(n<3) {
+			CoreMaterial[n] = M;
+			n++;
+		}
+		this.isSunside = isSunside;
+	}
+	
 	//Operations
 	
 	@Override//The drilling function. 

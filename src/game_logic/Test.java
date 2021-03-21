@@ -30,12 +30,13 @@ public class Test {
 		this.TestMgr();
 	}
 	
-	private void DrillTest()
+	private void MineTest()
 	{
+		//peldanyositas
 		Iron iron = new Iron();
 		Asteroid a1 = new Asteroid("a1", iron);
 		Settler player = new Settler(a1);
-		
+		//kommunikacio a userrel
 		System.out.println("Furas Teszt indul");
 		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
 		
@@ -43,14 +44,53 @@ public class Test {
 			player.Drill();
 		}
 		
-		System.out.println("Furas teszt kesz");
+		System.out.println("Nyomj barmilyen szamot banyaszashoz, 0-t a befejezeshez");
+		while(this.inputmanager()!=0) {
+			player.Mine();
+		}
+		
+		System.out.println("Banyaszas teszt kesz");
+		
 		this.TestMgr();
 	}
 	
 	
-	private void MineTest()
+	private void Drill_Advanced_Test()
 	{
-		//TODO
+		//Mivel toltott aszteroidat szeretne a tester, csak ez a haromfele viselkedes letezik
+		System.out.println("Kerem valasszon tolteleket\n" + "0.vas\n" + "1.Uran\n" + "2.Jeg\n");
+		Settler player;
+		Asteroid a1;
+		switch(this.inputmanager()) {
+		//ugy peldanyositunk ahogy a tesztelo igenyli
+		case 0:
+			Iron iron = new Iron();
+			a1 = new Asteroid("a1", iron);
+			player = new Settler(a1);
+		case 1:	
+			Uranium uran = new Uranium();
+			a1 = new Asteroid("a1", uran);
+			player = new Settler(a1);
+		case 2:
+			Ice ice = new Ice();
+			a1 = new Asteroid("a1", ice);
+			player = new Settler(a1);
+		default:
+			Ice ice2 = new Ice();
+			a1 = new Asteroid("a1", ice2);
+			player = new Settler(a1);
+		}
+		
+		//kifurjuk manualisan az aszteroidat - kicsit fapados megoldas de csak 10 reteg lehet.
+		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
+		
+		while(this.inputmanager()!=0) {
+			player.Drill();
+		}
+		System.out.println("Furas teszt kesz");
+		
+		this.TestMgr();
+			
 	}
 	
 	private void CraftRobotTest()
@@ -64,6 +104,7 @@ public class Test {
 	}
 	
 	private int inputmanager(){
+		@SuppressWarnings("resource")
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
 		n= myinput.nextInt();
@@ -79,8 +120,8 @@ public class Test {
 	private void ListTests() {
 		System.out.println("Jelenlegi tesztek:");
 		System.out.println("1. Move Test");
-		System.out.println("2. Drill Test");
-		System.out.println("3. Mine Test");
+		System.out.println("2. Mine Test");
+		System.out.println("3. Drill Test");
 		System.out.println("4. CraftRobot Test");
 		System.out.println("5. Teleport Test");
 	}
@@ -94,9 +135,9 @@ public class Test {
 		case 1:
 			this.MoveTest();
 		case 2:
-			this.DrillTest();
-		case 3:
 			this.MineTest();
+		case 3:
+			this.Drill_Advanced_Test();
 		case 4:
 			this.CraftRobotTest();
 		case 5:
