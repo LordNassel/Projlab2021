@@ -109,6 +109,34 @@ public class Test {
 		//TODO
 	}
 	
+	private void HideTest()
+	{
+		System.out.println("Bújás teszt\n");
+		Iron i = new Iron();
+		Asteroid a = new Asteroid("a",i);
+		Settler s = new Settler(a);
+		System.out.println("\nÜres az aszteroida?\n");
+		System.out.println("0. Igen");
+		System.out.println("1. Nem\n");
+		switch(this.inputmanager())
+		{
+		case 0:
+			s.Hide();
+			System.out.println("Az elbújás megtörtént\n");
+			this.TestMgr();
+			break;
+		case 1:
+			System.out.println("Az aszteroida nem üres, az elbújás sikertelen\n");
+			this.TestMgr();
+			break;
+		default:
+			this.TestMgr();		
+		}
+		
+
+		
+	}
+	
 	private int inputmanager(){
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
@@ -131,6 +159,7 @@ public class Test {
 		System.out.println("3. Mine Test");
 		System.out.println("4. CraftRobot Test");
 		System.out.println("5. Teleport Test");
+		System.out.println("6. Hide Test");
 	}
 	//Igy van egy osszefoglalo testmanager amit lehet hivni
 	public void TestMgr() {
@@ -149,6 +178,8 @@ public class Test {
 			this.CraftRobotTest();
 		case 5:
 			this.CraftTeleportTest();
+		case 6:
+			this.HideTest();
 		default:
 			return;
 		}

@@ -123,5 +123,9 @@ public abstract class Movable implements Steppable {
 		this.currentField=field;
 	}
 	//Ez a hidden setterje sajnos kell.
-	public void Sethidden() {this.isHidden=!this.isHidden;}
+	public void SetIsHidden()
+	{
+		System.out.println("SetIsHidden()");
+		this.isHidden=!this.isHidden;
+	}
 }

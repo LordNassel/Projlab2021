@@ -105,7 +105,7 @@ public class Asteroid extends Field{
 	public void GetHidden(Movable M) {
 		System.out.println("Asteroid.Gethidden Called");
 		if(emptycnt()!=-1) {
-			M.Sethidden();
+			M.SetIsHidden();
 		}
 		return;
 	}
