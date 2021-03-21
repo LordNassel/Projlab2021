@@ -8,6 +8,7 @@ public class Test {
 	{
 		System.out.println("Mozgas teszt indul");
 		Iron iron = new Iron();
+		Iron ittr = new Iron();
 		//Konstruktor guide -> asteroid -> name, material
 		Asteroid a1 = new Asteroid("a1",iron);
 		Asteroid a2 = new Asteroid("a2",iron);
@@ -103,37 +104,38 @@ public class Test {
 
 	private void CraftRobotTest()
 	{
-		protected int numIron = 0, numUranium = 0, numIce = 0, numCoal = 0;
-		Settler player = new Settler(settler1);
+		Iron iron = new Iron();
+		Coal coal = new Coal();
+		Uranium uran = new Uranium();
+		Asteroid a = new Asteroid("a", iron);
+		Settler player = new Settler(a);
 
 		System.out.println("CraftRobotTest Started\n");
-		System.out.println("Press R to Craft Robot\n");
-
-		while(this.inputmanager() == R) {
-			for (int i=0; i < player.InventoryMain.size(); i++){
-				if(getType(player.InventoryMain.i) == getType(Iron)){
-					numIron++;
-				}
-				if(getType(player.InventoryMain.i) == getType(Uranium)){
-					numUranium++;
-				}
-				if(getType(player.InventoryMain.i) == getType(Ice)){
-					numIce++;
-				}
-				if(getType(player.InventoryMain.i) == getType(Coal)){
-					numCoal++;
-				}
-			}
-
-			if(numIron = 1 && numCoal == 1 && numUranium == 1){
-				System.out.println("CraftRobotTest Finished\n");
-			}
+		System.out.println("Van elég nyersanyag?\n");
+		System.out.println("0. Igen");
+		System.out.println("1. Nem");
+		
+		switch(this.inputmanager())
+		{
+		case 0:
+			player.Store(iron);
+			player.Store(coal);
+			player.Store(uran);
+			player.CraftRobot();
+			System.out.println("\n");
+			this.TestMgr();
+			break;
+		case 1:
+			player.CraftRobot();
+			System.out.println("\n");
+			this.TestMgr();
 		}
-		this.TestMgr();
+
+
 	}
 	private void CraftTeleportTest()
 	{
-		protected int numIron = 0, numUranium = 0, numIce = 0, numCoal = 0;
+		/*protected int numIron = 0, numUranium = 0, numIce = 0, numCoal = 0;
 		Settler player = new Settler(settler1);
 
 		System.out.println("CraftTeleportTest Started\n");
@@ -160,7 +162,7 @@ public class Test {
 			}
 		}
 		this.TestMgr();
-	}
+	}*/
 }
 	
 	private void HideTest()
@@ -186,7 +188,6 @@ public class Test {
 		default:
 			this.TestMgr();		
 		}
-		
 	}
 	private void WinGameTest() 
 	{

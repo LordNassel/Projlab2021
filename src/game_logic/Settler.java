@@ -1,7 +1,7 @@
 package game_logic;
 
 import java.util.ArrayList;
-import java.util.List;
+	import java.util.List;
 
 public class Settler extends Movable {
 	
@@ -41,21 +41,69 @@ public class Settler extends Movable {
 	public void CraftRobot()
 	{
 		System.out.println("CraftRobot");
-		//TO-DO opt check
-		Robot craftedRobot = new Robot((Asteroid)currentField);
-		currentField.AcceptPlayer(craftedRobot);
+
+		Coal coal = new Coal();
+		Iron iron = new Iron();
+		Uranium uran = new Uranium();
+		
+		int ncoal = getMaterialTypeNumber(coal);
+		int niron = getMaterialTypeNumber(iron);
+		int nuran = getMaterialTypeNumber(uran);
+		if(ncoal>=1 && niron >= 1 && nuran >=1)
+		{
+			Robot craftedRobot = new Robot((Asteroid)currentField);
+			currentField.AcceptPlayer(craftedRobot);
+			inventoryMain.remove(coal);
+			inventoryMain.remove(iron);
+			inventoryMain.remove(uran);
+			System.out.println("Robot created");
+		}
+		else
+			System.out.println("Failed: not enoguh materials");
 	}
 	
 	public void CraftTeleports()
 	{
 		System.out.println("CraftTeleports");
-		//TO-DO opt check
-		Teleport t1 = new Teleport("name");
-		Teleport t2 = new Teleport("name2");
-		t1.setPair(t2);
-		t2.setPair(t1);
-		inventoryTeleport.add(t1);
-		inventoryTeleport.add(t2);
+
+		int niron, nuran, nice;
+		Iron iron = new Iron();
+		Ice ice = new Ice();
+		Uranium uranium = new Uranium();
+		niron = getMaterialTypeNumber(iron);
+		nuran = getMaterialTypeNumber(uranium);
+		nice = getMaterialTypeNumber(ice);
+		
+		if(niron >=2 && nice >= 2 && nuran >=1)
+		{
+			Teleport t1 = new Teleport("name");
+			Teleport t2 = new Teleport("name2");
+			t1.setPair(t2);
+			t2.setPair(t1);
+			inventoryTeleport.add(t1);
+			inventoryTeleport.add(t2);
+			
+			inventoryMain.remove(iron);
+			inventoryMain.remove(iron);
+			inventoryMain.remove(ice);
+			inventoryMain.remove(ice);
+			inventoryMain.remove(uranium);			
+		}
+	}
+	
+	public int getMaterialTypeNumber(Material m)
+	{
+		int number = 0;
+		for(int i = 0; i<inventoryMain.size(); i++)
+		{
+			if(inventoryMain.get(i).getClass().equals( m.getClass()))
+				//System.out.println( m.getClass().toString());
+				number++;
+			/*else
+				//System.out.println("Nincs ilyen nyeranyag tarolva");
+				get = false;*/
+		}
+		return number;
 	}
 	
 	public void ActivateTeleport(Teleport teleport)
