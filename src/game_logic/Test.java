@@ -338,6 +338,9 @@ public class Test {
 		System.out.println("10. AddMovable Test");
 		System.out.println("11. Place Teleport Test");
 		System.out.println("12. Put Material Into Asteroid Test");
+		System.out.println("13. Ice Gets Exposed Test");
+		System.out.println("14. Sun Hits Uranium Test");
+
 		
 	}
 	//Igy van egy osszefoglalo testmanager amit lehet hivni
@@ -371,6 +374,10 @@ public class Test {
 			this.Place_TeleportTest();
 		case 12:
 			this.PutMaterialIntoAsteroidTest();
+		case 13:
+			this.IceGetsExposedTest();
+		case 14:
+			this.SunHitsUraniumTest();
 		default:
 			return;
 		}
