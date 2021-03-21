@@ -1,4 +1,6 @@
 package game_logic;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -7,7 +9,8 @@ public class Asteroid extends Field{
 	private boolean isSunside;
 	private int Thickness;
 	//This is a bit magic number-ish, all asteroids store 3 units of material
-	private Material[] CoreMaterial = new Material[3];
+	//private Material[] CoreMaterial = new Material[3];
+	private List<Material> CoreMaterial = new ArrayList<Material>(3);
 	//This is the default constructor, this may however change. Right now it creates the random value for the thickness
 	
 	public Asteroid(String name, Material M) {
@@ -17,7 +20,8 @@ public class Asteroid extends Field{
 		Thickness = thicknessgen.nextInt(11);
 		int n=0;
 		while(n<3) {
-			CoreMaterial[n] = M;
+			//CoreMaterial[n] = M;
+			CoreMaterial.add(M);
 			n++;
 		}
 		this.isSunside =false;
@@ -30,9 +34,11 @@ public class Asteroid extends Field{
 		Thickness = thicknessgen.nextInt(11);
 		int n=0;
 		while(n<3) {
-			CoreMaterial[n] = M;
+			//CoreMaterial[n] = M;
+			CoreMaterial.add(M);
 			n++;
 		}
+
 		this.isSunside = isSunside;
 	}
 	//EZ EGY DEBUG KONSTRUKTOR, NE HIVD NORMALIS UZEMBEN
@@ -41,7 +47,8 @@ public class Asteroid extends Field{
 		System.out.println("Asteroid.Constructor Called");
 		int n=0;
 		while(n<3) {
-			CoreMaterial[n] = M;
+			//CoreMaterial[n] = M;
+			CoreMaterial.add(M);
 			n++;
 		}
 		Thickness = thiccboi;
@@ -57,34 +64,51 @@ public class Asteroid extends Field{
 		else
 			return false;
 		if(Thickness ==0) {
-			//if the asteroid has been drilled the material inside will get exposed.
-			CoreMaterial[0].GetExposed(isSunside, this);
+			//if the asteroid has been drilled the material inside will get exposed. 
+			for(int i =0; i<CoreMaterial.size(); i++)
+			{
+				CoreMaterial.get(i).GetExposed(isSunside, this);
+			/*CoreMaterial[0].GetExposed(isSunside, this);
 			CoreMaterial[1].GetExposed(isSunside, this);
-			CoreMaterial[2].GetExposed(isSunside, this);
+			CoreMaterial[2].GetExposed(isSunside, this);*/
 			}
+		}
 		return true;
 		
 	}
 	
 	//incredibly simple thing to check if the asteroid is empty
-	private int emptycnt() {
+	/*private int emptycnt() {
 		for (int i=0; i<3; i++) {
 			if(CoreMaterial[i]!= null)
 				return i;
 		}
 		return -1;
-	}
+	}*/
 	
 	//The mining function
 	public Material GetMined(){
 		System.out.println("Asteroid.GetMined() Called");
-	//ha az aszteroida nem ures		
+	//ha az aszteroida nem ures	
+		if(!CoreMaterial.isEmpty())
+		{
+			Material mined = CoreMaterial.get(0);
+			CoreMaterial.remove(0);
+			return mined;
+		}
+		else
+		{
+			System.out.println("Error: The asteroid is empty\n");
+			return null;
+			
+		}
+		/*
 		if(emptycnt()!=-1) {
 			Material temp =CoreMaterial[emptycnt()];
 			CoreMaterial[emptycnt()]=null;
 			return temp;	
 			}
-		return null;
+		return null;*/
 	}
 	
 	
@@ -93,21 +117,49 @@ public class Asteroid extends Field{
 
 	public boolean StoreMaterial(Material M) {
 		System.out.println("Asteroid.StoreMaterial Called");
-		if(emptycnt()!=-1)
+		/*if(emptycnt()!=-1)
+		{
+			System.out.println("Material cannot be stored");
 			//The material cannot be stored as the asteroid is not empty
 			return false;
+		}*/
+		
+		if(CoreMaterial.size()<3)
+		{
+			CoreMaterial.add(M);
+			return true;
+		}
+		else
+		{
+			System.out.println("The materail cannot be stored\n");
+			return false;
+		}
 			
-		CoreMaterial[0]= M;
-		return true;
+		/*CoreMaterial[0]= M;
+		return true;*/
 	}
 	
 	//Hide in the asteroid
 	public void GetHidden(Movable M) {
 		System.out.println("Asteroid.Gethidden Called");
-		if(emptycnt()==-1) {	// emptycnt !=-1 volt
+		
+		if(CoreMaterial.isEmpty())
+		{
 			M.SetIsHidden();
 		}
-		return;
+		else
+			System.out.println("ASteroid is not empty to hide\n");
+
+		/*if(emptycnt()==-1) {	// emptycnt !=-1 volt
+			M.SetIsHidden();
+		}
+		return;*/
+	}
+	
+	//Teszthez kell egyelore
+	public void RemoveMaterialFromCore()
+	{
+		CoreMaterial.remove(0);
 	}
 	
 	@Override
