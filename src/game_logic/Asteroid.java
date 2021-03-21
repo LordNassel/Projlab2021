@@ -10,7 +10,8 @@ public class Asteroid extends Field{
 	private Material[] CoreMaterial = new Material[3];
 	//This is the default constructor, this may however change. Right now it creates the random value for the thickness
 	
-	public Asteroid(Material M) {
+	public Asteroid(String name, Material M) {
+		super(name);
 		System.out.println("Asteroid.Constructor Called");
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
@@ -77,8 +78,9 @@ public class Asteroid extends Field{
 	//Hide in the asteroid
 	public void GetHidden(Movable M) {
 		System.out.println("Asteroid.Gethidden Called");
-		if(emptycnt()!=-1)
-			M.Sethidden(true);
+		if(emptycnt()!=-1) {
+			M.Sethidden();
+		}
 		return;
 	}
 	

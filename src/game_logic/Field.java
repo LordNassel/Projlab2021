@@ -7,7 +7,13 @@ abstract class Field implements Steppable{
 //Vector storage for convenience, an array would work too since <=300
 protected Vector<Field> Neighbors = new Vector<Field>();
 protected Vector<Movable> MovableList = new Vector<Movable>();
+//Kell egy nev most ahhoz, hogy a paranccsoros navigacio letezhessen
+private String name;
 
+
+public Field(String Name) {
+	this.name = Name;
+}
 //Explode. Kills all things on map then removes itself from the map.
 protected void Explode() {
 	System.out.println("Field.Explode Called");
@@ -38,12 +44,12 @@ public void AcceptPlayer (Movable M) {
 	System.out.println("Field.AcceptPlayer Called");
 	M.SetCurrentField(this);
 	MovableList.add(M);
-	M.Sethidden(false);
 	}
 public void RemovePlayer(Movable M) {
 	System.out.println("RemovePlayer Called");
 	M.SetCurrentField(null);
 	MovableList.remove(M);
 }
+public String Getname() {return this.name;}
 
 }

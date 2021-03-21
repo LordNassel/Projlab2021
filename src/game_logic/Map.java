@@ -44,7 +44,7 @@ public class Map implements Steppable {
        /* Movable mov = new Movable();
         Material mat = new Material();*/ 	//Absztrakt osztály nem lehet példányosítani
     	Iron i = new Iron();
-        Asteroid a = new Asteroid(i);
+        Asteroid a = new Asteroid("name", i);
         Settler s = new Settler(a);
     }
 
@@ -55,9 +55,9 @@ public class Map implements Steppable {
         System.out.println("Place Teleport called");
         //Material m = new Material();
         Coal c = new Coal();
-        Asteroid a = new Asteroid(c);
-        Teleport t1 = new Teleport();
-        Teleport t2 = new Teleport();
+        Asteroid a = new Asteroid("name", c);
+        Teleport t1 = new Teleport("name");
+        Teleport t2 = new Teleport("name");
         Settler s = new Settler(a);
     }
 

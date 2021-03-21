@@ -49,8 +49,8 @@ public class Settler extends Movable {
 	{
 		System.out.println("CraftTeleports");
 		//TO-DO opt check
-		Teleport t1 = new Teleport();
-		Teleport t2 = new Teleport();
+		Teleport t1 = new Teleport("name");
+		Teleport t2 = new Teleport("name2");
 		t1.setPair(t2);
 		t2.setPair(t1);
 		inventoryTeleport.add(t1);

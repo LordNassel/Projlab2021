@@ -22,12 +22,15 @@ public abstract class Movable implements Steppable {
 	
 	public void Move(Field a)
 	{
+		//Bocsi itt minden teljesen fölösleges. most kaptad meg paraméterként hova kell menned. Nem kell kikeresned
 		System.out.println("Move()");
 		//Asteroid neighbor = a.FindNeighbor();
-		Vector<Field> neighbors = a.FindNeighbor();
-		neighbors.firstElement().AcceptPlayer(this);
+		///Vector<Field> neighbors = a.FindNeighbor();
+		//neighbors.firstElement().AcceptPlayer(this);
 		//neighbor.AcceptPlayer(this);
-		a.RemovePlayer(this);		
+		this.currentField.RemovePlayer(this);
+		a.AcceptPlayer(this);
+		
 	}	
 	
 	public void Drill()
@@ -96,5 +99,5 @@ public abstract class Movable implements Steppable {
 		this.currentField=field;
 	}
 	//Ez a hidden setterje sajnos kell.
-	public void Sethidden(boolean b) {b= this.isHidden;}
+	public void Sethidden() {this.isHidden=!this.isHidden;}
 }

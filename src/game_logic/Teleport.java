@@ -11,7 +11,8 @@ public class Teleport extends Field{
     /**
      *Default Constructor
      */
-    public Teleport(){
+    public Teleport(String name){
+    	super(name);
         //setIsActive(false);
     	IsActive = false;
     }

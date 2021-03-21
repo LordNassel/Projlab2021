@@ -16,7 +16,7 @@ public class Game {
     	Iron i = new Iron();
     	Uranium u = new Uranium();
     	Ice ice = new Ice();
-    	Asteroid a = new Asteroid(i);
+    	Asteroid a = new Asteroid("testasteroid",i);
     	Settler s = new Settler(a);
     	//...
     }
