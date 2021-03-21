@@ -11,28 +11,18 @@ public class Test {
 		Asteroid a1 = new Asteroid("a1",iron);
 		Asteroid a2= new Asteroid("a2",iron);
 		Asteroid a3 = new Asteroid("a3",iron);
+		
 		//Konstruktor guide -> settler -> asteroid
 		Settler player = new Settler(a1);
 		
-		System.out.println("Move Test Inditva");
-		System.out.println("Jelenleg a1 aszteroidan vagy! 1. Mozgas a2-re, 2. Mozgas a3-ra");
+		//Bolygok kapcsolatai
+		a1.SetNeighbor(a3);
+		a1.SetNeighbor(a2);
 		
-	
-		//int olvaso
-		Scanner myinput =new Scanner(System.in);
-		int n=0;
-		n= myinput.nextInt();
+		//a mozgo fgv.
+		player.FindDirections();
 		
-		//Switch case a dontesnek
-		switch(n) {
-		case 1:
-			player.Move(a2);
-		case 2:
-			player.Move(a3);
-		default:
-			player.Move(a2);
-		}
-		
+		//kiiras hogy ellenorizheto legyen
 		System.out.println("Sikeres Mozas, a jelenlegi bolygo :");
 		System.out.println(player.GetCurrentField().Getname());
 		

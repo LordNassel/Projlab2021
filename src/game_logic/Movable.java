@@ -1,5 +1,6 @@
 package game_logic;
 
+import java.util.Scanner;
 import java.util.Vector;
 
 public abstract class Movable implements Steppable {
@@ -20,9 +21,27 @@ public abstract class Movable implements Steppable {
 		isHidden = false;
 	}
 	
+	//Na ennek szerintem kb így kell kinéznie. -> a neveven nem vagyok holtbiztos de az refaktoralhato
+	public void FindDirections() {
+		Vector<Field> currentlist = new Vector<Field>();
+		currentlist = this.currentField.FindNeighbor();
+		for(int i = 0; i<currentlist.size(); i++) {
+			System.out.println(i+1 + " . " + currentlist.get(i).Getname());
+		}
+		
+		Scanner myinput =new Scanner(System.in);
+		int n=0;
+		n= myinput.nextInt();
+		
+		this.Move(currentlist.get(n));
+	}
+	
 	public void Move(Field a)
 	{
-		//Bocsi itt minden teljesen f�l�sleges. most kaptad meg param�terk�nt hova kell menned. Nem kell kikeresned
+		//Bocsi itt minden teljesen fölösleges. most kaptad meg paraméterként hova kell menned. Nem kell kikeresned. Értem
+		//mit akartál, de ez nem jó elképzelés. Neked a mozgásra két függvény kell. Először ki kell listáznod a lehetséges irányokat
+		//A field.getneighbors fgv-vel, utána pedig amikor a játékos vagy az AI eldöntötte hova akar menni, akkor meghívod ezt
+		//Paraméterként azzal az aszteroidával amit választott a játékos. 
 		System.out.println("Move()");
 		//Asteroid neighbor = a.FindNeighbor();
 		///Vector<Field> neighbors = a.FindNeighbor();
@@ -65,14 +84,14 @@ public abstract class Movable implements Steppable {
 		
 	}
 	
-	/*Oszt�lydiagram alapj�n kap egy aszteroida param�tert, de ez szerintem felesleges
-	 *ha �gy kezelj�k, hogy az aktu�lis aszteroid�n amin van elb�jik
+	/*Osztï¿½lydiagram alapjï¿½n kap egy aszteroida paramï¿½tert, de ez szerintem felesleges
+	 *ha ï¿½gy kezeljï¿½k, hogy az aktuï¿½lis aszteroidï¿½n amin van elbï¿½jik
 	 */
 	public void Hide()
 	{
 		System.out.println("Hide");
 		// Bocs ezt kikommenteztem, ez az aszteroida dolga, hogy eldontse, hogy a movable elbujhat. 
-		//edit. lattam hogy irtal erre, sajnos ez nem egy technikalit�s, csak akkor tudlak befogadni, ha ures az aszteroida
+		//edit. lattam hogy irtal erre, sajnos ez nem egy technikalitás, csak akkor tudlak befogadni, ha ures az aszteroida
 		//this.isHidden = true;
 		((Asteroid)currentField).GetHidden(this);
 	}
