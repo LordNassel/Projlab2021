@@ -131,8 +131,8 @@ public class Test {
 			this.TestMgr();
 		}
 
-
 	}
+	
 	private void CraftTeleportTest()
 	{
 		System.out.println("CraftTeleportTest Started\n");
@@ -163,7 +163,7 @@ public class Test {
 			System.out.println("\n");
 			this.TestMgr();
 		}
-}
+	}
 	
 	private void HideTest()
 	{
@@ -190,6 +190,7 @@ public class Test {
 			this.TestMgr();		
 		}
 	}
+	
 	private void WinGameTest() 
 	{
 		System.out.println("Nyert j�tszma teszt\n");
@@ -214,6 +215,7 @@ public class Test {
 			this.TestMgr();	
 		}
 	}
+	
 	private void LoseGameTest() 
 	{
 		System.out.println("Vesztett j�tszma teszt\n");
@@ -416,6 +418,10 @@ public class Test {
 		}
 	}
 	
+	private void SunStormStartsTest() {
+		//Todo
+	}
+	
 	private int inputmanager(){
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
@@ -446,6 +452,8 @@ public class Test {
 		System.out.println("13. Ice Gets Exposed Test");
 		System.out.println("14. Sun Hits Uranium Test");
 		System.out.println("15. Explode Test");
+		System.out.println("16. Sun Storm Starts Test");
+
 
 
 		
@@ -487,6 +495,8 @@ public class Test {
 			this.SunHitsUraniumTest();
 		case 15:
 			this.ExplodeTest();
+		case 16:
+			this.SunStormStartsTest();
 		default:
 			return;
 		}
