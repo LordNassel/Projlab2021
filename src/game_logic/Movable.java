@@ -25,15 +25,16 @@ public abstract class Movable implements Steppable {
 	public void FindDirections() {
 		Vector<Field> currentlist = new Vector<Field>();
 		currentlist = this.currentField.FindNeighbor();
+		System.out.println("Válaszd ki melyik szomszédos bolygóra akarsz utazni:");
 		for(int i = 0; i<currentlist.size(); i++) {
-			System.out.println(i + " . " + currentlist.get(i).Getname());
+			System.out.println(i + ". " + currentlist.get(i).Getname());
 		}
-		
+	
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
 		n= myinput.nextInt();
 		this.Move(currentlist.get(n));
-		myinput.close();
+		//myinput.close();
 	}
 	
 	public void Move(Field a)
