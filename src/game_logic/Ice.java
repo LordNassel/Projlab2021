@@ -1,6 +1,6 @@
 package game_logic;
 
-
+// Jég, egyszerű anyag
 public class Ice extends Material {
 
 	@Override
