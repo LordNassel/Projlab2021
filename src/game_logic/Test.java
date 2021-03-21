@@ -28,28 +28,34 @@ public class Test {
 		
 		this.TestMgr();
 	}
+	private void MineTest()
+    {
+        Iron iron = new Iron();
+        Asteroid a1 = new Asteroid("a1", iron, false, 1);
+        Settler player = new Settler(a1);
+
+        System.out.println("Furas Teszt indul");
+        System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
+
+        if(this.inputmanager()!=0) {
+            player.Drill();
+        }
+
+
+        System.out.println("Nyomj barmilyen szamot banyaszashoz, 0-t a befejezeshez");
+        if(this.inputmanager()!=0) {
+            player.Mine();
+        }
+
+        System.out.println("Banyaszas teszt kesz");
+
+        System.out.println("Furas teszt kesz");
+
+        this.TestMgr();
+    }
+	
 	
 	private void DrillTest()
-	{
-		Iron iron = new Iron();
-		Asteroid a1 = new Asteroid("a1", iron, false, 1);
-		Settler player = new Settler(a1);
-		
-		System.out.println("Furas Teszt indul");
-		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
-		
-		
-		while(this.inputmanager()!=0) {
-			player.Drill();
-		}
-		
-		System.out.println("Furas teszt kesz\n");
-
-		this.TestMgr();
-	}
-	
-	
-	private void MineTest()
 	{
 
 		//Mivel toltott aszteroidat szeretne a tester, csak ez a haromfele viselkedes letezik
