@@ -15,7 +15,7 @@ public class Robot extends Movable {
 	*/  
 	@Override
 	public void HitByExplosion() {
-		System.out.println("Robot HitByExplosion()");
+		System.out.println("Robot HitByExplosion() - landing on neighbor");
 		Vector<Field> neighbors = currentField.FindNeighbor();
 		if(neighbors.isEmpty()) {
 			this.Die();
