@@ -30,7 +30,7 @@ public class Settler extends Movable {
 	public void Store(Material material)
 	{
 		System.out.println("Store");
-		inventoryMain.add(material);
+		inventoryMain.add(Material material);
 	}
 	
 	/*public void GetMaterail(Material material)

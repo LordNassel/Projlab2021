@@ -30,19 +30,19 @@ public class Test {
 		this.TestMgr();
 	}
 	
-	private void MineTest()
+	private void DrillTest()
 	{
-		//peldanyositas
 		Iron iron = new Iron();
 		Asteroid a1 = new Asteroid("a1", iron, false, 1);
 		Settler player = new Settler(a1);
-		//kommunikacio a userrel
+		
 		System.out.println("Furas Teszt indul");
 		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
 		
 		if(this.inputmanager()!=0) {
 			player.Drill();
 		}
+		
 		
 		System.out.println("Nyomj barmilyen szamot banyaszashoz, 0-t a befejezeshez");
 		if(this.inputmanager()!=0) {
@@ -51,12 +51,15 @@ public class Test {
 		
 		System.out.println("Banyaszas teszt kesz");
 		
+		System.out.println("Furas teszt kesz");
+
 		this.TestMgr();
 	}
 	
 	
-	private void Drill_Advanced_Test()
+	private void MineTest()
 	{
+
 		//Mivel toltott aszteroidat szeretne a tester, csak ez a haromfele viselkedes letezik
 		System.out.println("Kerem valasszon tolteleket\n" + "0.vas\n" + "1.Uran\n" + "2.Jeg\n");
 		Settler player;
@@ -91,6 +94,9 @@ public class Test {
 		
 		this.TestMgr();
 			
+
+		//TODO
+
 	}
 	
 	private void CraftRobotTest()
@@ -104,7 +110,6 @@ public class Test {
 	}
 	
 	private int inputmanager(){
-		@SuppressWarnings("resource")
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
 		n= myinput.nextInt();
@@ -122,6 +127,8 @@ public class Test {
 		System.out.println("1. Move Test");
 		System.out.println("2. Mine Test");
 		System.out.println("3. Drill Test");
+		System.out.println("2. Drill Test");
+		System.out.println("3. Mine Test");
 		System.out.println("4. CraftRobot Test");
 		System.out.println("5. Teleport Test");
 	}
@@ -135,9 +142,9 @@ public class Test {
 		case 1:
 			this.MoveTest();
 		case 2:
-			this.MineTest();
+			this.DrillTest();
 		case 3:
-			this.Drill_Advanced_Test();
+			this.MineTest();
 		case 4:
 			this.CraftRobotTest();
 		case 5:
