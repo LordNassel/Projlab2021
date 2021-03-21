@@ -114,22 +114,22 @@ public class Test {
 	
 	private void HideTest()
 	{
-		System.out.println("B˙j·s teszt\n");
+		System.out.println("B√∫j√°s teszt\n");
 		Iron i = new Iron();
 		Asteroid a = new Asteroid("a",i);
 		Settler s = new Settler(a);
-		System.out.println("\n‹res az aszteroida?\n");
+		System.out.println("\n√úres az aszteroida?\n");
 		System.out.println("0. Igen");
 		System.out.println("1. Nem\n");
 		switch(this.inputmanager())
 		{
 		case 0:
 			s.Hide();
-			System.out.println("Az elb˙j·s megtˆrtÈnt\n");
+			System.out.println("Az elb√∫j√°s megt√∂rt√©nt\n");
 			this.TestMgr();
 			break;
 		case 1:
-			System.out.println("Az aszteroida nem ¸res, az elb˙j·s sikertelen\n");
+			System.out.println("Az aszteroida nem √ºres, az elb√∫j√°s sikertelen\n");
 			this.TestMgr();
 			break;
 		default:
@@ -139,7 +139,7 @@ public class Test {
 	}
 	private void WinGameTest() 
 	{
-		System.out.println("Nyert j·tszma teszt\n");
+		System.out.println("Nyert j√°tszma teszt\n");
 		Game g = new Game();
 		
 		System.out.println("\nMegvannak a nyersanyagok?\n");
@@ -150,11 +150,11 @@ public class Test {
 		{
 		case 0:
 			g.Wingame();
-			System.out.println("Nyert¸nk\n");
+			System.out.println("Nyert√ºnk\n");
 			this.TestMgr();
 			break;
 		case 1:
-			System.out.println("MÈg nem nyert¸nk\n");
+			System.out.println("M√©g nem nyert√ºnk\n");
 			this.TestMgr();
 			break;
 		default:
@@ -163,9 +163,9 @@ public class Test {
 	}
 	private void LoseGameTest() 
 	{
-		System.out.println("Vesztett j·tszma teszt\n");
+		System.out.println("Vesztett j√°tszma teszt\n");
 		Game g = new Game();
-		System.out.println("…l e mÈg valaki?\n");
+		System.out.println("√âl e m√©g valaki?\n");
 		
 		System.out.println("0. Igen ");
 		System.out.println("1. Nem\n");
@@ -174,11 +174,11 @@ public class Test {
 		{
 		case 0:
 			g.Losegame();
-			System.out.println("Vesztett¸nk\n");
+			System.out.println("Vesztett√ºnk\n");
 			this.TestMgr();
 			break;
 		case 1:
-			System.out.println("MÈg valaki Èletben van\n");
+			System.out.println("M√©g valaki √©letben van\n");
 			this.TestMgr();
 			break;
 		default:
@@ -189,7 +189,7 @@ public class Test {
 	
 	private void StartGameTest() 
 	{
-		System.out.println("J·tÈk kezdÈse teszt\n");
+		System.out.println("J√°t√©k kezd√©se teszt\n");
 		
 		Game g = new Game();
 		g.StartGame();
@@ -197,18 +197,18 @@ public class Test {
 	
 	private void AddMovableTest()
 	{
-		System.out.println("Felvesz¸nk egy ˙j movable objektumot a rendszerbe teszt\n");
+		System.out.println("Felvesz√ºnk egy √∫j movable objektumot a rendszerbe teszt\n");
 		
 		Game g = new Game();
 		
-		System.out.println("Elˆszˆr egy settlert vesz¸nk fel\n");
+		System.out.println("El√∂sz√∂r egy settlert vesz√ºnk fel\n");
 		Ice i = new Ice();
 		Asteroid a = new Asteroid("a1", i);
 		Settler s = new Settler(a);
 		
 		g.AddMovable(s);
 
-		System.out.println("Ut·na pedig egy robotot\n");
+		System.out.println("Ut√°na pedig egy robotot\n");
 		Asteroid a2 = new Asteroid("a2", i);
 		Robot r = new Robot(a2);
 		
@@ -218,7 +218,7 @@ public class Test {
 	
 	private void Place_TeleportTest()
 	{
-		System.out.println("Letesz¸nk egy teleportot teszt\n");
+		System.out.println("Letesz√ºnk egy teleportot teszt\n");
 		
 		Map m = new Map();
 		m.Place_teleport();
@@ -230,6 +230,86 @@ public class Test {
 		
 	}
 	
+	private void IceGetsExposedTest()
+	{
+		System.out.println("V√≠zj√©g szublim√°l teszt\n");
+		System.out.println("Az aszteroida teljesen megf√∫rt?\n");
+		System.out.println("0. Igen ");
+		System.out.println("1. Nem\n");
+		switch(this.inputmanager())
+		{
+		case 0:
+			System.out.println("Az aszteroid√°nak nincs k√©rge.\n");
+			break;
+		case 1:
+			System.out.println("Az aszteroid√°nak m√©g van k√©rge.\n");
+			this.TestMgr();
+			break;
+		default:
+			this.TestMgr();	
+		}
+		Ice ice = new Ice();
+		System.out.println("Az aszteroida √©ppen napk√∂zelben van?\n");
+		System.out.println("0. Igen ");
+		System.out.println("1. Nem\n");
+		switch(this.inputmanager())
+		{
+		case 0:
+			Asteroid a1 = new Asteroid("a1", ice, true);
+			ice.GetExposed(true, a1);
+			this.TestMgr();
+			break;
+		case 1:
+			Asteroid a2 = new Asteroid("a2", ice, false);
+			ice.GetExposed(false, a2);
+			System.out.println("A v√≠zj√©g nem szublim√°l.\n");
+			this.TestMgr();
+			break;
+		default:
+			this.TestMgr();	
+		}
+	}
+	
+	private void SunHitsUraniumTest()
+	{
+		System.out.println("Radioakt√≠v maggal rendelkez≈ë aszteroida teszt\n");
+		System.out.println("Az aszteroida teljesen megf√∫rt?\n");
+		System.out.println("0. Igen ");
+		System.out.println("1. Nem\n");
+		switch(this.inputmanager())
+		{
+		case 0:
+			System.out.println("Az aszteroid√°nak nincs k√©rge.\n");
+			break;
+		case 1:
+			System.out.println("Az aszteroid√°nak m√©g van k√©rge.\n");
+			this.TestMgr();
+			break;
+		default:
+			this.TestMgr();	
+		}
+		Uranium uran = new Uranium();
+		System.out.println("Az aszteroida √©ppen napk√∂zelben van?\n");
+		System.out.println("0. Igen ");
+		System.out.println("1. Nem\n");
+		switch(this.inputmanager())
+		{
+		case 0:
+			Asteroid a1 = new Asteroid("a1", uran, true);
+			uran.GetExposed(true, a1);
+			System.out.println("Radioakt√≠v maggal rendelkez≈ë aszteroida felrobbant.\n");
+			this.TestMgr();
+			break;
+		case 1:
+			Asteroid a2 = new Asteroid("a2", uran, false);
+			uran.GetExposed(false, a2);
+			System.out.println("Radioakt√≠v maggal rendelkez≈ë aszteroida nem robbant fel.\n");
+			this.TestMgr();
+			break;
+		default:
+			this.TestMgr();	
+		}
+	}
 	
 	private int inputmanager(){
 		Scanner myinput =new Scanner(System.in);
