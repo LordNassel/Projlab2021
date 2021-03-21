@@ -14,6 +14,7 @@ public class Settler extends Movable {
 	public Settler(Asteroid position)
 	{
 		super(position);
+		System.out.println("Settler constructor called");
 		inventoryMain = new ArrayList<Material>();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}

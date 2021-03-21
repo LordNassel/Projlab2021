@@ -24,9 +24,7 @@ public class Test {
 		player.FindDirections();
 		
 		//kiiras hogy ellenorizheto legyen
-		System.out.println("Sikeres Mozgas, a jelenlegi bolygo :");
-		System.out.println(player.GetCurrentField().Getname());
-		
+		System.out.println("Sikeres Mozgas, a jelenlegi bolygo: "  + player.GetCurrentField().Getname() + "\n");		
 		this.TestMgr();
 	}
 	
@@ -43,7 +41,7 @@ public class Test {
 			player.Drill();
 		}
 		
-		System.out.println("Furas teszt kesz");
+		System.out.println("Furas teszt kesz \n");
 		this.TestMgr();
 	}
 	
