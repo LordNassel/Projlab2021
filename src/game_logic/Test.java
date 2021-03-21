@@ -38,19 +38,12 @@ public class Test {
 		System.out.println("Furas Teszt indul");
 		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
 		
-		if(this.inputmanager()!=0) {
+		
+		while(this.inputmanager()!=0) {
 			player.Drill();
 		}
 		
-		
-		System.out.println("Nyomj barmilyen szamot banyaszashoz, 0-t a befejezeshez");
-		if(this.inputmanager()!=0) {
-			player.Mine();
-		}
-		
-		System.out.println("Banyaszas teszt kesz");
-		
-		System.out.println("Furas teszt kesz");
+		System.out.println("Furas teszt kesz\n");
 
 		this.TestMgr();
 	}
@@ -377,9 +370,9 @@ public class Test {
 		case 1:
 			this.MoveTest();
 		case 2:
-			this.DrillTest();
-		case 3:
 			this.MineTest();
+		case 3:
+			this.DrillTest();
 		case 4:
 			this.CraftRobotTest();
 		case 5:

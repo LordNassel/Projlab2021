@@ -60,7 +60,7 @@ public abstract class Movable implements Steppable {
 		if(this.currentField.GetDrilled()==true)
 			System.out.println("Sikeres furas az aszteroida kisebb lett");
 		else
-			System.out.println("Sikertelen furas");
+			System.out.println("Sikertelen furas, a kereg mar 0");
 		
 	}
 	
