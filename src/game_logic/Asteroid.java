@@ -146,6 +146,7 @@ public class Asteroid extends Field{
 		if(CoreMaterial.isEmpty())
 		{
 			M.SetIsHidden();
+			System.out.println("Success\n");
 		}
 		else
 			System.out.println("ASteroid is not empty to hide\n");
@@ -160,6 +161,11 @@ public class Asteroid extends Field{
 	public void RemoveMaterialFromCore()
 	{
 		CoreMaterial.remove(0);
+	}
+	
+	public void RemoveAllMaterialFromCore()
+	{
+		CoreMaterial.clear();
 	}
 	
 	@Override

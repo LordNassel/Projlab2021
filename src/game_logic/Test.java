@@ -171,18 +171,19 @@ public class Test {
 		Iron i = new Iron();
 		Asteroid a = new Asteroid("a",i);
 		Settler s = new Settler(a);
+		a.AcceptPlayer(s);
 		System.out.println("\nÜres az aszteroida?\n");
 		System.out.println("0. Igen");
 		System.out.println("1. Nem\n");
 		switch(this.inputmanager())
 		{
 		case 0:
+			a.RemoveAllMaterialFromCore();
 			s.Hide();
-			System.out.println("Az elbújás megtörtént\n");
 			this.TestMgr();
 			break;
 		case 1:
-			System.out.println("Az aszteroida nem üres, az elbújás sikertelen\n");
+			s.Hide();
 			this.TestMgr();
 			break;
 		default:
