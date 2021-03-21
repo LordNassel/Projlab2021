@@ -24,8 +24,7 @@ public class Test {
 		player.FindDirections();
 		
 		//kiiras hogy ellenorizheto legyen
-		System.out.println("Sikeres Mozgas, a jelenlegi bolygo :");
-		System.out.println(player.GetCurrentField().Getname());
+		System.out.println("Sikeres Mozgas, a jelenlegi bolygo: " + player.GetCurrentField().Getname() + "\n");
 		
 		this.TestMgr();
 	}
@@ -226,6 +225,10 @@ public class Test {
 		
 	}
 	
+	private void PutMaterialIntoAsteroidTest()
+	{
+		
+	}
 	
 	
 	private int inputmanager(){
@@ -254,6 +257,7 @@ public class Test {
 		System.out.println("9. Startround Test");
 		System.out.println("10. AddMovable Test");
 		System.out.println("11. Place Teleport Test");
+		System.out.println("12. Put Material Into Asteroid Test");
 		
 	}
 	//Igy van egy osszefoglalo testmanager amit lehet hivni
@@ -285,6 +289,8 @@ public class Test {
 			this.AddMovableTest();
 		case 11: 
 			this.Place_TeleportTest();
+		case 12:
+			this.PutMaterialIntoAsteroidTest();
 		default:
 			return;
 		}
