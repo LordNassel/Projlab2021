@@ -168,7 +168,7 @@ public class Test {
 		Game g = new Game();
 		System.out.println("Él e még valaki?\n");
 		
-		System.out.println("0. Igen");
+		System.out.println("0. Igen ");
 		System.out.println("1. Nem\n");
 		
 		switch(this.inputmanager())
