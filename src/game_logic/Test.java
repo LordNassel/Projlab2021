@@ -6,10 +6,11 @@ public class Test {
 	
 	private void MoveTest()
 	{
+		System.out.println("Mozgas teszt indul");
 		Iron iron = new Iron();
 		//Konstruktor guide -> asteroid -> name, material
 		Asteroid a1 = new Asteroid("a1",iron);
-		Asteroid a2= new Asteroid("a2",iron);
+		Asteroid a2 = new Asteroid("a2",iron);
 		Asteroid a3 = new Asteroid("a3",iron);
 		
 		//Konstruktor guide -> settler -> asteroid
@@ -23,16 +24,29 @@ public class Test {
 		player.FindDirections();
 		
 		//kiiras hogy ellenorizheto legyen
-		System.out.println("Sikeres Mozas, a jelenlegi bolygo :");
+		System.out.println("Sikeres Mozgas, a jelenlegi bolygo :");
 		System.out.println(player.GetCurrentField().Getname());
 		
-		this.ListTests();
+		this.TestMgr();
 	}
 	
 	private void DrillTest()
 	{
-		//TODO
+		Iron iron = new Iron();
+		Asteroid a1 = new Asteroid("a1", iron);
+		Settler player = new Settler(a1);
+		
+		System.out.println("Furas Teszt indul");
+		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
+		
+		while(this.inputmanager()!=0) {
+			player.Drill();
+		}
+		
+		System.out.println("Furas teszt kesz");
+		this.TestMgr();
 	}
+	
 	
 	private void MineTest()
 	{
@@ -48,6 +62,19 @@ public class Test {
 	{
 		//TODO
 	}
+	
+	private int inputmanager(){
+		Scanner myinput =new Scanner(System.in);
+		int n=0;
+		n= myinput.nextInt();
+		return n;
+		
+		
+	}
+	
+	
+	
+	
 	//Aktualis tesztek listaja
 	private void ListTests() {
 		System.out.println("Jelenlegi tesztek:");
@@ -61,13 +88,9 @@ public class Test {
 	public void TestMgr() {
 		//Listazom a teszteket
 		this.ListTests();
-		Scanner myinput =new Scanner(System.in);
-		int n=0;
-		n= myinput.nextInt();
 	//Egyelore ez az egy mod van
-	while(true) {
 		//az teszesetek szam szerint. Boviteni lefele celszeru de mashogy sem lehetetlen
-		switch(n) {
+		switch(this.inputmanager()) {
 		case 1:
 			this.MoveTest();
 		case 2:
@@ -80,7 +103,6 @@ public class Test {
 			this.CraftTeleportTest();
 		default:
 			return;
-	}
 		}
 	}
 }

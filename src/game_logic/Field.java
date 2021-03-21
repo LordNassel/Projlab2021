@@ -52,4 +52,5 @@ public void RemovePlayer(Movable M) {
 }
 public String Getname() {return this.name;}
 
+public abstract boolean GetDrilled();
 }

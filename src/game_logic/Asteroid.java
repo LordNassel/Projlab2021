@@ -23,7 +23,7 @@ public class Asteroid extends Field{
 	}
 	//Operations
 	
-	//The drilling function. 
+	@Override//The drilling function. 
 	public boolean GetDrilled(){
 		System.out.println("Asteroid.GetDrilled Called");
 		if(Thickness>=0) 

@@ -21,19 +21,19 @@ public abstract class Movable implements Steppable {
 		isHidden = false;
 	}
 	
-	//Na ennek szerintem kb így kell kinéznie. -> a neveven nem vagyok holtbiztos de az refaktoralhato
+	//Na ennek szerintem kb így kell kinéznie. -> a neveben nem vagyok holtbiztos de az refaktoralhato
 	public void FindDirections() {
 		Vector<Field> currentlist = new Vector<Field>();
 		currentlist = this.currentField.FindNeighbor();
 		for(int i = 0; i<currentlist.size(); i++) {
-			System.out.println(i+1 + " . " + currentlist.get(i).Getname());
+			System.out.println(i + " . " + currentlist.get(i).Getname());
 		}
 		
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
 		n= myinput.nextInt();
-		
 		this.Move(currentlist.get(n));
+		myinput.close();
 	}
 	
 	public void Move(Field a)
@@ -55,7 +55,11 @@ public abstract class Movable implements Steppable {
 	public void Drill()
 	{
 		System.out.println("Drill()");
-		((Asteroid)currentField).GetDrilled();
+		//Tok jogos ez igy nem jo. Modositom az osztalyaimat -> artur
+		if(this.currentField.GetDrilled()==true)
+			System.out.println("Sikeres furas az aszteroida kisebb lett");
+		else
+			System.out.println("Sikertelen furas");
 		
 	}
 	
