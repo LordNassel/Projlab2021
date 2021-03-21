@@ -64,31 +64,35 @@ public class Test {
 		System.out.println("Kerem valasszon tolteleket\n" + "0.vas\n" + "1.Uran\n" + "2.Jeg\n");
 		Settler player;
 		Asteroid a1;
-		switch(this.inputmanager()) {
+		int n=0;
+		n = this.inputmanager();
 		//ugy peldanyositunk ahogy a tesztelo igenyli
-		case 0:
+		if (n==0){
 			Iron iron = new Iron();
-			a1 = new Asteroid("a1", iron, true, 1);
-			player = new Settler(a1);
-		case 1:	
-			Uranium uran = new Uranium();
-			a1 = new Asteroid("a1", uran, true, 1);
-			player = new Settler(a1);
-		case 2:
-			Ice ice = new Ice();
-			a1 = new Asteroid("a1", ice, true, 1);
-			player = new Settler(a1);
-		default:
-			Ice ice2 = new Ice();
-			a1 = new Asteroid("a1", ice2, true, 1);
+			a1 = new Asteroid("a1v", iron, true, 1);
 			player = new Settler(a1);
 		}
-		
+		else if(n==1) {	
+			Uranium uran = new Uranium();
+			a1 = new Asteroid("a1u", uran, true, 1);
+			player = new Settler(a1);
+		}
+		else if(n==2) {
+			Ice ice = new Ice();
+			a1 = new Asteroid("a1j", ice, true, 1);
+			player = new Settler(a1);
+		}
+		else{
+			Ice ice = new Ice();
+			a1 = new Asteroid("a1d", ice, true, 1);
+			player = new Settler(a1);
+		}
 		//kifurjuk manualisan az aszteroidat - kicsit fapados megoldas de csak 10 reteg lehet.
 		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
 		
 		while(this.inputmanager()!=0) {
 			player.Drill();
+			
 		}
 		System.out.println("Furas teszt kesz");
 		
@@ -101,7 +105,7 @@ public class Test {
 	
 	private void CraftRobotTest()
 	{
-		//TODO
+		//todo
 	}
 	
 	private void CraftTeleportTest()
@@ -127,8 +131,6 @@ public class Test {
 		System.out.println("1. Move Test");
 		System.out.println("2. Mine Test");
 		System.out.println("3. Drill Test");
-		System.out.println("2. Drill Test");
-		System.out.println("3. Mine Test");
 		System.out.println("4. CraftRobot Test");
 		System.out.println("5. Teleport Test");
 	}
