@@ -11,8 +11,8 @@ public class Robot extends Movable {
 	public void HitByExplosion() {
 		System.out.println("Robot HitByExplosion()");
 		Vector<Field> neighbors = currentField.FindNeighbor();
-		currentField.RemovePlayer(this);	
 		neighbors.get(0).AcceptPlayer(this);
+		currentField.RemovePlayer(this);	
     }
 
 }
