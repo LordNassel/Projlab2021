@@ -3,7 +3,8 @@ package game_logic;
 
 public class Ice extends Material {
 
-	public void GetExposed(boolean Sunside) {
+	@Override
+	public void GetExposed(boolean Sunside, Asteroid who) {
 		if(Sunside) {
 			
 		}

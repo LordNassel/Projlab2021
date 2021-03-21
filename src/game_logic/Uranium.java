@@ -2,9 +2,10 @@ package game_logic;
 
 public class Uranium extends Material {
 	
-	public void GetExposed(boolean Sunside) {
+	@Override
+	public void GetExposed(boolean Sunside, Asteroid who) {
 		if(Sunside) {
-			asteroid.Explode();
+			who.Explode();
 		}
 	}
 

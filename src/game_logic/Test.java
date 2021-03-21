@@ -34,18 +34,18 @@ public class Test {
 	{
 		//peldanyositas
 		Iron iron = new Iron();
-		Asteroid a1 = new Asteroid("a1", iron);
+		Asteroid a1 = new Asteroid("a1", iron, false, 1);
 		Settler player = new Settler(a1);
 		//kommunikacio a userrel
 		System.out.println("Furas Teszt indul");
 		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
 		
-		while(this.inputmanager()!=0) {
+		if(this.inputmanager()!=0) {
 			player.Drill();
 		}
 		
 		System.out.println("Nyomj barmilyen szamot banyaszashoz, 0-t a befejezeshez");
-		while(this.inputmanager()!=0) {
+		if(this.inputmanager()!=0) {
 			player.Mine();
 		}
 		
@@ -65,19 +65,19 @@ public class Test {
 		//ugy peldanyositunk ahogy a tesztelo igenyli
 		case 0:
 			Iron iron = new Iron();
-			a1 = new Asteroid("a1", iron);
+			a1 = new Asteroid("a1", iron, true, 1);
 			player = new Settler(a1);
 		case 1:	
 			Uranium uran = new Uranium();
-			a1 = new Asteroid("a1", uran);
+			a1 = new Asteroid("a1", uran, true, 1);
 			player = new Settler(a1);
 		case 2:
 			Ice ice = new Ice();
-			a1 = new Asteroid("a1", ice);
+			a1 = new Asteroid("a1", ice, true, 1);
 			player = new Settler(a1);
 		default:
 			Ice ice2 = new Ice();
-			a1 = new Asteroid("a1", ice2);
+			a1 = new Asteroid("a1", ice2, true, 1);
 			player = new Settler(a1);
 		}
 		

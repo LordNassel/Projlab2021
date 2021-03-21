@@ -35,21 +35,32 @@ public class Asteroid extends Field{
 		}
 		this.isSunside = isSunside;
 	}
-	
+	//EZ EGY DEBUG KONSTRUKTOR, NE HIVD NORMALIS UZEMBEN
+	public Asteroid(String name, Material M, boolean sunside, int thiccboi) {
+		super(name);
+		System.out.println("Asteroid.Constructor Called");
+		int n=0;
+		while(n<3) {
+			CoreMaterial[n] = M;
+			n++;
+		}
+		Thickness = thiccboi;
+		this.isSunside =sunside;
+	}
 	//Operations
 	
 	@Override//The drilling function. 
 	public boolean GetDrilled(){
 		System.out.println("Asteroid.GetDrilled Called");
-		if(Thickness>=0) 
+		if(Thickness>0) 
 			Thickness--;
 		else
 			return false;
 		if(Thickness ==0) {
 			//if the asteroid has been drilled the material inside will get exposed.
-			CoreMaterial[0].GetExposed(isSunside);
-			CoreMaterial[1].GetExposed(isSunside);
-			CoreMaterial[2].GetExposed(isSunside);
+			CoreMaterial[0].GetExposed(isSunside, this);
+			CoreMaterial[1].GetExposed(isSunside, this);
+			CoreMaterial[2].GetExposed(isSunside, this);
 			}
 		return true;
 		
