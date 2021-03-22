@@ -318,11 +318,12 @@ public class Test {
 		{
 		case 0:
 			g.Losegame();
-			System.out.println("Vesztettünk\n");
+			System.out.println("Még valaki életben van\n");
+
 			this.TestMgr();
 			break;
 		case 1:
-			System.out.println("Még valaki életben van\n");
+			System.out.println("Vesztettünk\n");
 			this.TestMgr();
 			break;
 		default:
@@ -610,7 +611,7 @@ public class Test {
 		System.out.println("2. Mine Test");
 		System.out.println("3. Drill Test");
 		System.out.println("4. CraftRobot Test");
-		System.out.println("5. Teleport Test");
+		System.out.println("5. Craft Teleport Test");
 		System.out.println("6. Hide Test");
 		System.out.println("7. WinGame Test");
 		System.out.println("8. Losegame Test");
