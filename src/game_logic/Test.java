@@ -493,8 +493,29 @@ public class Test {
 	}
 	
 	private void SunStormStartsTest() {
-		//Todo
-	}
+		
+		System.out.println("Napvihar indul teszt\n");
+		
+		System.out.println("Mennyit mutat a sugárzásmérö?\n");
+		System.out.println("0-6 között: 0 ");
+		System.out.println("7-10 között: 1\n");
+		
+		Map m = new Map();
+		switch(this.inputmanager())
+		{
+		case 0:
+			System.out.println("még nem következett be napvihar\n");
+			this.TestMgr();
+			break;
+		case 1:
+			m.StartSunstorm();
+			System.out.println("Napvihar az aszteroidában\n");
+			this.TestMgr();
+			break;
+		default:
+			this.TestMgr();	
+		}
+}
 
 	private void TeleportTravelTest(){
 		//Egyszeru peldanyositas
