@@ -166,7 +166,7 @@ public class Asteroid extends Field{
 	}
 	
 	//Teszthez kell egyelore -> mivel ez a vegleges verzioban is igy lesz nagyon jo lesz ez konstruktorparameterbe'
-	/*public void RemoveMaterialFromCore()
+	public void RemoveMaterialFromCore()
 	{
 		CoreMaterial.remove(0);
 	}
@@ -174,7 +174,7 @@ public class Asteroid extends Field{
 	public void RemoveAllMaterialFromCore()
 	{
 		CoreMaterial.clear();
-	}*/
+	}
 	
 	@Override
 	public void Step() {

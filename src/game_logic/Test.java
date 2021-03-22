@@ -82,15 +82,16 @@ public class Test {
     }
 	
 	
-	private void DrillTest()
+	private void SettlerDrillTest()
 	{
 		Asteroid a;
 		Iron i = new Iron();
+		Uranium uranium = new Uranium();
 		Settler player;
 		
 		System.out.println("Milyen vastag a kéreg?");
-		System.out.println("0. Pontosan 1");
-		System.out.println("1. Nincs már kéreg");
+		System.out.println("0. Nagyobb mint 1");
+		System.out.println("1. Pontosan 1");
 
 		switch(this.inputmanager())
 		{
@@ -101,11 +102,46 @@ public class Test {
 	        this.TestMgr();
 			break;
 		case 1:
-			a = new Asteroid("a", i , false, 0);
-			player = new Settler(a);
-			player.Drill();
-	        this.TestMgr();
-			break;
+			System.out.println("Az aszteroidában urán van?");
+			System.out.println("0. Igen");
+			System.out.println("1. Nem");
+			
+			switch(this.inputmanager())
+			{
+			case 1:
+				a = new Asteroid("a", i, false, 1);
+				player = new Settler(a);
+				a.AcceptPlayer(player);
+				player.Drill();
+		        this.TestMgr();
+				break;
+			case 0:
+				System.out.println("Napközelben van?");
+				System.out.println("0. Igen");
+				System.out.println("1. Nem");
+				switch(this.inputmanager())
+				{
+				case 0:
+					a = new Asteroid("a", uranium, true, 1);
+					player = new Settler(a);
+					a.AcceptPlayer(player);
+					a.RemoveAllMaterialFromCore();
+					a.StoreMaterial(uranium);
+					player.Drill();
+			        this.TestMgr();
+					break;
+				case 1:
+					a = new Asteroid("a", uranium, false, 1);
+					player = new Settler(a);
+					a.AcceptPlayer(player);
+					a.RemoveAllMaterialFromCore();
+					a.StoreMaterial(uranium);
+					player.Drill();
+			        this.TestMgr();
+					break;
+				}
+			
+			}
 		}
 
 		//Mivel toltott aszteroidat szeretne a tester, csak ez a haromfele viselkedes letezik
@@ -603,7 +639,7 @@ public class Test {
 		case 2:
 			this.MineTest();
 		case 3:
-			this.DrillTest();
+			this.SettlerDrillTest();
 		case 4:
 			this.CraftRobotTest();
 		case 5:
