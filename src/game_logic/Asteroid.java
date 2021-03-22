@@ -18,14 +18,22 @@ public class Asteroid extends Field{
 		System.out.println("Asteroid.Constructor Called");
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
-		int n=0;
-		while(n<3) {
-			//CoreMaterial[n] = M;
+		int n = 0;
+		while (n < 3) {
 			CoreMaterial.add(M);
 			n++;
 		}
-		this.isSunside =false;
+		this.isSunside = false;
 	}
+	//Default empty constructor
+	public Asteroid (String name){
+			super(name);
+			System.out.println("Empty Asteroid.Constructor Called");
+			Random thicknessgen = new Random();
+			Thickness = thicknessgen.nextInt(11);
+			CoreMaterial.clear();
+		}
+
 	//sunside constructor
 	public Asteroid(String name, Material M, boolean isSunside) {
 		super(name);
@@ -149,7 +157,7 @@ public class Asteroid extends Field{
 			System.out.println("Success\n");
 		}
 		else
-			System.out.println("ASteroid is not empty to hide\n");
+			System.out.println("Asteroid is not empty to hide\n");
 
 		/*if(emptycnt()==-1) {	// emptycnt !=-1 volt
 			M.SetIsHidden();
@@ -157,8 +165,8 @@ public class Asteroid extends Field{
 		return;*/
 	}
 	
-	//Teszthez kell egyelore
-	public void RemoveMaterialFromCore()
+	//Teszthez kell egyelore -> mivel ez a vegleges verzioban is igy lesz nagyon jo lesz ez konstruktorparameterbe'
+	/*public void RemoveMaterialFromCore()
 	{
 		CoreMaterial.remove(0);
 	}
@@ -166,7 +174,7 @@ public class Asteroid extends Field{
 	public void RemoveAllMaterialFromCore()
 	{
 		CoreMaterial.clear();
-	}
+	}*/
 	
 	@Override
 	public void Step() {

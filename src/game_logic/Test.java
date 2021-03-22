@@ -34,8 +34,8 @@ public class Test {
         System.out.println("Furas Teszt indul");
         
         Iron iron = new Iron();
-        Asteroid a = new Asteroid("a", iron);
-        Settler player = new Settler(a);
+        Asteroid a;
+        Settler player;
         
         System.out.println("Van nyersanyag az aszteroidában?");
         System.out.println("0. Igen");
@@ -44,11 +44,14 @@ public class Test {
         switch(this.inputmanager())
         {
         case 0:
+        	a = new Asteroid("a", iron);
+        	player = new Settler(a);
         	player.Mine();
     		this.TestMgr();
     		break;
         case 1:
-        	a.RemoveAllMaterialFromCore();
+			a = new Asteroid("a");
+			player = new Settler(a);
         	player.Mine();
     		this.TestMgr();
     		break;
@@ -215,20 +218,24 @@ public class Test {
 	{
 		System.out.println("Bújás teszt\n");
 		Iron i = new Iron();
-		Asteroid a = new Asteroid("a",i);
-		Settler s = new Settler(a);
-		a.AcceptPlayer(s);
+		Asteroid a;
+		Settler s;
 		System.out.println("\nÜres az aszteroida?\n");
 		System.out.println("0. Igen");
 		System.out.println("1. Nem\n");
 		switch(this.inputmanager())
 		{
 		case 0:
-			a.RemoveAllMaterialFromCore();
+			a= new Asteroid("a");
+			s= new Settler(a);
+			a.AcceptPlayer(s);
 			s.Hide();
 			this.TestMgr();
 			break;
 		case 1:
+			a= new Asteroid("a",i);
+			s = new Settler(a);
+			a.AcceptPlayer(s);
 			s.Hide();
 			this.TestMgr();
 			break;
@@ -330,19 +337,22 @@ public class Test {
 	{
 		System.out.println("Nyersanyag vissza helyezése teszt\n");
 		Iron i = new Iron();
-		Asteroid a = new Asteroid("a", i);
-		Settler s = new Settler(a);
+		Asteroid a;
+		Settler s;
 		System.out.println("0. Aszteroida üres vagy nincs tele és olyan nyersanyagot tartalmaz amilyet berakunk");
 		System.out.println("1. Az aszteroida teli vagy nincs tele és nem olyan nyersanyagot tartalmaz amilyet berakunk");
 
 		switch(this.inputmanager())
 		{
 		case 0:
-			a.RemoveMaterialFromCore();
+			a= new Asteroid("a");
+			s = new Settler(a);
 			s.PutMaterial(i);
 			this.TestMgr();
 			break;
 		case 1:
+			a= new Asteroid("a", i);
+			s = new Settler(a);
 			s.PutMaterial(i);
 			this.TestMgr();
 			break;
