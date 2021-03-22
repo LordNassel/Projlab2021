@@ -31,7 +31,30 @@ public class Test {
 	}
 	private void MineTest()
     {
+        System.out.println("Furas Teszt indul");
+        
         Iron iron = new Iron();
+        Asteroid a = new Asteroid("a", iron);
+        Settler player = new Settler(a);
+        
+        System.out.println("Van nyersanyag az aszteroidában?");
+        System.out.println("0. Igen");
+        System.out.println("1. Nem");
+        
+        switch(this.inputmanager())
+        {
+        case 0:
+        	player.Mine();
+    		this.TestMgr();
+    		break;
+        case 1:
+        	a.RemoveAllMaterialFromCore();
+        	player.Mine();
+    		this.TestMgr();
+    		break;
+        }
+		
+		/*Iron iron = new Iron();
         Asteroid a1 = new Asteroid("a1", iron, false, 1);
         Settler player = new Settler(a1);
 
@@ -52,15 +75,38 @@ public class Test {
 
         System.out.println("Furas teszt kesz");
 
-        this.TestMgr();
+        this.TestMgr();*/
     }
 	
 	
 	private void DrillTest()
 	{
+		Asteroid a;
+		Iron i = new Iron();
+		Settler player;
+		
+		System.out.println("Milyen vastag a kéreg?");
+		System.out.println("0. Pontosan 1");
+		System.out.println("1. Nincs már kéreg");
+
+		switch(this.inputmanager())
+		{
+		case 0:
+			a = new Asteroid("a", i, false, 1);
+			player = new Settler(a);
+			player.Drill();
+	        this.TestMgr();
+			break;
+		case 1:
+			a = new Asteroid("a", i , false, 0);
+			player = new Settler(a);
+			player.Drill();
+	        this.TestMgr();
+			break;
+		}
 
 		//Mivel toltott aszteroidat szeretne a tester, csak ez a haromfele viselkedes letezik
-		System.out.println("Kerem valasszon tolteleket\n" + "0.vas\n" + "1.Uran\n" + "2.Jeg\n");
+		/*System.out.println("Kerem valasszon tolteleket\n" + "0.vas\n" + "1.Uran\n" + "2.Jeg\n");
 		Settler player;
 		Asteroid a1;
 		int n=0;
@@ -95,7 +141,7 @@ public class Test {
 		}
 		System.out.println("Furas teszt kesz");
 		
-		this.TestMgr();
+		this.TestMgr();*/
 			
 
 		//TODO
@@ -111,7 +157,7 @@ public class Test {
 		Asteroid a = new Asteroid("a", iron);
 		Settler player = new Settler(a);
 
-		System.out.println("Van elï¿½g nyersanyag?\n");
+		System.out.println("Van elég nyersanyag?\n");
 		System.out.println("0. Igen");
 		System.out.println("1. Nem");
 		
@@ -142,7 +188,7 @@ public class Test {
 		Asteroid a = new Asteroid("a", iron);
 		Settler player = new Settler(a);
 
-		System.out.println("Van elï¿½g nyersanyag?\n");
+		System.out.println("Van elég nyersanyag?\n");
 		System.out.println("0. Igen");
 		System.out.println("1. Nem");
 		
@@ -167,12 +213,12 @@ public class Test {
 	
 	private void HideTest()
 	{
-		System.out.println("Bï¿½jï¿½s teszt\n");
+		System.out.println("Bújás teszt\n");
 		Iron i = new Iron();
 		Asteroid a = new Asteroid("a",i);
 		Settler s = new Settler(a);
 		a.AcceptPlayer(s);
-		System.out.println("\nï¿½res az aszteroida?\n");
+		System.out.println("\nÜres az aszteroida?\n");
 		System.out.println("0. Igen");
 		System.out.println("1. Nem\n");
 		switch(this.inputmanager())
@@ -193,7 +239,7 @@ public class Test {
 	
 	private void WinGameTest() 
 	{
-		System.out.println("Nyert jï¿½tszma teszt\n");
+		System.out.println("Nyert játszma teszt\n");
 		Game g = new Game();
 		
 		System.out.println("\nMegvannak a nyersanyagok?\n");
@@ -204,11 +250,11 @@ public class Test {
 		{
 		case 0:
 			g.Wingame();
-			System.out.println("Nyertï¿½nk\n");
+			System.out.println("Nyertünk\n");
 			this.TestMgr();
 			break;
 		case 1:
-			System.out.println("Mï¿½g nem nyertï¿½nk\n");
+			System.out.println("Még nem Nyertünk\n");
 			this.TestMgr();
 			break;
 		default:
@@ -218,9 +264,9 @@ public class Test {
 	
 	private void LoseGameTest() 
 	{
-		System.out.println("Vesztett jï¿½tszma teszt\n");
+		System.out.println("Vesztett játszma teszt\n");
 		Game g = new Game();
-		System.out.println("ï¿½l e mï¿½g valaki?\n");
+		System.out.println("Él e még valaki?\n");
 		
 		System.out.println("0. Igen ");
 		System.out.println("1. Nem\n");
@@ -229,11 +275,11 @@ public class Test {
 		{
 		case 0:
 			g.Losegame();
-			System.out.println("Vesztettï¿½nk\n");
+			System.out.println("Vesztettünk\n");
 			this.TestMgr();
 			break;
 		case 1:
-			System.out.println("Mï¿½g valaki ï¿½letben van\n");
+			System.out.println("Még valaki életben van\n");
 			this.TestMgr();
 			break;
 		default:
@@ -244,7 +290,7 @@ public class Test {
 	
 	private void StartGameTest() 
 	{
-		System.out.println("Jï¿½tï¿½k kezdï¿½se teszt\n");
+		System.out.println("Játék kezdése teszt\n");
 		
 		Game g = new Game();
 		g.StartGame();
@@ -252,18 +298,18 @@ public class Test {
 	
 	private void AddMovableTest()
 	{
-		System.out.println("Felveszï¿½nk egy ï¿½j movable objektumot a rendszerbe teszt\n");
+		System.out.println("Felveszünk egy új movable objektumot a rendszerbe teszt\n");
 		
 		Game g = new Game();
 		
-		System.out.println("Elï¿½szï¿½r egy settlert veszï¿½nk fel\n");
+		System.out.println("Elöször egy settlert veszünk fel\n");
 		Ice i = new Ice();
 		Asteroid a = new Asteroid("a1", i);
 		Settler s = new Settler(a);
 		
 		g.AddMovable(s);
 
-		System.out.println("Utï¿½na pedig egy robotot\n");
+		System.out.println("Utána pedig egy robotot\n");
 		Asteroid a2 = new Asteroid("a2", i);
 		Robot r = new Robot(a2);
 		
@@ -273,7 +319,7 @@ public class Test {
 	
 	private void Place_TeleportTest()
 	{
-		System.out.println("\"Leteszï¿½nk egy teleportot teszt\n");
+		System.out.println("\"Leteszünk egy teleportot teszt\n");
 		
 		Map m = new Map();
 		m.Place_teleport();
@@ -282,12 +328,12 @@ public class Test {
 	
 	private void PutMaterialIntoAsteroidTest()
 	{
-		System.out.println("Nyersanyag vissza helyezï¿½se teszt\n");
+		System.out.println("Nyersanyag vissza helyezése teszt\n");
 		Iron i = new Iron();
 		Asteroid a = new Asteroid("a", i);
 		Settler s = new Settler(a);
-		System.out.println("0. Aszteroida ï¿½res vagy nincs tele ï¿½s olyan nyersanyagot tartalmaz amilyet berakunk");
-		System.out.println("1. Az aszteroida teli vagy nincs tele ï¿½s nem olyan nyersanyagot tartalmaz amilyet berakunk");
+		System.out.println("0. Aszteroida üres vagy nincs tele és olyan nyersanyagot tartalmaz amilyet berakunk");
+		System.out.println("1. Az aszteroida teli vagy nincs tele és nem olyan nyersanyagot tartalmaz amilyet berakunk");
 
 		switch(this.inputmanager())
 		{
@@ -301,7 +347,7 @@ public class Test {
 			this.TestMgr();
 			break;
 		default:
-			System.out.println("ï¿½rvï¿½nytelen input paramï¿½ter\n");
+			System.out.println("Érvénytelen input paraméter\n");
 			this.TestMgr();
 			break;
 		
@@ -312,24 +358,24 @@ public class Test {
 	private void IceGetsExposedTest()
 	{
 		
-		System.out.println("Vï¿½zjï¿½g szublimï¿½l teszt\n");
-		System.out.println("Az aszteroida teljesen megfï¿½rt?\n");
+		System.out.println("Vízjég szublimál teszt\n");
+		System.out.println("Az aszteroida teljesen megfúrt?\n");
 		System.out.println("0. Igen ");
 		System.out.println("1. Nem\n");
 		switch(this.inputmanager())
 		{
 		case 0:
-			System.out.println("Az aszteroidï¿½nak nincs kï¿½rge.\n");
+			System.out.println("Az aszteroidának nincs kérge.\n");
 			break;
 		case 1:
-			System.out.println("Az aszteroidï¿½nak mï¿½g van kï¿½rge.\n");
+			System.out.println("Az aszteroidának még van kérge.\n");
 			this.TestMgr();
 			break;
 		default:
 			this.TestMgr();	
 		}
 		Ice ice = new Ice();
-		System.out.println("Az aszteroida ï¿½ppen napkï¿½zelben van?\n");
+		System.out.println("Az aszteroida éppen napközelben van?\n");
 		System.out.println("0. Igen ");
 		System.out.println("1. Nem\n");
 		switch(this.inputmanager())
@@ -342,7 +388,7 @@ public class Test {
 		case 1:
 			Asteroid a2 = new Asteroid("a2", ice, false);
 			ice.GetExposed(false, a2);
-			System.out.println("A vï¿½zjï¿½g nem szublimï¿½l.\n");
+			System.out.println("A vízjég nem szublimál.\n");
 			this.TestMgr();
 			break;
 		default:
@@ -352,24 +398,24 @@ public class Test {
 
 	private void SunHitsUraniumTest()
 	{
-		System.out.println("Radioaktï¿½v maggal rendelkezï¿½ aszteroida teszt\n");
-		System.out.println("Az aszteroida teljesen megfï¿½rt?\n");
+		System.out.println("Radioaktív maggal rendelkezõ aszteroida teszt\n");
+		System.out.println("Az aszteroida teljesen megfúrt?\n");
 		System.out.println("0. Igen ");
 		System.out.println("1. Nem\n");
 		switch(this.inputmanager())
 		{
 		case 0:
-			System.out.println("Az aszteroidï¿½nak nincs kï¿½rge.\n");
+			System.out.println("Az aszteroidának nincs kérge.\n");
 			break;
 		case 1:
-			System.out.println("Az aszteroidï¿½nak mï¿½g van kï¿½rge.\n");
+			System.out.println("Az aszteroidának nincs kérge.\n");
 			this.TestMgr();
 			break;
 		default:
 			this.TestMgr();	
 		}
 		Uranium uran = new Uranium();
-		System.out.println("Az aszteroida ï¿½ppen napkï¿½zelben van?\n");
+		System.out.println("Az aszteroidának nincs kérge.\n");
 		System.out.println("0. Igen ");
 		System.out.println("1. Nem\n");
 		switch(this.inputmanager())
@@ -377,13 +423,13 @@ public class Test {
 		case 0:
 			Asteroid a1 = new Asteroid("a1", uran, true);
 			uran.GetExposed(true, a1);
-			System.out.println("Radioaktï¿½v maggal rendelkezï¿½ aszteroida felrobbant.\n");
+			System.out.println("Radioaktív maggal rendelkezõ aszteroida felrobbant.\n");
 			this.TestMgr();
 			break;
 		case 1:
 			Asteroid a2 = new Asteroid("a2", uran, false);
 			uran.GetExposed(false, a2);
-			System.out.println("Radioaktï¿½v maggal rendelkezï¿½ aszteroida nem robbant fel\n");
+			System.out.println("Radioaktív maggal rendelkezõ aszteroida nem robbant fel\n");
 			this.TestMgr();
 			break;
 		default:
@@ -405,14 +451,32 @@ public class Test {
 		{
 		case 0:
 			Settler settler = new Settler(a1);
+			a1.AcceptPlayer(settler);
 			a1.Explode();
 			this.TestMgr();
 			break;
 		case 1:
 			Robot robot = new Robot(a1);
-			a1.Explode();
-			this.TestMgr();
-			break;
+			a1.AcceptPlayer(robot);
+			Asteroid a2 = new Asteroid("a2", uran);
+			System.out.println("Van szomszedos aszteroida?");
+			System.out.println("0. Igen");
+			System.out.println("1. Nem");
+			switch(this.inputmanager())
+			{
+			case 0:
+				a2.SetNeighbor(a1);
+				a1.SetNeighbor(a2);
+				a1.Explode();
+				System.out.println("\n");
+				this.TestMgr();
+				break;
+			case 1:
+				a1.Explode();
+				System.out.println("\n");
+				this.TestMgr();
+				break;
+			}
 		default:
 			this.TestMgr();	
 		}

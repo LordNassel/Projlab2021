@@ -58,9 +58,9 @@ public abstract class Movable implements Steppable {
 		System.out.println("Drill()");
 		//Tok jogos ez igy nem jo. Modositom az osztalyaimat -> artur
 		if(this.currentField.GetDrilled()==true)
-			System.out.println("Sikeres furas az aszteroida kisebb lett");
+			System.out.println("Sikeres furas az aszteroida kereg kisebb lett\n");
 		else
-			System.out.println("Sikertelen furas, a kereg mar 0");
+			System.out.println("Sikertelen furas, a kereg mar 0\n");
 		
 	}
 	
