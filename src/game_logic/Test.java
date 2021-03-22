@@ -451,14 +451,32 @@ public class Test {
 		{
 		case 0:
 			Settler settler = new Settler(a1);
+			a1.AcceptPlayer(settler);
 			a1.Explode();
 			this.TestMgr();
 			break;
 		case 1:
 			Robot robot = new Robot(a1);
-			a1.Explode();
-			this.TestMgr();
-			break;
+			a1.AcceptPlayer(robot);
+			Asteroid a2 = new Asteroid("a2", uran);
+			System.out.println("Van szomszedos aszteroida?");
+			System.out.println("0. Igen");
+			System.out.println("1. Nem");
+			switch(this.inputmanager())
+			{
+			case 0:
+				a2.SetNeighbor(a1);
+				a1.SetNeighbor(a2);
+				a1.Explode();
+				System.out.println("\n");
+				this.TestMgr();
+				break;
+			case 1:
+				a1.Explode();
+				System.out.println("\n");
+				this.TestMgr();
+				break;
+			}
 		default:
 			this.TestMgr();	
 		}
