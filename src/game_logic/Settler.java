@@ -2,9 +2,11 @@ package game_logic;
 
 import java.util.ArrayList;
 	import java.util.List;
+import java.util.Scanner;
+import java.util.Vector;
 
 public class Settler extends Movable {
-	
+	//Az iranyithato jatekos
 	private int radiation;
 	
 	private List<Material> inventoryMain;
@@ -18,14 +20,14 @@ public class Settler extends Movable {
 		inventoryMain = new ArrayList<Material>();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}
-	
+	//Banyaszik a jatekos
 	public void Mine()
 	{
 		System.out.println("Mine");
 		Material minedMaterial=((Asteroid)currentField).GetMined();
 		this.Store(minedMaterial);
 	}
-	
+	//Egy anyagot eltarol a bolygoban
 	public void Store(Material material)
 	{
 		System.out.println("Store");
@@ -33,7 +35,7 @@ public class Settler extends Movable {
 	}
 	
 
-	
+//robot letrehozasa
 	public void CraftRobot()
 	{
 		System.out.println("CraftRobot");
@@ -57,7 +59,7 @@ public class Settler extends Movable {
 		else
 			System.out.println("Failed: not enoguh materials");
 	}
-	
+	//Teleport letrehozasa
 	public void CraftTeleports()
 	{
 		System.out.println("CraftTeleports");
@@ -101,21 +103,34 @@ public class Settler extends Movable {
 		}
 		return number;
 	}
-	
+	//Aktival egy teleportot
 	public void ActivateTeleport(Teleport teleport)
 	{
 		System.out.println("ActivateTeleport");
 		teleport.setIsActive();			
 		inventoryTeleport.remove(teleport);
 	}
-	
+	// elhelyez anyagot a bolygoban
 	public void PutMaterial(Material material)
 	{
 		System.out.println("PutMaterial");
 		((Asteroid)currentField).StoreMaterial(material);
 		inventoryMain.remove(material);
 	}
-	
-	
+
+	//Ez a gui-n keresztul ker utvonalvalasztast
+	public void FindDirections() {
+		Vector<Field> currentlist = new Vector<Field>();
+		currentlist = this.currentField.FindNeighbor();
+		System.out.println("Válaszd ki melyik szomszédos bolygóra akarsz utazni:");
+		for(int i = 0; i<currentlist.size(); i++) {
+			System.out.println(i + ". " + currentlist.get(i).Getname());
+		}
+
+		Scanner myinput =new Scanner(System.in);
+		int n=0;
+		n= myinput.nextInt();
+		this.Move(currentlist.get(n));
+	}
 
 }

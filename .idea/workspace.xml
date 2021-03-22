@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Asteroid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Asteroid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Ice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Ice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Movable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Settler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Settler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game_logic/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

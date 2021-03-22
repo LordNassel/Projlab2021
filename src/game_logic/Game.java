@@ -57,7 +57,7 @@ public class Game {
     	
     }	
 
-   //
+   //Step funkcio overrideja
     public void Step() {
         
     }

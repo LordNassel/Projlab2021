@@ -41,7 +41,6 @@ public class Asteroid extends Field{
 		Thickness = thicknessgen.nextInt(11);
 		int n=0;
 		while(n<3) {
-			//CoreMaterial[n] = M;
 			CoreMaterial.add(M);
 			n++;
 		}
@@ -129,7 +128,8 @@ public class Asteroid extends Field{
 		else
 			System.out.println("Asteroid is not empty to hide\n");
 	}
-	
+
+	//Test fuggvenyek
 	public void RemoveMaterialFromCore()
 	{
 		CoreMaterial.remove(0);

@@ -2,17 +2,20 @@ package game_logic;
 
 import java.util.Scanner;
 import java.util.Vector;
-
+//Minden ami mozoghat
 public abstract class Movable implements Steppable {
-	
+
+	//A movable forduloja van e
 	private boolean isTurn;
-	
+	//El van-e rejtozve
 	private boolean isHidden;
-	
+	//A surgarzas merteke, ezt ellenorizheti a jatekos
 	private int radiation;
-	
+
+	//konstruktor
 	protected Field currentField;
-	
+
+	//
 	public Movable(Field onField)
 	{
 		currentField = onField;
@@ -21,21 +24,8 @@ public abstract class Movable implements Steppable {
 		isHidden = false;
 	}
 	
-	//
-	public void FindDirections() {
-		Vector<Field> currentlist = new Vector<Field>();
-		currentlist = this.currentField.FindNeighbor();
-		System.out.println("Válaszd ki melyik szomszédos bolygóra akarsz utazni:");
-		for(int i = 0; i<currentlist.size(); i++) {
-			System.out.println(i + ". " + currentlist.get(i).Getname());
-		}
-	
-		Scanner myinput =new Scanner(System.in);
-		int n=0;
-		n= myinput.nextInt();
-		this.Move(currentlist.get(n));
-	}
-	
+
+	//Befogadast ker egy parameterben kaptt mezore
 	public void Move(Field a)
 	{
 		System.out.println("Move()");
@@ -43,7 +33,7 @@ public abstract class Movable implements Steppable {
 		a.AcceptPlayer(this);
 		
 	}	
-	
+	//fur aszteroidat
 	public void Drill()
 	{
 		System.out.println("Drill()");
@@ -53,21 +43,21 @@ public abstract class Movable implements Steppable {
 			System.out.println("Sikertelen furas, a kereg mar 0\n");
 		
 	}
-	
+	//Elpusztul az obejektu,
 	public void Die()
 	{
 		System.out.println("Die()");
 		currentField.RemovePlayer(this);
 		
 	}
-	
+	//felrobban az obajektum
 	public void HitByExplosion()
 	{
 		System.out.println("HitByExplosion");
 		Die();
 		
 	}
-	
+	//napvihar eri az objektumot
 	public void HitBySunStorm()
 	{
 		System.out.println("HitBySunStorm");
@@ -75,19 +65,19 @@ public abstract class Movable implements Steppable {
 			Die();
 		}
 	}
-	
+	// a step overridja
 	public void Step()
 	{
 		
 	}
 	
-	 
+	//Elrejtozik
 	public void Hide()
 	{
 		System.out.println("Hide");
 		((Asteroid)currentField).GetHidden(this);
 	}
-	
+	//Beallitja a movable -nek a kort
 	public void SetTurn()
 	{
 		

@@ -10,7 +10,7 @@ public class Robot extends Movable {
 	}
 	
   
-	@Override
+	@Override // A robot felrobbanas overrideja
 	public void HitByExplosion() {
 		System.out.println("Robot HitByExplosion() - landing on neighbor");
 		Vector<Field> neighbors = currentField.FindNeighbor();

@@ -3,7 +3,7 @@ package game_logic;
 import java.util.Scanner;
 
 public class Test {
-	
+	//A mozgasteszt
 	private void MoveTest()
 	{
 		System.out.println("Mozgas teszt indul");
@@ -29,6 +29,7 @@ public class Test {
 		
 		this.TestMgr();
 	}
+	//A banyaszasi teszt
 	private void MineTest()
     {
         System.out.println("Furas Teszt indul");
@@ -58,7 +59,7 @@ public class Test {
         }
     }
 	
-	
+	//a telepes fur
 	private void SettlerDrillTest()
 	{
 		Asteroid a;
@@ -122,7 +123,7 @@ public class Test {
 		}
 
 	}
-
+	//Letrejon egy robot
 	private void CraftRobotTest()
 	{
 		System.out.println("CraftRobotTest Started\n");
@@ -153,7 +154,7 @@ public class Test {
 		}
 
 	}
-	
+	//Letrejon egy teleport
 	private void CraftTeleportTest()
 	{
 		System.out.println("CraftTeleportTest Started\n");
@@ -185,7 +186,7 @@ public class Test {
 			this.TestMgr();
 		}
 	}
-	
+	//Elrejtozes ellenorzese
 	private void HideTest()
 	{
 		System.out.println("Bújás teszt\n");
@@ -215,7 +216,7 @@ public class Test {
 			this.TestMgr();		
 		}
 	}
-	
+	//A jatek veget meghatarozo teszt
 	private void WinGameTest() 
 	{
 		System.out.println("Nyert játszma teszt\n");
@@ -240,7 +241,7 @@ public class Test {
 			this.TestMgr();	
 		}
 	}
-	
+	//Elvesztettem a jatekot teszt
 	private void LoseGameTest() 
 	{
 		System.out.println("Vesztett játszma teszt\n");
@@ -501,6 +502,7 @@ public class Test {
 		//Teleportok osszeparositasa
 		T1.setPair(T2);
 		T2.setPair(T1);
+		//elsp utazazas
 		System.out.println("Teleport utazasi teszt indul, elerheto teleportok 1. " + T1.Getname() +" 2." + T2.Getname());
 		switch(inputmanager()) {
 			case 1:
@@ -510,6 +512,7 @@ public class Test {
 				player.Move(T2);
 				System.out.println("Sikeres Mozgas, a jelenlegi hely: " + player.GetCurrentField().Getname() + "\n");
 		}
+		//tovabbi utazasok
 		System.out.println("Szeretnel meg utazni? Barmilyen szam igen, 0 nem");
 		while(inputmanager()!=0) {
 			System.out.println("Elerheto teleportok 1. " + T1.Getname() + " 2." + T2.Getname());
@@ -526,7 +529,7 @@ public class Test {
 		System.out.println("Vege a teleporttesztnek");
 		this.TestMgr();
 	}
-	
+	//Egyszeru fgv a bevitel kezelesere
 	private int inputmanager(){
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
