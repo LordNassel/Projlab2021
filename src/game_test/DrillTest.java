@@ -1,4 +1,4 @@
-package game_test;
+/**package game_test;
 
 import java.util.*;
 import game_logic.*;
@@ -20,4 +20,4 @@ public class DrillTest{
         System.out.println("Furas teszt kesz\n");
         this.TestMgr();
     }
-}
+}*/

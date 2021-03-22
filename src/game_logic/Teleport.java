@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * This class specifies the variables and methods to be implemented for the Teleports
  */
-public class Teleport extends Field{
+public class  Teleport extends Field{
     private boolean IsActive;
     private Teleport Pair;
     protected Vector<Teleport> TeleportPair = new Vector<Teleport>();

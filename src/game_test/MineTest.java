@@ -1,4 +1,4 @@
-package game_test;
+/**package game_test;
 
 import java.util.*;
 import game_logic.*;
@@ -19,10 +19,10 @@ public class MineTest{
             /**
              * If inventory is not full already
              */
-            player.InventoryMain.add(Material minedMaterial);
+      /**      player.InventoryMain.add(Material minedMaterial);
         }
 
         System.out.println("MineTest Finished\n");
         this.TestMgr();
     }
-}
+}*/

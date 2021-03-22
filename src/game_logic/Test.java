@@ -421,6 +421,44 @@ public class Test {
 	private void SunStormStartsTest() {
 		//Todo
 	}
+
+	private void TeleportTravelTest(){
+		//Egyszeru peldanyositas
+		Teleport T1, T2;
+		T1= new Teleport("Egyes teleport");
+		T2 = new Teleport("Kettes teleport");
+		Iron iron = new Iron();
+		Asteroid a1 = new Asteroid("a1", iron);
+		Settler player = new Settler(a1);
+		//Teleportok osszeparositasa
+		T1.setPair(T2);
+		T2.setPair(T1);
+		System.out.println("Teleport utazasi teszt indul, elerheto teleportok 1. " + T1.Getname() +" 2." + T2.Getname());
+		switch(inputmanager()) {
+			case 1:
+				player.Move(T1);
+				System.out.println("Sikeres Mozgas, a jelenlegi hely: " + player.GetCurrentField().Getname() + "\n");
+			case 2:
+				player.Move(T2);
+				System.out.println("Sikeres Mozgas, a jelenlegi hely: " + player.GetCurrentField().Getname() + "\n");
+		}
+		System.out.println("Szeretnel meg utazni? Barmilyen szam igen, 0 nem");
+		while(inputmanager()!=0) {
+			//Igen a jatekos tud utazni oda is ahol van, igazabol ez a tesztmukodes
+			System.out.println("Elerheto teleportok 1. " + T1.Getname() + " 2." + T2.Getname());
+			switch (inputmanager()) {
+				case 1:
+					player.Move(T1);
+					System.out.println("Sikeres Mozgas, a jelenlegi hely: " + player.GetCurrentField().Getname() + "\n");
+				case 2:
+					player.Move(T2);
+					System.out.println("Sikeres Mozgas, a jelenlegi hely: " + player.GetCurrentField().Getname() + "\n");
+			}
+			System.out.println("Szeretnel meg utazni? Barmilyen szam igen, 0 nem");
+		}
+		System.out.println("Vege a teleporttesztnek");
+		this.TestMgr();
+	}
 	
 	private int inputmanager(){
 		Scanner myinput =new Scanner(System.in);
@@ -453,7 +491,7 @@ public class Test {
 		System.out.println("14. Sun Hits Uranium Test");
 		System.out.println("15. Explode Test");
 		System.out.println("16. Sun Storm Starts Test");
-
+		System.out.println("17. Teleport Travel Test");
 
 
 		
@@ -497,6 +535,8 @@ public class Test {
 			this.ExplodeTest();
 		case 16:
 			this.SunStormStartsTest();
+		case 17:
+			this.TeleportTravelTest();
 		default:
 			return;
 		}
