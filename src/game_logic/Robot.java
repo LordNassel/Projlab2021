@@ -2,17 +2,14 @@ package game_logic;
 
 import java.util.Vector;
 
-// A robotot reprezentálja a játékban.
+// Represents the robot in te game
 public class Robot extends Movable {
 
 	public Robot(Asteroid position) {
 		super(position);
 	}
 	
-	/* 
-	A robot robbanás hatására szomszédos aszteroidán landol,
- 	ha nem volt szomszéd, a robot meghal.
-	*/  
+  
 	@Override
 	public void HitByExplosion() {
 		System.out.println("Robot HitByExplosion() - landing on neighbor");

@@ -46,7 +46,7 @@ public class Game {
     	GenerateMap();  
     }
 
-    // Adds a new movable object to the game( ez amugy nem inkabb a map-ba kene?)
+    // Adds a new movable object to the game
     public void AddMovable(Movable Playable) {
     	System.out.println("AddMovable called");
     	Ice i = new Ice();

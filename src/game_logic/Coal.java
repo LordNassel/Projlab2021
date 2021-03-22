@@ -1,6 +1,6 @@
 package game_logic;
 
-// Szén, egyszerű anyag
+// Coal, Simple material
 public class Coal extends Material {
 
 }

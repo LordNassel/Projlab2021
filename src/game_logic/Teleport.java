@@ -13,7 +13,6 @@ public class  Teleport extends Field{
      */
     public Teleport(String name){
     	super(name);
-        //setIsActive(false);
     	IsActive = false;
     }
 
@@ -37,8 +36,7 @@ public class  Teleport extends Field{
     }
 
     
-    public void setIsActive(/*boolean isActive*/) { /* Miért adunk paraméterben át bármit is itt? -> a kerdes jogos nem kell, azonban amikor 
-    elpusztul egy aszteroida, akkor false-ra kell majd tenni. emiatt a torzset valtoztattam */
+    public void setIsActive() { 
         IsActive = !IsActive;
     }
 
@@ -56,11 +54,10 @@ public class  Teleport extends Field{
 
 	@Override
 	public void Step() {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override //Ez itt nem TODO ez a teljes fgv elvart viselkedese
+	@Override 
 	public boolean GetDrilled() {
 		return false;
 	}

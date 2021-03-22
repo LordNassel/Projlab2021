@@ -22,7 +22,6 @@ public class Settler extends Movable {
 	public void Mine()
 	{
 		System.out.println("Mine");
-		//TO-DO opt check
 		Material minedMaterial=((Asteroid)currentField).GetMined();
 		this.Store(minedMaterial);
 	}
@@ -33,10 +32,7 @@ public class Settler extends Movable {
 		inventoryMain.add(material);
 	}
 	
-	/*public void GetMaterail(Material material)
-	{
-		
-	}*/
+
 	
 	public void CraftRobot()
 	{
@@ -101,11 +97,7 @@ public class Settler extends Movable {
 		for(int i = 0; i<inventoryMain.size(); i++)
 		{
 			if(inventoryMain.get(i).getClass().equals( m.getClass()))
-				//System.out.println( m.getClass().toString());
 				number++;
-			/*else
-				//System.out.println("Nincs ilyen nyeranyag tarolva");
-				get = false;*/
 		}
 		return number;
 	}
@@ -113,14 +105,13 @@ public class Settler extends Movable {
 	public void ActivateTeleport(Teleport teleport)
 	{
 		System.out.println("ActivateTeleport");
-		teleport.setIsActive();			//Sry, blejavítottam egy true-val - Lévai Gábor 03.20 15.30
+		teleport.setIsActive();			
 		inventoryTeleport.remove(teleport);
 	}
 	
 	public void PutMaterial(Material material)
 	{
 		System.out.println("PutMaterial");
-		//TO-DO opt check
 		((Asteroid)currentField).StoreMaterial(material);
 		inventoryMain.remove(material);
 	}

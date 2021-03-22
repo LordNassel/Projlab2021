@@ -9,7 +9,6 @@ public class Asteroid extends Field{
 	private boolean isSunside;
 	private int Thickness;
 	//This is a bit magic number-ish, all asteroids store 3 units of material
-	//private Material[] CoreMaterial = new Material[3];
 	private List<Material> CoreMaterial = new ArrayList<Material>(3);
 	//This is the default constructor, this may however change. Right now it creates the random value for the thickness
 	
@@ -55,7 +54,6 @@ public class Asteroid extends Field{
 		System.out.println("Asteroid.Constructor Called");
 		int n=0;
 		while(n<3) {
-			//CoreMaterial[n] = M;
 			CoreMaterial.add(M);
 			n++;
 		}
@@ -76,23 +74,12 @@ public class Asteroid extends Field{
 			for(int i =0; i<CoreMaterial.size(); i++)
 			{
 				CoreMaterial.get(i).GetExposed(isSunside, this);
-			/*CoreMaterial[0].GetExposed(isSunside, this);
-			CoreMaterial[1].GetExposed(isSunside, this);
-			CoreMaterial[2].GetExposed(isSunside, this);*/
 			}
 		}
 		return true;
 		
 	}
-	
-	//incredibly simple thing to check if the asteroid is empty
-	/*private int emptycnt() {
-		for (int i=0; i<3; i++) {
-			if(CoreMaterial[i]!= null)
-				return i;
-		}
-		return -1;
-	}*/
+
 	
 	//The mining function
 	public Material GetMined(){
@@ -110,27 +97,13 @@ public class Asteroid extends Field{
 			return null;
 			
 		}
-		/*
-		if(emptycnt()!=-1) {
-			Material temp =CoreMaterial[emptycnt()];
-			CoreMaterial[emptycnt()]=null;
-			return temp;	
-			}
-		return null;*/
 	}
 	
 	
 	
 	//The sunstorm handler. It is similar to all asteroid types
-
 	public boolean StoreMaterial(Material M) {
 		System.out.println("Asteroid.StoreMaterial Called");
-		/*if(emptycnt()!=-1)
-		{
-			System.out.println("Material cannot be stored");
-			//The material cannot be stored as the asteroid is not empty
-			return false;
-		}*/
 		
 		if(CoreMaterial.size()<3)
 		{
@@ -142,9 +115,6 @@ public class Asteroid extends Field{
 			System.out.println("The materail cannot be stored\n");
 			return false;
 		}
-			
-		/*CoreMaterial[0]= M;
-		return true;*/
 	}
 	
 	//Hide in the asteroid
@@ -158,14 +128,8 @@ public class Asteroid extends Field{
 		}
 		else
 			System.out.println("Asteroid is not empty to hide\n");
-
-		/*if(emptycnt()==-1) {	// emptycnt !=-1 volt
-			M.SetIsHidden();
-		}
-		return;*/
 	}
 	
-	//Teszthez kell egyelore -> mivel ez a vegleges verzioban is igy lesz nagyon jo lesz ez konstruktorparameterbe'
 	public void RemoveMaterialFromCore()
 	{
 		CoreMaterial.remove(0);
@@ -178,7 +142,7 @@ public class Asteroid extends Field{
 	
 	@Override
 	public void Step() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

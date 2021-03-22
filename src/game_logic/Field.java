@@ -20,7 +20,6 @@ protected void Explode() {
 	for(int i=0; i<MovableList.size(); i++)
 		MovableList.get(i).HitByExplosion();
 	Neighbors =null;
-	//delete me from the map pls!!!
 	}
 
 //Sunstorm on a generic asteroid type, the asteroid remains undamaged, all movables die.

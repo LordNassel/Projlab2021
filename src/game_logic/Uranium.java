@@ -1,6 +1,6 @@
 package game_logic;
 
-// Az Urán egyszerű anyag.
+// Uranium, simple material
 public class Uranium extends Material {
 	
 	@Override

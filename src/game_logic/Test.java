@@ -56,29 +56,6 @@ public class Test {
     		this.TestMgr();
     		break;
         }
-		
-		/*Iron iron = new Iron();
-        Asteroid a1 = new Asteroid("a1", iron, false, 1);
-        Settler player = new Settler(a1);
-
-        System.out.println("Furas Teszt indul");
-        System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
-
-        if(this.inputmanager()!=0) {
-            player.Drill();
-        }
-
-
-        System.out.println("Nyomj barmilyen szamot banyaszashoz, 0-t a befejezeshez");
-        if(this.inputmanager()!=0) {
-            player.Mine();
-        }
-
-        System.out.println("Banyaszas teszt kesz");
-
-        System.out.println("Furas teszt kesz");
-
-        this.TestMgr();*/
     }
 	
 	
@@ -143,47 +120,6 @@ public class Test {
 			
 			}
 		}
-
-		//Mivel toltott aszteroidat szeretne a tester, csak ez a haromfele viselkedes letezik
-		/*System.out.println("Kerem valasszon tolteleket\n" + "0.vas\n" + "1.Uran\n" + "2.Jeg\n");
-		Settler player;
-		Asteroid a1;
-		int n=0;
-		n = this.inputmanager();
-		//ugy peldanyositunk ahogy a tesztelo igenyli
-		if (n==0){
-			Iron iron = new Iron();
-			a1 = new Asteroid("a1v", iron, true, 1);
-			player = new Settler(a1);
-		}
-		else if(n==1) {	
-			Uranium uran = new Uranium();
-			a1 = new Asteroid("a1u", uran, true, 1);
-			player = new Settler(a1);
-		}
-		else if(n==2) {
-			Ice ice = new Ice();
-			a1 = new Asteroid("a1j", ice, true, 1);
-			player = new Settler(a1);
-		}
-		else{
-			Ice ice = new Ice();
-			a1 = new Asteroid("a1d", ice, true, 1);
-			player = new Settler(a1);
-		}
-		//kifurjuk manualisan az aszteroidat - kicsit fapados megoldas de csak 10 reteg lehet.
-		System.out.println("Nyomj bamilyen szamot a furashoz, 0-at a befejezeshez");
-		
-		while(this.inputmanager()!=0) {
-			player.Drill();
-			
-		}
-		System.out.println("Furas teszt kesz");
-		
-		this.TestMgr();*/
-			
-
-		//TODO
 
 	}
 
@@ -576,7 +512,6 @@ public class Test {
 		}
 		System.out.println("Szeretnel meg utazni? Barmilyen szam igen, 0 nem");
 		while(inputmanager()!=0) {
-			//Igen a jatekos tud utazni oda is ahol van, igazabol ez a tesztmukodes
 			System.out.println("Elerheto teleportok 1. " + T1.Getname() + " 2." + T2.Getname());
 			switch (inputmanager()) {
 				case 1:
@@ -632,8 +567,6 @@ public class Test {
 	public void TestMgr() {
 		//Listazom a teszteket
 		this.ListTests();
-	//Egyelore ez az egy mod van
-		//az teszesetek szam szerint. Boviteni lefele celszeru de mashogy sem lehetetlen
 		switch(this.inputmanager()) {
 		case 1:
 			this.MoveTest();
