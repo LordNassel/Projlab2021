@@ -4,13 +4,12 @@ import java.util.Scanner;
 import java.util.Vector;
 //Minden ami mozoghat
 public abstract class Movable implements Steppable {
-
 	//A movable forduloja van e
 	private boolean isTurn;
 	//El van-e rejtozve
 	private boolean isHidden;
 	//A surgarzas merteke, ezt ellenorizheti a jatekos
-	private int radiation;
+	protected int radiation;
 
 	//konstruktor
 	protected Field currentField;

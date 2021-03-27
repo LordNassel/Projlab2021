@@ -7,7 +7,7 @@ import java.util.Vector;
 
 public class Settler extends Movable {
 	//Az iranyithato jatekos
-	private int radiation;
+
 	
 	private List<Material> inventoryMain;
 	
@@ -24,7 +24,7 @@ public class Settler extends Movable {
 	public void Mine()
 	{
 		System.out.println("Mine");
-		Material minedMaterial=((Asteroid)currentField).GetMined();
+		Material minedMaterial=currentField.GetMined();
 		this.Store(minedMaterial);
 	}
 	//Egy anyagot eltarol a bolygoban

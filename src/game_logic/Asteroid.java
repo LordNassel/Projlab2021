@@ -72,6 +72,7 @@ public class Asteroid extends Field{
 			//if the asteroid has been drilled the material inside will get exposed. 
 			for(int i =0; i<CoreMaterial.size(); i++)
 			{
+				this.isMinable = true;
 				CoreMaterial.get(i).GetExposed(isSunside, this);
 			}
 		}
@@ -81,7 +82,7 @@ public class Asteroid extends Field{
 
 	
 	//The mining function
-	public Material GetMined(){
+	@Override public Material GetMined(){
 		System.out.println("Asteroid.GetMined() Called");
 	//ha az aszteroida nem ures	
 		if(!CoreMaterial.isEmpty())
@@ -128,6 +129,8 @@ public class Asteroid extends Field{
 		else
 			System.out.println("Asteroid is not empty to hide\n");
 	}
+
+
 
 	//Test fuggvenyek
 	public void RemoveMaterialFromCore()
