@@ -1,7 +1,7 @@
 package game_logic;
 
-import java.util.Scanner;
-import java.util.Vector;
+import java.util.*;
+
 //Minden ami mozoghat
 public abstract class Movable implements Steppable {
 	//A movable forduloja van e
