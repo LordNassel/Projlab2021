@@ -3,10 +3,21 @@ package game_logic;
 // Uranium, simple material
 public class Uranium extends Material {
 	
+	private int counter;
+	
+	public Uranium() {
+		super();
+		counter = 0;
+	}
+	
 	@Override
 	public void GetExposed(boolean Sunside, Asteroid who) {
 		if(Sunside) {
-			System.out.println("Radioactive asteroid exploded");
+			counter++;
+		}
+		
+		if(counter == 3) {
+			System.out.println("Radioactive uranium exploded");
 			who.Explode();
 		}
 	}
