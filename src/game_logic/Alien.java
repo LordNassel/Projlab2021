@@ -5,7 +5,7 @@ package game_logic;
 import java.util.Random;
 import java.util.Vector;
 
-public class Alien extends Movable  implements Steppable{
+public class Alien extends Movable  {
     //Ennek az ertelme limitalt, mert semmit nem tud kezdeni a nyersanyaggal. Mindegy vegulis elteszi a jatek logikaja szerint
     private Vector<Material> items = new Vector<Material>();
     //o jegyzi meg hogy amin all-e az ures-e
