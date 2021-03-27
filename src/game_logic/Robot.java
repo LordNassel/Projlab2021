@@ -10,29 +10,29 @@ public class Robot extends Movable {
 		super(position);
 	}
 	
-	// A robot atmegy egy random szomszedos aszteroidara
-	private void MoveToRandomNeighbor() {
-		Random rand = new Random();
+	// A robot atmegy egy random szomszedos aszteroidara, ha tud
+	// egyebkent meghal.
+	private void MoveOrDie() {
 		Vector<Field> neighbors = currentField.FindNeighbor();
-	    Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
-	    Move(randomNeighbor);
+		if(neighbors.isEmpty()) {
+			Die();
+		} else {
+			Random rand = new Random();
+		    Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
+		    Move(randomNeighbor);
+		}
 	}
   
 	@Override // A robot felrobbanas overrideja
 	public void HitByExplosion() {
 		System.out.println("Robot HitByExplosion() - landing on neighbor");
-		Vector<Field> neighbors = currentField.FindNeighbor();
-		if(neighbors.isEmpty()) {
-			this.Die();
-		} else {
-			MoveToRandomNeighbor();
-		}
+		MoveOrDie();
     }
 
 	@Override // Step funkcio overrideja
     public void Step() {
 		if(currentField.GetDrilled() == false) {
-			MoveToRandomNeighbor();
+			MoveOrDie();
 		}
     }
 	
