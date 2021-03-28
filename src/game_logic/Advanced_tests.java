@@ -16,17 +16,27 @@ private String inputmanager(){
 
 }
     private void ListTests() {
-        System.out.println("Jelenlegi tesztek:");
+       
+        System.out.println(
+
+        "Jelenlegi tesztek:\n" +
+        "1.Teszt freeroam teszt - inditas \"freeroam\". \n"
+
+
+
+        );
+
 
     }
     //Igy van egy osszefoglalo testmanager amit lehet hivni
     public void TestMgr() {
         //Listazom a teszteket
         this.ListTests();
-        switch(Integer.parseInt(this.inputmanager())) {
-            case 1:
-                System.out.println("fasz");
-            break;
+        String s;
+        switch (this.inputmanager()) {
+            case "freeroam":
+                System.out.println("fasz2");
+                break;
         }
     }
 }
