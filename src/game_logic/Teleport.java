@@ -20,6 +20,14 @@ public class  Teleport extends Field {
         currentField = onField;
     }
 
+    //Erre ideiglenesen mindenkepp szukseg van, de szerintem permanensen is
+    public Teleport(String name){
+        super(name);
+        IsActive = false;
+        IsSunStroke = false;
+    }
+
+
     /**
      * Two-member teleport vector
      *     TODO:: How to set teleport as neighbors, cause Field neighbors are set already by func main OR!

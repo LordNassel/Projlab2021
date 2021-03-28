@@ -7,7 +7,7 @@ public class Main{
 	 public static void main(String[] args) {
 		 System.out.println("Every man's sky");
 		//tesztpark peldanyositasa
-		 Test currenttests = new Test();
+		 Advanced_tests currenttests = new Advanced_tests();
 		//tesztek futtatasa
 		 currenttests.TestMgr();
 	       
