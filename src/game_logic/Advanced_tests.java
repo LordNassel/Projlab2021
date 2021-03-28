@@ -47,6 +47,10 @@ private void InitTest(){
     this.TestMgr();
 }
 
+private void SimpleRobot(){
+
+}
+
 //Egy egyszeru rendszer amely beolvas az inputrol. Lehet lesz ennek bovitese
 private String inputmanager(){
     Scanner myinput =new Scanner(System.in);
@@ -59,8 +63,9 @@ private String inputmanager(){
         System.out.println(
 
         "Jelenlegi tesztek:\n" +
-        "1. Teszt, inicializalas teszt - inditas \"inittest\"\n"+
-        "2. Teszt, freeroam teszt - inditas \"freeroam\" A player move es mine uzemszeru mukodeset teszteli, a mar kifurt bolygo esetet is \n"
+        "1. Teszt, inicializalas teszt - inditas \"inittest\". Ez az inicializalas helyes mukodeset vizsgalja, \"negativ\" mukodest nem tesztelunk mert az csak siman hiba\n"+
+        "2. Teszt, freeroam teszt - inditas \"freeroam\" A player move es mine uzemszeru mukodeset teszteli, a mar kifurt bolygo esetet is \n"+
+        "3. Teszt, robot mozog magatol a vilagban - inditas \"robotadv\" \"negativ\" mukodest nem tesztelunk mert az csak siman hiba" +
 
 
 
@@ -80,6 +85,8 @@ private String inputmanager(){
             case "freeroam":
                 this.FreeRoam();
                 break;
+            case "robotadv":
+                this.SimpleRobot();
         }
     }
 }

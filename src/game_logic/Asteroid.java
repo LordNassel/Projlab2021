@@ -73,7 +73,7 @@ public class Asteroid extends Field{
 			for(int i =0; i<CoreMaterial.size(); i++)
 			{
 				this.isMinable = true;
-				CoreMaterial.get(i).GetExposed(isSunside, this);
+
 			}
 		}
 		return true;
@@ -87,6 +87,7 @@ public class Asteroid extends Field{
 	//ha az aszteroida nem ures	
 		if(!CoreMaterial.isEmpty())
 		{
+			CoreMaterial.get(0).GetExposed(isSunside, this);
 			Material mined = CoreMaterial.get(0);
 			CoreMaterial.remove(0);
 			return mined;

@@ -21,26 +21,13 @@ public class Alien extends Movable  {
         //Mivel nem igazán tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
         // ha nem tud, elmegy  egy random szomszedos aszteroidara;
         //Ha teleportra tevedne semmi gond, mert az isMinable ugyanugy false lesz
-        //Ha nagy a sugarzas elkezd banyaszni, ha ures az aszteroida elbujik
-        if(radiation >=7){
-            if(this.thisasteroidempty == true){
-                super.Hide();
-
-            }
-            else if(this.currentField.getMinable()== true){
-                this.Mine();
-            }
-            //ha sem banyaszni sem menekulni nem tud, megy tovabb hatha...
-            else if(this.currentField.getMinable()== false){
-                this.Move_AI();
-            }
-        }
-        else if(this.currentField.getMinable()== true && thisasteroidempty == false) {
+        if(this.currentField.getMinable()== true && thisasteroidempty == false) {
             this.Mine();
         }
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
-            Move_AI();}
+            Move_AI()
+            ;}
 
 
 
@@ -68,4 +55,7 @@ public class Alien extends Movable  {
         //elmegy egy random bolygora
         super.Move(neighbor.get(Dirgen.nextInt(neighbor.size()-1)));
     }
+
+    public void explode(){}
+    public void die(){}
 }
