@@ -14,7 +14,7 @@ public class Asteroid extends Field{
 	
 	public Asteroid(String name, Material M) {
 		super(name);
-		System.out.println("Asteroid.Constructor Called");
+		//System.out.println("Asteroid.Constructor Called");
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
 		int n = 0;
@@ -27,7 +27,7 @@ public class Asteroid extends Field{
 	//Default empty constructor
 	public Asteroid (String name){
 			super(name);
-			System.out.println("Empty Asteroid.Constructor Called");
+			//System.out.println("Empty Asteroid.Constructor Called");
 			Random thicknessgen = new Random();
 			Thickness = thicknessgen.nextInt(11);
 			CoreMaterial.clear();
@@ -36,7 +36,7 @@ public class Asteroid extends Field{
 	//sunside constructor
 	public Asteroid(String name, Material M, boolean isSunside) {
 		super(name);
-		System.out.println("Asteroid.Constructor Called");
+		//System.out.println("Asteroid.Constructor Called");
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
 		int n=0;
@@ -50,7 +50,7 @@ public class Asteroid extends Field{
 	//EZ EGY DEBUG KONSTRUKTOR, NE HIVD NORMALIS UZEMBEN
 	public Asteroid(String name, Material M, boolean sunside, int thiccboi) {
 		super(name);
-		System.out.println("Asteroid.Constructor Called");
+	//	System.out.println("Asteroid.Constructor Called");
 		int n=0;
 		while(n<3) {
 			CoreMaterial.add(M);
@@ -132,7 +132,7 @@ public class Asteroid extends Field{
 
 
 
-	//Test fuggvenyek
+	/*//Test fuggvenyek
 	public void RemoveMaterialFromCore()
 	{
 		CoreMaterial.remove(0);
@@ -142,7 +142,7 @@ public class Asteroid extends Field{
 	{
 		CoreMaterial.clear();
 	}
-	
+	*/
 	@Override
 	public void Step() {
 		

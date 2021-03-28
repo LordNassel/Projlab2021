@@ -103,7 +103,7 @@ public class Test {
 					a = new Asteroid("a", uranium, true, 1);
 					player = new Settler(a);
 					a.AcceptPlayer(player);
-					a.RemoveAllMaterialFromCore();
+					//a.RemoveAllMaterialFromCore();
 					a.StoreMaterial(uranium);
 					player.Drill();
 			        this.TestMgr();
@@ -112,7 +112,7 @@ public class Test {
 					a = new Asteroid("a", uranium, false, 1);
 					player = new Settler(a);
 					a.AcceptPlayer(player);
-					a.RemoveAllMaterialFromCore();
+					//a.RemoveAllMaterialFromCore();
 					a.StoreMaterial(uranium);
 					player.Drill();
 			        this.TestMgr();

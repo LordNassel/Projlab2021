@@ -31,17 +31,17 @@ private String name;
 	}
 
 	//Simple getter function for all neighbors, used mostly for player and AI navigation
-	public Vector<Field> FindNeighbor(){System.out.println("Field.FindNeighbor Called"); return this.Neighbors;}
+	public Vector<Field> FindNeighbor(){/*System.out.println("Field.FindNeighbor Called")*/ return this.Neighbors;}
 
 
 	//Simple neighbor setter functon
-	public void SetNeighbor(Field WhichField) {System.out.println("Field.SetnNeighbor Called"); Neighbors.add(WhichField);}
+	public void SetNeighbor(Field WhichField) {/*System.out.println("Field.SetnNeighbor Called"*/ Neighbors.add(WhichField);}
 
 	//To be implemented
 	protected void BroadCastRadiation() {System.out.println("Field.BroadCastRadiation Called");};
 
 	public void AcceptPlayer (Movable M) {
-	System.out.println("Field.AcceptPlayer Called");
+	//System.out.println("Field.AcceptPlayer Called");
 	M.SetCurrentField(this);
 	MovableList.add(M);
 	}

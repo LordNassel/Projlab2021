@@ -6,12 +6,13 @@ import java.util.*;
 public class Map implements Steppable {
 
 	// Default constructor
-    public Map() {
-    	AnyoneAlive = true;
-    }
-    
+    public Map() { AnyoneAlive = true; }
+
+    public Map(boolean alive, Vector<Field> newdb) { AnyoneAlive = alive; FieldList = newdb;}
+
+
     // Storage for the asteroids 
-    protected Vector<Asteroid> AsteroidList = new Vector<Asteroid>();
+    protected Vector<Field> FieldList = new Vector<Field>();
 
    // true, if at least 1 player is alive
     private boolean AnyoneAlive;
@@ -27,8 +28,8 @@ public class Map implements Steppable {
     // Starts the Sun storm for all asteroids
     public void StartSunstorm() {
     	System.out.println("StartSunStorm called");
-    	for(int i = 0; i < AsteroidList.size(); i++)
-    		AsteroidList.get(i).SunStorm();
+    	for(int i = 0; i < FieldList.size(); i++)
+    		FieldList.get(i).SunStorm();
     }
 
     //place a teleport on a field
