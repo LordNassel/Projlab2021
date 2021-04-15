@@ -7,8 +7,9 @@ import java.util.Vector;
 public class Advanced_tests {
 //A tesztelesi keretrendszer az elorehaladott teszteknek:
 TempGenWorlds currentworlds = new TempGenWorlds();
+Reader Main_file_Reader = new Reader();
 
-private void FreeRoam(){
+/*private void FreeRoam(){
     //A freeroam teszt dolgai
     //peldanyositas
     Vector<Field> Mezok = currentworlds.Generateworlds(1);
@@ -51,30 +52,29 @@ private void SimpleRobot(){
 
 }
 
-//Egy egyszeru rendszer amely beolvas az inputrol. Lehet lesz ennek bovitese
-private String inputmanager(){
-    Scanner myinput =new Scanner(System.in);
-    String n=" ";
-    n= myinput.next();
-    return n;
-}
-    private void ListTests() {
-
-        System.out.println(
-
-        "Jelenlegi tesztek:\n" +
-        "1. Teszt, inicializalas teszt - inditas \"inittest\". Ez az inicializalas helyes mukodeset vizsgalja, \"negativ\" mukodest nem tesztelunk mert az csak siman hiba\n"+
-        "2. Teszt, freeroam teszt - inditas \"freeroam\" A player move es mine uzemszeru mukodeset teszteli, a mar kifurt bolygo esetet is \n"+
-        "3. Teszt, robot mozog magatol a vilagban - inditas \"robotadv\" \"negativ\" mukodest nem tesztelunk mert az csak siman hiba" +
-
-
-
-        );
-
-
+ */
+//Ez manageli a tesztek megnyitasat
+public void AdvancedTestMgr(){
+        String current_tests[];
+        String instructionset[];
+        current_tests = this.Main_file_Reader.magicfiles();
+        for( int i=0; i<current_tests.length; i++) {
+            System.out.println(i+1 + " " + current_tests[i]);
+        }
+        instructionset = Main_file_Reader.readtest(current_tests[inputmanager()]);
     }
+
+
+//Egy egyszeru rendszer amely beolvas az inputrol. Lehet lesz ennek bovitese
+private int inputmanager() {
+        Scanner myinput =new Scanner(System.in);
+        int n=0;
+        n= myinput.nextInt();
+        return n;
+    }
+
     //Igy van egy osszefoglalo testmanager amit lehet hivni
-    public void TestMgr() {
+  /*  public void TestMgr() {
         //Listazom a teszteket
         this.ListTests();
         String s;
@@ -88,6 +88,6 @@ private String inputmanager(){
             case "robotadv":
                 this.SimpleRobot();
         }
-    }
+    }*/
 }
 

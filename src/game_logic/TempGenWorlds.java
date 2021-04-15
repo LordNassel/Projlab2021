@@ -83,8 +83,8 @@ public class TempGenWorlds {
             Asteroid Timeston = new Asteroid("Timeston", u,false, 0);
             Asteroid Hewe = new Asteroid("Hewe", u,false, 0);
             Asteroid Beckistale = new Asteroid("Beckistale", i ,false, 0);
-            Asteroid Boroughton = new Asteroid("Boroughton", i,  ice);
-            Asteroid MyreFall = new Asteroid("MyreFall", );
+            Asteroid Boroughton = new Asteroid("Boroughton", i);
+            Asteroid MyreFall = new Asteroid("MyreFall", i);
             Asteroid LongDale = new Asteroid("LongDale", i);
             Asteroid Sotrun = new Asteroid("Sotrun", u);
             Asteroid Benqua = new Asteroid("Benqua");

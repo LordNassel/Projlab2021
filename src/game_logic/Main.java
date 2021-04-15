@@ -9,7 +9,7 @@ public class Main{
 		//tesztpark peldanyositasa
 		 Advanced_tests currenttests = new Advanced_tests();
 		//tesztek futtatasa
-		 currenttests.TestMgr();
+		 currenttests.AdvancedTestMgr();
 	       
 		 }
 

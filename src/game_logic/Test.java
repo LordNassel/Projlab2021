@@ -3,7 +3,10 @@ package game_logic;
 import java.util.Scanner;
 
 public class Test {
+	//Van egy kulon beolvaso fgv
+
 	//A mozgasteszt
+
 	private void MoveTest()
 	{
 		System.out.println("Mozgas teszt indul");
@@ -562,10 +565,14 @@ public class Test {
 		System.out.println("15. Explode Test");
 		System.out.println("16. Sun Storm Starts Test");
 		System.out.println("17. Teleport Travel Test");
+		System.out.println("18. Automatizalt tesztek DEMO!!!");
 
 
 		
 	}
+
+
+
 	//Igy van egy osszefoglalo testmanager amit lehet hivni
 	public void TestMgr() {
 		//Listazom a teszteket
@@ -599,12 +606,17 @@ public class Test {
 			this.IceGetsExposedTest();
 		case 14:
 			this.SunHitsUraniumTest();
+			break;
 		case 15:
 			this.ExplodeTest();
+			break;
 		case 16:
 			this.SunStormStartsTest();
+			break;
 		case 17:
 			this.TeleportTravelTest();
+			break;
+		case 18:
 		default:
 			return;
 		}
