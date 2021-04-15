@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Advanced_tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Advanced_tests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Reader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/TempGenWorlds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/TempGenWorlds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Test.java" afterDir="false" />
-    </list>
+    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
