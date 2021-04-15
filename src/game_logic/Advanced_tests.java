@@ -56,12 +56,18 @@ private void SimpleRobot(){
 //Ez manageli a tesztek megnyitasat
 public void AdvancedTestMgr(){
         String current_tests[];
-        String instructionset[];
+    Vector<String[]> instructionset;
         current_tests = this.Main_file_Reader.magicfiles();
         for( int i=0; i<current_tests.length; i++) {
             System.out.println(i+1 + " " + current_tests[i]);
         }
         instructionset = Main_file_Reader.readtest(current_tests[inputmanager()]);
+        for(int i=0; i<instructionset.size(); i++) {
+            for (int n = 0; n< instructionset.get(i).length; n++) {
+                System.out.println(instructionset.get(i)[n]);
+            }
+        }
+
     }
 
 

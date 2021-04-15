@@ -1,6 +1,8 @@
 package game_logic;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.Vector;
 
 public class Reader {
@@ -21,17 +23,28 @@ public String[] magicfiles(){
     return temp;
 }
 
-public String[] readtest(String whichtest){
+public Vector<String[]> readtest(String whichtest) {
 
-    String[][] temp = new String[][];
+    Vector<String[]> temp = new Vector<String[]>();
     whichtest += ".txt";
 
-    String path = new String("C:\tesztfileok");
-    path+=whichtest;
+    String path = new String("C:\\tesztfileok\\");
+    path += whichtest;
+    try {
+        File currenttest = new File(path);
+        Scanner Filereader = new Scanner(currenttest);
+        while (Filereader.hasNextLine()) {
+            String temp2[] = Filereader.nextLine().split(",");
+            temp.add(temp2);
+        }
+        Filereader.close();
+    } catch (FileNotFoundException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
 
-    File currettest = new File (path);
+
+    }
     return temp;
 }
-
 
 }
