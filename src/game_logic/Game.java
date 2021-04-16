@@ -5,6 +5,9 @@ import java.util.*;
 
 public class Game {
 
+	private boolean running = true;
+	protected ArrayList<Movable> SteppableList = new ArrayList<Movable>();
+
     // Default constructor
     public Game() {
     	Map map = new Map();
@@ -43,7 +46,12 @@ public class Game {
    // Starts the game, by generating the map
     public void StartGame() {
     	System.out.println("StartGame called");
-    	GenerateMap();  
+    	//GenerateMap(); //0 Egyelõre külön osztályban generáljuk a mapot 
+    	while(running)
+    	{
+    		for(int i=0; i<SteppableList.size(); i++)
+    			SteppableList.get(i).Step();
+    	}
     }
 
     // Adds a new movable object to the game
@@ -55,7 +63,12 @@ public class Game {
     	Playable.SetCurrentField(a1);
     	a1.AcceptPlayer(Playable);
     	
-    }	
+    }
+    
+    public void setSteppable(Movable m)
+    {
+    	SteppableList.add(m);
+    }
 
    //Step funkcio overrideja
     public void Step() {

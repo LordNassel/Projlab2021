@@ -131,7 +131,18 @@ public class Asteroid extends Field{
 			System.out.println("Asteroid is not empty to hide\n");
 	}
 
-
+	public int getThickness()
+	{
+		return Thickness;
+	}
+	
+	public boolean isEmpty()
+	{
+		if(this.CoreMaterial.isEmpty() == true)
+			return true;
+		else
+			return false;
+	}
 
 	/*//Test fuggvenyek
 	public void RemoveMaterialFromCore()

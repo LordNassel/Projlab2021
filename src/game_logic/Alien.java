@@ -14,20 +14,26 @@ public class Alien extends Movable  {
     //F param, bolygon kell peldanyositani a movableket
     public Alien(Field f) {
         super(f);
+		System.out.println("Alien constructor called");
+
     }
 
 
-    public void step(){
+    public void Step(){
         //Mivel nem igazán tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
         // ha nem tud, elmegy  egy random szomszedos aszteroidara;
         //Ha teleportra tevedne semmi gond, mert az isMinable ugyanugy false lesz
-        if(this.currentField.getMinable()== true && thisasteroidempty == false) {
-            this.Mine();
+    	System.out.println("Alien vagyok és léptem");
+    	
+        if( ((Asteroid)currentField).getThickness() == 0 && ((Asteroid)currentField).isEmpty() == false) {
+        	Material minedMaterial=currentField.GetMined();
         }
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
-            Move_AI()
-            ;}
+        	System.out.println("Mozogtam aleinként");
+            Move_AI();
+            
+        }
 
 
 

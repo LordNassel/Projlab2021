@@ -1,5 +1,8 @@
 package game_logic;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 	import java.util.List;
 import java.util.Scanner;
@@ -131,6 +134,41 @@ public class Settler extends Movable {
 		int n=0;
 		n= myinput.nextInt();
 		this.Move(currentlist.get(n));
+	}
+	
+	public void Step()
+	{
+		System.out.println("Mit szeretnél csinálni?");
+		Scanner myinput = new Scanner(System.in);
+		int valasz = myinput.nextInt();
+		
+		switch(valasz)
+		{
+		case 1:
+			//Move(aszteroid);
+			break;
+		case 2:
+			Drill();
+			break;
+		case 3:
+			Hide();
+			break;
+		case 4:
+			Mine();
+			break;
+		case 5:
+			//PutMaterial();
+			break;
+		case 6:
+			//ActivateTeleport();
+			break;
+		case 7:
+			CraftRobot();
+			break;
+		case 8:
+			CraftTeleports();
+			break;
+		}
 	}
 
 }

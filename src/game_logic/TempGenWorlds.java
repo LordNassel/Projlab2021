@@ -57,7 +57,10 @@ public class TempGenWorlds {
 
                 Boroughton.SetNeighbor(Beckistale);
 
-               // Settler S = new Settler(Auchen);
+                Settler S = new Settler(Auchen);
+                Settler S2 = new Settler(Auchen);
+                Robot r = new Robot(Auchen);
+                Alien a = new Alien(Auchen);
 
                 temp.add(Auchen);
                 temp.add(FormFoss);
@@ -69,6 +72,13 @@ public class TempGenWorlds {
                 temp.add(LongDale);
                 temp.add(Sotrun);
                 temp.add(Benqua);
+                
+                Game game = new Game();
+                game.setSteppable(r);
+                game.setSteppable(a);
+                game.setSteppable(S);
+                game.setSteppable(S2);
+                game.StartGame();
 
                 return temp;
         }
