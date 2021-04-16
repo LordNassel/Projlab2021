@@ -26,25 +26,31 @@ public String[] magicfiles(){
 public Vector<String[]> readtest(String whichtest) {
 
     Vector<String[]> temp = new Vector<String[]>();
+    //Kell egy "+txt" a kiterjesztés miatt
     whichtest += ".txt";
 
     String path = new String("C:\\tesztfileok\\");
     path += whichtest;
+    //a beolvasásás
     try {
         File currenttest = new File(path);
         Scanner Filereader = new Scanner(currenttest);
         while (Filereader.hasNextLine()) {
+            //Feltöltöm a vectortárat string[]-ekkel
             String temp2[] = Filereader.nextLine().split(",");
             temp.add(temp2);
         }
         Filereader.close();
     } catch (FileNotFoundException e) {
+        //helpful message for the user :D :D
         System.out.println("An error occurred.");
         e.printStackTrace();
 
 
     }
     return temp;
+
+
 }
 
 }
