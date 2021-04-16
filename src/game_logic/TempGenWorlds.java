@@ -17,7 +17,7 @@ public class TempGenWorlds {
                         "Jo kikapcsolodast");
                 Vector<Field> temp = new Vector<Field>();
                 //Minden uj aszteroida
-                Asteroid Auchen = new Asteroid("Auchenshuggle", i);
+                Asteroid Auchen = new Asteroid("Auchenshuggle", i, false, 0);
                 Asteroid FormFoss = new Asteroid("FormFoss", c);
                 Asteroid Timeston = new Asteroid("Timeston", u);
                 Asteroid Hewe = new Asteroid("Hewe", u);
@@ -74,10 +74,15 @@ public class TempGenWorlds {
                 temp.add(Benqua);
                 
                 Game game = new Game();
-                game.setSteppable(r);
+                /*game.setSteppable(r);
                 game.setSteppable(a);
                 game.setSteppable(S);
-                game.setSteppable(S2);
+                game.setSteppable(S2);*/
+                game.AddMovable(r, Auchen);
+                game.AddMovable(a, Auchen);
+                game.AddMovable(S, Auchen);
+                game.AddMovable(S2, Auchen);
+
                 game.StartGame();
 
                 return temp;

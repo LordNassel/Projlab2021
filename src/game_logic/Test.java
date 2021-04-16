@@ -291,13 +291,13 @@ public class Test {
 		Asteroid a = new Asteroid("a1", i);
 		Settler s = new Settler(a);
 		
-		g.AddMovable(s);
+		g.AddMovable(s, a);
 
 		System.out.println("Utána pedig egy robotot\n");
 		Asteroid a2 = new Asteroid("a2", i);
 		Robot r = new Robot(a2);
 		
-		g.AddMovable(r);
+		g.AddMovable(r, a2);
 		
 	}
 	

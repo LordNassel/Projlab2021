@@ -19,6 +19,5 @@ public interface Steppable {
         void execute (map.Map m){};
         void execute (game.Game g){};
         void execute (ArrayList < movable.Movable > movables){};
-        
     }*/
 }

@@ -26,12 +26,14 @@ public class Alien extends Movable  {
     	System.out.println("Alien vagyok és léptem");
     	
         if( ((Asteroid)currentField).getThickness() == 0 && ((Asteroid)currentField).isEmpty() == false) {
+        	System.out.println("Bányásztam aleinként");
+
         	Material minedMaterial=currentField.GetMined();
         }
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
         	System.out.println("Mozogtam aleinként");
-            Move_AI();
+            //Move_AI(); BUGOS
             
         }
 

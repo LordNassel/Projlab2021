@@ -6,7 +6,7 @@ import java.util.*;
 public class Game {
 
 	private boolean running = true;
-	protected ArrayList<Movable> SteppableList = new ArrayList<Movable>();
+	protected ArrayList<Movable> MovableList = new ArrayList<Movable>();
 
     // Default constructor
     public Game() {
@@ -49,25 +49,28 @@ public class Game {
     	//GenerateMap(); //0 Egyelõre külön osztályban generáljuk a mapot 
     	while(running)
     	{
-    		for(int i=0; i<SteppableList.size(); i++)
-    			SteppableList.get(i).Step();
+    		for(int i=0; i<MovableList.size(); i++)
+    			MovableList.get(i).Step();
     	}
     }
 
     // Adds a new movable object to the game
-    public void AddMovable(Movable Playable) {
+    public void AddMovable(Movable Playable, Asteroid a) {
     	System.out.println("AddMovable called");
-    	Ice i = new Ice();
-        Asteroid a1 = new Asteroid("a1", i);
-    	
-    	Playable.SetCurrentField(a1);
-    	a1.AcceptPlayer(Playable);
+    	/*Ice i = new Ice();
+        Asteroid a1 = new Asteroid("a1", i, false, 0);
+    	Asteroid a2 = new Asteroid("a2", i);*/
+    	Playable.SetCurrentField(a);
+    	/*a2.SetNeighbor(a1);
+    	a1.SetNeighbor(a2);*/
+    	a.AcceptPlayer(Playable);
+    	setSteppable(Playable);
     	
     }
     
     public void setSteppable(Movable m)
     {
-    	SteppableList.add(m);
+    	MovableList.add(m);
     }
 
    //Step funkcio overrideja
