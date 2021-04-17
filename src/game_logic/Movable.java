@@ -23,8 +23,8 @@ public abstract class Movable implements Steppable {
 	public void Move(Field a)
 	{
 		System.out.println("Move()");
-		this.currentField.RemovePlayer(this);
-		a.AcceptPlayer(this);
+		/*this.currentField.RemovePlayer(this);
+		a.AcceptPlayer(this);*/
 		
 	}	
 	//fur aszteroidat
@@ -84,6 +84,6 @@ public abstract class Movable implements Steppable {
 	public void SetIsHidden()
 	{
 		System.out.println("SetIsHidden()");
-		this.isHidden=!this.isHidden;
+		isHidden=!isHidden;
 	}
 }

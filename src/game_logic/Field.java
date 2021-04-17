@@ -1,12 +1,14 @@
 package game_logic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 
 abstract class Field implements Steppable{
 //Vector storage for convenience, an array would work too since <=300
 protected Vector<Field> Neighbors = new Vector<Field>();
-protected Vector<Movable> MovableList = new Vector<Movable>();
+protected List<Movable> MovableList;
 protected boolean isMinable = false;
 //Kell egy nev most ahhoz, hogy a paranccsoros navigacio letezhessen
 private String name;
@@ -14,7 +16,9 @@ private String name;
 
 	public Field(String Name) {
 	this.name = Name;
-}
+	MovableList = new ArrayList<Movable>();
+	}
+	
 	//Explode. Kills all things on map then removes itself from the map.
 	protected void Explode() {
 	System.out.println("Field.Explode Called");
@@ -24,10 +28,17 @@ private String name;
 	}
 
 	//Sunstorm on a generic asteroid type, the asteroid remains undamaged, all movables die.
-	public void SunStorm() {
-	System.out.println("Field.SunStorm Called");
-		for(int i=0; i<MovableList.size(); i++)
-			MovableList.get(i).HitBySunStorm();
+	public void ReachedBySunStorm() {
+		System.out.println("Field.SunStorm Called");
+		/*for( Movable movi : MovableList)
+			movi.HitBySunStorm(); //ConcurentModificationt kapunk*/
+		/*for(int i=0; i<MovableList.size(); i++)
+			MovableList.get(i).HitBySunStorm();*/
+		for(int i= MovableList.size()-1; i>=0; i--)
+		{
+			MovableList.get(i).HitBySunStorm(); //IndexOutOfBoundsExceptiont kapunk
+		}
+
 	}
 
 	//Simple getter function for all neighbors, used mostly for player and AI navigation
@@ -47,9 +58,9 @@ private String name;
 	}
 
 	public void RemovePlayer(Movable M) {
-	System.out.println("RemovePlayer Called");
-	M.SetCurrentField(null);
-	MovableList.remove(M);
+		System.out.println("RemovePlayer Called");
+		M.SetCurrentField(null);
+		MovableList.remove(M);
 	}
 
 	public String Getname() {return this.name;}

@@ -29,8 +29,9 @@ public class Game {
 
     // If the settlers are dead this is the method called
     public void Losegame() {
-    	System.out.println("Losegame called");
     	running = false;
+    	System.out.println("Losegame called");
+
         
     }
 
@@ -55,12 +56,23 @@ public class Game {
    // Starts the game, by generating the map
     public void StartGame() {
     	System.out.println("StartGame called");
-    	MovableList.add(map);
+    	//MovableList.add(map);
     	//GenerateMap(); //0 Egyelõre külön osztályban generáljuk a mapot 
     	while(running)
     	{
-    		for(int i=0; i<MovableList.size(); i++)
-    			MovableList.get(i).Step();
+			/*MovableList.forEach(step -> step.Step());*/
+			/*if(getIsTherAnySettler()==false)
+				Losegame();
+    		/*for(Steppable step : MovableList)
+    			step.Step();*/
+    		for(int i= MovableList.size()-1; i>=0; i--)
+    		{
+    			if(getIsTherAnySettler()==false)
+    				Losegame();
+    			if(!MovableList.isEmpty())
+    				MovableList.get(i).Step();
+    			
+    		}  		
     	}
     }
 
@@ -78,19 +90,36 @@ public class Game {
     	
     }
     
-    public static void AddSteppable(Movable m)
+    public void AddSteppable(Steppable s)
     {
-    	MovableList.add(m);
+    	MovableList.add(s);
     }
     
     public static void RemoveSteppable(Steppable s)
     {
+    	//MovableList.remove(s);
     	MovableList.remove(s);
+    	System.out.println("Törtöltem egy Steppablet");
     }
 
    //Step funkcio overrideja
     public void Step() {
         
     }
+    
+    public boolean getIsTherAnySettler()
+	{
+    	Asteroid a = new Asteroid("bela");
+    	Settler s = new Settler(a);
+		int number = 0;
+		for(int i = 0; i<MovableList.size(); i++)
+		{
+			if(MovableList.get(i).getClass().equals( s.getClass()))
+				number++;
+		}
+		if(number==0)
+			return false;
+		return true;
+	}
 
 }

@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Map implements Steppable {
 
-	private int sugarzas = 1;
+	private int sugarzas = 0;
 	protected Vector<Field> FieldList;
 	// Default constructor
     public Map() { AnyoneAlive = true; }
@@ -33,7 +33,7 @@ public class Map implements Steppable {
     	System.out.println("Sugarzas eggyel nott");
     	sugarzas++;
     	System.out.println("A sugarzas nagysaga: " + sugarzas);
-    	if(sugarzas==4)
+    	if(sugarzas==3)
     		StartSunstorm();
     	
     }
@@ -42,8 +42,10 @@ public class Map implements Steppable {
     public void StartSunstorm() {
     	System.out.println("StartSunStorm called");
     	System.out.println("Fieldlist: " + FieldList.size()); //Ideiglenesen, hogy tudjam ellenõrizni
-    	for(int i = 0; i < FieldList.size(); i++)
-    		FieldList.get(i).SunStorm();
+    	for(Field fifi : FieldList)
+    		fifi.ReachedBySunStorm();
+    	/*for(int i = 0; i < FieldList.size(); i++)
+    		FieldList.get(i).SunStorm();*/
     	sugarzas = 0;
     }
 

@@ -33,7 +33,7 @@ public class Alien extends Movable  {
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
         	System.out.println("Mozogtam aleinként");
-            Move_AI();
+            //Move_AI();
         }
 
 
@@ -62,7 +62,11 @@ public class Alien extends Movable  {
         //elmegy egy random bolygora
         super.Move(neighbor.get(Dirgen.nextInt(neighbor.size()-1)));
     }
+    
+    public void HitBySunStorm()
+    {
+    	return;
+    }
 
     public void explode(){}
-    public void die(){}
 }

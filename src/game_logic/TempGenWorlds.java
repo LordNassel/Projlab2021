@@ -61,6 +61,7 @@ public class TempGenWorlds {
 
                 Settler S = new Settler(Auchen);
                 Settler S2 = new Settler(Auchen);
+                Settler s3 = new Settler(Auchen);
                 Robot r = new Robot(Auchen);
                 Alien a = new Alien(Auchen);
                 
@@ -96,10 +97,17 @@ public class TempGenWorlds {
                 game.setSteppable(S2);*/
                 Map map = new Map(true, fieldlist);
                 Game game = new Game(map);
-                game.AddMovable(r, Auchen);
+
+                game.AddSteppable(map);
                 game.AddMovable(a, Auchen);
-                game.AddMovable(S, Auchen);
+               // game.AddMovable(s3, Auchen);
                 game.AddMovable(S2, Auchen);
+                game.AddMovable(S, Auchen); //Settlereket a végére!
+                game.AddMovable(r, Auchen); // Robot elõre!
+
+
+
+                
 
                 game.StartGame();
 

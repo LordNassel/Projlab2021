@@ -33,14 +33,19 @@ public class Robot extends Movable {
 
 	@Override // Step funkcio overrideja
     public void Step() {
-    	System.out.println("Robot vagyok és léptem");
 		if(((Asteroid)currentField).getThickness() == 0) {
-			Vector<Field> neighbors = currentField.FindNeighbor();
+	    	System.out.println("Robot vagyok és léptem");
+
+			/*Vector<Field> neighbors = currentField.FindNeighbor();
 			Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
-		    Move(randomNeighbor);
+		    Move(randomNeighbor);*/
 		}
 		else
+		{
 			Drill();
+	    	System.out.println("Robot vagyok és fúrtam");
+		}
+
     }
 	
 }
