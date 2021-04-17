@@ -39,7 +39,11 @@ private String name;
 	public void SetNeighbor(Field WhichField) {/*System.out.println("Field.SetnNeighbor Called"*/ Neighbors.add(WhichField);}
 
 	//To be implemented
-	protected void BroadCastRadiation() {System.out.println("Field.BroadCastRadiation Called");};
+	protected void BroadCastRadiation(double rad) {
+		System.out.println("Field.BroadCastRadiation Called");
+		for(int i=0; i<MovableList.size(); i++)
+			MovableList.get(i).radiation = rad;
+	}
 
 	public void AcceptPlayer (Movable M) {
 	//System.out.println("Field.AcceptPlayer Called");

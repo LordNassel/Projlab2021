@@ -9,7 +9,7 @@ public abstract class Movable implements Steppable {
 	//El van-e rejtozve
 	private boolean isHidden;
 	//A surgarzas merteke, ezt ellenorizheti a jatekos
-	protected int radiation;
+	protected double radiation;
 
 	//konstruktor
 	protected Field currentField;

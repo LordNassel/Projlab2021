@@ -17,6 +17,8 @@ public class Map implements Steppable {
    // true, if at least 1 player is alive
     private boolean AnyoneAlive;
 
+    // radiation level in the asteroid belt
+    private double radiation;
 
    //
     public void Step() {
