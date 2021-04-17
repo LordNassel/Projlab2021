@@ -41,7 +41,7 @@ public class Game {
     }
 
    // Starts the game, by generating the map
-    public void StartGame() {
+    public void StartRound() {
     	System.out.println("StartGame called");
     	GenerateMap();  
     }
