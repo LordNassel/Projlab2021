@@ -15,6 +15,7 @@ private String name;
 	public Field(String Name) {
 	this.name = Name;
 }
+
 	//Explode. Kills all things on map then removes itself from the map.
 	protected void Explode() {
 	System.out.println("Field.Explode Called");

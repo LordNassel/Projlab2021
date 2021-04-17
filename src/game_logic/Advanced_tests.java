@@ -1,6 +1,5 @@
 package game_logic;
 
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Vector;
 //Az elõrehaladott fileból is beolvasható tesztek osztálya.
@@ -10,52 +9,14 @@ TempGenWorlds currentworlds = new TempGenWorlds();
 Reader Main_file_Reader = new Reader();
 Vector<String[]> instructionset;
 
-/*private void FreeRoam(){
-    //A freeroam teszt dolgai
-    //peldanyositas
-    Vector<Field> Mezok = currentworlds.Generateworlds(1);
-    //tudom hogy asteroid, mindig is tudni fogom. En generalom a terkepet.
-    Asteroid A = (Asteroid) Mezok.get(0);
-    Settler Player = new Settler(A);
-    System.out.println("Ez egy szabadmozgasi teszt. Szabadon lehet mozogni ( :D ). A \"move\" parancs es a \"drill\" el de az minden mennyisegben. \"exit\" paranncsal lehet kilepni");
-    //a parancskezelo resz.
-    String s ;
-    while((s = inputmanager())!= "exit") {
-        switch (s){
-            case "move":
-                Player.FindDirections();
-                //kiiras hogy ellenorizheto legyen
-                System.out.println("Sikeres Mozgas, a jelenlegi bolygo: " + Player.GetCurrentField().Getname() + "\n");
-                break;
-            case "drill":
-                Player.Drill();
-                break;
-            default:
-                break;
-        }
-    }
-    this.TestMgr();
-}
 
-private void InitTest(){
-    Vector<Field> temp = currentworlds.Generateworlds(1);
-    System.out.println("Listazom a bolygokat es szomszedjaikat");
-    for(int i=0; i<temp.size(); i++){
-        System.out.println("Bolygo neve: " + temp.get(i).Getname() + "\nSzomszedai:");
-                for(int n=0; n<temp.get(i).FindNeighbor().size(); n++){
-                    System.out.println(temp.get(i).FindNeighbor().get(n).Getname() );
-                }
-    }
-    this.TestMgr();
-}
+// a game elementek
+Vector<Field> Field_Temp_List = new Vector<>();
 
-private void SimpleRobot(){
 
-}
 
- */
-//Ez manageli a tesztek megnyitasat
-public void AdvancedTestMgr(){
+    //Ez manageli a tesztek megnyitasat
+    public void AdvancedTestMgr(){
         String current_tests[];
 
         current_tests = this.Main_file_Reader.magicfiles();
@@ -65,14 +26,57 @@ public void AdvancedTestMgr(){
         //itt töltöm be a megfelelõ instruction setet
         instructionset = Main_file_Reader.readtest(current_tests[inputmanager()-1]);
         //ezt itt nem igazán értem miért < mint size -1. Valaki ezt nézze meg pls :D :D
-        for(int i=0; i<instructionset.size()-1; i++) {
+        for(int i=0; i<instructionset.size(); i++) {
             interpreter(instructionset.get(i));
             }
         }
 
-    
+    //ez az anyagpeldanyosito dolog -> erre lehet kellene valami jobb megoldás
+    private Material MaterialCreator(String command){
+     switch (command) {
+         case "iron":
+             Iron i = new Iron();
+             return i;
 
-    private void commentprinter(String[] command) {
+         case "ice":
+             Ice n = new Ice();
+             return n;
+         case "uranium":
+             Uranium u = new Uranium();
+             return u;
+
+         case "coal":
+             Coal c = new Coal();
+             return c;
+
+     }
+     Iron nz = new Iron();
+     return nz;
+}
+    //itt példányosítom az aszteroidákat a szövegfileból
+    private void AsteroidCreator(String[] command){
+    Asteroid temp;
+    //Attól függ hogy milyen hosszú, hogy melyik konstruktort hívtam meg
+     switch (command.length){
+         case 3:
+              temp = new Asteroid(command[1], MaterialCreator(command[2]));
+             Field_Temp_List.add(temp);
+             break;
+         case 4:
+              temp = new Asteroid(command[1], MaterialCreator(command[2]), Boolean.parseBoolean(command[3]));
+             Field_Temp_List.add(temp);
+             break;
+         case 5:
+              temp = new Asteroid(command[1], MaterialCreator(command[2]),Boolean.parseBoolean(command[3]), Integer.parseInt(command[4]));
+             Field_Temp_List.add(temp);
+             break;
+         default:
+     }
+
+
+}
+
+    private void CommentPrinter(String[] command) {
     String temp = "";
     //igen i=1, a commandot magát nem akarom kiírni
         for(int i=1; i<command.length; i++) {
@@ -84,12 +88,30 @@ public void AdvancedTestMgr(){
     }
 
 
-    //ez a privát fgv fordítja le a megfelelõ stringeket
+    //Ez a függvény írja ki egy adott objektum statisztikáit
+    private void Stats_Command_manager(String[] command){
+        if(command[1].equals("Asteroid")){
+            int n=0;
+
+            while(Field_Temp_List.get(n).Getname().equals(command[2])== false)
+                n += 1;
+            //itt írom ki a nevét a bolygónak
+                System.out.println(Field_Temp_List.get(n).Getname());
+        }
+    }
+
+//ez a privát fgv fordítja le a megfelelõ stringeket
 
     private void interpreter(String[] comdline){
         switch (comdline[0]){
-            case "comment":
-                this.commentprinter(comdline);
+            case "Comment":
+                this.CommentPrinter(comdline);
+                break;
+            case "Asteroid":
+                this.AsteroidCreator(comdline);
+                break;
+            case "Stats":
+                this.Stats_Command_manager(comdline);
                 break;
             default:
                 System.out.println("ejjoj");
@@ -109,21 +131,6 @@ private int inputmanager() {
         return n;
     }
 
-    //Igy van egy osszefoglalo testmanager amit lehet hivni
-  /*  public void TestMgr() {
-        //Listazom a teszteket
-        this.ListTests();
-        String s;
-        switch (this.inputmanager()) {
-            case "inittest":
-                this.InitTest();
-                break;
-            case "freeroam":
-                this.FreeRoam();
-                break;
-            case "robotadv":
-                this.SimpleRobot();
-        }
-    }*/
+
 }
 
