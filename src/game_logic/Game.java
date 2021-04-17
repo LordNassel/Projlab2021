@@ -5,23 +5,32 @@ import java.util.*;
 
 public class Game {
 
-	private boolean running = true;
-	protected ArrayList<Movable> MovableList = new ArrayList<Movable>();
+	private boolean running;
+	private Map map;
+	private static ArrayList<Steppable> MovableList = new ArrayList<Steppable>();
 
     // Default constructor
     public Game() {
-    	Map map = new Map();
+    	map = new Map();
+    	running = true;
+    }
+    
+    public Game(Map generatedmap) {
+    	map = generatedmap;
+    	running = true;
     }
 
     // If the materials are collected this is the method called
     public void Wingame() {
     	System.out.println("Wingame called");
+    	running=false;
         
     }
 
     // If the settlers are dead this is the method called
     public void Losegame() {
     	System.out.println("Losegame called");
+    	running = false;
         
     }
 
@@ -46,6 +55,7 @@ public class Game {
    // Starts the game, by generating the map
     public void StartGame() {
     	System.out.println("StartGame called");
+    	MovableList.add(map);
     	//GenerateMap(); //0 Egyelõre külön osztályban generáljuk a mapot 
     	while(running)
     	{
@@ -64,13 +74,18 @@ public class Game {
     	/*a2.SetNeighbor(a1);
     	a1.SetNeighbor(a2);*/
     	a.AcceptPlayer(Playable);
-    	setSteppable(Playable);
+    	AddSteppable(Playable);
     	
     }
     
-    public void setSteppable(Movable m)
+    public static void AddSteppable(Movable m)
     {
     	MovableList.add(m);
+    }
+    
+    public static void RemoveSteppable(Steppable s)
+    {
+    	MovableList.remove(s);
     }
 
    //Step funkcio overrideja

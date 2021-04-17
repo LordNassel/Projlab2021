@@ -4,12 +4,9 @@ import java.util.*;
 
 //Minden ami mozoghat
 public abstract class Movable implements Steppable {
-	//A movable forduloja van e
-	private boolean isTurn;
+
 	//El van-e rejtozve
 	private boolean isHidden;
-	//A surgarzas merteke, ezt ellenorizheti a jatekos
-	protected int radiation;
 
 	//konstruktor
 	protected Field currentField;
@@ -18,8 +15,6 @@ public abstract class Movable implements Steppable {
 	public Movable(Field onField)
 	{
 		currentField = onField;
-		radiation = 1;
-		isTurn = false;
 		isHidden = false;
 	}
 	
@@ -47,6 +42,7 @@ public abstract class Movable implements Steppable {
 	{
 		System.out.println("Die()");
 		currentField.RemovePlayer(this);
+		Game.RemoveSteppable(this);
 		
 	}
 	//felrobban az obajektum
@@ -59,34 +55,20 @@ public abstract class Movable implements Steppable {
 	//napvihar eri az objektumot
 	public void HitBySunStorm()
 	{
-		System.out.println("HitBySunStorm");
+		System.out.println("HitBySunStorm elert");
 		if (!isHidden) {
 			Die();
 		}
 	}
 	// a step overridja
-	public void Step()
-	{
-		
-	}
+	public abstract void Step();
+
 	
 	//Elrejtozik
 	public void Hide()
 	{
 		System.out.println("Hide");
 		((Asteroid)currentField).GetHidden(this);
-	}
-	//Beallitja a movable -nek a kort
-	public void SetTurn()
-	{
-		
-	}
-	
-	public void SetRadiation()
-	{
-		System.out.println("SetRadiation");
-		
-		
 	}
 	
 	public Field GetCurrentField()

@@ -5,14 +5,20 @@ import java.util.*;
 
 public class Map implements Steppable {
 
+	private int sugarzas = 1;
+	protected Vector<Field> FieldList;
 	// Default constructor
     public Map() { AnyoneAlive = true; }
 
-    public Map(boolean alive, Vector<Field> newdb) { AnyoneAlive = alive; FieldList = newdb;}
+    public Map(boolean alive, Vector<Field> newdb)
+    { 
+    	AnyoneAlive = alive;
+    	FieldList = newdb;
+    }
 
 
     // Storage for the asteroids 
-    protected Vector<Field> FieldList = new Vector<Field>();
+   // protected Vector<Field> FieldList = new Vector<Field>();
 
    // true, if at least 1 player is alive
     private boolean AnyoneAlive;
@@ -20,16 +26,25 @@ public class Map implements Steppable {
 
    //
     public void Step() {
-    	Game g = new Game();
+    	/*Game g = new Game();
     	if(!AnyoneAlive)
-    		g.Losegame();
+    		g.Losegame();*/
+    	System.out.println("Stepbol a filedlist: " + FieldList.size());
+    	System.out.println("Sugarzas eggyel nott");
+    	sugarzas++;
+    	System.out.println("A sugarzas nagysaga: " + sugarzas);
+    	if(sugarzas==4)
+    		StartSunstorm();
+    	
     }
 
     // Starts the Sun storm for all asteroids
     public void StartSunstorm() {
     	System.out.println("StartSunStorm called");
+    	System.out.println("Fieldlist: " + FieldList.size()); //Ideiglenesen, hogy tudjam ellenõrizni
     	for(int i = 0; i < FieldList.size(); i++)
     		FieldList.get(i).SunStorm();
+    	sugarzas = 0;
     }
 
     //place a teleport on a field

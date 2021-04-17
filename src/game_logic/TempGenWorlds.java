@@ -1,5 +1,7 @@
 package game_logic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class TempGenWorlds {
@@ -61,6 +63,20 @@ public class TempGenWorlds {
                 Settler S2 = new Settler(Auchen);
                 Robot r = new Robot(Auchen);
                 Alien a = new Alien(Auchen);
+                
+                Vector<Field> fieldlist = new Vector<Field>();
+                fieldlist.add(Auchen);
+                fieldlist.add(FormFoss);
+                fieldlist.add(Timeston);
+                fieldlist.add(Hewe);
+                fieldlist.add(Beckistale);
+                fieldlist.add(Boroughton);
+                fieldlist.add(MyreFall);
+                fieldlist.add(LongDale);
+                fieldlist.add(Sotrun);
+                fieldlist.add(Benqua);
+
+
 
                 temp.add(Auchen);
                 temp.add(FormFoss);
@@ -73,11 +89,13 @@ public class TempGenWorlds {
                 temp.add(Sotrun);
                 temp.add(Benqua);
                 
-                Game game = new Game();
+                
                 /*game.setSteppable(r);
                 game.setSteppable(a);
                 game.setSteppable(S);
                 game.setSteppable(S2);*/
+                Map map = new Map(true, fieldlist);
+                Game game = new Game(map);
                 game.AddMovable(r, Auchen);
                 game.AddMovable(a, Auchen);
                 game.AddMovable(S, Auchen);

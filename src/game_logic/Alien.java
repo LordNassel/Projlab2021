@@ -33,8 +33,7 @@ public class Alien extends Movable  {
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
         	System.out.println("Mozogtam aleinként");
-            //Move_AI(); BUGOS
-            
+            Move_AI();
         }
 
 
