@@ -82,10 +82,10 @@ public abstract class Movable implements Steppable {
 		
 	}
 	
-	public void SetRadiation()
+	public void SetRadiation(double rad)
 	{
 		System.out.println("SetRadiation");
-		
+		radiation = rad;
 		
 	}
 	
