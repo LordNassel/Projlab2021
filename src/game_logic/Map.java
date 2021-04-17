@@ -33,7 +33,7 @@ public class Map implements Steppable {
     }
 
     //place a teleport on a field
-    public void Place_teleport() {
+    public void Place_teleport(Teleport t) {
         System.out.println("Place Teleport called");
         
         Coal c = new Coal();
@@ -42,6 +42,11 @@ public class Map implements Steppable {
         
         t1.SetNeighbor(a);
         
+    }
+    
+    public Asteroid getRandomAsteroid() {
+    	Random rand = new Random();
+    	return (Asteroid) FieldList.get(rand.nextInt(FieldList.size()));
     }
 
 }
