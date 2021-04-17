@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Vector;
 
 
-abstract class Field implements Steppable{
+abstract class Field{
 //Vector storage for convenience, an array would work too since <=300
 protected Vector<Field> Neighbors = new Vector<Field>();
 protected List<Movable> MovableList;
@@ -22,9 +22,10 @@ private String name;
 	//Explode. Kills all things on map then removes itself from the map.
 	protected void Explode() {
 	System.out.println("Field.Explode Called");
-	for(int i=0; i<MovableList.size(); i++)
+	for(int i=MovableList.size()-1; i>=0; i--) // Iteráció közben törölünk elemeket ezért inkább így
 		MovableList.get(i).HitByExplosion();
-	Neighbors =null;
+	Neighbors = null;
+	// Kell ide olyan ami külön beállítja a szomszédainál hogy õ már nincs?
 	}
 
 	//Sunstorm on a generic asteroid type, the asteroid remains undamaged, all movables die.

@@ -104,6 +104,7 @@ public class TempGenWorlds {
                 game.AddMovable(S2, Auchen);
                 game.AddMovable(S, Auchen); //Settlereket a végére!
                 game.AddMovable(r, Auchen); // Robot elõre!
+                game.AddMovable(s3, Auchen);
 
 
 

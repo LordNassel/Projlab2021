@@ -65,13 +65,14 @@ public class Game {
 				Losegame();
     		/*for(Steppable step : MovableList)
     			step.Step();*/
-    		for(int i= MovableList.size()-1; i>=0; i--)
+    		for(int i= 0; i<MovableList.size(); i++)
     		{
     			if(getIsTherAnySettler()==false)
+    			{
     				Losegame();
-    			if(!MovableList.isEmpty())
-    				MovableList.get(i).Step();
-    			
+    				return;
+    			}
+    			MovableList.get(i).Step();
     		}  		
     	}
     }
@@ -103,9 +104,9 @@ public class Game {
     }
 
    //Step funkcio overrideja
-    public void Step() {
+    /*public void Step() {
         
-    }
+    }*/
     
     public boolean getIsTherAnySettler()
 	{

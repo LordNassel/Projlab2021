@@ -72,7 +72,7 @@ public class Asteroid extends Field{
 			//if the asteroid has been drilled the material inside will get exposed. 
 			for(int i =0; i<CoreMaterial.size(); i++)
 			{
-				this.isMinable = true;
+				this.isMinable = true; //?????????? Field attrib.
 
 			}
 		}
@@ -84,6 +84,7 @@ public class Asteroid extends Field{
 	//The mining function
 	@Override public Material GetMined(){
 		System.out.println("Asteroid.GetMined() Called");
+		
 	//ha az aszteroida nem ures	
 		if(!CoreMaterial.isEmpty())
 		{
@@ -106,7 +107,12 @@ public class Asteroid extends Field{
 	public boolean StoreMaterial(Material M) {
 		System.out.println("Asteroid.StoreMaterial Called");
 		
-		if(CoreMaterial.size()<3)
+		if(CoreMaterial.size()<3)// && CoreMaterial.get(0).equals(M))
+		{
+			CoreMaterial.add(M); //Kell egy check, hogy homogén maradjon az aszteroida magja
+			return true;
+		}
+		else if(CoreMaterial.isEmpty()) //Ha üres akkor nem szamit milyet teszunk be
 		{
 			CoreMaterial.add(M);
 			return true;
@@ -136,13 +142,13 @@ public class Asteroid extends Field{
 		return Thickness;
 	}
 	
-	public boolean isEmpty()
+	/*public boolean isEmpty() :DD
 	{
 		if(this.CoreMaterial.isEmpty() == true)
 			return true;
 		else
 			return false;
-	}
+	}*/
 
 	/*//Test fuggvenyek
 	public void RemoveMaterialFromCore()
@@ -155,9 +161,4 @@ public class Asteroid extends Field{
 		CoreMaterial.clear();
 	}
 	*/
-	@Override
-	public void Step() {
-		
-		
-	}
 }

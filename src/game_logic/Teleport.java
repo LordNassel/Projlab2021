@@ -91,11 +91,6 @@ public class  Teleport extends Field {
         return Pair;
     }
 
-	@Override
-	public void Step() {
-		
-	}
-
 	@Override 
 	public boolean GetDrilled() {
 		return false;
