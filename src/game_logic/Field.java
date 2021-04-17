@@ -25,8 +25,8 @@ private String name;
 	}
 
 	//Sunstorm on a generic asteroid type, the asteroid remains undamaged, all movables die.
-	public void SunStorm() {
-	System.out.println("Field.SunStorm Called");
+	public void ReachedBySunStorm() {
+	System.out.println("Field.ReachedBySunStorm Called");
 		for(int i=0; i<MovableList.size(); i++)
 			MovableList.get(i).HitBySunStorm();
 	}

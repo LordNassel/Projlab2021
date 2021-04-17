@@ -29,7 +29,7 @@ public class Map implements Steppable {
     public void StartSunstorm() {
     	System.out.println("StartSunStorm called");
     	for(int i = 0; i < FieldList.size(); i++)
-    		FieldList.get(i).SunStorm();
+    		FieldList.get(i).ReachedBySunStorm();
     }
 
     //place a teleport on a field
