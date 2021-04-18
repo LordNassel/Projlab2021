@@ -33,7 +33,7 @@ public class Map implements Steppable {
     	System.out.println("Sugarzas eggyel nott");
     	sugarzas++;
     	System.out.println("A sugarzas nagysaga: " + sugarzas);
-    	if(sugarzas==3)
+    	if(sugarzas==11)
     		StartSunstorm();
     	
     }
@@ -54,7 +54,7 @@ public class Map implements Steppable {
         System.out.println("Place Teleport called");
         
         Coal c = new Coal();
-        Asteroid a = new Asteroid("a", c);
+        Asteroid a = new Asteroid("a", "Coal");
         Teleport t1 = new Teleport("tp1");
         
         t1.SetNeighbor(a);

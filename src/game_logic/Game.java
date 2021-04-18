@@ -36,7 +36,7 @@ public class Game {
     }
 
    // Creates the playable map for the users
-    public void GenerateMap() {
+    /*public void GenerateMap() {
     	System.out.println("GenerateMap called");
     	
     	Coal c = new Coal();
@@ -51,7 +51,7 @@ public class Game {
         
         Settler s = new Settler(ga);
         ga.AcceptPlayer(s);
-    }
+    }*/
 
    // Starts the game, by generating the map
     public void StartGame() {
@@ -111,7 +111,7 @@ public class Game {
     public boolean getIsTherAnySettler()
 	{
     	Asteroid a = new Asteroid("bela");
-    	Settler s = new Settler(a);
+    	Settler s = new Settler("Palyer", a);
 		int number = 0;
 		for(int i = 0; i<steppableList.size(); i++)
 		{

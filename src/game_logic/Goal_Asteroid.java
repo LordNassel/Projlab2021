@@ -8,7 +8,7 @@ public class Goal_Asteroid extends Asteroid  {
 	private Vector<Material> GoalMaterials = new Vector<Material>();
 	private Vector<Material> CurrentMaterials = new Vector<Material>();
 	//Constructor it will need a list of materials, these materials if collected will win the game
-	public Goal_Asteroid(String name, Material M, Vector<Material> list) {
+	public Goal_Asteroid(String name, String M, Vector<Material> list) {
 		super(name, M);
 		System.out.println("Goal_Asteroid.Constructor Called");
 		GoalMaterials = list;

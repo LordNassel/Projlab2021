@@ -13,9 +13,9 @@ public class Test {
 		Iron iron = new Iron();
 		Iron ittr = new Iron();
 		//Konstruktor guide -> asteroid -> name, material
-		Asteroid a1 = new Asteroid("a1",iron);
-		Asteroid a2 = new Asteroid("a2",iron);
-		Asteroid a3 = new Asteroid("a3",iron);
+		Asteroid a1 = new Asteroid("a1", "Iron");
+		Asteroid a2 = new Asteroid("a2","Iron");
+		Asteroid a3 = new Asteroid("a3","Iron");
 		
 		//Konstruktor guide -> settler -> asteroid
 		Settler player = new Settler(a1);
@@ -48,7 +48,7 @@ public class Test {
         switch(this.inputmanager())
         {
         case 0:
-        	a = new Asteroid("a", iron);
+        	a = new Asteroid("a", "Iron");
         	player = new Settler(a);
         	player.Mine();
     		this.TestMgr();
@@ -77,7 +77,7 @@ public class Test {
 		switch(this.inputmanager())
 		{
 		case 0:
-			a = new Asteroid("a", i, false, 1);
+			a = new Asteroid("a", "Iron", false, 1);
 			player = new Settler(a);
 			player.Drill();
 	        this.TestMgr();
@@ -90,7 +90,7 @@ public class Test {
 			switch(this.inputmanager())
 			{
 			case 1:
-				a = new Asteroid("a", i, false, 1);
+				a = new Asteroid("a", "Iron", false, 1);
 				player = new Settler(a);
 				a.AcceptPlayer(player);
 				player.Drill();
@@ -103,7 +103,7 @@ public class Test {
 				switch(this.inputmanager())
 				{
 				case 0:
-					a = new Asteroid("a", uranium, true, 1);
+					a = new Asteroid("a", "Uranium", true, 1);
 					player = new Settler(a);
 					a.AcceptPlayer(player);
 					//a.RemoveAllMaterialFromCore();
@@ -112,7 +112,7 @@ public class Test {
 			        this.TestMgr();
 					break;
 				case 1:
-					a = new Asteroid("a", uranium, false, 1);
+					a = new Asteroid("a", "Uranium", false, 1);
 					player = new Settler(a);
 					a.AcceptPlayer(player);
 					//a.RemoveAllMaterialFromCore();
@@ -133,7 +133,7 @@ public class Test {
 		Iron iron = new Iron();
 		Coal coal = new Coal();
 		Uranium uran = new Uranium();
-		Asteroid a = new Asteroid("a", iron);
+		Asteroid a = new Asteroid("a", "Iron");
 		Settler player = new Settler(a);
 
 		System.out.println("Van elég nyersanyag?\n");
@@ -164,7 +164,7 @@ public class Test {
 		Iron iron = new Iron();
 		Ice ice = new Ice();
 		Uranium uran = new Uranium();
-		Asteroid a = new Asteroid("a", iron);
+		Asteroid a = new Asteroid("a", "Iron");
 		Settler player = new Settler(a);
 
 		System.out.println("Van elég nyersanyag?\n");
@@ -209,7 +209,7 @@ public class Test {
 			this.TestMgr();
 			break;
 		case 1:
-			a= new Asteroid("a",i);
+			a= new Asteroid("a","Iron");
 			s = new Settler(a);
 			a.AcceptPlayer(s);
 			s.Hide();
@@ -288,13 +288,13 @@ public class Test {
 		
 		System.out.println("Elöször egy settlert veszünk fel\n");
 		Ice i = new Ice();
-		Asteroid a = new Asteroid("a1", i);
+		Asteroid a = new Asteroid("a1", "Iron");
 		Settler s = new Settler(a);
 		
 		g.AddMovable(s, a);
 
 		System.out.println("Utána pedig egy robotot\n");
-		Asteroid a2 = new Asteroid("a2", i);
+		Asteroid a2 = new Asteroid("a2", "Iron");
 		Robot r = new Robot(a2);
 		
 		g.AddMovable(r, a2);
@@ -328,7 +328,7 @@ public class Test {
 			this.TestMgr();
 			break;
 		case 1:
-			a= new Asteroid("a", i);
+			a= new Asteroid("a", "Iron");
 			s = new Settler(a);
 			s.PutMaterial(i);
 			this.TestMgr();
@@ -445,7 +445,7 @@ public class Test {
 		case 1:
 			Robot robot = new Robot(a1);
 			a1.AcceptPlayer(robot);
-			Asteroid a2 = new Asteroid("a2", uran);
+			Asteroid a2 = new Asteroid("a2", "Uranium");
 			System.out.println("Van szomszedos aszteroida?");
 			System.out.println("0. Igen");
 			System.out.println("1. Nem");
@@ -500,7 +500,7 @@ public class Test {
 		T1= new Teleport("Egyes teleport");
 		T2 = new Teleport("Kettes teleport");
 		Iron iron = new Iron();
-		Asteroid a1 = new Asteroid("a1", iron);
+		Asteroid a1 = new Asteroid("a1", "Iron");
 		Settler player = new Settler(a1);
 		//Teleportok osszeparositasa
 		T1.setPair(T2);

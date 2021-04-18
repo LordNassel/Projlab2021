@@ -11,7 +11,6 @@ import java.util.Vector;
 public class Settler extends Movable {
 	//Az iranyithato jatekos
 
-	
 	private List<Material> inventoryMain;
 	
 	private List<Teleport> inventoryTeleport;
@@ -23,6 +22,16 @@ public class Settler extends Movable {
 		inventoryMain = new ArrayList<Material>();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}
+	
+	public Settler(String name, Asteroid position)
+	{
+		super(position);
+		System.out.println("Settler constructor called");
+		movablesName = name;
+		inventoryMain = new ArrayList<Material>();
+		inventoryMain.clear();
+		inventoryTeleport = new ArrayList<Teleport>();
+	}
 	//Banyaszik a jatekos
 	public void Mine()
 	{
@@ -30,7 +39,8 @@ public class Settler extends Movable {
 		{
 		System.out.println("Mine");
 		Material minedMaterial = ((Asteroid)currentField).GetMined();
-		this.Store(minedMaterial);
+		if(minedMaterial != null)
+			this.Store(minedMaterial);
 		}
 		else
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
@@ -161,11 +171,14 @@ public class Settler extends Movable {
 		else
 		{
 			System.out.println("Valasz ki melyik nyersanyagot szeretned eltarolni:");
-			for(int i=0; i<inventoryMain.size(); i++)
-				System.out.println(i + ". " + inventoryMain.get(i));
+			//if(!inventoryMain.isEmpty())
+			//{
+				for(int i=0; i<inventoryMain.size(); i++)
+					System.out.println(i + ". " + inventoryMain.get(i));
 			Scanner myinput = new Scanner(System.in);
 			int input = myinput.nextInt();
 			return inventoryMain.get(input);
+			//}
 		}
 	}
 
@@ -192,8 +205,15 @@ public class Settler extends Movable {
 		//this.Move(currentlist.get(n));
 	}
 	
+	public String getSettlerName()
+	{
+		return movablesName;
+	}
+	
 	public void Step()
 	{
+		System.out.println("Az akutalis jatekos: " + movablesName);
+		System.out.println("A jelenlegi poziciod: " + this.GetCurrentField().Getname() + " aszteroida");
 		System.out.println("Mit szeretnél csinálni?");
 		Scanner myinput = new Scanner(System.in);
 		int valasz = myinput.nextInt(); // TO-DO: Ha bezarod akkor a System.in-is amit nem tudunk ujra megnyitni
@@ -215,7 +235,8 @@ public class Settler extends Movable {
 			break;
 		case 5:
 			Material selectedMaterial = selectMaterialToPut();
-			PutMaterial(selectedMaterial);
+			if(selectedMaterial != null)
+				PutMaterial(selectedMaterial);
 			break;
 		case 6:
 			//ActivateTeleport();

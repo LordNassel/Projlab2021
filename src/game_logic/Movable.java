@@ -7,6 +7,7 @@ public abstract class Movable implements Steppable {
 
 	//El van-e rejtozve
 	protected boolean isHidden;
+	protected String movablesName;
 
 	//konstruktor
 	protected Field currentField;
@@ -16,8 +17,7 @@ public abstract class Movable implements Steppable {
 	{
 		currentField = onField;
 		isHidden = false;
-	}
-	
+	}	
 
 	//Befogadast ker egy parameterben kaptt mezore
 	public void Move(Field a)
@@ -53,6 +53,8 @@ public abstract class Movable implements Steppable {
 		System.out.println("Die()");
 		currentField.RemovePlayer(this);
 		Game.RemoveSteppable(this);
+		if(this.getClass() == Settler.class)
+			System.out.println("A(z) " + movablesName + " jatekos meghalt, beke poraira");
 		
 	}
 	//felrobban az obajektum
