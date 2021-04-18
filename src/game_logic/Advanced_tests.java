@@ -31,46 +31,27 @@ Vector<Field> Field_Temp_List = new Vector<>();
             }
         }
 
-    //ez az anyagpeldanyosito dolog -> erre lehet kellene valami jobb megoldás
-    private Material MaterialCreator(String command){
-     switch (command) {
-         case "iron":
-             Iron i = new Iron();
-             return i;
 
-         case "ice":
-             Ice n = new Ice();
-             return n;
-         case "uranium":
-             Uranium u = new Uranium();
-             return u;
-
-         case "coal":
-             Coal c = new Coal();
-             return c;
-
-     }
-     Iron nz = new Iron();
-     return nz;
 }
     //itt példányosítom az aszteroidákat a szövegfileból
     private void AsteroidCreator(String[] command){
     Asteroid temp;
     //Attól függ hogy milyen hosszú, hogy melyik konstruktort hívtam meg
+    //Változott az aszteroida konstruktor ! Tudom hogy nem fordul így, de akkor is így jó. artur
      switch (command.length){
          case 3:
-              temp = new Asteroid(command[1], MaterialCreator(command[2]));
+             temp = new Asteroid(command[1], command[2]);
              Field_Temp_List.add(temp);
              break;
          case 4:
-              temp = new Asteroid(command[1], MaterialCreator(command[2]), Boolean.parseBoolean(command[3]));
+             temp = new Asteroid(command[1], command[2], Boolean.parseBoolean(command[3]));
              Field_Temp_List.add(temp);
              break;
          case 5:
-              temp = new Asteroid(command[1], MaterialCreator(command[2]),Boolean.parseBoolean(command[3]), Integer.parseInt(command[4]));
+             temp = new Asteroid(command[1], command[2],Boolean.parseBoolean(command[3]), Integer.parseInt(command[4]));
              Field_Temp_List.add(temp);
              break;
-         default:
+
      }
 
 
