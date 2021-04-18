@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Vector;
 
 
-abstract class Field{
+public abstract class Field{
 //Vector storage for convenience, an array would work too since <=300
 protected Vector<Field> Neighbors = new Vector<Field>();
 protected List<Movable> MovableList;
