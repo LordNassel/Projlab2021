@@ -10,7 +10,7 @@ public class StartSunstorm_function {
         while (fields.get(n).Getname().equals(command[1])== false) {
             n++;
         }
-        // Map osztalyb�l
+        // Map osztalyból
         Field field = fields.get(n);
         Vector<Field> neighbors = field.FindNeighbor();
         Vector<Field> secondneighbors = new Vector<Field>();
@@ -18,7 +18,7 @@ public class StartSunstorm_function {
         for(int y = 0; y < neighbors.size(); y++)
         {
             neighbors.get(y).ReachedBySunStorm(); //minden szomszedra meghivjuk
-            secondneighbors.addAll(neighbors.get(y).FindNeighbor()); //Nem effekt�v de nek�nk megteszi
+            secondneighbors.addAll(neighbors.get(y).FindNeighbor()); //Nem effektív de nekünk megteszi
         }
         for(int z=0; z < secondneighbors.size(); z++)
             secondneighbors.get(z).ReachedBySunStorm();
