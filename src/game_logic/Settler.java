@@ -233,6 +233,11 @@ public class Settler extends Movable {
 		return movablesName;
 	}
 	
+	public void Build()
+	{
+		((Goal_Asteroid)currentField).BuildBase();
+	}
+	
 	public void Step()
 	{
 		System.out.println("Az akutalis jatekos: " + movablesName);
@@ -271,6 +276,8 @@ public class Settler extends Movable {
 		case 8:
 			CraftTeleports();
 			break;
+		case 9:
+			Build();
 		default:
 			break;
 		}

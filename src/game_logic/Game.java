@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Game {
 
-	private boolean running;
+	private static boolean running;
 	private Map map;
 	private static ArrayList<Steppable> steppableList = new ArrayList<Steppable>();
 
@@ -21,7 +21,7 @@ public class Game {
     }
 
     // If the materials are collected this is the method called
-    public void Wingame() {
+    public static void Wingame() {
     	System.out.println("Wingame called");
     	running=false;
         

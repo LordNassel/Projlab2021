@@ -63,8 +63,27 @@ public class TempGenWorlds {
                 Settler S = new Settler("Plaayer1", Auchen);
                 Settler S2 = new Settler("Player2", Auchen);
                 Settler s3 = new Settler("Player3", Auchen);
+                Vector<Material> list = new Vector<Material>();
+                list.add(ice);
+                list.add(ice);
+                list.add(ice);
+                list.add(u);
+                list.add(u);
+                list.add(u);
+                list.add(c);
+                list.add(c);
+                list.add(c);
+                list.add(i);
+                list.add(i);
+                list.add(i);
+
+
+
+                Goal_Asteroid goal = new Goal_Asteroid("Goal_Asteroid", "Iron", list);
                 Robot r = new Robot(Auchen);
                 Alien a = new Alien(Auchen);
+                goal.SetNeighbor(Auchen);
+                Auchen.SetNeighbor(goal);
                 
                 Vector<Field> fieldlist = new Vector<Field>();
                 fieldlist.add(Auchen);
