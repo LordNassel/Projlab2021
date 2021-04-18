@@ -144,25 +144,7 @@ public class Asteroid extends Field{
 		teleportOnAsteroid = t;
 	}
 	
-	/*public boolean isEmpty() :DD
-	{
-		if(this.CoreMaterial.isEmpty() == true)
-			return true;
-		else
-			return false;
-	}*/
 
-	/*//Test fuggvenyek
-	public void RemoveMaterialFromCore()
-	{
-		CoreMaterial.remove(0);
-	}
-	
-	public void RemoveAllMaterialFromCore()
-	{
-		CoreMaterial.clear();
-	}
-	*/
 	public void setAsteroidCore(String whichmaterial)
 	{
 		switch(whichmaterial)

@@ -78,7 +78,7 @@ public class Advanced_tests {
                 this.Stats_Command_manager(comdline);
                 break;
             case "SetNeighbor":
-
+              this.Field_Test_List =  this.CurrentNeighborManager.TeenyTinyNeighboursetty(Field_Test_List, comdline);
                 break;
             default:
                 System.out.println("ejjoj");

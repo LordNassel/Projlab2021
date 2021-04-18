@@ -11,7 +11,12 @@ public class Stats_manager {
             while (Field_Temp_List.get(n).Getname().equals(command[2]) == false)
                 n += 1;
             //itt írom ki a nevét a bolygónak
-            System.out.println(Field_Temp_List.get(n).Getname());
+            System.out.println("Név: " + Field_Temp_List.get(n).Getname());
+            //A szomszédok kiírása
+            System.out.println("Szomszédok:");
+            Vector<Field> temp = Field_Temp_List.get(n).FindNeighbor();
+            for(int i=0; i<temp.size(); i++)
+                System.out.println(temp.get(n));
         }
     }
 
