@@ -7,10 +7,13 @@ public class Main{
 	 public static void main(String[] args) {
 		 System.out.println("Every man's sky");
 		//tesztpark peldanyositasa
-		 Advanced_tests currenttests = new Advanced_tests();
+		 //Advanced_tests currenttests = new Advanced_tests();
 		//tesztek futtatasa
-		 currenttests.AdvancedTestMgr();
-	       
+		 //currenttests.AdvancedTestMgr();
+		 TempGenWorlds temp = new TempGenWorlds();
+		// Game game = new Game();
+		 temp.Generateworlds(1);
+		// game.StartGame();
 		 }
 
 }

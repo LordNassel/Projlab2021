@@ -1,5 +1,7 @@
 package game_logic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class TempGenWorlds {
@@ -17,16 +19,17 @@ public class TempGenWorlds {
                         "Jo kikapcsolodast");
                 Vector<Field> temp = new Vector<Field>();
                 //Minden uj aszteroida
-                Asteroid Auchen = new Asteroid("Auchenshuggle", i);
-                Asteroid FormFoss = new Asteroid("FormFoss", c);
-                Asteroid Timeston = new Asteroid("Timeston", u);
-                Asteroid Hewe = new Asteroid("Hewe", u);
-                Asteroid Beckistale = new Asteroid("Beckistale");
-                Asteroid Boroughton = new Asteroid("Boroughton", ice);
-                Asteroid MyreFall = new Asteroid("MyreFall");
-                Asteroid LongDale = new Asteroid("LongDale", i);
-                Asteroid Sotrun = new Asteroid("Sotrun", u);
-                Asteroid Benqua = new Asteroid("Benqua");
+                Asteroid Auchen = new Asteroid("Auchenshuggle", "Uranium", true, 0);
+                //tring name, Material M, boolean isSunside
+                Asteroid FormFoss = new Asteroid("FormFoss", "Coal");
+                Asteroid Timeston = new Asteroid("Timeston", "Uranium");
+                Asteroid Hewe = new Asteroid("Hewe", "Uranium");
+                Asteroid Beckistale = new Asteroid("Beckistale", "Iron"); //rand
+                Asteroid Boroughton = new Asteroid("Boroughton", "Ice");
+                Asteroid MyreFall = new Asteroid("MyreFall", "Iron"); //rand
+                Asteroid LongDale = new Asteroid("LongDale", "Iron");
+                Asteroid Sotrun = new Asteroid("Sotrun", "Uranium");
+                Asteroid Benqua = new Asteroid("Benqua", "Iron"); //rand
                 //Szomszedok
                 Auchen.SetNeighbor(FormFoss);
                 Auchen.SetNeighbor(Timeston);
@@ -57,7 +60,44 @@ public class TempGenWorlds {
 
                 Boroughton.SetNeighbor(Beckistale);
 
-               // Settler S = new Settler(Auchen);
+                Settler S = new Settler("Plaayer1", Auchen);
+                Settler S2 = new Settler("Player2", Auchen);
+                Settler s3 = new Settler("Player3", Auchen);
+                Vector<Material> list = new Vector<Material>();
+                list.add(ice);
+                list.add(ice);
+                list.add(ice);
+                list.add(u);
+                list.add(u);
+                list.add(u);
+                list.add(c);
+                list.add(c);
+                list.add(c);
+                list.add(i);
+                list.add(i);
+                list.add(i);
+
+
+
+                Goal_Asteroid goal = new Goal_Asteroid("Goal_Asteroid", "Iron", list);
+                Robot r = new Robot(Auchen);
+                Alien a = new Alien(Auchen);
+                goal.SetNeighbor(Auchen);
+                Auchen.SetNeighbor(goal);
+                
+                Vector<Field> fieldlist = new Vector<Field>();
+                fieldlist.add(Auchen);
+                fieldlist.add(FormFoss);
+                fieldlist.add(Timeston);
+                fieldlist.add(Hewe);
+                fieldlist.add(Beckistale);
+                fieldlist.add(Boroughton);
+                fieldlist.add(MyreFall);
+                fieldlist.add(LongDale);
+                fieldlist.add(Sotrun);
+                fieldlist.add(Benqua);
+
+
 
                 temp.add(Auchen);
                 temp.add(FormFoss);
@@ -69,10 +109,39 @@ public class TempGenWorlds {
                 temp.add(LongDale);
                 temp.add(Sotrun);
                 temp.add(Benqua);
+                
+                
+                /*game.setSteppable(r);
+                game.setSteppable(a);
+                game.setSteppable(S);
+                game.setSteppable(S2);*/
+                Map map = new Map(true, fieldlist);
+                Game game = new Game(map);
+
+                //game.AddMovable(a, Auchen);
+               // game.AddMovable(s3, Auchen);
+                game.AddMovable(S, Auchen);
+               // game.AddMovable(S2, Auchen); //Settlereket a végére!
+                game.AddMovable(r, Auchen); // Robot elõre!
+              //  game.AddMovable(s3, Auchen);
+                game.AddSteppable(map);
+
+                Teleport teleport = new Teleport("Teleport kapu1", Auchen);
+                Teleport teleport_pair = new Teleport("t2", Boroughton);
+                teleport.setPair(teleport_pair);
+                teleport_pair.setPair(teleport);
+                Auchen.SetNeighbor(teleport);
+                S.addTelportToInventory(teleport);
+                S.addTelportToInventory(teleport_pair);
+
+
+                
+
+                game.StartGame();
 
                 return temp;
         }
-        if(which ==2){
+        /*if(which ==2){
             System.out.println("Az inner worlds 200 evvel ezelotti konstruktora hivodott meg. " +
                     "Ez azon resze a vilagnak, ahol minden rendben megy, es a nap messze van. Ez azonban a felujitasok korszaka, eppen minden aszteroida ki van furva ");
             //igen igen, ez erosen sorminta, de csak tesztelesre van igy
@@ -132,7 +201,7 @@ public class TempGenWorlds {
             temp.add(Benqua);
 
             return temp;
-        }
+        }*/
 
        return null;
     }

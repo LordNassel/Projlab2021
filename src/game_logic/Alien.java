@@ -14,20 +14,29 @@ public class Alien extends Movable  {
     //F param, bolygon kell peldanyositani a movableket
     public Alien(Field f) {
         super(f);
+		System.out.println("Alien constructor called");
+
     }
 
 
-    public void step(){
+    public void Step(){
         //Mivel nem igazán tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
         // ha nem tud, elmegy  egy random szomszedos aszteroidara;
         //Ha teleportra tevedne semmi gond, mert az isMinable ugyanugy false lesz
-        if(this.currentField.getMinable()== true && thisasteroidempty == false) {
-            this.Mine();
+    	System.out.println("Alien vagyok és most lépek a körben");
+    	
+        //if( ((Asteroid)currentField).getThickness() == 0 && ((Asteroid)currentField).isEmpty() == false) {
+    	if(thisasteroidempty == false) {
+        	System.out.println("	Bányásztam aleinként");
+        	Mine();
+
+        	//Material minedMaterial=currentField.GetMined();
         }
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
+        	System.out.println("	Mozogtam aleinként");
             Move_AI();
-            }
+        }
 
 
 
@@ -36,11 +45,11 @@ public class Alien extends Movable  {
     //Ezek privat fgv-ek hogy a step ne legyen egy kupleraj
    private void Mine(){
 
-        Material minedMaterial = currentField.GetMined();
-        if(minedMaterial != null) {
+        Material minedMaterial = ((Asteroid)currentField).GetMined();
+        if(minedMaterial!= null) {
             items.add(minedMaterial);
             //Ja, tudom, de osszesen 3x hivodhat meg ez a fgv maximum
-            Mine();
+            //Mine(); //Maradjunk annál, hogy õ is egyszerre csak egyet tudjon kiszedni
         }
         else{
             thisasteroidempty = true;
@@ -50,12 +59,14 @@ public class Alien extends Movable  {
     }
     //A mozgasert felelos belso fuggveny
     private void Move_AI(){
-        Vector<Field> neighbor = currentField.FindNeighbors();
+        Vector<Field> neighbor = currentField.FindNeighbor();
         Random Dirgen = new Random();
         //elmegy egy random bolygora
         super.Move(neighbor.get(Dirgen.nextInt(neighbor.size()-1)));
     }
-
-    public void explode(){}
-    public void die(){}
+    
+    public void HitBySunStorm()
+    {
+    	return;
+    }
 }

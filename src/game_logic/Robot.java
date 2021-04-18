@@ -5,19 +5,22 @@ import java.util.Vector;
 
 // Represents the robot in the game
 public class Robot extends Movable {
+	Random rand = new Random();
+	private boolean isDrilled = false;
 
 	public Robot(Asteroid position) {
 		super(position);
+		System.out.println("Robot constructor called");
+
 	}
 	
 	// A robot atmegy egy random szomszedos aszteroidara, ha tud
 	// egyebkent meghal.
 	private void MoveOrDie() {
-		Vector<Field> neighbors = currentField.FindNeighbors();
+		Vector<Field> neighbors = currentField.FindNeighbor();
 		if(neighbors.isEmpty()) {
 			Die();
 		} else {
-			Random rand = new Random();
 		    Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
 		    Move(randomNeighbor);
 		}
@@ -31,8 +34,17 @@ public class Robot extends Movable {
 
 	@Override // Step funkcio overrideja
     public void Step() {
-		if(currentField.GetDrilled() == false) {
-			MoveOrDie();
+		if(((Asteroid)currentField).getThickness() == 0) {
+	    	System.out.println("Robot vagyok és léptem");
+
+			Vector<Field> neighbors = currentField.FindNeighbor();
+			Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
+		    Move(randomNeighbor);
+		}
+		else
+		{
+			Drill();
+	    	System.out.println("Robot vagyok és fúrtam");
 		}
     }
 	

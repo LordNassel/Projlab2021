@@ -1,5 +1,8 @@
 package game_logic;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 	import java.util.List;
 import java.util.Scanner;
@@ -8,7 +11,6 @@ import java.util.Vector;
 public class Settler extends Movable {
 	//Az iranyithato jatekos
 
-	
 	private List<Material> inventoryMain;
 	
 	private List<Teleport> inventoryTeleport;
@@ -20,24 +22,42 @@ public class Settler extends Movable {
 		inventoryMain = new ArrayList<Material>();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}
+	
+	public Settler(String name, Asteroid position)
+	{
+		super(position);
+		System.out.println("Settler constructor called");
+		movablesName = name;
+		inventoryMain = new ArrayList<Material>();
+		inventoryMain.clear();
+		inventoryTeleport = new ArrayList<Teleport>();
+	}
 	//Banyaszik a jatekos
 	public void Mine()
 	{
+		if(!isHidden)
+		{
 		System.out.println("Mine");
-		Material minedMaterial=currentField.GetMined();
-		this.Store(minedMaterial);
+		Material minedMaterial = ((Asteroid)currentField).GetMined();
+		if(minedMaterial != null)
+			this.Store(minedMaterial);
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 	}
-	//Egy anyagot eltarol a leltarban
+	//Egy anyagot eltarol az inventoryban
 	public void Store(Material material)
-	{
+	{	
 		System.out.println("Store");
 		inventoryMain.add(material);
 	}
 	
 
-	//robot letrehozasa
+//robot letrehozasa
 	public void CraftRobot()
 	{
+		if(!isHidden)
+		{
 		System.out.println("CraftRobot");
 
 		Coal coal = new Coal();
@@ -51,6 +71,7 @@ public class Settler extends Movable {
 		{
 			Robot craftedRobot = new Robot((Asteroid)currentField);
 			currentField.AcceptPlayer(craftedRobot);
+			Game.AddSteppable(craftedRobot);
 			inventoryMain.remove(coal);
 			inventoryMain.remove(iron);
 			inventoryMain.remove(uran);
@@ -58,10 +79,16 @@ public class Settler extends Movable {
 		}
 		else
 			System.out.println("Failed: not enoguh materials");
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
+
 	}
 	//Teleport letrehozasa
 	public void CraftTeleports()
 	{
+		if(!isHidden)
+		{
 		System.out.println("CraftTeleports");
 
 		int niron, nuran, nice;
@@ -91,6 +118,10 @@ public class Settler extends Movable {
 		}
 		else
 			System.out.println("Failed: Not enough materials");
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
+
 	}
 	
 	public int getMaterialTypeNumber(Material m)
@@ -106,22 +137,84 @@ public class Settler extends Movable {
 	//Aktival egy teleportot
 	public void ActivateTeleport(Teleport teleport)
 	{
-		System.out.println("ActivateTeleport");
-		teleport.setIsActive();			
-		inventoryTeleport.remove(teleport);
+		if(!isHidden)
+		{
+			System.out.println("ActivateTeleport");
+			teleport.setIsActive();
+			((Asteroid)currentField).setTeleportOnAsteroid(teleport);
+			teleport.SetNeighbor(currentField);
+			currentField.SetNeighbor(teleport);
+			teleport.setOnAsteroid(((Asteroid)currentField));
+			inventoryTeleport.remove(teleport);
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
+
 	}
+	
+	public Teleport selectTeleportFromInventory()
+	{
+		if(inventoryTeleport.isEmpty())
+		{
+			System.out.println("Nincs nalad teleport");
+			return null;
+		}
+		else
+		{
+			System.out.println("Valaszd ki melyik teleportot akarod akitválni: ");
+			for(int i=0; i<inventoryTeleport.size();i++)
+				System.out.println(i + ". " + inventoryTeleport.get(i).Getname());
+			Scanner myinput = new Scanner(System.in);
+			int input = myinput.nextInt();
+			return inventoryTeleport.get(input);
+		}
+	}
+	
 	// elhelyez anyagot a bolygoban
 	public void PutMaterial(Material material)
 	{
+		if(!isHidden)
+		{
 		System.out.println("PutMaterial");
 		((Asteroid)currentField).StoreMaterial(material);
 		inventoryMain.remove(material);
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
+
+	}
+	
+	public Material selectMaterialToPut()
+	{
+		if(inventoryMain.isEmpty())
+		{
+			System.out.println("A nyersanyag tarolo ures");
+			return null;
+		}
+		else
+		{
+			System.out.println("Valasz ki melyik nyersanyagot szeretned eltarolni:");
+			//if(!inventoryMain.isEmpty())
+			//{
+				for(int i=0; i<inventoryMain.size(); i++)
+					System.out.println(i + ". " + inventoryMain.get(i));
+			Scanner myinput = new Scanner(System.in);
+			int input = myinput.nextInt();
+			return inventoryMain.get(input);
+			//}
+		}
 	}
 
 	//Ez a gui-n keresztul ker utvonalvalasztast
-	public void FindDirections() {
+	public Field FindDirections() {
 		Vector<Field> currentlist = new Vector<Field>();
-		currentlist = this.currentField.FindNeighbors();
+		currentlist = this.currentField.FindNeighbor();
+		if(currentlist.isEmpty())
+		{
+			System.out.println("Nincs szomszedos aszteroida");
+			return null;
+		}
+		else {
 		System.out.println("Válaszd ki melyik szomszédos bolygóra akarsz utazni:");
 		for(int i = 0; i<currentlist.size(); i++) {
 			System.out.println(i + ". " + currentlist.get(i).Getname());
@@ -130,7 +223,69 @@ public class Settler extends Movable {
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
 		n= myinput.nextInt();
-		this.Move(currentlist.get(n));
+		return currentlist.get(n);
+		}
+		//this.Move(currentlist.get(n));
+	}
+	
+	public String getSettlerName()
+	{
+		return movablesName;
+	}
+	
+	public void Build()
+	{
+		((Goal_Asteroid)currentField).BuildBase();
+	}
+	
+	public void Step()
+	{
+		System.out.println("Az akutalis jatekos: " + movablesName);
+		System.out.println("A jelenlegi poziciod: " + this.GetCurrentField().Getname() + " aszteroida");
+		System.out.println("Mit szeretnél csinálni?");
+		Scanner myinput = new Scanner(System.in);
+		int valasz = myinput.nextInt(); // TO-DO: Ha bezarod akkor a System.in-is amit nem tudunk ujra megnyitni
+		
+		switch(valasz)
+		{
+		case 1:
+			Field targetField = FindDirections();
+			Move(targetField);
+			break;
+		case 2:
+			Drill();
+			break;
+		case 3:
+			Hide();
+			break;
+		case 4:
+			Mine();
+			break;
+		case 5:
+			Material selectedMaterial = selectMaterialToPut();
+			if(selectedMaterial != null)
+				PutMaterial(selectedMaterial);
+			break;
+		case 6:
+			Teleport selected = selectTeleportFromInventory();
+			ActivateTeleport(selected);
+			break;
+		case 7:
+			CraftRobot();
+			break;
+		case 8:
+			CraftTeleports();
+			break;
+		case 9:
+			Build();
+		default:
+			break;
+		}
+	}
+	
+	public void addTelportToInventory(Teleport t)
+	{
+		inventoryTeleport.add(t);
 	}
 
 }
