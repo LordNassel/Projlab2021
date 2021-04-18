@@ -98,4 +98,7 @@ public abstract class Movable implements Steppable {
 		System.out.println("SetIsHidden()");
 		isHidden=!isHidden;
 	}
+	public String Getname() {
+		return this.movablesName;
+	}
 }
