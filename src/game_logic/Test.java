@@ -368,12 +368,12 @@ public class Test {
 		switch(this.inputmanager())
 		{
 		case 0:
-			Asteroid a1 = new Asteroid("a1", ice, true);
+			Asteroid a1 = new Asteroid("a1", "ice", true);
 			ice.GetExposed(true, a1);
 			this.TestMgr();
 			break;
 		case 1:
-			Asteroid a2 = new Asteroid("a2", ice, false);
+			Asteroid a2 = new Asteroid("a2", "ice", false);
 			ice.GetExposed(false, a2);
 			System.out.println("A vízjég nem szublimál.\n");
 			this.TestMgr();
@@ -408,13 +408,13 @@ public class Test {
 		switch(this.inputmanager())
 		{
 		case 0:
-			Asteroid a1 = new Asteroid("a1", uran, true);
+			Asteroid a1 = new Asteroid("a1", "uran", true);
 			uran.GetExposed(true, a1);
 			System.out.println("Radioaktív maggal rendelkezõ aszteroida felrobbant.\n");
 			this.TestMgr();
 			break;
 		case 1:
-			Asteroid a2 = new Asteroid("a2", uran, false);
+			Asteroid a2 = new Asteroid("a2", "uran", false);
 			uran.GetExposed(false, a2);
 			System.out.println("Radioaktív maggal rendelkezõ aszteroida nem robbant fel\n");
 			this.TestMgr();
@@ -429,7 +429,7 @@ public class Test {
 		System.out.println("Aszteroia  felrobban teszt\n");
 
         Uranium uran = new Uranium();
-        Asteroid a1 = new Asteroid("a1", uran, true);
+        Asteroid a1 = new Asteroid("a1", "uran", true);
 
 		System.out.println("Mi van az aszteroidan?\n");
 		System.out.println("0. Settler ");

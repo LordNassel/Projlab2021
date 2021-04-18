@@ -18,59 +18,8 @@ public class Asteroid extends Field{
 		//System.out.println("Asteroid.Constructor Called");
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
-		
-		switch(M)
-		{
-		case "Uranium":
-			/*for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				Uranium u = new Uranium();
-				CoreMaterial.add(u);
-				i++;
-			}*/
-			Uranium u1 = new Uranium();
-			Uranium u2 = new Uranium();
-			Uranium u3 = new Uranium();
-			CoreMaterial.add(u1);
-			CoreMaterial.add(u2);
-			CoreMaterial.add(u3);
+		setAsteroidCore(M);
 
-			break;
-		case "Iron":
-			for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				Iron ir = new Iron();
-				CoreMaterial.add(ir);
-				i++;
-			}
-			break;
-		case "Coal":
-			for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				Coal c = new Coal();
-				CoreMaterial.add(c);
-				i++;
-			}
-			break;
-		case "Ice":
-			for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				Ice ic = new Ice();
-				CoreMaterial.add(ic);
-				i++;
-			}
-			break;
-		default:
-			break;			
-		}
-		
-		/*int n = 0;
-		while (n < 3) {
-			Material u = M;
-			CoreMaterial.add(M);
-			n++;
-		}*/
-		this.isSunside = false;
 	}
 	//Default empty constructor
 	public Asteroid (String name){
@@ -82,16 +31,13 @@ public class Asteroid extends Field{
 		}
 
 	//sunside constructor
-	public Asteroid(String name, Material M, boolean isSunside) {
+	public Asteroid(String name, String M, boolean isSunside) {
 		super(name);
 		//System.out.println("Asteroid.Constructor Called");
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
-		int n=0;
-		while(n<3) {
-			CoreMaterial.add(M);
-			n++;
-		}
+		setAsteroidCore(M);
+
 
 		this.isSunside = isSunside;
 	}
