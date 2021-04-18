@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test1">
-      <change afterPath="$PROJECT_DIR$/TestFiles/test1_IN.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/AFullGameTest_23.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/AGoodDayToDieTest_03.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/AlienExplodesTest_28.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/AlienMinesTest_27.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/AquariumSanityCheckTest_20.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/FreeRoamTest_01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/IceGetsExposedTest_21.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/InitializationTest_24.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/MapConsistencyTest_08.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/RobotDrillsSuccessfullyTest_12.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/RobotDrillsUnsuccessfullyTest_13.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/RobotHitBySunStormHiddenTest_19.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/RobotHitBySunStormNotHiddenTest_18.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/RobotMovesTest_10.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/RoundControlSanityCheckTest_02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsRobotSuccessfullyTest_14.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsRobotUnsuccessfullyTest_15.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsTeleportPairSuccessfullyTest_16.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsTeleportPairUnsuccessfullyTest_17.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerMinesUnsuccessfullyTest_11.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerRestocksUnsuccessfullyTest_04.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerStoresSuccessfullyTest_05.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerStoresUnsuccessfullyTest_06.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportHitBySunStormTest_22.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportPlacedSuccessfullyTest_25.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportPlacedUnsuccessfullyTest_26.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportSunStormAbnormalEventTest_29.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportTravelTest_09.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game_test/UraniumMemoryTest_07.java" afterDir="false" />
+    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test2">
+      <change afterPath="$PROJECT_DIR$/TestFiles/test10_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test11_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test12_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test13_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test14_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test15_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test16_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test17_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test18_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test19_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test20_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test21_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test22_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test23_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test24_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test25_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test26_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test27_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test28_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test29_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test2_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test3_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test4_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test5_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test6_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test7_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test8_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestFiles/test9_IN.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618757487079</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Test2">
+      <created>1618758918597</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618758918597</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,7 +137,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test1" />
+    <MESSAGE value="Test2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Every_man_s_sky$Main.ic" NAME="Main Coverage Results" MODIFIED="1616407126962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
