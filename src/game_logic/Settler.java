@@ -140,7 +140,11 @@ public class Settler extends Movable {
 		if(!isHidden)
 		{
 			System.out.println("ActivateTeleport");
-			teleport.setIsActive();			
+			teleport.setIsActive();
+			((Asteroid)currentField).setTeleportOnAsteroid(teleport);
+			teleport.SetNeighbor(currentField);
+			currentField.SetNeighbor(teleport);
+			teleport.setOnAsteroid(((Asteroid)currentField));
 			inventoryTeleport.remove(teleport);
 		}
 		else

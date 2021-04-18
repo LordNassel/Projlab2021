@@ -11,6 +11,7 @@ public class Asteroid extends Field{
 	//This is a bit magic number-ish, all asteroids store 3 units of material
 	private List<Material> CoreMaterial = new ArrayList<Material>(3);
 	//This is the default constructor, this may however change. Right now it creates the random value for the thickness
+	private Teleport teleportOnAsteroid;
 	
 	public Asteroid(String name, String M) {
 		super(name);
@@ -122,7 +123,7 @@ public class Asteroid extends Field{
 			//if the asteroid has been drilled the material inside will get exposed. 
 			for(int i =0; i<CoreMaterial.size(); i++)
 			{
-				this.isMinable = true; //?????????? Field attrib.
+				this.isMinable = true; //?? Field attrib.
 
 			}
 		}*/
@@ -190,6 +191,11 @@ public class Asteroid extends Field{
 	public int getThickness()
 	{
 		return Thickness;
+	}
+	
+	public void setTeleportOnAsteroid(Teleport t)
+	{
+		teleportOnAsteroid = t;
 	}
 	
 	/*public boolean isEmpty() :DD

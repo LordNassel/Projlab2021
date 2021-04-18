@@ -9,15 +9,15 @@ public class  Teleport extends Field {
     private boolean IsSunStroke;
     private Teleport Pair;
     protected Vector<Teleport> TeleportPair = new Vector<Teleport>();
-    protected Field currentField;
+    protected Asteroid onAsteroid;
     /**
      *Default Constructor
      */
-    public Teleport(String name, Field onField){
+    public Teleport(String name, Asteroid onField){
     	super(name);
     	IsActive = false;
     	IsSunStroke = false;
-        currentField = onField;
+        onAsteroid = onField;
     }
 
     //Erre ideiglenesen mindenkepp szukseg van, de szerintem permanensen is
@@ -73,6 +73,7 @@ public class  Teleport extends Field {
     
     public void setIsActive() { 
         IsActive = !IsActive;
+        
     }
 
     public boolean getIsSunStroke() {return IsSunStroke;}
@@ -87,6 +88,20 @@ public class  Teleport extends Field {
         Pair = givenTeleport;
     }
 
+    @Override
+    public void AcceptPlayer(Movable M) {
+    	//System.out.println("Field.AcceptPlayer Called");
+    	Teleport pair = this.getPair();
+    	Asteroid target = pair.onAsteroid;
+    	target.AcceptPlayer(M);
+    	//M.SetCurrentField(this);
+    	//MovableList.add(M);
+    	}
+    
+    public void setOnAsteroid(Asteroid a)
+    {
+    	onAsteroid = a;
+    }
     public Teleport getPair(){
         return Pair;
     }

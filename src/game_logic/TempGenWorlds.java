@@ -107,10 +107,11 @@ public class TempGenWorlds {
               //  game.AddMovable(s3, Auchen);
                 game.AddSteppable(map);
 
-                Teleport teleport = new Teleport("t1");
-                Teleport teleport_pair = new Teleport("t2");
+                Teleport teleport = new Teleport("Teleport kapu1", Auchen);
+                Teleport teleport_pair = new Teleport("t2", Boroughton);
                 teleport.setPair(teleport_pair);
                 teleport_pair.setPair(teleport);
+                Auchen.SetNeighbor(teleport);
                 S.addTelportToInventory(teleport);
                 S.addTelportToInventory(teleport_pair);
 
