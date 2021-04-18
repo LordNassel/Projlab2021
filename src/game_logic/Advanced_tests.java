@@ -1,12 +1,6 @@
 package game_logic;
 
-import game_test_functions.Comment_function;
-import game_test_functions.Drill_function;
-import game_test_functions.Mine_function;
-import game_test_functions.Move_function;
-import game_test_functions.PutMaterial_function;
-import game_test_functions.SetNeighbor_funcion;
-import game_test_functions.Stats_manager;
+import game_test_functions.*;
 
 import java.util.Scanner;
 import java.util.Vector;
@@ -25,6 +19,12 @@ public class Advanced_tests {
     Mine_function CurrentMineManager = new Mine_function();		
     PutMaterial_function currentPutMaterialManager = new  PutMaterial_function();
     Move_function currentMoveManager = new Move_function();
+    StartSunstorm_function CurrentStartSunstormManager = new StartSunstorm_function();
+    Hide_function currentHideManager = new  Hide_function();
+    ExplodeMovable_function CurrentExplodeMovableManager = new  ExplodeMovable_function();
+    Die_function CurrentDieManager = new  Die_function();
+    CraftTeleport_function CurrentCraftTeleportManager = new  CraftTeleport_function();
+    CraftRobot_function CurrentCraftRobotManager = new  CraftRobot_function();
     		
     // a game elementek
     Vector<Field> Field_Test_List = new Vector<>();
@@ -115,6 +115,18 @@ public class Advanced_tests {
             	this.currentPutMaterialManager.Putmaterial(Field_Test_List, comdline);
             case "Move": 
             	this.currentMoveManager.Move(Field_Test_List, Movable_Test_List, comdline);
+            case "StartSunstorm":
+                this.CurrentStartSunstormManager.StartSunstorm(Field_Test_List, comdline);
+            case "Hide":
+                this.currentHideManager.Hide(Movable_Test_List, comdline);
+            case "ExplodeMovable":
+                this.CurrentExplodeMovableManager.ExplodeMovable(Movable_Test_List, comdline);
+            case "Die":
+                this.CurrentDieManager.Die(Movable_Test_List, comdline);
+            case "CraftTeleport":
+                this.CurrentCraftTeleportManager.CraftTeleport(Movable_Test_List, comdline);
+            case "CraftRobot":
+                this.CurrentCraftRobotManager.CraftRobot(Movable_Test_List, comdline);
             default:
                 System.out.println("ejjoj");
         }
