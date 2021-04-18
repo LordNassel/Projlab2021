@@ -103,50 +103,9 @@ public class Asteroid extends Field{
 			CoreMaterial.add(M);
 			n++;
 		}*/
-		switch(M)
-		{
-		case "Uranium":
-			/*for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				Uranium u = new Uranium();
-				CoreMaterial.add(u);
-				i++;
-			}*/
-			Uranium u1 = new Uranium();
-			Uranium u2 = new Uranium();
-			Uranium u3 = new Uranium();
-			CoreMaterial.add(u1);
-			CoreMaterial.add(u2);
-			CoreMaterial.add(u3);
-
-			break;
-		case "Iron":
-			for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				Iron ir = new Iron();
-				CoreMaterial.add(ir);
-				i++;
-			}
-			break;
-		case "Coal":
-			for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				Coal c = new Coal();
-				CoreMaterial.add(c);
-				i++;
-			}
-			break;
-		case "Ice":
-			for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				Ice ic = new Ice();
-				CoreMaterial.add(ic);
-				i++;
-			}
-			break;
-		default:
-			break;			
-		}
+		
+		setAsteroidCore(M);
+		
 		Thickness = thiccboi;
 		this.isSunside =sunside;
 	}
@@ -252,4 +211,44 @@ public class Asteroid extends Field{
 		CoreMaterial.clear();
 	}
 	*/
+	public void setAsteroidCore(String whichmaterial)
+	{
+		switch(whichmaterial)
+		{
+		case "Uranium":
+			Uranium u1 = new Uranium();
+			Uranium u2 = new Uranium();
+			Uranium u3 = new Uranium();
+			CoreMaterial.add(u1);
+			CoreMaterial.add(u2);
+			CoreMaterial.add(u3);
+			break;
+		case "Iron":
+			Iron i1 = new Iron();
+			Iron i2 = new Iron();
+			Iron i3 = new Iron();
+			CoreMaterial.add(i1);
+			CoreMaterial.add(i2);
+			CoreMaterial.add(i3);
+			break;
+		case "Coal":
+			Coal c1 = new Coal();
+			Coal c2 = new Coal();
+			Coal c3 = new Coal();
+			CoreMaterial.add(c1);
+			CoreMaterial.add(c2);
+			CoreMaterial.add(c3);
+			break;
+		case "Ice":
+			Ice ic1 = new Ice();
+			Ice ic2 = new Ice();
+			Ice ic3 = new Ice();
+			CoreMaterial.add(ic1);
+			CoreMaterial.add(ic2);
+			CoreMaterial.add(ic3);
+			break;
+		default:
+			break;			
+		}
+	}
 }

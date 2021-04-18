@@ -6,6 +6,7 @@ import java.util.Vector;
 // Represents the robot in the game
 public class Robot extends Movable {
 	Random rand = new Random();
+	private boolean isDrilled = false;
 
 	public Robot(Asteroid position) {
 		super(position);
@@ -36,16 +37,15 @@ public class Robot extends Movable {
 		if(((Asteroid)currentField).getThickness() == 0) {
 	    	System.out.println("Robot vagyok és léptem");
 
-			/*Vector<Field> neighbors = currentField.FindNeighbor();
+			Vector<Field> neighbors = currentField.FindNeighbor();
 			Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
-		    Move(randomNeighbor);*/
+		    Move(randomNeighbor);
 		}
 		else
 		{
 			Drill();
 	    	System.out.println("Robot vagyok és fúrtam");
 		}
-
     }
 	
 }

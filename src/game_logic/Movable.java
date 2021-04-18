@@ -37,11 +37,11 @@ public abstract class Movable implements Steppable {
 	{
 		if(!isHidden)
 		{
-		System.out.println("Drill()");
-		if(this.currentField.GetDrilled()==true)
-			System.out.println("Sikeres furas az aszteroida kereg kisebb lett\n");
-		else
-			System.out.println("Sikertelen furas, a kereg mar 0\n");
+			System.out.println("Drill()");
+			if(this.currentField.GetDrilled()==true)
+				System.out.println("Sikeres furas az aszteroida kereg kisebb lett\n");
+			else
+				System.out.println("Sikertelen furas, a kereg mar 0\n");
 		}
 		else
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");

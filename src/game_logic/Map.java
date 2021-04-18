@@ -29,11 +29,9 @@ public class Map implements Steppable {
     	/*Game g = new Game();
     	if(!AnyoneAlive)
     		g.Losegame();*/
-    	System.out.println("Stepbol a filedlist: " + FieldList.size());
-    	System.out.println("Sugarzas eggyel nott");
     	sugarzas++;
-    	System.out.println("A sugarzas nagysaga: " + sugarzas);
-    	if(sugarzas==11)
+    	System.out.println("\nA sugarzas nagysaga: " + sugarzas);
+    	if(sugarzas==11) // Egyelõre én állítom be, hogy tudjam tesztelni
     		StartSunstorm();
     	
     }
@@ -41,11 +39,20 @@ public class Map implements Steppable {
     // Starts the Sun storm for all asteroids
     public void StartSunstorm() {
     	System.out.println("StartSunStorm called");
-    	System.out.println("Fieldlist: " + FieldList.size()); //Ideiglenesen, hogy tudjam ellenõrizni
-    	for(Field fifi : FieldList)
-    		fifi.ReachedBySunStorm();
-    	/*for(int i = 0; i < FieldList.size(); i++)
-    		FieldList.get(i).SunStorm();*/
+    	/*for(Field fifi : FieldList)
+    		fifi.ReachedBySunStorm();*/
+    	Field field = getRandomAsteroid();
+    	Vector<Field> neighbors = field.FindNeighbor();
+    	Vector<Field> secondneighbors = new Vector<Field>();
+    	field.ReachedBySunStorm();
+    	for(int y = 0; y<neighbors.size(); y++)
+    	{
+    		neighbors.get(y).ReachedBySunStorm(); //minden szomszedra meghivjuk
+    		secondneighbors.addAll(neighbors.get(y).FindNeighbor()); //Nem effektív de nekünk megteszi
+
+    	}
+    	for(int z=0; z< secondneighbors.size(); z++)
+			secondneighbors.get(z).ReachedBySunStorm();
     	sugarzas = 1;
     }
 
@@ -59,6 +66,14 @@ public class Map implements Steppable {
         
         t1.SetNeighbor(a);
         
+    }
+    
+    public Field getRandomAsteroid()
+    {
+    	Random rand = new Random();
+    	int idx = rand.nextInt(FieldList.size()-1);
+    	Field asteroid = FieldList.get(idx);
+    	return asteroid;
     }
 
 }
