@@ -77,8 +77,7 @@ public class Asteroid extends Field{
 		
 	}
 
-	
-	//The mining function
+	@Override //The mining function
 	public Material GetMined(){
 		System.out.println("Asteroid.GetMined() Called");
 		
@@ -142,6 +141,10 @@ public class Asteroid extends Field{
 	public void setTeleportOnAsteroid(Teleport t)
 	{
 		teleportOnAsteroid = t;
+	}
+	public boolean getSunSide()
+	{
+		return isSunside;
 	}
 	
 

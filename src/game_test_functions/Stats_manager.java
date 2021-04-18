@@ -2,6 +2,8 @@ package game_test_functions;
 
 import game_logic.Asteroid;
 import game_logic.Field;
+import game_logic.Movable;
+
 import java.util.Vector;
 //ennek az osztálynak a kizárólagos feladatat, hogy a stats<osztaly> parancsot kezelje
 public class Stats_manager {
@@ -14,16 +16,31 @@ public class Stats_manager {
             //MINDIG aszteroida, a kommand definiálja
             Asteroid A1 = (Asteroid) Field_Temp_List.get(n);
             //itt írom ki a nevét a bolygónak
-            System.out.println("Név: " + A1.Getname());
+            System.out.println("Name: " + A1.Getname());
+            //napkozeli e
+            System.out.println("/nIsSunSide: " + A1.getSunSide());
+            //vastagsaga
+            System.out.println("/nThickness:" +  A1.getThickness());
             //A szomszédok kiírása
-            System.out.println("Szomszédok:");
+            System.out.println("/nNeighbours: ");
             Vector<Field> temp = A1.FindNeighbor();
             if(temp!= null) {
                 for (int i = 0; i < temp.size(); i++)
-                    System.out.println(temp.get(0).Getname());
+                    System.out.println(temp.get(0).Getname() + ", ");
             }
-            System.out.println("Vastagság:" +  A1.getThickness());
+            //Materials benne
+            System.out.println("/nMaterials: ");
+            //TO-DO
 
         }
+    public void Settler_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {
+    		//TO-DO
     }
+    public void Robot_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {
+    		//TO-DO
+    }
+    public void Alien_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {
+		//TO-DO
+}
+ }
 

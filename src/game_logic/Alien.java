@@ -42,7 +42,7 @@ public class Alien extends Movable  {
     }
 
     //Ezek privat fgv-ek hogy a step ne legyen egy kupleraj
-   private void Mine(){
+   public void Mine(){
 
         Material minedMaterial = ((Asteroid)currentField).GetMined();
         if(minedMaterial!= null) {

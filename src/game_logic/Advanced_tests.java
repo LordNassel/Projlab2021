@@ -1,6 +1,8 @@
 package game_logic;
 
 import game_test_functions.Comment_function;
+import game_test_functions.Drill_function;
+import game_test_functions.Mine_function;
 import game_test_functions.SetNeighbor_funcion;
 import game_test_functions.Stats_manager;
 
@@ -17,6 +19,10 @@ public class Advanced_tests {
     Comment_function CurrentComment = new Comment_function();
     Stats_manager CurrentStatsManager = new Stats_manager();
     SetNeighbor_funcion CurrentNeighborManager = new SetNeighbor_funcion();
+    Drill_function CurrentDrilManager = new Drill_function();
+    Mine_function CurrentMineManager = new Mine_function();		
+    		
+    		
     // a game elementek
     Vector<Field> Field_Test_List = new Vector<>();
     Vector<Movable> Movable_Test_List = new Vector<>();
@@ -98,6 +104,10 @@ public class Advanced_tests {
                 break;
             case "Movable":
             	this.Movable(comdline);
+            case "Drill":
+            	this.CurrentDrilManager.Drill(Movable_Test_List, comdline);
+            case "Mine":
+            	this.CurrentMineManager.Mine(Movable_Test_List, comdline);
             default:
                 System.out.println("ejjoj");
         }
