@@ -32,7 +32,7 @@ Vector<Field> Field_Temp_List = new Vector<>();
         }
 
 
-}
+
     //itt példányosítom az aszteroidákat a szövegfileból
     private void AsteroidCreator(String[] command){
     Asteroid temp;
