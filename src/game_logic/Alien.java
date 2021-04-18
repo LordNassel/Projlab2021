@@ -26,8 +26,8 @@ public class Alien extends Movable  {
         }
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
-            Move_AI()
-            ;}
+            Move_AI();
+            }
 
 
 
@@ -36,8 +36,8 @@ public class Alien extends Movable  {
     //Ezek privat fgv-ek hogy a step ne legyen egy kupleraj
    private void Mine(){
 
-        Material minedMaterial =currentField.GetMined();
-        if(minedMaterial!= null) {
+        Material minedMaterial = currentField.GetMined();
+        if(minedMaterial != null) {
             items.add(minedMaterial);
             //Ja, tudom, de osszesen 3x hivodhat meg ez a fgv maximum
             Mine();
@@ -50,7 +50,7 @@ public class Alien extends Movable  {
     }
     //A mozgasert felelos belso fuggveny
     private void Move_AI(){
-        Vector<Field> neighbor = currentField.FindNeighbor();
+        Vector<Field> neighbor = currentField.FindNeighbors();
         Random Dirgen = new Random();
         //elmegy egy random bolygora
         super.Move(neighbor.get(Dirgen.nextInt(neighbor.size()-1)));

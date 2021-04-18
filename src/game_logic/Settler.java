@@ -27,7 +27,7 @@ public class Settler extends Movable {
 		Material minedMaterial=currentField.GetMined();
 		this.Store(minedMaterial);
 	}
-	//Egy anyagot eltarol a bolygoban
+	//Egy anyagot eltarol a leltarban
 	public void Store(Material material)
 	{
 		System.out.println("Store");
@@ -35,7 +35,7 @@ public class Settler extends Movable {
 	}
 	
 
-//robot letrehozasa
+	//robot letrehozasa
 	public void CraftRobot()
 	{
 		System.out.println("CraftRobot");
@@ -121,7 +121,7 @@ public class Settler extends Movable {
 	//Ez a gui-n keresztul ker utvonalvalasztast
 	public void FindDirections() {
 		Vector<Field> currentlist = new Vector<Field>();
-		currentlist = this.currentField.FindNeighbor();
+		currentlist = this.currentField.FindNeighbors();
 		System.out.println("Válaszd ki melyik szomszédos bolygóra akarsz utazni:");
 		for(int i = 0; i<currentlist.size(); i++) {
 			System.out.println(i + ". " + currentlist.get(i).Getname());

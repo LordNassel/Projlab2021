@@ -32,7 +32,7 @@ abstract class Field implements Steppable{
 	}
 
 	//Simple getter function for all neighbors, used mostly for player and AI navigation
-	public Vector<Field> FindNeighbor(){
+	public Vector<Field> FindNeighbors(){
 		/*System.out.println("Field.FindNeighbor Called")*/ 
 		return this.Neighbors;
 	}
@@ -43,6 +43,7 @@ abstract class Field implements Steppable{
 		/*System.out.println("Field.SetnNeighbor Called"*/ 
 		Neighbors.add(WhichField);
 	}
+	
 
 	//To be implemented
 	protected void BroadCastRadiation(double rad) {

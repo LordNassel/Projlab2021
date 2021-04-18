@@ -30,8 +30,13 @@ public class Map implements Steppable {
     // Starts the Sun storm for all asteroids
     public void StartSunstorm() {
     	System.out.println("StartSunStorm called");
-    	for(int i = 0; i < FieldList.size(); i++)
-    		FieldList.get(i).ReachedBySunStorm();
+    	Asteroid a = getRandomAsteroid();
+    	a.ReachedBySunStorm();
+    	for(int i = 0; i < a.FindNeighbors().size(); i++) {
+    		a.FindNeighbors().get(i).ReachedBySunStorm();
+    		for(int j = 0; j < a.FindNeighbors().get(i).FindNeighbors().size(); j++) 
+    			a.FindNeighbors().get(i).FindNeighbors().get(j).ReachedBySunStorm();
+    		}
     }
 
     //place a teleport on a field

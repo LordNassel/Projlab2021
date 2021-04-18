@@ -47,13 +47,12 @@ public class Game {
     }
 
     // Adds a new movable object to the game
-    public void AddMovable(Movable Playable) {
+    public void AddMovable(Movable Playable, Asteroid a) {
     	System.out.println("AddMovable called");
     	Ice i = new Ice();
-        Asteroid a1 = new Asteroid("a1", i);
     	
-    	Playable.SetCurrentField(a1);
-    	a1.AcceptPlayer(Playable);
+    	Playable.SetCurrentField(a);
+    	a.AcceptPlayer(Playable);
     	
     }	
 

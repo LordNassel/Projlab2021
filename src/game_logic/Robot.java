@@ -13,7 +13,7 @@ public class Robot extends Movable {
 	// A robot atmegy egy random szomszedos aszteroidara, ha tud
 	// egyebkent meghal.
 	private void MoveOrDie() {
-		Vector<Field> neighbors = currentField.FindNeighbor();
+		Vector<Field> neighbors = currentField.FindNeighbors();
 		if(neighbors.isEmpty()) {
 			Die();
 		} else {
