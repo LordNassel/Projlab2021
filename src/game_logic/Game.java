@@ -54,10 +54,10 @@ public class Game {
     }*/
 
    // Starts the game, by generating the map
-    public void StartGame() {
+    public void StartRound() {
     	System.out.println("StartGame called");
     	//MovableList.add(map);
-    	//GenerateMap(); //0 Egyelõre külön osztályban generáljuk a mapot 
+    	//GenerateMap(); //0 Egyelï¿½re kï¿½lï¿½n osztï¿½lyban generï¿½ljuk a mapot 
     	while(running)
     	{
 			/*MovableList.forEach(step -> step.Step());*/
@@ -80,28 +80,12 @@ public class Game {
     // Adds a new movable object to the game
     public void AddMovable(Movable Playable, Asteroid a) {
     	System.out.println("AddMovable called");
-    	/*Ice i = new Ice();
-        Asteroid a1 = new Asteroid("a1", i, false, 0);
-    	Asteroid a2 = new Asteroid("a2", i);*/
-    	Playable.SetCurrentField(a);
-    	/*a2.SetNeighbor(a1);
-    	a1.SetNeighbor(a2);*/
-    	a.AcceptPlayer(Playable);
-    	AddSteppable(Playable);
+    	Ice i = new Ice();
     	
-    }
-    
-    public static void AddSteppable(Steppable s)
-    {
-    	steppableList.add(s);
-    }
-    
-    public static void RemoveSteppable(Steppable s)
-    {
-    	//MovableList.remove(s);
-    	steppableList.remove(s);
-    	System.out.println("Törtöltem egy Steppablet");
-    }
+    	Playable.SetCurrentField(a);
+    	a.AcceptPlayer(Playable);
+    	
+    }	
 
    //Step funkcio overrideja
     /*public void Step() {

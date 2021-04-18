@@ -45,7 +45,7 @@ public class Settler extends Movable {
 		else
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 	}
-	//Egy anyagot eltarol az inventoryban
+	//Egy anyagot eltarol a leltarban
 	public void Store(Material material)
 	{	
 		System.out.println("Store");
@@ -53,7 +53,7 @@ public class Settler extends Movable {
 	}
 	
 
-//robot letrehozasa
+	//robot letrehozasa
 	public void CraftRobot()
 	{
 		if(!isHidden)
@@ -161,7 +161,7 @@ public class Settler extends Movable {
 		}
 		else
 		{
-			System.out.println("Valaszd ki melyik teleportot akarod akitválni: ");
+			System.out.println("Valaszd ki melyik teleportot akarod akitvï¿½lni: ");
 			for(int i=0; i<inventoryTeleport.size();i++)
 				System.out.println(i + ". " + inventoryTeleport.get(i).Getname());
 			Scanner myinput = new Scanner(System.in);
@@ -208,14 +208,8 @@ public class Settler extends Movable {
 	//Ez a gui-n keresztul ker utvonalvalasztast
 	public Field FindDirections() {
 		Vector<Field> currentlist = new Vector<Field>();
-		currentlist = this.currentField.FindNeighbor();
-		if(currentlist.isEmpty())
-		{
-			System.out.println("Nincs szomszedos aszteroida");
-			return null;
-		}
-		else {
-		System.out.println("Válaszd ki melyik szomszédos bolygóra akarsz utazni:");
+		currentlist = this.currentField.FindNeighbors();
+		System.out.println("Vï¿½laszd ki melyik szomszï¿½dos bolygï¿½ra akarsz utazni:");
 		for(int i = 0; i<currentlist.size(); i++) {
 			System.out.println(i + ". " + currentlist.get(i).Getname());
 		}
@@ -242,7 +236,7 @@ public class Settler extends Movable {
 	{
 		System.out.println("Az akutalis jatekos: " + movablesName);
 		System.out.println("A jelenlegi poziciod: " + this.GetCurrentField().Getname() + " aszteroida");
-		System.out.println("Mit szeretnél csinálni?");
+		System.out.println("Mit szeretnï¿½l csinï¿½lni?");
 		Scanner myinput = new Scanner(System.in);
 		int valasz = myinput.nextInt(); // TO-DO: Ha bezarod akkor a System.in-is amit nem tudunk ujra megnyitni
 		

@@ -6,8 +6,9 @@ import java.util.*;
 public abstract class Movable implements Steppable {
 
 	//El van-e rejtozve
-	protected boolean isHidden;
-	protected String movablesName;
+	private boolean isHidden;
+	//A surgarzas merteke, ezt ellenorizheti a jatekos
+	protected double radiation;
 
 	//konstruktor
 	protected Field currentField;
@@ -81,6 +82,18 @@ public abstract class Movable implements Steppable {
 	{
 		System.out.println("Hide");
 		((Asteroid)currentField).GetHidden(this);
+	}
+	//Beallitja a movable -nek a kort
+	public void SetTurn()
+	{
+		
+	}
+	
+	public void SetRadiation(double rad)
+	{
+		System.out.println("SetRadiation");
+		radiation = rad;
+		
 	}
 	
 	public Field GetCurrentField()
