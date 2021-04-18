@@ -10,6 +10,7 @@ public class StartSunstorm_function {
         while (fields.get(n).Getname().equals(command[1])== false) {
             n++;
         }
+
         // Map osztalyból
         Field field = fields.get(n);
         Vector<Field> neighbors = field.FindNeighbor();
