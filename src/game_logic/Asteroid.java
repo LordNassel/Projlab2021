@@ -185,4 +185,5 @@ public class Asteroid extends Field{
 			break;			
 		}
 	}
+
 }
