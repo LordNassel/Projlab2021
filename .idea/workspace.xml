@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/tesztfileok/Free Roam Test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/Free Roam Test.txt" afterDir="false" />
+    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test1">
+      <change afterPath="$PROJECT_DIR$/TestFiles/test1_IN.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/AFullGameTest_23.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/AGoodDayToDieTest_03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/AlienExplodesTest_28.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/AlienMinesTest_27.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/AquariumSanityCheckTest_20.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/FreeRoamTest_01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/IceGetsExposedTest_21.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/InitializationTest_24.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/MapConsistencyTest_08.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/RobotDrillsSuccessfullyTest_12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/RobotDrillsUnsuccessfullyTest_13.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/RobotHitBySunStormHiddenTest_19.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/RobotHitBySunStormNotHiddenTest_18.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/RobotMovesTest_10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/RoundControlSanityCheckTest_02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsRobotSuccessfullyTest_14.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsRobotUnsuccessfullyTest_15.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsTeleportPairSuccessfullyTest_16.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsTeleportPairUnsuccessfullyTest_17.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerMinesUnsuccessfullyTest_11.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerRestocksUnsuccessfullyTest_04.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerStoresSuccessfullyTest_05.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/SettlerStoresUnsuccessfullyTest_06.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportHitBySunStormTest_22.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportPlacedSuccessfullyTest_25.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportPlacedUnsuccessfullyTest_26.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportSunStormAbnormalEventTest_29.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/TeleportTravelTest_09.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game_test/UraniumMemoryTest_07.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="package-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,6 +108,14 @@
       <option name="presentableId" value="Default" />
       <updated>1616400194255</updated>
     </task>
+    <task id="LOCAL-00001" summary="Test1">
+      <created>1618757487079</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618757487079</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -91,6 +129,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Every_man_s_sky$Main.ic" NAME="Main Coverage Results" MODIFIED="1616407126962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
