@@ -1,6 +1,7 @@
 package game_logic;
 
 import game_test_functions.Comment_function;
+import game_test_functions.SetNeighbor_funcion;
 import game_test_functions.Stats_manager;
 
 import java.util.Scanner;
@@ -15,6 +16,7 @@ public class Advanced_tests {
     //A tesztelési funkciók példányosítása
     Comment_function CurrentComment = new Comment_function();
     Stats_manager CurrentStatsManager = new Stats_manager();
+    SetNeighbor_funcion CurrentNeighborManager = new SetNeighbor_funcion();
     // a game elementek
     Vector<Field> Field_Test_List = new Vector<>();
 
@@ -74,6 +76,9 @@ public class Advanced_tests {
                 break;
             case "Stats":
                 this.Stats_Command_manager(comdline);
+                break;
+            case "SetNeighbor":
+
                 break;
             default:
                 System.out.println("ejjoj");
