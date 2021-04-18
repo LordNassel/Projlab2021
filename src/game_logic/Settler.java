@@ -84,8 +84,8 @@ public class Settler extends Movable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 
 	}
-	//Teleport letrehozasa
-	public void CraftTeleports()
+	//Teleport letrehozasa, parameterei a tp-k neve
+	public void CraftTeleports(String name1, String name2)
 	{
 		if(!isHidden)
 		{
@@ -101,8 +101,8 @@ public class Settler extends Movable {
 		
 		if(niron >=2 && nice >= 2 && nuran >=1)
 		{
-			Teleport t1 = new Teleport("name");
-			Teleport t2 = new Teleport("name2");
+			Teleport t1 = new Teleport(name1);
+			Teleport t2 = new Teleport(name2);
 			t1.setPair(t2);
 			t2.setPair(t1);
 			inventoryTeleport.add(t1);
@@ -274,7 +274,7 @@ public class Settler extends Movable {
 			CraftRobot();
 			break;
 		case 8:
-			CraftTeleports();
+			CraftTeleports("tp1", "tp2");
 			break;
 		case 9:
 			Build();

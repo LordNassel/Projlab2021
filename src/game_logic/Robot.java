@@ -51,7 +51,7 @@ public class Robot extends Movable {
 	    	System.out.println("Robot vagyok és fúrtam");
 		}
     }
-	//estere msot nincs jobb otlet majd reggel
+	//estere most nincs jobb otlet majd reggel
 	public void Mine() {}
 	
 }

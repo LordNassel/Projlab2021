@@ -10,6 +10,6 @@ public class CraftTeleport_function {
         int n = 0;
         while(movables.get(n).Getname().equals(command[1]) == false)
             n++;
-        ((Settler)movables.get(n)).CraftTeleports();
+        ((Settler)movables.get(n)).CraftTeleports(command[2], command[3]);
     }
 }
