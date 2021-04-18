@@ -19,7 +19,7 @@ public class Advanced_tests {
     SetNeighbor_funcion CurrentNeighborManager = new SetNeighbor_funcion();
     // a game elementek
     Vector<Field> Field_Test_List = new Vector<>();
-
+    Vector<Movable> Movable_Test_List = new Vector<>();
 
 
     //Ez manageli a tesztek megnyitasat
@@ -58,11 +58,27 @@ public class Advanced_tests {
                 temp = new Asteroid(command[1], command[2],Boolean.parseBoolean(command[3]), Integer.parseInt(command[4]));
                 Field_Test_List.add(temp);
                 break;
-
         }
-
-
+    }    
+    
+    	private void Movable(String[] command) {
+    	if(command[1] == "Robot") {
+    		Asteroid ar = new Asteroid(command[3]);
+    		Robot r = new Robot(command[2],ar);
+    		Movable_Test_List.add(r);
+    	}
+    	if(command[1] == "Settler") {
+    		Asteroid as = new Asteroid(command[3]);
+    		Settler s = new Settler(command[2],as);
+    		Movable_Test_List.add(s);
+    	}
+    	if(command[1] == "Alien") {
+    		Asteroid aa = new Asteroid(command[3]);
+    		Alien a = new Alien(command[2], aa); 
+    		Movable_Test_List.add(a);
+    	}
     }
+    
 
 //ez a privát fgv fordítja le a megfelelõ stringeket
 
@@ -80,6 +96,8 @@ public class Advanced_tests {
             case "SetNeighbor":
               this.Field_Test_List =  this.CurrentNeighborManager.TeenyTinyNeighboursetty(Field_Test_List, comdline);
                 break;
+            case "Movable":
+            	this.Movable(comdline);
             default:
                 System.out.println("ejjoj");
         }

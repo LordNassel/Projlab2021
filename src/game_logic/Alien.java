@@ -12,10 +12,9 @@ public class Alien extends Movable  {
     private boolean thisasteroidempty = false;
     //Ez a default konstruktor. egyelore a field-el megegyezo
     //F param, bolygon kell peldanyositani a movableket
-    public Alien(Field f) {
+    public Alien(String name, Field f) {
         super(f);
-		System.out.println("Alien constructor called");
-
+		movablesName = name;
     }
 
 

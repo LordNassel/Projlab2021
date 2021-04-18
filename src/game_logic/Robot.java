@@ -7,11 +7,15 @@ import java.util.Vector;
 public class Robot extends Movable {
 	Random rand = new Random();
 	private boolean isDrilled = false;
-
+	
+	//konstruktor nev nelkul
 	public Robot(Asteroid position) {
 		super(position);
-		System.out.println("Robot constructor called");
-
+	}
+	//konstruktor nevvel
+	public Robot(String name, Asteroid position) {
+		super(position);
+		movablesName = name;
 	}
 	
 	// A robot atmegy egy random szomszedos aszteroidara, ha tud
