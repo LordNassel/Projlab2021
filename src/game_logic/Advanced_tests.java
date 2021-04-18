@@ -3,6 +3,7 @@ package game_logic;
 import game_test_functions.Comment_function;
 import game_test_functions.Drill_function;
 import game_test_functions.Mine_function;
+import game_test_functions.PutMaterial_function;
 import game_test_functions.SetNeighbor_funcion;
 import game_test_functions.Stats_manager;
 
@@ -21,12 +22,12 @@ public class Advanced_tests {
     SetNeighbor_funcion CurrentNeighborManager = new SetNeighbor_funcion();
     Drill_function CurrentDrilManager = new Drill_function();
     Mine_function CurrentMineManager = new Mine_function();		
-    		
+    PutMaterial_function currentPutMaterialManager = new  PutMaterial_function();
     		
     // a game elementek
     Vector<Field> Field_Test_List = new Vector<>();
     Vector<Movable> Movable_Test_List = new Vector<>();
-
+    
 
     //Ez manageli a tesztek megnyitasat
     public void AdvancedTestMgr(){
@@ -108,6 +109,8 @@ public class Advanced_tests {
             	this.CurrentDrilManager.Drill(Movable_Test_List, comdline);
             case "Mine":
             	this.CurrentMineManager.Mine(Movable_Test_List, comdline);
+            case "PutMaterial":
+            	this.currentPutMaterialManager.Putmaterial(Field_Test_List, comdline);
             default:
                 System.out.println("ejjoj");
         }
