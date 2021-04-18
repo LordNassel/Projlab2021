@@ -1,0 +1,5 @@
+Asteroid<A1><null><0><false>
+Movable<Settler><S1><A1>
+Mine<S1>
+Stats<A1>
+Stats<S1>

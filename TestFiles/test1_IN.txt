@@ -1,0 +1,17 @@
+Asteroid<A1><iron>
+Asteroid<A2><iron>
+Asteroid<A3><iron>
+Asteroid<A4><iron>
+SetNeighbor<A1, A2>
+SetNeighbor<A2, A3>
+SetNeighbor<A2, A4>
+Movable<Settler><Player><A1>
+Movesettler<A1>
+Movesettler<A2>
+Movesettler<A1>
+Movesettler<A1>
+Movesettler<A2>
+Movesettler<A3>
+Movesettler<A2>
+Movesettler<A4>
+Stats<Player>

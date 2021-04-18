@@ -1,0 +1,5 @@
+Asteroid<A1><Iron><0><false>
+Movable<Alien><AL1><A1>
+Mine<AL1>
+Stats<A1>
+Stats<AL1>

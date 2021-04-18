@@ -1,0 +1,5 @@
+Asteroid<A1><Ice><3><false>
+Movable<Robot><R1><A1>
+Drill<R1>
+Stats<A1>
+Stats<R1>

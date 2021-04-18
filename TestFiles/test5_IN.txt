@@ -1,0 +1,13 @@
+Asteroid<A1><null>
+Movable<Settler><Player><A1>
+GiveItem<Settler><Uranium>
+GiveItem<Settler><Uranium>
+GiveItem<Settler><Iron>
+GiveItem<Settler><Iron>
+GiveItem<Settler><Coal>
+GiveItem<Settler><Coal>
+GiveItem<Settler><Coal>
+GiveItem<Settler><Iron>
+GiveItem<Settler><Iron>
+GiveItem<Settler><Iron>
+Stats<Player>

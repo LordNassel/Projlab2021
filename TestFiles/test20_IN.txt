@@ -1,0 +1,25 @@
+Asteroid<A1><iron>
+Asteroid<A2><iron>
+Asteroid<A3><iron>
+Asteroid<A4><iron>
+Asteroid<A5><Uranium>
+SetNeighbor<A1, A2>
+SetNeighbor<A2, A3>
+SetNeighbor<A2, A4>
+Movable<Settler><Player><A5>
+Movable<Robot><R1><A2>
+Movable<Robot><R2><A1>
+Movable<Alien><Al1><A3>
+Movable<Alien><Al2><A4>
+PassRound<Player>
+Stats<R1>
+Stats<R2>
+Stats<Al1>
+Stats<Al2>
+PassRound<Player>
+<Stats A1>
+<Stats A2>
+<Stats A3>
+<Stats A4>
+<Stats A5>
+

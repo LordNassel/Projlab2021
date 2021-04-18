@@ -1,0 +1,16 @@
+Asteroid<A1><Uranium><true><0>
+Asteroid<A2><Uranium><true><0>
+Asteroid<A3><Uranium><true><0>
+Asteroid<A4><Iron>
+IncreaseUraniumCnt<A1>, IncreaseUraniumCnt<A1>
+IncreaseUraniumCnt<A2>, IncreaseUraniumCnt<A2>
+IncreaseUraniumCnt<A3>, IncreaseUraniumCnt<A3>
+Movable<Settler><Elso><A1>
+Movable<Robot><Masodik><A2>
+Movable<Alien><Harmadik><A3>
+Mine<Elso>
+IncreaseUraniumCnt<A3>
+Stats<Elso>
+Stats<Masodik>
+Stats<Harmadik>
+List<Universe>

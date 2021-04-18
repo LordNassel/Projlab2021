@@ -1,0 +1,11 @@
+Asteroid<A1><null>
+Movable<Settler><Player><A1>
+GiveItem<Settler><Iron>
+GiveItem<Settler><Iron>
+GiveItem<Settler><Iron>
+GiveItem<Settler><Ice>
+GiveItem<Settler><Uranium>
+CraftTeleport<T1><T2>
+Stats<Player>
+Stats<T1>
+Stats<T2>

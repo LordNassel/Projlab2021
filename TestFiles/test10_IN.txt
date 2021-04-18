@@ -1,0 +1,8 @@
+Asteroid<A1><Iron><3><true>
+Asteroid<A2><Ice><3><false>
+SetNeighbour<A1><A2>
+Movable<Robot><R1><A1>
+Move<R1><A2>
+Stats<A1>
+Stats<A2>
+Stats<R1>
