@@ -102,11 +102,17 @@ public class TempGenWorlds {
                 //game.AddMovable(a, Auchen);
                // game.AddMovable(s3, Auchen);
                 game.AddMovable(S, Auchen);
-                game.AddMovable(S2, Auchen); //Settlereket a végére!
+               // game.AddMovable(S2, Auchen); //Settlereket a végére!
                 game.AddMovable(r, Auchen); // Robot elõre!
               //  game.AddMovable(s3, Auchen);
                 game.AddSteppable(map);
 
+                Teleport teleport = new Teleport("t1");
+                Teleport teleport_pair = new Teleport("t2");
+                teleport.setPair(teleport_pair);
+                teleport_pair.setPair(teleport);
+                S.addTelportToInventory(teleport);
+                S.addTelportToInventory(teleport_pair);
 
 
                 

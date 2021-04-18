@@ -139,14 +139,33 @@ public class Settler extends Movable {
 	{
 		if(!isHidden)
 		{
-		System.out.println("ActivateTeleport");
-		teleport.setIsActive();			
-		inventoryTeleport.remove(teleport);
+			System.out.println("ActivateTeleport");
+			teleport.setIsActive();			
+			inventoryTeleport.remove(teleport);
 		}
 		else
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 
 	}
+	
+	public Teleport selectTeleportFromInventory()
+	{
+		if(inventoryTeleport.isEmpty())
+		{
+			System.out.println("Nincs nalad teleport");
+			return null;
+		}
+		else
+		{
+			System.out.println("Valaszd ki melyik teleportot akarod akitválni: ");
+			for(int i=0; i<inventoryTeleport.size();i++)
+				System.out.println(i + ". " + inventoryTeleport.get(i).Getname());
+			Scanner myinput = new Scanner(System.in);
+			int input = myinput.nextInt();
+			return inventoryTeleport.get(input);
+		}
+	}
+	
 	// elhelyez anyagot a bolygoban
 	public void PutMaterial(Material material)
 	{
@@ -239,7 +258,8 @@ public class Settler extends Movable {
 				PutMaterial(selectedMaterial);
 			break;
 		case 6:
-			//ActivateTeleport();
+			Teleport selected = selectTeleportFromInventory();
+			ActivateTeleport(selected);
 			break;
 		case 7:
 			CraftRobot();
@@ -250,6 +270,11 @@ public class Settler extends Movable {
 		default:
 			break;
 		}
+	}
+	
+	public void addTelportToInventory(Teleport t)
+	{
+		inventoryTeleport.add(t);
 	}
 
 }

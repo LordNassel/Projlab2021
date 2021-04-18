@@ -118,14 +118,14 @@ public class Asteroid extends Field{
 			Thickness--;
 		else
 			return false;
-		if(Thickness ==0) {
+		/*if(Thickness ==0) {
 			//if the asteroid has been drilled the material inside will get exposed. 
 			for(int i =0; i<CoreMaterial.size(); i++)
 			{
 				this.isMinable = true; //?????????? Field attrib.
 
 			}
-		}
+		}*/
 		return true;
 		
 	}
