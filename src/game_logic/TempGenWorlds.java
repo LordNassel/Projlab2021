@@ -132,10 +132,7 @@ public class TempGenWorlds {
                 teleport_pair.setPair(teleport);
                 Auchen.SetNeighbor(teleport);
                 S.addTelportToInventory(teleport);
-                S.addTelportToInventory(teleport_pair);
-
-
-                
+                S.addTelportToInventory(teleport_pair);       
 
                 game.StartGame();
 

@@ -10,6 +10,9 @@ public class Main{
 		Advanced_tests currenttests = new Advanced_tests();
 		//tesztek futtatasa
 		currenttests.AdvancedTestMgr();
+		
+		TempGenWorlds temp = new TempGenWorlds();
+		temp.Generateworlds(1);
 
 	}
 
