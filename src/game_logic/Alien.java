@@ -17,7 +17,9 @@ public class Alien extends Movable  {
 		movablesName = name;
     }
 
-
+    public Alien(Field f) {
+        super(f);
+    }
     public void Step(){
         //Mivel nem igazán tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
         // ha nem tud, elmegy  egy random szomszedos aszteroidara;

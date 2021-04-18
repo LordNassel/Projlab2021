@@ -110,4 +110,9 @@ public class  Teleport extends Field {
 	public boolean GetDrilled() {
 		return false;
 	}
+	
+	@Override
+	public Material GetMined() {
+		return null;
+	}
 }
