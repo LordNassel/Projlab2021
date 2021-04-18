@@ -40,7 +40,10 @@ public class Stats_manager {
     		//TO-DO
     }
     public void Alien_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {
-		//TO-DO
-}
+			//TO-DO
+    }
+    public void Teleport_StatsManager(Vector<Field> Field_Temp_List, String[] command) {
+    		//TO-DO
+    }
  }
 

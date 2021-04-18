@@ -16,15 +16,17 @@ public class Advanced_tests {
     SetNeighbor_funcion CurrentNeighborManager = new SetNeighbor_funcion();
     Drill_function CurrentDrilManager = new Drill_function();
     Mine_function CurrentMineManager = new Mine_function();		
-    PutMaterial_function currentPutMaterialManager = new  PutMaterial_function();
-    Move_function currentMoveManager = new Move_function();
-    PlaceTeleport_function currentPlaceTeleportManager = new PlaceTeleport_function();
-    CraftTeleport_function currentCraftTeleportManager = new CraftTeleport_function();
+    PutMaterial_function CurrentPutMaterialManager = new  PutMaterial_function();
+    Move_function CurrentMoveManager = new Move_function();
+    PlaceTeleport_function CurrentPlaceTeleportManager = new PlaceTeleport_function();
+    CraftTeleport_function CurrentCraftTeleportManager = new CraftTeleport_function();
     StartSunstorm_function CurrentStartSunstormManager = new StartSunstorm_function();
     Hide_function currentHideManager = new  Hide_function();
     ExplodeMovable_function CurrentExplodeMovableManager = new  ExplodeMovable_function();
     Die_function CurrentDieManager = new  Die_function();
     CraftRobot_function CurrentCraftRobotManager = new  CraftRobot_function();
+    GiveItem_function CurrentGiveitemManager = new GiveItem_function();
+    CompleteMaterial_function CurrentCompleteMaterialManager = new CompleteMaterial_function();
     		
     // a game elementek
     Vector<Field> Field_Test_List = new Vector<>();
@@ -68,9 +70,10 @@ public class Advanced_tests {
                 Field_Test_List.add(temp);
                 break;
         }
-    }    
-    
-    	private void Movable(String[] command) {
+    } 
+
+    // movable peldanyositasa
+    private void Movable(String[] command) {
     	if(command[1] == "Robot") {
     		Asteroid ar = new Asteroid(command[3]);
     		Robot r = new Robot(command[2],ar);
@@ -112,13 +115,13 @@ public class Advanced_tests {
             case "Mine":
             	this.CurrentMineManager.Mine(Movable_Test_List, comdline);
             case "PutMaterial":
-            	this.currentPutMaterialManager.Putmaterial(Field_Test_List, comdline);
+            	this.CurrentPutMaterialManager.Putmaterial(Field_Test_List, comdline);
             case "Move": 
-            	this.currentMoveManager.Move(Field_Test_List, Movable_Test_List, comdline);
+            	this.CurrentMoveManager.Move(Field_Test_List, Movable_Test_List, comdline);
             case "PlaceTeleport":
-            	this.currentPlaceTeleportManager.PlaceTeleport(Movable_Test_List, Field_Test_List, comdline);
+            	this.CurrentPlaceTeleportManager.PlaceTeleport(Movable_Test_List, Field_Test_List, comdline);
             case "CraftTeleport":
-            	this.currentCraftTeleportManager.CraftTeleport(Movable_Test_List, comdline);
+            	this.CurrentCraftTeleportManager.CraftTeleport(Movable_Test_List, comdline);
             case "StartSunstorm":
                 this.CurrentStartSunstormManager.StartSunstorm(Field_Test_List, comdline);
             case "Hide":
@@ -129,6 +132,10 @@ public class Advanced_tests {
                 this.CurrentDieManager.Die(Movable_Test_List, comdline);
             case "CraftRobot":
                 this.CurrentCraftRobotManager.CraftRobot(Movable_Test_List, comdline);
+            case "GiveItem":
+            	this.CurrentGiveitemManager.GiveItem(Movable_Test_List, comdline);
+            case "CompleteMaterial":
+            	this.CurrentCompleteMaterialManager.CompleteMaterial(Field_Test_List, comdline);
             default:
                 System.out.println("ejjoj");
         }

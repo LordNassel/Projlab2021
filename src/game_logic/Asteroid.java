@@ -146,7 +146,6 @@ public class Asteroid extends Field{
 	{
 		return isSunside;
 	}
-	
 
 	public void setAsteroidCore(String whichmaterial)
 	{
