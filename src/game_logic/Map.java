@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Map implements Steppable {
 
-	private int sugarzas = 0;
+	private int sugarzas = 1;
 	protected Vector<Field> FieldList;
 	// Default constructor
     public Map() { AnyoneAlive = true; }
@@ -46,7 +46,7 @@ public class Map implements Steppable {
     		fifi.ReachedBySunStorm();
     	/*for(int i = 0; i < FieldList.size(); i++)
     		FieldList.get(i).SunStorm();*/
-    	sugarzas = 0;
+    	sugarzas = 1;
     }
 
     //place a teleport on a field

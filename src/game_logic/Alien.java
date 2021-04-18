@@ -45,11 +45,11 @@ public class Alien extends Movable  {
     //Ezek privat fgv-ek hogy a step ne legyen egy kupleraj
    private void Mine(){
 
-        Material minedMaterial =currentField.GetMined();
+        Material minedMaterial = ((Asteroid)currentField).GetMined();
         if(minedMaterial!= null) {
             items.add(minedMaterial);
             //Ja, tudom, de osszesen 3x hivodhat meg ez a fgv maximum
-            Mine();
+            //Mine(); //Maradjunk annál, hogy õ is egyszerre csak egyet tudjon kiszedni
         }
         else{
             thisasteroidempty = true;

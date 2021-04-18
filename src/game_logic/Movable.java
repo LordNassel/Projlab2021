@@ -6,7 +6,7 @@ import java.util.*;
 public abstract class Movable implements Steppable {
 
 	//El van-e rejtozve
-	private boolean isHidden;
+	protected boolean isHidden;
 
 	//konstruktor
 	protected Field currentField;
@@ -22,19 +22,29 @@ public abstract class Movable implements Steppable {
 	//Befogadast ker egy parameterben kaptt mezore
 	public void Move(Field a)
 	{
+		if(!isHidden)
+		{
 		System.out.println("Move()");
-		/*this.currentField.RemovePlayer(this);
-		a.AcceptPlayer(this);*/
+		this.currentField.RemovePlayer(this);
+		a.AcceptPlayer(this);
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 		
-	}	
+	}
 	//fur aszteroidat
 	public void Drill()
 	{
+		if(!isHidden)
+		{
 		System.out.println("Drill()");
 		if(this.currentField.GetDrilled()==true)
 			System.out.println("Sikeres furas az aszteroida kereg kisebb lett\n");
 		else
 			System.out.println("Sikertelen furas, a kereg mar 0\n");
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 		
 	}
 	//Elpusztul az obejektu,

@@ -9,7 +9,7 @@ abstract class Field{
 //Vector storage for convenience, an array would work too since <=300
 protected Vector<Field> Neighbors = new Vector<Field>();
 protected List<Movable> MovableList;
-protected boolean isMinable = false;
+protected boolean isMinable = false; //?
 //Kell egy nev most ahhoz, hogy a paranccsoros navigacio letezhessen
 private String name;
 
@@ -70,7 +70,7 @@ private String name;
 	public abstract boolean GetDrilled();
 
 	//Ez ket tipusellenorzest elkerulendo
-	public Material GetMined(){return null;}
+	//public Material GetMined(){return null;}
 
 
 }

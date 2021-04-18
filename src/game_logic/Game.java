@@ -7,7 +7,7 @@ public class Game {
 
 	private boolean running;
 	private Map map;
-	private static ArrayList<Steppable> MovableList = new ArrayList<Steppable>();
+	private static ArrayList<Steppable> steppableList = new ArrayList<Steppable>();
 
     // Default constructor
     public Game() {
@@ -65,14 +65,14 @@ public class Game {
 				Losegame();
     		/*for(Steppable step : MovableList)
     			step.Step();*/
-    		for(int i= 0; i<MovableList.size(); i++)
+    		for(int i= 0; i<steppableList.size(); i++)
     		{
     			if(getIsTherAnySettler()==false)
     			{
     				Losegame();
     				return;
     			}
-    			MovableList.get(i).Step();
+    			steppableList.get(i).Step();
     		}  		
     	}
     }
@@ -91,15 +91,15 @@ public class Game {
     	
     }
     
-    public void AddSteppable(Steppable s)
+    public static void AddSteppable(Steppable s)
     {
-    	MovableList.add(s);
+    	steppableList.add(s);
     }
     
     public static void RemoveSteppable(Steppable s)
     {
     	//MovableList.remove(s);
-    	MovableList.remove(s);
+    	steppableList.remove(s);
     	System.out.println("Törtöltem egy Steppablet");
     }
 
@@ -113,9 +113,9 @@ public class Game {
     	Asteroid a = new Asteroid("bela");
     	Settler s = new Settler(a);
 		int number = 0;
-		for(int i = 0; i<MovableList.size(); i++)
+		for(int i = 0; i<steppableList.size(); i++)
 		{
-			if(MovableList.get(i).getClass().equals( s.getClass()))
+			if(steppableList.get(i).getClass().equals( s.getClass()))
 				number++;
 		}
 		if(number==0)

@@ -26,13 +26,18 @@ public class Settler extends Movable {
 	//Banyaszik a jatekos
 	public void Mine()
 	{
+		if(!isHidden)
+		{
 		System.out.println("Mine");
-		Material minedMaterial=currentField.GetMined();
+		Material minedMaterial = ((Asteroid)currentField).GetMined();
 		this.Store(minedMaterial);
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 	}
-	//Egy anyagot eltarol a bolygoban
+	//Egy anyagot eltarol az inventoryban
 	public void Store(Material material)
-	{
+	{	
 		System.out.println("Store");
 		inventoryMain.add(material);
 	}
@@ -41,6 +46,8 @@ public class Settler extends Movable {
 //robot letrehozasa
 	public void CraftRobot()
 	{
+		if(!isHidden)
+		{
 		System.out.println("CraftRobot");
 
 		Coal coal = new Coal();
@@ -54,6 +61,7 @@ public class Settler extends Movable {
 		{
 			Robot craftedRobot = new Robot((Asteroid)currentField);
 			currentField.AcceptPlayer(craftedRobot);
+			Game.AddSteppable(craftedRobot);
 			inventoryMain.remove(coal);
 			inventoryMain.remove(iron);
 			inventoryMain.remove(uran);
@@ -61,10 +69,16 @@ public class Settler extends Movable {
 		}
 		else
 			System.out.println("Failed: not enoguh materials");
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
+
 	}
 	//Teleport letrehozasa
 	public void CraftTeleports()
 	{
+		if(!isHidden)
+		{
 		System.out.println("CraftTeleports");
 
 		int niron, nuran, nice;
@@ -94,6 +108,10 @@ public class Settler extends Movable {
 		}
 		else
 			System.out.println("Failed: Not enough materials");
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
+
 	}
 	
 	public int getMaterialTypeNumber(Material m)
@@ -109,22 +127,58 @@ public class Settler extends Movable {
 	//Aktival egy teleportot
 	public void ActivateTeleport(Teleport teleport)
 	{
+		if(!isHidden)
+		{
 		System.out.println("ActivateTeleport");
 		teleport.setIsActive();			
 		inventoryTeleport.remove(teleport);
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
+
 	}
 	// elhelyez anyagot a bolygoban
 	public void PutMaterial(Material material)
 	{
+		if(!isHidden)
+		{
 		System.out.println("PutMaterial");
 		((Asteroid)currentField).StoreMaterial(material);
 		inventoryMain.remove(material);
+		}
+		else
+			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
+
+	}
+	
+	public Material selectMaterialToPut()
+	{
+		if(inventoryMain.isEmpty())
+		{
+			System.out.println("A nyersanyag tarolo ures");
+			return null;
+		}
+		else
+		{
+			System.out.println("Valasz ki melyik nyersanyagot szeretned eltarolni:");
+			for(int i=0; i<inventoryMain.size(); i++)
+				System.out.println(i + ". " + inventoryMain.get(i));
+			Scanner myinput = new Scanner(System.in);
+			int input = myinput.nextInt();
+			return inventoryMain.get(input);
+		}
 	}
 
 	//Ez a gui-n keresztul ker utvonalvalasztast
-	public void FindDirections() {
+	public Field FindDirections() {
 		Vector<Field> currentlist = new Vector<Field>();
 		currentlist = this.currentField.FindNeighbor();
+		if(currentlist.isEmpty())
+		{
+			System.out.println("Nincs szomszedos aszteroida");
+			return null;
+		}
+		else {
 		System.out.println("Válaszd ki melyik szomszédos bolygóra akarsz utazni:");
 		for(int i = 0; i<currentlist.size(); i++) {
 			System.out.println(i + ". " + currentlist.get(i).Getname());
@@ -133,19 +187,22 @@ public class Settler extends Movable {
 		Scanner myinput =new Scanner(System.in);
 		int n=0;
 		n= myinput.nextInt();
-		this.Move(currentlist.get(n));
+		return currentlist.get(n);
+		}
+		//this.Move(currentlist.get(n));
 	}
 	
 	public void Step()
 	{
 		System.out.println("Mit szeretnél csinálni?");
 		Scanner myinput = new Scanner(System.in);
-		int valasz = myinput.nextInt();
+		int valasz = myinput.nextInt(); // TO-DO: Ha bezarod akkor a System.in-is amit nem tudunk ujra megnyitni
 		
 		switch(valasz)
 		{
 		case 1:
-			//Move(aszteroid);
+			Field targetField = FindDirections();
+			Move(targetField);
 			break;
 		case 2:
 			Drill();
@@ -157,7 +214,8 @@ public class Settler extends Movable {
 			Mine();
 			break;
 		case 5:
-			//PutMaterial();
+			Material selectedMaterial = selectMaterialToPut();
+			PutMaterial(selectedMaterial);
 			break;
 		case 6:
 			//ActivateTeleport();
@@ -167,6 +225,8 @@ public class Settler extends Movable {
 			break;
 		case 8:
 			CraftTeleports();
+			break;
+		default:
 			break;
 		}
 	}

@@ -98,13 +98,13 @@ public class TempGenWorlds {
                 Map map = new Map(true, fieldlist);
                 Game game = new Game(map);
 
-                game.AddSteppable(map);
                 game.AddMovable(a, Auchen);
                // game.AddMovable(s3, Auchen);
                 game.AddMovable(S2, Auchen);
                 game.AddMovable(S, Auchen); //Settlereket a végére!
                 game.AddMovable(r, Auchen); // Robot elõre!
                 game.AddMovable(s3, Auchen);
+                game.AddSteppable(map);
 
 
 

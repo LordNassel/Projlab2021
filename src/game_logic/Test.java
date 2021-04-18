@@ -25,7 +25,7 @@ public class Test {
 		a1.SetNeighbor(a2);
 		
 		//a mozgo fgv.
-		player.FindDirections();
+		//player.FindDirections();
 		
 		//kiiras hogy ellenorizheto legyen
 		System.out.println("Sikeres Mozgas, a jelenlegi bolygo: " + player.GetCurrentField().Getname() + "\n");

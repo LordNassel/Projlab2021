@@ -82,7 +82,7 @@ public class Asteroid extends Field{
 
 	
 	//The mining function
-	@Override public Material GetMined(){
+	public Material GetMined(){
 		System.out.println("Asteroid.GetMined() Called");
 		
 	//ha az aszteroida nem ures	
@@ -107,12 +107,12 @@ public class Asteroid extends Field{
 	public boolean StoreMaterial(Material M) {
 		System.out.println("Asteroid.StoreMaterial Called");
 		
-		if(CoreMaterial.size()<3)// && CoreMaterial.get(0).equals(M))
+		if(CoreMaterial.size()<3 && CoreMaterial.size() > 0 && CoreMaterial.get(0).equals(M)) // Ha van benne de nincs tele maradjon homogen
 		{
-			CoreMaterial.add(M); //Kell egy check, hogy homogén maradjon az aszteroida magja
+			CoreMaterial.add(M);
 			return true;
 		}
-		else if(CoreMaterial.isEmpty()) //Ha üres akkor nem szamit milyet teszunk be
+		else if(CoreMaterial.isEmpty()) //Ha ures akkor nem szamit milyet teszunk be
 		{
 			CoreMaterial.add(M);
 			return true;
