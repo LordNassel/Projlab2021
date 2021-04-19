@@ -1,5 +1,5 @@
 package game_logic;
-
+/*
 import game_test_functions.Comment_function;
 import game_test_functions.SetNeighbor_funcion;
 import game_test_functions.Stats_manager;
@@ -104,3 +104,4 @@ public class Advanced_tests {
 
 }
 
+*/

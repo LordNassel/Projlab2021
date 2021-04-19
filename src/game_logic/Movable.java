@@ -24,7 +24,6 @@ public abstract class Movable implements Steppable {
 	{
 		if(!isHidden)
 		{
-		System.out.println("Move()");
 		this.currentField.RemovePlayer(this);
 		a.AcceptPlayer(this);
 		}
@@ -37,7 +36,6 @@ public abstract class Movable implements Steppable {
 	{
 		if(!isHidden)
 		{
-			System.out.println("Drill()");
 			if(this.currentField.GetDrilled()==true)
 				System.out.println("Sikeres furas az aszteroida kereg kisebb lett\n");
 			else
@@ -50,7 +48,6 @@ public abstract class Movable implements Steppable {
 	//Elpusztul az obejektu,
 	public void Die()
 	{
-		System.out.println("Die()");
 		currentField.RemovePlayer(this);
 		Game.RemoveSteppable(this);
 		if(this.getClass() == Settler.class)
@@ -60,14 +57,12 @@ public abstract class Movable implements Steppable {
 	//felrobban az obajektum
 	public void HitByExplosion()
 	{
-		System.out.println("HitByExplosion");
 		Die();
 		
 	}
 	//napvihar eri az objektumot
 	public void HitBySunStorm()
 	{
-		System.out.println("HitBySunStorm elert");
 		if (!isHidden) {
 			Die();
 		}
@@ -79,7 +74,6 @@ public abstract class Movable implements Steppable {
 	//Elrejtozik
 	public void Hide()
 	{
-		System.out.println("Hide");
 		((Asteroid)currentField).GetHidden(this);
 	}
 	
@@ -95,7 +89,6 @@ public abstract class Movable implements Steppable {
 
 	public void SetIsHidden()
 	{
-		System.out.println("SetIsHidden()");
 		isHidden=!isHidden;
 	}
 }

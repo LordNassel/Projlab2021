@@ -121,18 +121,36 @@ public class TempGenWorlds {
                 //game.AddMovable(a, Auchen);
                // game.AddMovable(s3, Auchen);
                 game.AddMovable(S, Auchen);
-               // game.AddMovable(S2, Auchen); //Settlereket a végére!
+              //  game.AddMovable(S2, Auchen); //Settlereket a végére!
                 game.AddMovable(r, Auchen); // Robot elõre!
               //  game.AddMovable(s3, Auchen);
                 game.AddSteppable(map);
 
                 Teleport teleport = new Teleport("Teleport kapu1", Auchen);
+                Auchen.addTeleportOnAsteroid(teleport);
                 Teleport teleport_pair = new Teleport("t2", Boroughton);
+                Boroughton.addTeleportOnAsteroid(teleport_pair);
                 teleport.setPair(teleport_pair);
                 teleport_pair.setPair(teleport);
-                Auchen.SetNeighbor(teleport);
-                S.addTelportToInventory(teleport);
-                S.addTelportToInventory(teleport_pair);       
+                Teleport t2  = new Teleport("Teleport kapu2", FormFoss);
+                FormFoss.addTeleportOnAsteroid(t2);
+                Teleport t3 = new Teleport("Teleport kapu3", Hewe);
+                Hewe.addTeleportOnAsteroid(t3);
+                Teleport t4 = new Teleport("Teleport kapu4", Benqua);
+                Teleport t5 = new Teleport("Teleport5", Timeston );
+                Teleport t6 = new Teleport("Teleport6", Beckistale);
+                Teleport t7 = new Teleport("Teleport7", MyreFall);
+                Teleport t8 = new Teleport("Teleport8", LongDale);
+                /*Teleport t9 = new Teleport("Teleport9", Sotrun);
+                Teleport t10 = new Teleport("Teleport10", Benqua);*/
+                Teleport t9 = new Teleport("Teleport9");
+                Teleport t10 = new Teleport("Teleport9-pair");
+                t9.setPair(t10);
+                t10.setPair(t9);
+                S.addTelportToInventory(t9);
+                S.addTelportToInventory(t10);
+              /*  S.addTelportToInventory(teleport);
+                S.addTelportToInventory(teleport_pair);       */
 
                 game.StartGame();
 

@@ -36,32 +36,24 @@ public class  Teleport extends Field {
 
     @Override
     public void SetNeighbor(Field WhichField){
-        System.out.println("Field.SetnNeighbor Called To Set Teleport");
         Neighbors.add(WhichField);
     }
 
-    public void HitBySunStorm(){
+    @Override
+    public void ReachedBySunStorm(){
+    	Vector<Field> neighbors = onAsteroid.FindNeighbor();
+    	Random rand = new Random(); 
+    	int idx = rand.nextInt(neighbors.size()-1);
+    	while(neighbors.get(idx).getClass() == Teleport.class)
+    		idx = rand.nextInt(neighbors.size()-1);
+    	onAsteroid.removeTeleportOnAsteroi(this);
+    	onAsteroid = ((Asteroid)neighbors.get(idx));
+    	onAsteroid.addTeleportOnAsteroid(this);
+    		
         if(IsSunStroke == false){
          setIsSunStroke();
         }
     }
-    /*
-    @Override
-    public void Move(Field a)
-    {
-        System.out.println("Move()");
-        this.currentField.RemovePlayer(this);
-        a.AcceptPlayer(this);
-
-    }
-
-    @Override
-    public void MoveToRandomNeighbor() {
-        Random rand = new Random();
-        Vector<Field> neighbors = currentField.FindNeighbor();
-        Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
-        Move(randomNeighbor);
-    }*/
 
     /**
     * Getters and Setters
@@ -90,13 +82,19 @@ public class  Teleport extends Field {
 
     @Override
     public void AcceptPlayer(Movable M) {
-    	//System.out.println("Field.AcceptPlayer Called");
     	Teleport pair = this.getPair();
-    	Asteroid target = pair.onAsteroid;
-    	target.AcceptPlayer(M);
-    	//M.SetCurrentField(this);
-    	//MovableList.add(M);
+    	if(pair.getIsActive() == true)
+    	{
+    		Asteroid target = pair.onAsteroid;
+    		target.AcceptPlayer(M);
     	}
+    	else
+    	{
+    		System.out.println("Hiba: A teleport parja nincsa aktivalva");
+    		return;
+    	}
+    	
+    }
     
     public void setOnAsteroid(Asteroid a)
     {

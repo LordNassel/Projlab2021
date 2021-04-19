@@ -11,11 +11,10 @@ public class Asteroid extends Field{
 	//This is a bit magic number-ish, all asteroids store 3 units of material
 	private List<Material> CoreMaterial = new ArrayList<Material>(3);
 	//This is the default constructor, this may however change. Right now it creates the random value for the thickness
-	private Teleport teleportOnAsteroid;
+	private List<Teleport> teleportOnAsteroid = new ArrayList<Teleport>();
 	
 	public Asteroid(String name, String M) {
 		super(name);
-		//System.out.println("Asteroid.Constructor Called");
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
 		setAsteroidCore(M);
@@ -24,7 +23,6 @@ public class Asteroid extends Field{
 	//Default empty constructor
 	public Asteroid (String name){
 			super(name);
-			//System.out.println("Empty Asteroid.Constructor Called");
 			Random thicknessgen = new Random();
 			Thickness = thicknessgen.nextInt(11);
 			CoreMaterial.clear();
@@ -33,7 +31,6 @@ public class Asteroid extends Field{
 	//sunside constructor
 	public Asteroid(String name, String M, boolean isSunside) {
 		super(name);
-		//System.out.println("Asteroid.Constructor Called");
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
 		setAsteroidCore(M);
@@ -44,12 +41,7 @@ public class Asteroid extends Field{
 	//EZ EGY DEBUG KONSTRUKTOR, NE HIVD NORMALIS UZEMBEN
 	public Asteroid(String name, String M, boolean sunside, int thiccboi) {
 		super(name);
-	//	System.out.println("Asteroid.Constructor Called");
 		int n=0;
-		/*while(n<3) {
-			CoreMaterial.add(M);
-			n++;
-		}*/
 		
 		setAsteroidCore(M);
 		
@@ -60,28 +52,17 @@ public class Asteroid extends Field{
 	
 	@Override//The drilling function. 
 	public boolean GetDrilled(){
-		System.out.println("Asteroid.GetDrilled Called");
 		if(Thickness>0) 
 			Thickness--;
 		else
 			return false;
-		/*if(Thickness ==0) {
-			//if the asteroid has been drilled the material inside will get exposed. 
-			for(int i =0; i<CoreMaterial.size(); i++)
-			{
-				this.isMinable = true; //?? Field attrib.
-
-			}
-		}*/
 		return true;
 		
 	}
 
 	
 	//The mining function
-	public Material GetMined(){
-		System.out.println("Asteroid.GetMined() Called");
-		
+	public Material GetMined(){		
 	//ha az aszteroida nem ures	
 		if(!CoreMaterial.isEmpty())
 		{
@@ -102,7 +83,6 @@ public class Asteroid extends Field{
 	
 	//The sunstorm handler. It is similar to all asteroid types
 	public boolean StoreMaterial(Material M) {
-		System.out.println("Asteroid.StoreMaterial Called");
 		
 		if(CoreMaterial.size()<3 && CoreMaterial.size() > 0 && CoreMaterial.get(0).equals(M)) // Ha van benne de nincs tele maradjon homogen
 		{
@@ -123,7 +103,6 @@ public class Asteroid extends Field{
 	
 	//Hide in the asteroid
 	public void GetHidden(Movable M) {
-		System.out.println("Asteroid.Gethidden Called");
 		
 		if(CoreMaterial.isEmpty())
 		{
@@ -139,30 +118,23 @@ public class Asteroid extends Field{
 		return Thickness;
 	}
 	
-	public void setTeleportOnAsteroid(Teleport t)
+	public void addTeleportOnAsteroid(Teleport t)
 	{
-		teleportOnAsteroid = t;
+		teleportOnAsteroid.add(t);
+		this.SetNeighbor(t);
 	}
 	
-	/*public boolean isEmpty() :DD
+	public void removeTeleportOnAsteroi(Teleport t)
 	{
-		if(this.CoreMaterial.isEmpty() == true)
-			return true;
-		else
-			return false;
-	}*/
-
-	/*//Test fuggvenyek
-	public void RemoveMaterialFromCore()
-	{
-		CoreMaterial.remove(0);
+		teleportOnAsteroid.remove(t);
+		this.Neighbors.remove(t);
 	}
 	
-	public void RemoveAllMaterialFromCore()
+	public List<Teleport> getTeleportsOnAsteroid()
 	{
-		CoreMaterial.clear();
+		return teleportOnAsteroid;
 	}
-	*/
+	
 	public void setAsteroidCore(String whichmaterial)
 	{
 		switch(whichmaterial)

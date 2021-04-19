@@ -14,8 +14,6 @@ public class Alien extends Movable  {
     //F param, bolygon kell peldanyositani a movableket
     public Alien(Field f) {
         super(f);
-		System.out.println("Alien constructor called");
-
     }
 
 
@@ -27,14 +25,10 @@ public class Alien extends Movable  {
     	
         //if( ((Asteroid)currentField).getThickness() == 0 && ((Asteroid)currentField).isEmpty() == false) {
     	if(thisasteroidempty == false) {
-        	System.out.println("	Bányásztam aleinként");
         	Mine();
-
-        	//Material minedMaterial=currentField.GetMined();
         }
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
-        	System.out.println("	Mozogtam aleinként");
             Move_AI();
         }
 
