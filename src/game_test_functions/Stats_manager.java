@@ -18,18 +18,18 @@ public class Stats_manager {
             //itt írom ki a nevét a bolygónak
             System.out.println("Name: " + A1.Getname());
             //napkozeli e
-            System.out.println("/nIsSunSide: " + A1.getSunSide());
+            System.out.println("IsSunSide: " + A1.getSunSide());
             //vastagsaga
-            System.out.println("/nThickness:" +  A1.getThickness());
+            System.out.println("Thickness:" +  A1.getThickness());
             //A szomszédok kiírása
-            System.out.println("/nNeighbours: ");
+            System.out.println("Neighbours: ");
             Vector<Field> temp = A1.FindNeighbor();
             if(temp!= null) {
                 for (int i = 0; i < temp.size(); i++)
-                    System.out.println(temp.get(0).Getname() + ", ");
+                    System.out.println(temp.get(0).Getname());
             }
             //Materials benne
-            System.out.println("/nMaterials: ");
+            System.out.println("Materials: ");
             //TO-DO
 
         }

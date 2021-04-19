@@ -188,4 +188,14 @@ public class Asteroid extends Field{
 		}
 	}
 
+	//Ez egy olyan függvény
+	public void IncUntCnt_DEBUG (){
+		if(!CoreMaterial.isEmpty())
+		{
+			CoreMaterial.get(0).GetExposed(isSunside, this);
+			CoreMaterial.get(1).GetExposed(isSunside, this);
+			CoreMaterial.get(2).GetExposed(isSunside, this);
+		}
+	}
+
 }
