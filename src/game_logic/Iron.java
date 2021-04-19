@@ -1,6 +1,8 @@
 package game_logic;
 
-// Vas, egyszerű anyag.
+/**
+ *  A vasat reprezentáló osztály.
+ */
 public class Iron extends Material {
 
 }
