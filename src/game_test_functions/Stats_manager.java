@@ -47,7 +47,7 @@ public class Stats_manager {
         }
     public void Settler_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {
         int n=0; 
-        while (Movable_Temp_List.get(n).Getname().equals(command[2]) == false)
+        while (Movable_Temp_List.get(n).Getname().equals(command[1]) == false)
             n++;
         System.out.println(Movable_Temp_List.get(n).Getname());
         System.out.println(Movable_Temp_List.get(n).GetCurrentField().Getname());

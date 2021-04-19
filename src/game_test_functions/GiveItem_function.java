@@ -14,19 +14,19 @@ public class GiveItem_function {
 		int n= 0;
 		while(movables.get(n).Getname().equals(command[1]) == false)
 			n++;
-		if(command[2] == "Ice") {
+		if(command[2].equals("Ice")) {
     		Ice i = new Ice();
     		((Settler) movables.get(n)).Store(i);
     	}
-    	if(command[2] == "Uranium") {
+		if(command[2].equals("Uranium")) {
     		Uranium u = new Uranium();
     		((Settler) movables.get(n)).Store(u);
     	}
-    	if(command[2] == "Coal") {
+		else if(command[2].equals("Coal")) {
     		Coal c = new Coal();
     		((Settler) movables.get(n)).Store(c);
     	}
-    	if(command[2] == "Iron") {
+		else if(command[2].equals("Iron")) {
     		Iron i = new Iron();
     		((Settler) movables.get(n)).Store(i);
 	}

@@ -1,4 +1,4 @@
-Asteroid,A1,Iron,0,true
+Asteroid,A1,Iron,true,0
 Movable,Settler,Player,A1
 GiveItem,Player,Iron
 PutMaterial,A1,Iron

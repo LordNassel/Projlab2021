@@ -65,7 +65,9 @@ public class Advanced_tests {
                 Field_Test_List.add(temp);
                 break;
             case 5:
-                temp = new Asteroid(command[1], command[2], Boolean.parseBoolean(command[3]), Integer.parseInt(command[4]));
+                //temp = new Asteroid(command[1], command[2], Boolean.parseBoolean(command[3]), Integer.parseInt(command[4])); // BAZDMEG
+                temp = new Asteroid(command[1], command[2], Boolean.parseBoolean(command[3]), Integer.parseInt(command[4])); // BAZDMEG
+
                 Field_Test_List.add(temp);
                 break;
         }

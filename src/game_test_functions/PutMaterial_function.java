@@ -14,19 +14,19 @@ public class PutMaterial_function {
 		   int n = 0;
 	    	while(fields.get(n).Getname().equals(command[1]) == false)
 	    		n++;
-	    	if(command[2] == "Ice") {
+	    	if(command[2].equals("Ice")) {
 	    		Ice i = new Ice();
 	    		((Asteroid) fields.get(n)).StoreMaterial(i);
 	    	}
-	    	if(command[2] == "Uranium") {
+	    	if(command[2].equals("Uranium")) {
 	    		Uranium u = new Uranium();
 	    		((Asteroid) fields.get(n)).StoreMaterial(u);
 	    	}
-	    	if(command[2] == "Coal") {
+	    	if(command[2].equals("Coal")) {
 	    		Coal c = new Coal();
 	    		((Asteroid) fields.get(n)).StoreMaterial(c);
 	    	}
-	    	if(command[2] == "Iron") {
+	    	if(command[2].equals("Iron")) {
 	    		Iron i = new Iron();
 	    		((Asteroid) fields.get(n)).StoreMaterial(i);
 	    	}

@@ -1,4 +1,4 @@
-Asteroid,A1,iron,true,1
+Asteroid,A1,Iron,true,1
 Stats,Asteroid,A1
 Movable,Settler,Elso,A1
 Movable,Settler,Masodik,A1
