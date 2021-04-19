@@ -5,7 +5,7 @@ GiveItem,Settler,Iron
 GiveItem,Settler,Iron
 GiveItem,Settler,Ice
 GiveItem,Settler,Uranium
-CraftTeleport,T1,T2
+CraftTeleport,Player,T1,T2
 Stats,Player
 Stats,T1
 Stats,T2

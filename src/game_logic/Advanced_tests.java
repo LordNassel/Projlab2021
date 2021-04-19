@@ -146,6 +146,18 @@ public class Advanced_tests {
         if(command[1].equals("Asteroid")){
             this.CurrentStatsManager.Asteroid_Stats_Manager(this.Field_Test_List, command);
         }
+        if(command[1].equals("Alien")){
+            this.CurrentStatsManager.Alien_StatsManager(this.Movable_Test_List, command);
+        }
+        if(command[1].equals("Robot")){
+            this.CurrentStatsManager.Robot_StatsManager(this.Movable_Test_List, command);
+        }
+        if(command[1].equals("Settler")){
+            this.CurrentStatsManager.Settler_StatsManager(this.Movable_Test_List, command);
+        }
+        if(command[1].equals("Teleport")){
+            this.CurrentStatsManager.Teleport_StatsManager(this.Field_Test_List, command);
+        }
     }
 
     //Egy egyszeru rendszer amely beolvas az inputrol. Lehet lesz ennek bovitese

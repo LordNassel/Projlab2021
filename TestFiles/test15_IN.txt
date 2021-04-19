@@ -2,6 +2,6 @@ Asteroid,A1,null
 Movable,Settler,Player,A1
 GiveItem,Settler,Iron
 GiveItem,Settler,Coal
-CraftRobot
+CraftRobot,Player
 Stats,Player
 Stats,Robot

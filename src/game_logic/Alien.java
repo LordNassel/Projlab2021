@@ -5,36 +5,45 @@ package game_logic;
 import java.util.Random;
 import java.util.Vector;
 
+/**
+ *  Az aszteroidaövben bóklászó földönkívüliek osztálya, amit egy mesterséges intelligencia vezérel.
+ */
 public class Alien extends Movable  {
-    //Ennek az ertelme limitalt, mert semmit nem tud kezdeni a nyersanyaggal. Mindegy vegulis elteszi a jatek logikaja szerint
+    /**
+     *  Ennek az ertelme limitalt, mert semmit nem tud kezdeni a nyersanyaggal. Mindegy vegulis elteszi a jatek logikaja szerint.
+     */
     private Vector<Material> items = new Vector<Material>();
-    //o jegyzi meg hogy amin all-e az ures-e
+
+    /**
+     *  mivel az aszteroida nem közli az aliennel hogy õ üres-e az alien eltárolja ezt. Ez az AI döntéshozását teszi lehetõvé.
+     */
     private boolean thisasteroidempty = false;
-    //Ez a default konstruktor. egyelore a field-el megegyezo
-    //F param, bolygon kell peldanyositani a movableket
+
+    /**
+     *  Ez a default konstruktor. egyelore a field-el megegyezo.
+     *  F param, bolygon kell peldanyositani a movableket.
+     */
     public Alien(String name, Field f) {
         super(f);
 		movablesName = name;
     }
 
 
+    /**
+     *  Az AI lépteti egy másik bolygóra vagy pedig bányászik a jelenlegin.
+     */
     public void Step(){
-        //Mivel nem igazán tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
-        // ha nem tud, elmegy  egy random szomszedos aszteroidara;
-        //Ha teleportra tevedne semmi gond, mert az isMinable ugyanugy false lesz
     	if(thisasteroidempty == false) {
         	Mine();
         }
-        //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
             Move_AI();
         }
-
-
-
     }
 
-    //Ezek privat fgv-ek hogy a step ne legyen egy kupleraj
+    /**
+     *   Egy egység nyersanyagot bányászik.
+     */
    public void Mine(){
 
         Material minedMaterial = ((Asteroid)currentField).GetMined();
@@ -49,7 +58,10 @@ public class Alien extends Movable  {
         }
 
     }
-    //A mozgasert felelos belso fuggveny
+
+    /**
+     *   A random mozgasert felelos belso fuggveny.
+     */
     private void Move_AI(){
         Vector<Field> neighbor = currentField.FindNeighbor();
         Random Dirgen = new Random();
