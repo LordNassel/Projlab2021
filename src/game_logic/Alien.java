@@ -22,9 +22,6 @@ public class Alien extends Movable  {
         //Mivel nem igazán tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
         // ha nem tud, elmegy  egy random szomszedos aszteroidara;
         //Ha teleportra tevedne semmi gond, mert az isMinable ugyanugy false lesz
-    	System.out.println("Alien vagyok és most lépek a körben");
-    	
-        //if( ((Asteroid)currentField).getThickness() == 0 && ((Asteroid)currentField).isEmpty() == false) {
     	if(thisasteroidempty == false) {
         	Mine();
         }
