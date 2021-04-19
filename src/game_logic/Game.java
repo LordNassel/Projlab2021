@@ -34,28 +34,9 @@ public class Game {
         
     }
 
-   // Creates the playable map for the users
-    /*public void GenerateMap() {
-    	System.out.println("GenerateMap called");
-    	
-    	Coal c = new Coal();
-    	Ice i = new Ice();
-    	
-        Asteroid a1 = new Asteroid("a1", i);
-        Asteroid a2 = new Asteroid("a2", c);
-        
-        Vector<Material> GoalMaterials = new Vector<Material>();
-        
-        Goal_Asteroid ga = new Goal_Asteroid("ga", i, GoalMaterials);
-        
-        Settler s = new Settler(ga);
-        ga.AcceptPlayer(s);
-    }*/
-
    // Starts the game, by generating the map
     public void StartGame() {
     	System.out.println("A jatek elkezdodott, jo szorakozast!");
-    	//GenerateMap(); //0 Egyelõre külön osztályban generáljuk a mapot 
     	int number = 1;
     	while(running)
     	{

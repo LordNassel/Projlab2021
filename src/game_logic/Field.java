@@ -48,7 +48,9 @@ private String name;
 	}
 
 	//Simple getter function for all neighbors, used mostly for player and AI navigation
-	public Vector<Field> FindNeighbor(){/*System.out.println("Field.FindNeighbor Called")*/ return this.Neighbors;}
+	public Vector<Field> FindNeighbor(){
+		return this.Neighbors;
+	}
 
 
 	//Simple neighbor setter functon
@@ -60,9 +62,6 @@ private String name;
 	{
 		Neighbors.remove(field);
 	}
-
-	//To be implemented
-	//protected void BroadCastRadiation() {System.out.println("Field.BroadCastRadiation Called");};
 
 	public void AcceptPlayer (Movable M) {
 	M.SetCurrentField(this);
@@ -76,10 +75,6 @@ private String name;
 	public String Getname() {return this.name;}
 	//Ez sajnos kell az aliennek
 	public abstract boolean GetDrilled();
-
-	//Ez ket tipusellenorzest elkerulendo
-	//public Material GetMined(){return null;}
-
 
 }
 
