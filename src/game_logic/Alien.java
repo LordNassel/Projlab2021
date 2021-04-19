@@ -21,17 +21,21 @@ public class Alien extends Movable  {
         super(f);
     }
     public void Step(){
-        //Mivel nem igazï¿½n tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
+        //Mivel nem igazán tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
         // ha nem tud, elmegy  egy random szomszedos aszteroidara;
         //Ha teleportra tevedne semmi gond, mert az isMinable ugyanugy false lesz
-    	System.out.println("Alien vagyok ï¿½s most lï¿½pek a kï¿½rben");
+    	System.out.println("Alien vagyok és most lépek a körben");
     	
         //if( ((Asteroid)currentField).getThickness() == 0 && ((Asteroid)currentField).isEmpty() == false) {
     	if(thisasteroidempty == false) {
+        	System.out.println("	Bányásztam aleinként");
         	Mine();
+
+        	//Material minedMaterial=currentField.GetMined();
         }
         //Ha nem tud banyaszni akkor mozog... Egy korben csak az egyiket csinalhatja szoval jo ez igy
         else {
+        	System.out.println("	Mozogtam aleinként");
             Move_AI();
         }
 
@@ -46,7 +50,7 @@ public class Alien extends Movable  {
         if(minedMaterial!= null) {
             items.add(minedMaterial);
             //Ja, tudom, de osszesen 3x hivodhat meg ez a fgv maximum
-            //Mine(); //Maradjunk annï¿½l, hogy ï¿½ is egyszerre csak egyet tudjon kiszedni
+            //Mine(); //Maradjunk annál, hogy õ is egyszerre csak egyet tudjon kiszedni
         }
         else{
             thisasteroidempty = true;

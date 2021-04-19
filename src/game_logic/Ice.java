@@ -7,7 +7,7 @@ public class Ice extends Material {
 	// a felolvadas logikaja
 	public void GetExposed(boolean Sunside, Asteroid who) {
 		if(Sunside) {
-			//System.out.println("Ice disappears");
+			System.out.println("Ice disappears");
 			who.GetMined();		
 		}
 	}

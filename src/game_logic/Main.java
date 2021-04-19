@@ -9,7 +9,7 @@ public class Main{
 	public static void main(String[] args) {
 		System.out.println("Every man's sky");
 		//tesztpark peldanyositasa
-		//Advanced_tests currenttests = new Advanced_tests();
+		Advanced_tests currenttests = new Advanced_tests();
 		//Az ideiglenes világ példányosítása
 		TempGenWorlds temp = new TempGenWorlds();
 		//Hagyományos tesztek
@@ -17,12 +17,18 @@ public class Main{
 		System.out.println("Mit szeretnél csinálni?  2-es elorehaladott tesztek, 3-as uj jatek inditasa");
 		switch (inputmanager()){
 			case 2:
-				//currenttests.AdvancedTestMgr();
+				currenttests.AdvancedTestMgr();
 				break;
 			case 3:
 				temp.Generateworlds(1);
 				break;
 		}
+
+
+		
+
+
+
 	}
 
 
