@@ -1,7 +1,7 @@
-Asteroid,A1,iron
-Asteroid,A2,iron
-Asteroid,A3,iron
-Asteroid,A4,iron
+Asteroid,A1,Iron
+Asteroid,A2,Iron
+Asteroid,A3,Iron
+Asteroid,A4,Iron
 Stats,Asteroid,A1
 Stats,Asteroid,A2
 Stats,Asteroid,A3
