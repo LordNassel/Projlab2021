@@ -45,6 +45,8 @@ public abstract class Movable implements Steppable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 		
 	}
+
+
 	//Elpusztul az obejektu,
 	public void Die()
 	{
@@ -90,5 +92,8 @@ public abstract class Movable implements Steppable {
 	public void SetIsHidden()
 	{
 		isHidden=!isHidden;
+	}
+	public String Getname() {
+		return this.movablesName;
 	}
 }

@@ -1,0 +1,15 @@
+Asteroid,A1,iron
+Asteroid,A2,iron
+Asteroid,A3,iron
+Asteroid,A4,iron
+Stats,Asteroid,A1
+Stats,Asteroid,A2
+Stats,Asteroid,A3
+Stats,Asteroid,A4
+SetNeighbor,A1,A2
+SetNeighbor,A2,A3
+SetNeighbor,A3,A4
+Stats,Asteroid,A1
+Stats,Asteroid,A2
+Stats,Asteroid,A3
+Stats,Asteroid,A4

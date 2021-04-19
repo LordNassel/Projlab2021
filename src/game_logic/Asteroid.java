@@ -135,6 +135,11 @@ public class Asteroid extends Field{
 		return teleportOnAsteroid;
 	}
 	
+	public boolean getSunSide()
+	{
+		return isSunside;
+	}
+
 	public void setAsteroidCore(String whichmaterial)
 	{
 		switch(whichmaterial)
@@ -175,4 +180,15 @@ public class Asteroid extends Field{
 			break;			
 		}
 	}
+
+	//Ez egy olyan f�ggv�ny
+	public void IncUntCnt_DEBUG (){
+		if(!CoreMaterial.isEmpty())
+		{
+			CoreMaterial.get(0).GetExposed(isSunside, this);
+			CoreMaterial.get(1).GetExposed(isSunside, this);
+			CoreMaterial.get(2).GetExposed(isSunside, this);
+		}
+	}
+
 }

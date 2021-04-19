@@ -78,7 +78,7 @@ private String name;
 	public abstract boolean GetDrilled();
 
 	//Ez ket tipusellenorzest elkerulendo
-	//public Material GetMined(){return null;}
+	public abstract Material GetMined();
 
 
 }

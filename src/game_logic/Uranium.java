@@ -9,6 +9,10 @@ public class Uranium extends Material {
 		super();
 		counter = 0;
 	}
+	//IncreaseUraniumCnt-hoz kell
+	public void IncreaseCounter() {
+		counter++;
+	}
 	
 	@Override
 	public void GetExposed(boolean Sunside, Asteroid who) {

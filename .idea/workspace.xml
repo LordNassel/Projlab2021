@@ -1,36 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test4">
-      <change beforePath="$PROJECT_DIR$/src/game_test/AFullGameTest_23.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/AFullGameTest_23.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/AGoodDayToDieTest_03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/AGoodDayToDieTest_03.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/AlienExplodesTest_28.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/AlienExplodesTest_28.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/AlienMinesTest_27.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/AlienMinesTest_27.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/AquariumSanityCheckTest_20.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/AquariumSanityCheckTest_20.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/FreeRoamTest_01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/FreeRoamTest_01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/IceGetsExposedTest_21.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/IceGetsExposedTest_21.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/InitializationTest_24.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/InitializationTest_24.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/MapConsistencyTest_08.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/MapConsistencyTest_08.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/RobotDrillsSuccessfullyTest_12.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/RobotDrillsSuccessfullyTest_12.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/RobotDrillsUnsuccessfullyTest_13.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/RobotDrillsUnsuccessfullyTest_13.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/RobotHitBySunStormHiddenTest_19.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/RobotHitBySunStormHiddenTest_19.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/RobotHitBySunStormNotHiddenTest_18.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/RobotHitBySunStormNotHiddenTest_18.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/RobotMovesTest_10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/RobotMovesTest_10.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/RoundControlSanityCheckTest_02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/RoundControlSanityCheckTest_02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/SettlerCraftsRobotSuccessfullyTest_14.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsRobotSuccessfullyTest_14.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/SettlerCraftsRobotUnsuccessfullyTest_15.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsRobotUnsuccessfullyTest_15.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/SettlerCraftsTeleportPairSuccessfullyTest_16.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsTeleportPairSuccessfullyTest_16.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/SettlerCraftsTeleportPairUnsuccessfullyTest_17.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/SettlerCraftsTeleportPairUnsuccessfullyTest_17.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/SettlerMinesUnsuccessfullyTest_11.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/SettlerMinesUnsuccessfullyTest_11.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/SettlerRestocksUnsuccessfullyTest_04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/SettlerRestocksUnsuccessfullyTest_04.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/SettlerStoresSuccessfullyTest_05.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/SettlerStoresSuccessfullyTest_05.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/SettlerStoresUnsuccessfullyTest_06.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/SettlerStoresUnsuccessfullyTest_06.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/TeleportHitBySunStormTest_22.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/TeleportHitBySunStormTest_22.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/TeleportPlacedSuccessfullyTest_25.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/TeleportPlacedSuccessfullyTest_25.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/TeleportPlacedUnsuccessfullyTest_26.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/TeleportPlacedUnsuccessfullyTest_26.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/TeleportSunStormAbnormalEventTest_29.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/TeleportSunStormAbnormalEventTest_29.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/TeleportTravelTest_09.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/TeleportTravelTest_09.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test/UraniumMemoryTest_07.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test/UraniumMemoryTest_07.java" afterDir="false" />
+    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test5">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Advanced_tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Advanced_tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_test_functions/Comment_function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test_functions/Comment_function.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

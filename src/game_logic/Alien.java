@@ -12,16 +12,19 @@ public class Alien extends Movable  {
     private boolean thisasteroidempty = false;
     //Ez a default konstruktor. egyelore a field-el megegyezo
     //F param, bolygon kell peldanyositani a movableket
+    public Alien(String name, Field f) {
+        super(f);
+		movablesName = name;
+    }
+
     public Alien(Field f) {
         super(f);
     }
-
-
     public void Step(){
-        //Mivel nem igazán tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
+        //Mivel nem igazï¿½n tud semmit semmirol, illetve nem nagyon tud semmit csinalni minden lepesben banyaszik,
         // ha nem tud, elmegy  egy random szomszedos aszteroidara;
         //Ha teleportra tevedne semmi gond, mert az isMinable ugyanugy false lesz
-    	System.out.println("Alien vagyok és most lépek a körben");
+    	System.out.println("Alien vagyok ï¿½s most lï¿½pek a kï¿½rben");
     	
         //if( ((Asteroid)currentField).getThickness() == 0 && ((Asteroid)currentField).isEmpty() == false) {
     	if(thisasteroidempty == false) {
@@ -37,13 +40,13 @@ public class Alien extends Movable  {
     }
 
     //Ezek privat fgv-ek hogy a step ne legyen egy kupleraj
-   private void Mine(){
+   public void Mine(){
 
         Material minedMaterial = ((Asteroid)currentField).GetMined();
         if(minedMaterial!= null) {
             items.add(minedMaterial);
             //Ja, tudom, de osszesen 3x hivodhat meg ez a fgv maximum
-            //Mine(); //Maradjunk annál, hogy õ is egyszerre csak egyet tudjon kiszedni
+            //Mine(); //Maradjunk annï¿½l, hogy ï¿½ is egyszerre csak egyet tudjon kiszedni
         }
         else{
             thisasteroidempty = true;

@@ -23,7 +23,7 @@ public class Goal_Asteroid extends Asteroid  {
 	{
 		CurrentMaterials.add(m);
 	}
-	
+	// ezt szerintem mergelni kene a completematerial fv-nyel
 	public void BuildBase()
 	{
 		Uranium u = new Uranium();
