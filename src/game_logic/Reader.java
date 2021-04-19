@@ -7,7 +7,7 @@ import java.util.Vector;
 
 public class Reader {
     String[] filelist;
-    //A tesztek folderje ahonnan listázzuk a teszteket
+    //A tesztek folderje ahonnan listï¿½zzuk a teszteket
 
 public Reader(){
     File workfolder = new File("TestFiles");
@@ -26,17 +26,17 @@ public String[] magicfiles(){
 public Vector<String[]> readtest(String whichtest) {
 
     Vector<String[]> temp = new Vector<String[]>();
-    //Kell egy "+txt" a kiterjesztés miatt
+    //Kell egy "+txt" a kiterjesztï¿½s miatt
     whichtest += ".txt";
 
     String path = new String("TestFiles\\");
     path += whichtest;
-    //a beolvasásás
+    //a beolvasï¿½sï¿½s
     try {
         File currenttest = new File(path);
         Scanner Filereader = new Scanner(currenttest);
         while (Filereader.hasNextLine()) {
-            //Feltöltöm a vectortárat string[]-ekkel
+            //Feltï¿½ltï¿½m a vectortï¿½rat string[]-ekkel
             String temp2[] = Filereader.nextLine().split(",");
             temp.add(temp2);
         }

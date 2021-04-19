@@ -25,7 +25,6 @@ public class Main{
 		}
 	}
 
-
 	private static int inputmanager() {
 		Scanner myinput =new Scanner(System.in);
 		int n=0;

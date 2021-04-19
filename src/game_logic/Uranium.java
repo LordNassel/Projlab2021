@@ -1,8 +1,13 @@
 package game_logic;
 
-// Uranium, simple material
+/**
+ *  Az uránt reprezentáló osztály. A 3. expozíció hatására felrobban.
+ */
 public class Uranium extends Material {
-	
+
+	/**
+	 *  Urán expozíciónak száma.
+	 */
 	private int counter;
 	
 	public Uranium() {
@@ -13,7 +18,11 @@ public class Uranium extends Material {
 	public void IncreaseCounter() {
 		counter++;
 	}
-	
+
+	/**
+	 *  Urániumként napfénnyel találkozik ha napközelben van.
+	 *  Ekkor a számláló eggyel növekszik és ha eléri a hármat, akkor robban: meghívja az aszteroida Explode() függvényét.
+	 */
 	@Override
 	public void GetExposed(boolean Sunside, Asteroid who) {
 		if(Sunside) {
