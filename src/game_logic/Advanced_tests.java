@@ -3,14 +3,14 @@ package game_logic;
 import game_test_functions.*;
 import java.util.Scanner;
 import java.util.Vector;
-//Az elırehaladott filebÛl is beolvashatÛ tesztek oszt·lya.
+//Az el√µrehaladott fileb√≥l is beolvashat√≥ tesztek oszt√°lya.
 public class Advanced_tests {
     //A tesztelesi keretrendszer az elorehaladott teszteknek:
     TempGenWorlds currentworlds = new TempGenWorlds();
     Reader Main_file_Reader = new Reader();
     Vector<String[]> SelectedTestInstructions;
 
-    //A tesztelÈsi funkciÛk pÈld·nyosÌt·sa
+    //A tesztel√©si funkci√≥k p√©ld√°nyos√≠t√°sa
     Comment_function CurrentComment = new Comment_function();
     Stats_manager CurrentStatsManager = new Stats_manager();
     SetNeighbor_funcion CurrentNeighborManager = new SetNeighbor_funcion();
@@ -41,9 +41,9 @@ public class Advanced_tests {
         for( int i=0; i<current_tests.length; i++) {
             System.out.println(i+1 + " " + current_tests[i]);
         }
-        //itt tˆltˆm be a megfelelı instruction setet
+        //itt t√∂lt√∂m be a megfelel√µ instruction setet
         SelectedTestInstructions = Main_file_Reader.readtest(current_tests[inputmanager()-1]);
-        //ezt itt nem igaz·n Èrtem miÈrt < mint size -1. Valaki ezt nÈzze meg pls :D :D
+        //ezt itt nem igaz√°n √©rtem mi√©rt < mint size -1. Valaki ezt n√©zze meg pls :D :D
         for(int i = 0; i< SelectedTestInstructions.size(); i++) {
             interpreter(SelectedTestInstructions.get(i));
         }
@@ -51,11 +51,11 @@ public class Advanced_tests {
 
 
 
-    //itt pÈld·nyosÌtom az aszteroid·kat a szˆvegfilebÛl
+    //itt p√©ld√°nyos√≠tom az aszteroid√°kat a sz√∂vegfileb√≥l
     private void AsteroidCreator(String[] command){
         Asteroid temp;
-        //AttÛl f¸gg hogy milyen hossz˙, hogy melyik konstruktort hÌvtam meg
-        //V·ltozott az aszteroida konstruktor ! Tudom hogy nem fordul Ìgy, de akkor is Ìgy jÛ. artur
+        //Att√≥l f√ºgg hogy milyen hossz√∫, hogy melyik konstruktort h√≠vtam meg
+        //V√°ltozott az aszteroida konstruktor ! Tudom hogy nem fordul √≠gy, de akkor is √≠gy j√≥. artur
         switch (command.length){
             case 3:
                 temp = new Asteroid(command[1], command[2]);
@@ -92,7 +92,7 @@ public class Advanced_tests {
     }
     
 
-//ez a priv·t fgv fordÌtja le a megfelelı stringeket
+//ez a priv√°t fgv ford√≠tja le a megfelel√µ stringeket
 
     private void interpreter(String[] comdline){
         switch (comdline[0]){
@@ -142,7 +142,7 @@ public class Advanced_tests {
 
     }
 
-    //Ez a f¸ggvÈny hÌvja meg a Stats_manager megfelel? f¸ggvÈnyeit
+    //Ez a f√ºggv√©ny h√≠vja meg a Stats_manager megfelel? f√ºggv√©nyeit
     private void Stats_Command_manager(String[] command){
         if(command[1].equals("Asteroid")){
             this.CurrentStatsManager.Asteroid_Stats_Manager(this.Field_Test_List, command);
@@ -159,4 +159,3 @@ public class Advanced_tests {
 
 
 }
-

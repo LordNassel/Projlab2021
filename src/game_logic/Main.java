@@ -23,12 +23,6 @@ public class Main{
 				temp.Generateworlds(1);
 				break;
 		}
-
-
-		
-
-
-
 	}
 
 
