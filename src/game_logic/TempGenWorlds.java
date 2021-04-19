@@ -60,27 +60,11 @@ public class TempGenWorlds {
 
                 Boroughton.SetNeighbor(Beckistale);
 
-                Settler S = new Settler("Plaayer1", Auchen);
+                Settler S = new Settler("Player1", Auchen);
                 Settler S2 = new Settler("Player2", Auchen);
-                Settler s3 = new Settler("Player3", Auchen);
                 Vector<Material> list = new Vector<Material>();
-                list.add(ice);
-                list.add(ice);
-                list.add(ice);
-                list.add(u);
-                list.add(u);
-                list.add(u);
-                list.add(c);
-                list.add(c);
-                list.add(c);
-                list.add(i);
-                list.add(i);
-                list.add(i);
-
-
 
                 Goal_Asteroid goal = new Goal_Asteroid("Goal_Asteroid", "Iron", list);
-                Robot r = new Robot(Auchen);
                 Alien a = new Alien("Alien", Auchen);
                 goal.SetNeighbor(Auchen);
                 Auchen.SetNeighbor(goal);
@@ -111,46 +95,14 @@ public class TempGenWorlds {
                 temp.add(Benqua);
                 
                 
-                /*game.setSteppable(r);
-                game.setSteppable(a);
-                game.setSteppable(S);
-                game.setSteppable(S2);*/
                 Map map = new Map(true, fieldlist);
                 Game game = new Game(map);
 
-                //game.AddMovable(a, Auchen);
-               // game.AddMovable(s3, Auchen);
+                game.AddMovable(a, Auchen);
                 game.AddMovable(S, Auchen);
-              //  game.AddMovable(S2, Auchen); //Settlereket a végére!
-                game.AddMovable(r, Auchen); // Robot elõre!
-              //  game.AddMovable(s3, Auchen);
+                game.AddMovable(S2, Auchen);
+               // game.AddMovable(r, Auchen);
                 game.AddSteppable(map);
-
-                Teleport teleport = new Teleport("Teleport kapu1", Auchen);
-                Auchen.addTeleportOnAsteroid(teleport);
-                Teleport teleport_pair = new Teleport("t2", Boroughton);
-                Boroughton.addTeleportOnAsteroid(teleport_pair);
-                teleport.setPair(teleport_pair);
-                teleport_pair.setPair(teleport);
-                Teleport t2  = new Teleport("Teleport kapu2", FormFoss);
-                FormFoss.addTeleportOnAsteroid(t2);
-                Teleport t3 = new Teleport("Teleport kapu3", Hewe);
-                Hewe.addTeleportOnAsteroid(t3);
-                Teleport t4 = new Teleport("Teleport kapu4", Benqua);
-                Teleport t5 = new Teleport("Teleport5", Timeston );
-                Teleport t6 = new Teleport("Teleport6", Beckistale);
-                Teleport t7 = new Teleport("Teleport7", MyreFall);
-                Teleport t8 = new Teleport("Teleport8", LongDale);
-                /*Teleport t9 = new Teleport("Teleport9", Sotrun);
-                Teleport t10 = new Teleport("Teleport10", Benqua);*/
-                Teleport t9 = new Teleport("Teleport9");
-                Teleport t10 = new Teleport("Teleport9-pair");
-                t9.setPair(t10);
-                t10.setPair(t9);
-                S.addTelportToInventory(t9);
-                S.addTelportToInventory(t10);
-              /*  S.addTelportToInventory(teleport);
-                S.addTelportToInventory(teleport_pair);       */
 
                 game.StartGame();
 
