@@ -1,5 +1,7 @@
 package game_logic;
 
-// Coal, Simple material
+/**
+ *  A szenet reprezentáló osztály.
+ */
 public class Coal extends Material {
 }
