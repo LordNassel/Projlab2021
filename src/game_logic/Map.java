@@ -53,17 +53,6 @@ public class Map implements Steppable {
 			secondneighbors.get(z).ReachedBySunStorm();
     	sugarzas = 1;
     }
-
-    //place a teleport on a field
-   /* public void Place_teleport() {
-        
-        Coal c = new Coal();
-        Asteroid a = new Asteroid("a", "Coal");
-        Teleport t1 = new Teleport("tp1");
-        
-        t1.SetNeighbor(a);
-        
-    }*/
     
     public Field getRandomAsteroid()
     {
