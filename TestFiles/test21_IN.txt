@@ -1,2 +1,2 @@
 Asteroid,A1,Ice,true,0
-Stats,Asteroid
+Stats,A1

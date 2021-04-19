@@ -1,6 +1,6 @@
 Asteroid,A1,Iron,0,true
 Movable,Settler,Player,A1
 GiveItem,Player,Iron
-PutMaterial,Iron
+PutMaterial,A1,Iron
 Stats,A1
 Stats,Player
