@@ -29,7 +29,7 @@ public Vector<String[]> readtest(String whichtest) {
     //Kell egy "+txt" a kiterjesztés miatt
     whichtest += ".txt";
 
-    String path = new String("C:\\tesztfileok\\");
+    String path = new String("src\\TestFiles");
     path += whichtest;
     //a beolvasásás
     try {

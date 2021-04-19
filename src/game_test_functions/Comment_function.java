@@ -11,5 +11,4 @@ package game_test_functions;public class Comment_function {
         System.out.println(temp);
 
     }
-    
 }
