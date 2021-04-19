@@ -3,44 +3,63 @@ package game_logic;
 import java.util.Random;
 import java.util.Vector;
 
-// Represents the robot in the game
+/**
+ * Egy mestersï¿½ges intelligencia ï¿½ltal irï¿½nyï¿½tott Robot-ot reprezentï¿½l az aszteroidaï¿½vben.
+ *
+ */
 public class Robot extends Movable {
 	Random rand = new Random();
-	private boolean isDrilled = false;
 	
-	//konstruktor nev nelkul
+	//private boolean isDrilled = false;
+
+	/**
+	 * Konstruktor nev nelkul.
+	 *
+	 */
 	public Robot(Asteroid position) {
 		super(position);
-	}
-	//konstruktor nevvel
-	public Robot(String name, Asteroid position) {
-		super(position);
-		movablesName = name;
 	}
 	
 	// A robot atmegy egy random szomszedos aszteroidara, ha tud
 	// egyebkent meghal.
 	private void MoveOrDie() {
+		Vector<Field> neighbors = currentField.FindNeighbor(); //Kï¿½ne szï¿½rni, hogy csak aszteroida legyen?
+	}
+
+	/**
+	 * Konstruktor nevvel.
+	 *
+	 */
+	public Robot(String name, Asteroid position) {
+		super(position);
+		movablesName = name;
+	}
+
+	/**
+	 * Robot-kï¿½nt elï¿½ri a robbanï¿½s, aminek hatï¿½sï¿½ra kap egy szomszï¿½dos aszteroidï¿½t a FindNeighbor() fï¿½ggvï¿½ny segï¿½tsï¿½gï¿½vel
+	 * ï¿½s oda ï¿½lï¿½pï¿½ ï¿½t (AcceptPlayer()) majd lelï¿½pteti magï¿½t a RemovePlayer() hï¿½vï¿½ssal.
+	 *
+	 */
+	@Override
+	public void HitByExplosion() {
+		System.out.println("Robot HitByExplosion() - landing on neighbor");
 		Vector<Field> neighbors = currentField.FindNeighbor();
 		if(neighbors.isEmpty()) {
 			Die();
 		} else {
-		    Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
-		    Move(randomNeighbor);
+			Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
+			Move(randomNeighbor);
 		}
-	}
-  
-	@Override // A robot felrobbanas overrideja
-	public void HitByExplosion() {
-		System.out.println("Robot HitByExplosion() - landing on neighbor");
-		MoveOrDie();
     }
 
-	@Override // Step funkcio overrideja
+	/**
+	 *  A robot egy egysï¿½gnyivel mï¿½lyï¿½ti az aszteroida kï¿½penyï¿½be fï¿½rt lyukat, ha az aszteroida
+	 * mï¿½r teljesen ï¿½t volt fï¿½rva, akkor egy random szomszï¿½dos aszteroidï¿½ra megy ï¿½t.
+	 *
+	 */
+	@Override
     public void Step() {
 		if(((Asteroid)currentField).getThickness() == 0) {
-	    	System.out.println("Robot vagyok és léptem");
-
 			Vector<Field> neighbors = currentField.FindNeighbor();
 			Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
 		    Move(randomNeighbor);
@@ -48,10 +67,9 @@ public class Robot extends Movable {
 		else
 		{
 			Drill();
-	    	System.out.println("Robot vagyok és fúrtam");
 		}
     }
-	//estere most nincs jobb otlet majd reggel
-	public void Mine() {}
+
+
 	
 }

@@ -306,7 +306,7 @@ public class Test {
 		System.out.println("\"Leteszünk egy teleportot teszt\n");
 		
 		Map m = new Map();
-		m.Place_teleport();
+		//m.Place_teleport();
 		
 	}
 	

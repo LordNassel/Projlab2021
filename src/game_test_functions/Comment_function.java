@@ -1,6 +1,6 @@
-package game_test_functions;public class Comment_function {
+package game_test_functions;
 
-
+public class Comment_function {
     public void CommentPrinter(String[] command) {
         String temp = "";
         //igen i=1, a commandot magát nem akarom kiírni

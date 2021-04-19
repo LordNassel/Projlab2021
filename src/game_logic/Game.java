@@ -24,7 +24,6 @@ public class Game {
     public static void Wingame() {
     	System.out.println("Wingame called");
     	running=false;
-        
     }
 
     // If the settlers are dead this is the method called
@@ -55,16 +54,12 @@ public class Game {
 
    // Starts the game, by generating the map
     public void StartGame() {
-    	System.out.println("StartGame called");
-    	//MovableList.add(map);
+    	System.out.println("A jatek elkezdodott, jo szorakozast!");
     	//GenerateMap(); //0 Egyelõre külön osztályban generáljuk a mapot 
+    	int number = 1;
     	while(running)
     	{
-			/*MovableList.forEach(step -> step.Step());*/
-			/*if(getIsTherAnySettler()==false)
-				Losegame();
-    		/*for(Steppable step : MovableList)
-    			step.Step();*/
+    		System.out.println("\nA " + number + ". kor elkezdodott");
     		for(int i= 0; i<steppableList.size(); i++)
     		{
     			if(getIsTherAnySettler()==false)
@@ -73,19 +68,14 @@ public class Game {
     				return;
     			}
     			steppableList.get(i).Step();
-    		}  		
+    		}
+    		number++;
     	}
     }
 
     // Adds a new movable object to the game
     public void AddMovable(Movable Playable, Asteroid a) {
-    	System.out.println("AddMovable called");
-    	/*Ice i = new Ice();
-        Asteroid a1 = new Asteroid("a1", i, false, 0);
-    	Asteroid a2 = new Asteroid("a2", i);*/
     	Playable.SetCurrentField(a);
-    	/*a2.SetNeighbor(a1);
-    	a1.SetNeighbor(a2);*/
     	a.AcceptPlayer(Playable);
     	AddSteppable(Playable);
     	
@@ -98,15 +88,8 @@ public class Game {
     
     public static void RemoveSteppable(Steppable s)
     {
-    	//MovableList.remove(s);
     	steppableList.remove(s);
-    	System.out.println("Törtöltem egy Steppablet");
     }
-
-   //Step funkcio overrideja
-    /*public void Step() {
-        
-    }*/
     
     public boolean getIsTherAnySettler()
 	{

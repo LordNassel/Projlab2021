@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test4">
-      <change afterPath="$PROJECT_DIR$/src/game_test_functions/StartSunstorm_function.java" afterDir="false" />
+    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Advanced_tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Advanced_tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_logic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_test_functions/Comment_function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test_functions/Comment_function.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,19 +32,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-16" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="game_logic.Main" />
@@ -66,6 +66,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
