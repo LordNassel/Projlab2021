@@ -2,17 +2,30 @@ package game_logic;
 
 import java.util.Vector;
 
-
+/**
+ *  Azt az aszteroidát reprezentálja, ahol a telepeseknek meg kell építeniük a bázist.
+ *  Az osztály felelõssége ellenõrizni, hogy ehhez megvan-e az elegendõ mennyiségû nyersanyag.
+ */
 public class Goal_Asteroid extends Asteroid  {
+	/**
+	 *  Véget ért-e a játék.
+	 */
 	private boolean gamewin = false;
+	/**
+	 *  Az aszteroidán összegyûjtött nyersanyagok tárolója.
+	 */
 	private Vector<Material> CurrentMaterials = new Vector<Material>();
-	//Constructor it will need a list of materials, these materials if collected will win the game
+	/**
+	 *  A konstruktor megkapja az összegyûjtendõ anyagok listáját.
+	 */
 	public Goal_Asteroid(String name, String M, Vector<Material> list) {
 		super(name, M);
 		CurrentMaterials = list;
 	}
-	
-	//Kap egy "felhalmozando" anyagot es elhelyezi a tarban, ellenorzi, hogy ettol komplett-e a lista
+
+	/**
+	 *  Kap egy "felhalmozando" anyagot es elhelyezi a tarban.
+	 */
 	public void CompleteMaterial(Material M) {
 		CurrentMaterials.add(M);
 		gamewin = true;
@@ -22,7 +35,10 @@ public class Goal_Asteroid extends Asteroid  {
 	{
 		CurrentMaterials.add(m);
 	}
-	
+
+	/**
+	 *  Bázis építése.
+	 */
 	public void BuildBase()
 	{
 		Uranium u = new Uranium();
@@ -42,7 +58,10 @@ public class Goal_Asteroid extends Asteroid  {
 		else
 			System.out.println("Nincs eleg nyersanyag meg a bazis felepitesehez");
 	}
-	
+
+	/**
+	 * Visszaadja, hogy hány material van a tárolóban az kapott tipusbol.
+	 */
 	public int getMaterialTypeNumber(Material m)
 	{
 		int number = 0;
@@ -53,7 +72,9 @@ public class Goal_Asteroid extends Asteroid  {
 		}
 		return number;
 	}
-	
-	//visszaadja a gamewin valtozot
+
+	/**
+	 *  Visszaadja a gamewin valtozot.
+	 */
 	public boolean GetGamewin() {System.out.println("GetGamewin called"); return gamewin;}
 }
