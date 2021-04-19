@@ -4,21 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-
+/**
+ * Tárolja azokat az objektumokat (Movable), amelyekelõfordulhatnak az aszteroidaövben
+ * továbbá ismeri a szomszédos mezõket. További felelõsségereagálni az aszteroidaövbenlétrejövõ különbözõ eseményekre
+ */
 public abstract class Field{
-//Vector storage for convenience, an array would work too since <=300
+/**
+ * Tárolja a szomszédos mezõket
+ */
 protected Vector<Field> Neighbors = new Vector<Field>();
+/**
+ * Az éppen a mezõn lévõ mozgóobjektumok
+ */
 protected List<Movable> MovableList;
-//Kell egy nev most ahhoz, hogy a paranccsoros navigacio letezhessen
+/**
+ * A movable neve, azonositas segitendo
+ */
 private String name;
 
-
+	/**
+	 * Konstruktor, megadott nevvel letrehoz egy uj fieldet
+	 */
 	public Field(String Name) {
 	this.name = Name;
 	MovableList = new ArrayList<Movable>();
 	}
 	
-	//Explode. Kills all things on map then removes itself from the map.
+	/**
+	 * Meghívja a rajta lévõ movablek Explode függvényé
+	 */
 	protected void Explode() {
 	for(int i=MovableList.size()-1; i>=0; i--) // Iteráció közben törölünk elemeket ezért inkább így
 		MovableList.get(i).HitByExplosion();
@@ -27,11 +41,11 @@ private String name;
 		Neighbors.get(i).RemoveNeighbor(this);
 	}
 	Neighbors = null;
-
-	// Kell ide olyan ami külön beállítja a szomszédainál hogy õ már nincs nem?
 	}
 
-	//Sunstorm on a generic asteroid type, the asteroid remains undamaged, all movables die.
+	/**
+	 * A napvihar eléri és „ütközik”az adott mezõvel.Értesít mindenkit aki az adott mezõn van a HitBySunStorm()meghívásával
+	 */
 	public void ReachedBySunStorm() {		
 		if(this.getClass() == Asteroid.class)
 		{
@@ -47,33 +61,57 @@ private String name;
 
 	}
 
-	//Simple getter function for all neighbors, used mostly for player and AI navigation
+	/**
+	 * Az adott mezõ szomszédjátkeresi meg
+	 */
 	public Vector<Field> FindNeighbor(){
 		return this.Neighbors;
 	}
 
 
-	//Simple neighbor setter functon
+	/**
+	 * A paraméterül kapott mezõtbeállítja szomszédjául,vagyis hozzáadja  a neighbors listához
+	 * @param WhichField
+	 */
 	public void SetNeighbor(Field WhichField) {
 		Neighbors.add(WhichField);
 	}
-	
+
+	/**
+	 * A parameterul kapott field torli a szomszed listabol
+	 * @param field
+	 */
 	public void RemoveNeighbor(Field field)
 	{
 		Neighbors.remove(field);
 	}
 
+	/**
+	 * Parameterul kapott movable a fieldre lep
+	 * @param M
+	 */
 	public void AcceptPlayer (Movable M) {
 	M.SetCurrentField(this);
 	MovableList.add(M);
 	}
 
+	/**
+	 * A parameterul kapott movable lelep a fieldrol
+	 * @param M
+	 */
 	public void RemovePlayer(Movable M) {
 		MovableList.remove(M);
 	}
 
+	/**
+	 * Name-hez tartozo getter
+	 * @return
+	 */
 	public String Getname() {return this.name;}
-	//Ez sajnos kell az aliennek
+	/**
+	 * Field-et furjak
+	 * @return
+	 */
 	public abstract boolean GetDrilled();
 
 }

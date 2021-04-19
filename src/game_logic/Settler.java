@@ -7,21 +7,35 @@ import java.util.ArrayList;
 	import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
-
+/**
+ *   A játékosok által irányítható telepeseket reprezentálja.
+ *   Nyersanyagot gyûjtenek és robotot vagy teleport kaput képesek craftolni.
+ */
 public class Settler extends Movable {
-	//Az iranyithato jatekos
 
+	/**
+	 *   A telepes által gyûjtött nyersanyagokat tartalmazza. Egyszerre maximum 10 nyersanyag lehet nála.
+	 */
 	private List<Material> inventoryMain;
-	
+
+	/**
+	 *   A telepes által birtokolt teleportokat tartalmazza. Maximum 3 lehet nála egyszerre.
+	 */
 	private List<Teleport> inventoryTeleport;
-	
+
+	/**
+	 * Konstruktor nev nelkul.
+	 */
 	public Settler(Asteroid position)
 	{
 		super(position);
 		inventoryMain = new ArrayList<Material>();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}
-	
+
+	/**
+	 * Konstruktor nevvel.
+	 */
 	public Settler(String name, Asteroid position)
 	{
 		super(position);
@@ -30,7 +44,11 @@ public class Settler extends Movable {
 		inventoryMain.clear();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}
-	//Banyaszik a jatekos
+
+	/**
+	 * A telepes bányászik aminek hatására meghívja az aszteroida GetMined() függvényét ami egy egység nyersanyaggal tér vissza ha sikerrel járt.
+	 * Ekkor a kibányászott nyersanyagot eltárolja a material inventoryba a Store() fgv. hívással.
+	 */
 	public void Mine()
 	{
 		if(!isHidden)
@@ -42,14 +60,22 @@ public class Settler extends Movable {
 		else
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 	}
-	//Egy anyagot eltarol az inventoryban
-	public void Store(Material material)
-	{	
-		inventoryMain.add(material);
-	}
-	
 
-//robot letrehozasa
+	/**
+	 * A kibányászott nyersanyagot eltárolja a material inventoryban ha van hely
+	 */
+	public void Store(Material material)
+	{
+		if(inventoryMain.size()<10)
+			inventoryMain.add(material);
+		else
+			System.out.println("Hiba: A tarhely tele van");
+	}
+
+	/**
+	 *  Egy-egy egység vas, szén és urán felhasználásával Robot-ot hoz létre ha van elég nyersanyag nála.
+	 *  Ha elkészült, akkor a telepes rárakja az aktuális aszteroidára az Accept() meghívásával.
+	 */
 	public void CraftRobot()
 	{
 		if(!isHidden)
@@ -78,7 +104,12 @@ public class Settler extends Movable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 
 	}
-	//Teleport letrehozasa
+
+	/**
+	 * Egy új teleport párt hoz létre 2 egység vízjég, 2 egység vas és 1 egység urán felhasználásával, ha van elég nyersanyag nála.
+	 * Ha elkészült a telepes beállítja a teleportokat egymás párjukként a setPair() fgv. hívással
+	 * és eltárolja õket a teleport inventoryba (lista beépített add() használatával)
+	 */
 	public void CraftTeleports(String name1, String name2)
 	{
 		if(!isHidden)
@@ -115,7 +146,10 @@ public class Settler extends Movable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 
 	}
-	
+
+	/**
+	 *   Egy segéd metódus ami visszaadja, hogy a paraméterül kapott nyersanyag típusból mennyi van tárolva telepesnél.
+	 */
 	public int getMaterialTypeNumber(Material m)
 	{
 		int number = 0;
@@ -126,7 +160,10 @@ public class Settler extends Movable {
 		}
 		return number;
 	}
-	//Aktival egy teleportot
+
+	/**
+	 *   Egy új teleportot aktivál az aszteroida övben, vagyis a teleport isActive setterét meghívja.
+	 */
 	public void ActivateTeleport(Teleport teleport)
 	{
 		if(!isHidden)
@@ -141,7 +178,10 @@ public class Settler extends Movable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 
 	}
-	
+
+	/**
+	 *   Egy  teleportot lehet vele kiválasztani a teleport inventory-ból.
+	 */
 	public Teleport selectTeleportFromInventory()
 	{
 		if(inventoryTeleport.isEmpty())
@@ -160,7 +200,10 @@ public class Settler extends Movable {
 		}
 	}
 	
-	// elhelyez anyagot a bolygoban
+	/**
+	 *   Elhelyez egy egységnyi nyersanyagot az aszteroidába.
+	 *   Csak akkor siekres ha teljesen üres vagy pedig olyan nyersanyag van már benne amilyen tipusút szeretnék elraktározni.
+	 */
 	public void PutMaterial(Material material)
 	{
 		if(!isHidden)
@@ -172,7 +215,10 @@ public class Settler extends Movable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 
 	}
-	
+
+	/**
+	 *   Kivalasztható vele, hogy melyik nyersanyagot kell eltárolni.
+	 */
 	public Material selectMaterialToPut()
 	{
 		if(inventoryMain.isEmpty())
@@ -182,7 +228,7 @@ public class Settler extends Movable {
 		}
 		else
 		{
-			System.out.println("Valasz ki melyik nyersanyagot szeretned eltarolni:");
+			System.out.println("Valaszd ki melyik nyersanyagot szeretned eltarolni:");
 			for(int i=0; i<inventoryMain.size(); i++)
 				System.out.println(i + ". " + inventoryMain.get(i));
 			Scanner myinput = new Scanner(System.in);
@@ -191,7 +237,9 @@ public class Settler extends Movable {
 		}
 	}
 
-	//Ez a gui-n keresztul ker utvonalvalasztast
+	/**
+	 *   Ez a gui-n keresztul ker utvonalvalasztast.
+	 */
 	public Field FindDirections() {
 		Vector<Field> currentlist = new Vector<Field>();
 		currentlist = this.currentField.FindNeighbor();
@@ -213,16 +261,40 @@ public class Settler extends Movable {
 		}
 	}
 	
+	/**
+	 * Base aszteroidan eltarol egy egyseg nyersanyagot
+	 * @param m
+	 */
+	public void storeOnBaseMaterial(Material m)
+	{
+		if(this.currentField.getClass() == Goal_Asteroid.class)
+		{
+			((Goal_Asteroid)currentField).CompleteMaterial(m);
+			inventoryMain.remove(m);
+		}
+		else
+			System.out.println("Hiba: Nem a cel aszteroidan vagy");
+	}
+
+	/**
+	 *   Visszaadja a telepes nevét.
+	 */
 	public String getSettlerName()
 	{
 		return movablesName;
 	}
-	
+
+	/**
+	 *   A telepes megépíti a bázist.
+	 */
 	public void Build()
 	{
 		((Goal_Asteroid)currentField).BuildBase();
 	}
-	
+
+	/**
+	 *   Lép a telepes.
+	 */
 	public void Step()
 	{
 		System.out.println("\nAz akutalis jatekos: " + movablesName);
@@ -236,7 +308,8 @@ public class Settler extends Movable {
 		System.out.println("6. Teleport lerakas");
 		System.out.println("7. Robot craftolas");
 		System.out.println("8. Teleport par craftolas");
-		System.out.println("9. Bazis felepites");
+		System.out.println("9. Nyersanyag tarolasa cel aszteroidan");
+		System.out.println("10. Bazis felepites");
 
 		Scanner myinput = new Scanner(System.in);
 		int valasz = myinput.nextInt(); // TO-DO: Ha bezarod akkor a System.in-is amit nem tudunk ujra megnyitni
@@ -273,6 +346,10 @@ public class Settler extends Movable {
 			CraftTeleports("Teleport1", "Teleport2");  //TO-DO név beolvasása
 			break;
 		case 9:
+			Material mat = selectMaterialToPut();
+			if(mat!=null)
+				storeOnBaseMaterial(mat);
+		case 10:
 			if(currentField.getClass() == Goal_Asteroid.class)
 				Build();
 			else 
@@ -282,7 +359,10 @@ public class Settler extends Movable {
 			break;
 		}
 	}
-	
+
+	/**
+	 *   Eltárol egy teleportot az inventoryban.
+	 */
 	public void addTelportToInventory(Teleport t)
 	{
 		inventoryTeleport.add(t);
