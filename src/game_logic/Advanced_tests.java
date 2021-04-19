@@ -73,17 +73,17 @@ public class Advanced_tests {
 
     // movable peldanyositasa
     private void Movable(String[] command) {
-    	if(command[1] == "Robot") {
+    	if(command[1].equals("Robot")) {
     		Asteroid ar = new Asteroid(command[3]);
     		Robot r = new Robot(command[2],ar);
     		Movable_Test_List.add(r);
     	}
-    	if(command[1] == "Settler") {
+    	else if(command[1].equals("Settler")) {
     		Asteroid as = new Asteroid(command[3]);
     		Settler s = new Settler(command[2],as);
     		Movable_Test_List.add(s);
     	}
-    	if(command[1] == "Alien") {
+    	else if(command[1].equals("Alien")) {
     		Asteroid aa = new Asteroid(command[3]);
     		Alien a = new Alien(command[2], aa); 
     		Movable_Test_List.add(a);
@@ -109,34 +109,49 @@ public class Advanced_tests {
                 break;
             case "Movable":
             	this.Movable(comdline);
+            	break;
             case "Drill":
             	this.CurrentDrillManager.Drill(Movable_Test_List, comdline);
+            	break;
             case "Mine":
             	this.CurrentMineManager.Mine(Movable_Test_List, comdline);
+            	break;
             case "PutMaterial":
             	this.CurrentPutMaterialManager.Putmaterial(Field_Test_List, comdline);
+            	break;
             case "Move": 
             	this.CurrentMoveManager.Move(Field_Test_List, Movable_Test_List, comdline);
+            	break;
             case "PlaceTeleport":
             	this.CurrentPlaceTeleportManager.PlaceTeleport(Movable_Test_List, Field_Test_List, comdline);
+            	break;
             case "CraftTeleport":
             	this.CurrentCraftTeleportManager.CraftTeleport(Movable_Test_List, comdline);
+            	break;
             case "StartSunstorm":
                 this.CurrentStartSunstormManager.StartSunstorm(Field_Test_List, comdline);
+                break;
             case "Hide":
                 this.currentHideManager.Hide(Movable_Test_List, comdline);
+                break;
             case "ExplodeMovable":
                 this.CurrentExplodeMovableManager.ExplodeMovable(Movable_Test_List, comdline);
+                break;
             case "Die":
                 this.CurrentDieManager.Die(Movable_Test_List, comdline);
+                break;
             case "CraftRobot":
                 this.CurrentCraftRobotManager.CraftRobot(Movable_Test_List, comdline);
+                break;
             case "GiveItem":
             	this.CurrentGiveitemManager.GiveItem(Movable_Test_List, comdline);
+            	break;
             case "CompleteMaterial":
             	this.CurrentCompleteMaterialManager.CompleteMaterial(Field_Test_List, comdline);
+            	break;
             default:
                 System.out.println("ejjoj");
+                break;
         }
 
     }

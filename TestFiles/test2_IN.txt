@@ -5,21 +5,8 @@ Movable,Robot,Harmadik,A1
 Movable,Robot,Negyedik,A1
 Movable,Alien,Otodik,A1
 Movable,Alien,Hatodik,A1
-Passround,Passround,Passround,Passround,Passround,Passround
-Round
 Die,Hatodik,
-Passround, Passround, Passround, Passround, Passround
-Round
 Die,Otodik
-Passround,Passround,Passround,Passround
-Round
 Die,Negyedik
-Passround,Passround,Passround
-Round
 Die,Harmadik
-Passround,Passround
-Round
 Die,Masodik
-Round
-Passround
-Round

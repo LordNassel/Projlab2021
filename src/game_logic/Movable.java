@@ -50,8 +50,7 @@ public abstract class Movable implements Steppable {
 	{
 		currentField.RemovePlayer(this);
 		Game.RemoveSteppable(this);
-		if(this.getClass() == Settler.class)
-			System.out.println("A(z) " + movablesName + " jatekos meghalt, beke poraira");
+			System.out.println("A(z) " + movablesName + " meghalt, beke poraira");
 		
 	}
 	//felrobban az obajektum
