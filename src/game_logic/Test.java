@@ -179,12 +179,12 @@ public class Test {
 			player.Store(ice);
 			player.Store(ice);
 			player.Store(uran);
-			player.CraftTeleports();
+			//player.CraftTeleports();
 			System.out.println("\n");
 			this.TestMgr();
 			break;
 		case 1:
-			player.CraftTeleports();
+			//player.CraftTeleports();
 			System.out.println("\n");
 			this.TestMgr();
 		}

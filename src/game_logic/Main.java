@@ -13,12 +13,9 @@ public class Main{
 		//Az ideiglenes világ példányosítása
 		TempGenWorlds temp = new TempGenWorlds();
 		//Hagyományos tesztek
-		Test Normaltest = new Test();
-		System.out.println("Mit szeretnél csinálni? 1-es hagyomanyos tesztek, 2-es elorehaladott tesztek, 3-as uj jatek inditasa");
+		//Test Normaltest = new Test();
+		System.out.println("Mit szeretnél csinálni?  2-es elorehaladott tesztek, 3-as uj jatek inditasa");
 		switch (inputmanager()){
-			case 1:
-				Normaltest.TestMgr();
-				break;
 			case 2:
 				currenttests.AdvancedTestMgr();
 				break;
