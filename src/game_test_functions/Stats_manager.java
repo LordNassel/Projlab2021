@@ -2,6 +2,7 @@ package game_test_functions;
 
 import game_logic.*;
 
+import java.util.List;
 import java.util.Vector;
 //ennek az osztálynak a kizárólagos feladatat, hogy a stats<osztaly> parancsot kezelje
 public class Stats_manager {
@@ -28,7 +29,17 @@ public class Stats_manager {
             }
             //Materials benne
             System.out.println("Materials: ");
-            //TO-DO
+            List<Material> mats = A1.getMats();
+            for(int i=0; i<A1.getMats().size(); i++){
+                if (A1.getMats().get(i) instanceof Uranium )
+                    System.out.println("Uranium, ");
+                if (A1.getMats().get(i) instanceof Ice )
+                    System.out.println("Ice, ");
+                if (A1.getMats().get(i) instanceof Coal)
+                    System.out.println("Coal, ");
+                if (A1.getMats().get(i) instanceof Iron )
+                    System.out.println("Iron, ");
+                }
 
         }
     public void Settler_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {

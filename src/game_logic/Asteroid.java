@@ -188,4 +188,7 @@ public class Asteroid extends Field{
 		public boolean getSunSide() {
 			return isSunside;
 		}
+		public List<Material> getMats(){
+			return CoreMaterial;
+		}
 }
