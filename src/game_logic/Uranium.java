@@ -9,12 +9,17 @@ public class Uranium extends Material {
 	 *  Urán expozíciónak száma.
 	 */
 	private int counter;
-	
+
+	/**
+	 *  Konstruktor nullázza a számlálót.
+	 */
 	public Uranium() {
 		super();
 		counter = 0;
 	}
-	//IncreaseUraniumCnt-hoz kell
+	/**
+	 *  IncreaseUraniumCnt-hoz kell.
+	 */
 	public void IncreaseCounter() {
 		counter++;
 	}
@@ -26,7 +31,7 @@ public class Uranium extends Material {
 	@Override
 	public void GetExposed(boolean Sunside, Asteroid who) {
 		if(Sunside) {
-			counter++;
+			IncreaseCounter();
 		}
 		
 		if(counter == 3) {
