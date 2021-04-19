@@ -62,11 +62,14 @@ public class Settler extends Movable {
 	}
 
 	/**
-	 * A kibányászott nyersanyagot eltárolja a material inventoryban.
+	 * A kibányászott nyersanyagot eltárolja a material inventoryban ha van hely
 	 */
 	public void Store(Material material)
-	{	
-		inventoryMain.add(material);
+	{
+		if(inventoryMain.size()<10)
+			inventoryMain.add(material);
+		else
+			System.out.println("Hiba: A tarhely tele van");
 	}
 
 	/**
@@ -257,6 +260,21 @@ public class Settler extends Movable {
 		return currentlist.get(n);
 		}
 	}
+	
+	/**
+	 * Base aszteroidan eltarol egy egyseg nyersanyagot
+	 * @param m
+	 */
+	public void storeOnBaseMaterial(Material m)
+	{
+		if(this.currentField.getClass() == Goal_Asteroid.class)
+		{
+			((Goal_Asteroid)currentField).CompleteMaterial(m);
+			inventoryMain.remove(m);
+		}
+		else
+			System.out.println("Hiba: Nem a cel aszteroidan vagy");
+	}
 
 	/**
 	 *   Visszaadja a telepes nevét.
@@ -290,7 +308,8 @@ public class Settler extends Movable {
 		System.out.println("6. Teleport lerakas");
 		System.out.println("7. Robot craftolas");
 		System.out.println("8. Teleport par craftolas");
-		System.out.println("9. Bazis felepites");
+		System.out.println("9. Nyersanyag tarolasa cel aszteroidan");
+		System.out.println("10. Bazis felepites");
 
 		Scanner myinput = new Scanner(System.in);
 		int valasz = myinput.nextInt(); // TO-DO: Ha bezarod akkor a System.in-is amit nem tudunk ujra megnyitni
@@ -327,6 +346,10 @@ public class Settler extends Movable {
 			CraftTeleports("Teleport1", "Teleport2");  //TO-DO név beolvasása
 			break;
 		case 9:
+			Material mat = selectMaterialToPut();
+			if(mat!=null)
+				storeOnBaseMaterial(mat);
+		case 10:
 			if(currentField.getClass() == Goal_Asteroid.class)
 				Build();
 			else 

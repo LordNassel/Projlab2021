@@ -30,11 +30,6 @@ public class Goal_Asteroid extends Asteroid  {
 		CurrentMaterials.add(M);
 		gamewin = true;
 	}
-	
-	public void storeInBaseAsteroid(Material m)
-	{
-		CurrentMaterials.add(m);
-	}
 
 	/**
 	 *  Bázis építése.
