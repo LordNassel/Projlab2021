@@ -1,5 +1,5 @@
-Asteroid<A1><Uranium><0><true>
-Movable<Alien><AL1><A1>
-Mine<AL1>
-Stats<A1>
-Stats<AL1>
+Asteroid,A1,Uranium,0,true
+Movable,Alien,AL1,A1
+Mine,AL1
+Stats,A1
+Stats,AL1

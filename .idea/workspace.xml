@@ -3,10 +3,34 @@
   <component name="ChangeListManager">
     <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Advanced_tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Advanced_tests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Reader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_test_functions/Comment_function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_test_functions/Comment_function.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test10_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test10_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test11_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test11_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test12_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test12_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test13_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test13_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test14_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test14_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test15_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test15_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test16_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test16_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test17_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test17_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test18_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test18_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test19_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test19_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test20_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test20_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test21_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test21_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test22_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test22_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test23_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test23_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test24_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test24_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test25_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test25_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test26_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test26_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test27_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test27_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test28_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test28_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test29_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test29_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test2_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test2_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test3_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test3_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test4_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test4_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test5_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test5_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test6_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test6_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test7_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test7_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test8_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test8_IN.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestFiles/test9_IN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TestFiles/test9_IN.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

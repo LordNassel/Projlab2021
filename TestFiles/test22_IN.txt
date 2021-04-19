@@ -1,7 +1,6 @@
-Asteroid<A1><iron>
-Asteroid<A2><iron>
-SetNeighbor<A1><A2>
-Teleport<A1><T1>
-StartSunstorm<A1>
-Tetsõleges ideig:
-Stats<>
+Asteroid,A1,Iron
+Asteroid,A2,Iron
+SetNeighbor,A1,A2
+Teleport,A1,T1
+StartSunstorm,A1
+Stats

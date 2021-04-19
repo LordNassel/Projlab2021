@@ -1,1 +1,1 @@
-ActivateTeleport<Teleport1>
+ActivateTeleport,T1

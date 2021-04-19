@@ -1,1 +1,1 @@
-WinGame()
+WinGame

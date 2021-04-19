@@ -1,5 +1,5 @@
-Asteroid<A1><Coal><0><true>
-Movable<Robot><R1><A1>
-Drill<R1>
-Stats<A1>
-Stats<A1>
+Asteroid,A1,Coal,0,true
+Movable,Robot,R1,A1
+Drill,R1
+Stats,A1
+Stats,A1

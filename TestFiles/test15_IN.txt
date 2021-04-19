@@ -1,7 +1,7 @@
-Asteroid<A1><null>
-Movable<Settler><Player><A1>
-GiveItem<Settler><Iron>
-GiveItem<Settler><Coal>
+Asteroid,A1,null
+Movable,Settler,Player,A1
+GiveItem,Settler,Iron
+GiveItem,Settler,Coal
 CraftRobot
-Stats<Player>
-Stats<Robot>
+Stats,Player
+Stats,Robot

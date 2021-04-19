@@ -1,1 +1,1 @@
-InitTest()
+InitTest

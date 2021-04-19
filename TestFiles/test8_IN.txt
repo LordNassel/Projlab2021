@@ -1,1 +1,1 @@
-MapConsistencyTest<Map1>
+MapConsistencyTest,Map1

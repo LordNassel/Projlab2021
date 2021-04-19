@@ -1,5 +1,5 @@
-Asteroid<A1><null>
-Movable<Robot><Elso><A1>
-Hide<Robot>
-StartSunstorm<A1>
-Stats<Elso>
+Asteroid,A1,null
+Movable,Robot,Elso,A1
+Hide,Robot
+StartSunstorm,A1
+Stats,Elso
