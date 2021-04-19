@@ -35,12 +35,13 @@ public class Advanced_tests {
 
     //Ez manageli a tesztek megnyitasat
     public void AdvancedTestMgr(){
-        String current_tests[];
+        String current_tests[] = null;
 
         current_tests = this.Main_file_Reader.magicfiles();
         for( int i=0; i<current_tests.length; i++) {
             System.out.println(i+1 + " " + current_tests[i]);
         }
+
         //itt töltöm be a megfelelõ instruction setet
         SelectedTestInstructions = Main_file_Reader.readtest(current_tests[inputmanager()-1]);
         //ezt itt nem igazán értem miért < mint size -1. Valaki ezt nézze meg pls :D :D
@@ -48,8 +49,6 @@ public class Advanced_tests {
             interpreter(SelectedTestInstructions.get(i));
         }
     }
-
-
 
     //itt példányosítom az aszteroidákat a szövegfileból
     private void AsteroidCreator(String[] command){
@@ -156,7 +155,5 @@ public class Advanced_tests {
         n= myinput.nextInt();
         return n;
     }
-
-
 }
 
