@@ -2,24 +2,40 @@ package game_logic;
 
 import java.util.*;
 
-//Minden ami mozoghat
+/**
+ * A játékban előforduló, mozgóképes objektumokat reprezentálja egy mezőn. Tárolja az éppen aktuális helyét a pályán.
+ */
 public abstract class Movable implements Steppable {
 
-	//El van-e rejtozve
+	/**
+	 * Egy segéd tagváltozó, ami megmondja,hogy az adott movableelbújt-e egy aszteroidában.
+	 * Ha az értéke true, akkorigen, ha false akkor nem
+	 */
 	protected boolean isHidden;
+	/**
+	 * Movable neve. Azonositast segit
+	 */
 	protected String movablesName;
 
-	//konstruktor
+	/**
+	 * A movable aktuális pozíciója ahol éppen van
+	 */
 	protected Field currentField;
 
-	//
+	/**
+	 * Konstruktor, a megadott fieldre teszi a movablet
+	 * @param onField
+	 */
 	public Movable(Field onField)
 	{
 		currentField = onField;
 		isHidden = false;
 	}	
 
-	//Befogadast ker egy parameterben kaptt mezore
+	/**
+	 * Konstruktor
+	 * @param a
+	 */
 	public void Move(Field a)
 	{
 		if(!isHidden)
@@ -31,7 +47,11 @@ public abstract class Movable implements Steppable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 		
 	}
-	//fur aszteroidat
+
+	/**
+	 * Fúrja az aszteroidát körülvevő kérget aminek hatására eggyel csökkena kéreg (thickness).
+	 * Ha nincs már kérge az aszteroidánaknem történik semm
+	 */
 	public void Drill()
 	{
 		if(!isHidden)
@@ -45,7 +65,10 @@ public abstract class Movable implements Steppable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 		
 	}
-	//Elpusztul az obejektu,
+
+	/**
+	 * Meghal, eltűnik az aszteroida övből (kiesika játékból) a RemovePlayer()fgv. hívással
+	 */
 	public void Die()
 	{
 		currentField.RemovePlayer(this);
@@ -54,44 +77,71 @@ public abstract class Movable implements Steppable {
 			System.out.println("A(z) " + movablesName + " jatekos meghalt, beke poraira");
 		
 	}
-	//felrobban az obajektum
+
+	/**
+	 * Movable-ként eléri a robbanása minek hatására meghívódik a Die() függvény.
+	 */
 	public void HitByExplosion()
 	{
 		Die();
 		
 	}
-	//napvihar eri az objektumot
+	
+	/**
+	 * Movable-ként eléri a napviharaminek hatására rögtönmeghal ha nincs elbújva a Die() meghívásával.
+	 */
 	public void HitBySunStorm()
 	{
 		if (!isHidden) {
 			Die();
 		}
 	}
-	// a step overridja
+
+	/**
+	 * Interfész Step()-je
+	 * Valamilyen műveletet végez
+	 */
 	public abstract void Step();
 
 	
-	//Elrejtozik
+	/**
+	 * Elbújik az aszteroidában ha az üregesezzel beállítja az isHide-otture-ra. Ha nem üres, akkor nem tud elbújni
+	 */
 	public void Hide()
 	{
 		((Asteroid)currentField).GetHidden(this);
 	}
 	
+	/**
+	 * Getter
+	 * @return
+	 */
 	public Field GetCurrentField()
 	{
 		return this.currentField;
 	}
 	
+	/**
+	 * Setter
+	 * @param field
+	 */
 	public void SetCurrentField(Field field)
 	{
 		this.currentField=field;
 	}
 
+	/**
+	 * Setter
+	 */
 	public void SetIsHidden()
 	{
 		isHidden=!isHidden;
 	}
 	
+	/**
+	 * Getter
+	 * @return
+	 */
 	public String Getname() {
 		return this.movablesName;
 	}

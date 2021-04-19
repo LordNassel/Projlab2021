@@ -2,25 +2,42 @@ package game_logic;
 
 import java.util.*;
 
-
+/**
+ * A játék színterét, vagyis az aszteroidaövet valósítja meg.
+ * Számon tartja az ott elõforduló objektumokat és õ felel az aszteroida övben létre jövõ napviharért is
+ */
 public class Map implements Steppable {
 
+	/**
+	 * Az aszteroida ovben uralkodo sugarzas nagysaga
+	 * 7 és 10 kozott napvihar kovetkezik be
+	 */
 	private int sugarzas = 1;
+	/**
+	 * Az aszteroidaöv mezõi
+	 */
 	protected Vector<Field> FieldList;
 	// Default constructor
     public Map() { AnyoneAlive = true; }
-
+    
+    /**
+     * Paraméterben átadható a map-ot alkotó fieldek
+     */
     public Map(boolean alive, Vector<Field> newdb)
     { 
     	AnyoneAlive = alive;
     	FieldList = newdb;
     }
 
-   // true, if at least 1 player is alive
+    /**
+     * Egy boolean arra, hogy élnek-emég telepesek a játékban. Haigen,akkor az értéke igaz, ha nem akkor hamis
+     */
     private boolean AnyoneAlive;
 
 
-   //
+    /**
+     * Növeli a sugárzás nagyságát és ha elért egykorlátot akkor véletlenszerûengenerál egy napvihart
+     */
     public void Step() {
     	sugarzas++; // Növeljük a sugarzas szintjet
     	System.out.println("\nA sugarzas nagysaga: " + sugarzas + "\n"); //Kihirdetjük
@@ -36,7 +53,10 @@ public class Map implements Steppable {
     	
     }
 
-    // Starts the Sun storm for all asteroids
+    /**
+     * A napvihar lefutásáért felelõs metódus.
+     * Egy bizonyos területen keletkezik
+     */
     public void StartSunstorm() {
     	System.out.println("\nNapvihar kezdodott ebben a korben");
     	Field field = getRandomAsteroid();
@@ -54,6 +74,9 @@ public class Map implements Steppable {
     	sugarzas = 1;
     }
     
+    /**
+     * Egy random aszteroidával tér vissza azaszteroida övbõl
+     */
     public Field getRandomAsteroid()
     {
     	Random rand = new Random();

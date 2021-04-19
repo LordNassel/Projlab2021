@@ -3,30 +3,54 @@ package game_logic;
 import java.util.*;
 
 
+/**
+ * Ez az osztály felelsõs a játékmenet elvárt futásáért.Elkezdi/befejezi az adott játszmát,
+ * betölt egy pályát illetve kezeli a körökre osztást is
+ */
 public class Game {
 
+	/**
+	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
+	 */
 	private static boolean running;
+	/**
+	 * Az aktuális pálya, amin játszunk
+	 */
 	private Map map;
+	/**
+	 * Steppable, vagyis a mozgásra képes objektumok listája
+	 */
 	private static ArrayList<Steppable> steppableList = new ArrayList<Steppable>();
 
-    // Default constructor
+    /**
+     * Default constructor
+     */
     public Game() {
     	map = new Map();
     	running = true;
     }
     
+    /**
+     * Paraméterként átadott pályát tölt be
+     */
     public Game(Map generatedmap) {
     	map = generatedmap;
     	running = true;
     }
 
-    // If the materials are collected this is the method called
+    /**
+     * Ha a játékosok teljesítették az elõírtakat,akkor megnyerték a játékot,
+     * és a running-ot false-ra állítja
+     */
     public static void Wingame() {
     	System.out.println("Wingame called");
     	running=false;
     }
 
-    // If the settlers are dead this is the method called
+    /**
+     * A játékosok vesztettek, a játéknakvége,
+     * és a running-ot false-re állítja
+     */
     public void Losegame() {
     	running = false;
     	System.out.println("Losegame called");
@@ -34,7 +58,11 @@ public class Game {
         
     }
 
-   // Starts the game, by generating the map
+   /**
+    * Elindítja a körökre osztott játékmenetet,
+    * lépteti a léptethetõ objektumokat. Ha minden telepes halott
+    * akkor befejezi a játékot
+    */
     public void StartGame() {
     	System.out.println("A jatek elkezdodott, jo szorakozast!");
     	int number = 1;
@@ -54,7 +82,9 @@ public class Game {
     	}
     }
 
-    // Adds a new movable object to the game
+    /**
+     * Egy új mozgó objektumotadunk hozzá a játéktérhez
+     */
     public void AddMovable(Movable Playable, Asteroid a) {
     	Playable.SetCurrentField(a);
     	a.AcceptPlayer(Playable);
@@ -62,16 +92,25 @@ public class Game {
     	
     }
     
+    /**
+     * Léptethetõ objektumok listájába újat ad hozzá
+     */
     public static void AddSteppable(Steppable s)
     {
     	steppableList.add(s);
     }
     
+    /**
+     * Léptethetõ objektumok listájából töröl egy paraméterül kapottat
+     */
     public static void RemoveSteppable(Steppable s)
     {
     	steppableList.remove(s);
     }
     
+    /**
+     * Segédfüggvény annak az ellenõrzésére, hogy van-e játékban még Telepes
+     */
     public boolean getIsTherAnySettler()
 	{
     	Asteroid a = new Asteroid("bela");

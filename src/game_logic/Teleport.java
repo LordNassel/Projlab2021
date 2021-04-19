@@ -2,13 +2,25 @@ package game_logic;
 
 import java.util.*;
 /**
- * This class specifies the variables and methods to be implemented for the Teleports
+ * A pálya egy másik lehetséges mezõje, õ reprezentáljaa teleportot az aszteroidaövben.
+ * Tároljaa párjául szolgáló teleportot. Fõ feladata,
+ * hogy a„használata” során képesnek kell lennie átirányítani a párjának szomszédos
+ * aszteroidájára, valamintrá specifikus választ kell tudniaadni a különbözõ egyéb eseményekre.
  */
 public class  Teleport extends Field {
+	/**
+	 * Egy boolean változó annak a nyilvántartására,hogy az aszteroidahasználatban van-e, vagyis aktív vagy sem. Ha igenaz értéke true, ha nem false
+	 */
     private boolean IsActive;
+    /**
+     * Egy boolean változó annak anyilvántartására, hogy a teleportot érte-e napszél.
+     */
     private boolean IsSunStroke;
+    /**
+     * Az aktuális teleport párjaként szolgáló teleport
+     */
     private Teleport Pair;
-    protected Vector<Teleport> TeleportPair = new Vector<Teleport>();
+    //protected Vector<Teleport> TeleportPair = new Vector<Teleport>();
     protected Asteroid onAsteroid;
     /**
      *Default Constructor
@@ -39,6 +51,10 @@ public class  Teleport extends Field {
         Neighbors.add(WhichField);
     }
 
+    /**
+     * Teleportként SunStorm-mal utkozik
+     * Szomszedos aszteroidara kerul a teleport
+     */
     @Override
     public void ReachedBySunStorm(){
     	Vector<Field> neighbors = onAsteroid.FindNeighbor();
@@ -62,14 +78,22 @@ public class  Teleport extends Field {
         return IsActive;
     }
 
-    
+    /**
+     * Getter
+     */
     public void setIsActive() { 
         IsActive = !IsActive;
         
     }
 
+    /**
+     * Getter
+     */
     public boolean getIsSunStroke() {return IsSunStroke;}
 
+    /**
+     * Setter
+     */
     public void setIsSunStroke() {IsSunStroke = !IsSunStroke;}
 
     /**
@@ -80,6 +104,10 @@ public class  Teleport extends Field {
         Pair = givenTeleport;
     }
 
+    /**
+     * Teleportra lepest kezel
+     * A parjanak az aszteroidara leptet ha az aktiv
+     */
     @Override
     public void AcceptPlayer(Movable M) {
     	Teleport pair = this.getPair();
@@ -96,14 +124,25 @@ public class  Teleport extends Field {
     	
     }
     
+    /**
+     * Setter
+     * @param a
+     */
     public void setOnAsteroid(Asteroid a)
     {
     	onAsteroid = a;
     }
+    /**
+     * Getter
+     * @return
+     */
     public Teleport getPair(){
         return Pair;
     }
 
+    /**
+     * Getter
+     */
 	@Override 
 	public boolean GetDrilled() {
 		return false;

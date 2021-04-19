@@ -3,21 +3,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * A pálya egy lehetséges mezője, az aszteroidákat reprezentálóosztály. 
+ * Tartalmazza a rájukjellemző tulajdonságokat
+ * (kéreg vastagság, napközelség),nyersanyagot,
+ * valamint rájellemzően reagál az adott eseményekre.
+ * @author Tamás
+ *
+ */
 public class Asteroid extends Field{
-	//Attributes: Is the Asteroid sunside, and the value of the crust thickness
+	/**
+	 * Megadja, hogy az aszteroida napközelben van vagy sem. Ha azértéke true, akkor igen, ha false akkor pedig nem.
+	 */
 	private boolean isSunside;
+	/**
+	 * Az aszteroida kérgének vastagsága,1 és 10 közötti értékkel
+	 */
 	private int Thickness;
-	//This is a bit magic number-ish, all asteroids store 3 units of material
+	/**
+	 * Az aszteroida által tároltnyersanyag. Csak egy típusúnyersanyag lehet. 0 és 3 közötti mennyiséget tárol
+	 */
 	private List<Material> CoreMaterial = new ArrayList<Material>(3);
-	//This is the default constructor, this may however change. Right now it creates the random value for the thickness
+	/**
+	 * Az aszeroidan aktivalt teleportok listaja
+	 */
 	private List<Teleport> teleportOnAsteroid = new ArrayList<Teleport>();
 	
-	public Asteroid(String name, String M) {
+	/**
+	 * Konstruktor ami beallitja az aszteroida nevet
+	 * valamint feltolti a magot nyersanyaggal
+	 * @param name
+	 * @param M
+	 */
+	public Asteroid(String name, String type) {
 		super(name);
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
-		setAsteroidCore(M);
+		setAsteroidCore(type);
 
 	}
 	//Default empty constructor
@@ -50,7 +72,11 @@ public class Asteroid extends Field{
 	}
 	//Operations
 	
-	@Override//The drilling function. 
+	/**
+	 * Az aszteroidat furjak, aminek hatasra eggyel csokken a kopeny
+	 * ha meg nem 0
+	 */
+	@Override
 	public boolean GetDrilled(){
 		if(Thickness>0) 
 			Thickness--;
@@ -61,7 +87,10 @@ public class Asteroid extends Field{
 	}
 
 	
-	//The mining function
+	/**
+	 * Az aszteroidat banyasszak. Ha sikeres vissza ad egy Materialt
+	 * @return
+	 */
 	public Material GetMined(){		
 	//ha az aszteroida nem ures	
 		if(!CoreMaterial.isEmpty())
@@ -81,7 +110,11 @@ public class Asteroid extends Field{
 	
 	
 	
-	//The sunstorm handler. It is similar to all asteroid types
+	/**
+	 * Az aszteroidaba eltarolnak egy egyseg nyersanyagot ha tudnak
+	 * @param M
+	 * @return
+	 */
 	public boolean StoreMaterial(Material M) {
 		
 		if(CoreMaterial.size()<3 && CoreMaterial.size() > 0 && CoreMaterial.get(0).equals(M)) // Ha van benne de nincs tele maradjon homogen
@@ -101,7 +134,10 @@ public class Asteroid extends Field{
 		}
 	}
 	
-	//Hide in the asteroid
+	/**
+	 * Movable megprobal elbujni az aszteroidaban ha ures
+	 * @param M
+	 */
 	public void GetHidden(Movable M) {
 		
 		if(CoreMaterial.isEmpty())
@@ -113,28 +149,48 @@ public class Asteroid extends Field{
 			System.out.println("Asteroid is not empty to hide\n");
 	}
 
+	/**
+	 * Thickness gettere
+	 * @return
+	 */
 	public int getThickness()
 	{
 		return Thickness;
 	}
 	
+	/**
+	 * Aszteroidan levo teleportok listajaba ad egy ujat
+	 * @param t
+	 */
 	public void addTeleportOnAsteroid(Teleport t)
 	{
 		teleportOnAsteroid.add(t);
 		this.SetNeighbor(t);
 	}
 	
+	/**
+	 * Aszteridan levo teleportok listajabol torol egy parameterul kapotatt
+	 * @param t
+	 */
 	public void removeTeleportOnAsteroi(Teleport t)
 	{
 		teleportOnAsteroid.remove(t);
 		this.Neighbors.remove(t);
 	}
 	
+	/**
+	 * Teleportok listajanak gettere
+	 * @return
+	 */
 	public List<Teleport> getTeleportsOnAsteroid()
 	{
 		return teleportOnAsteroid;
 	}
 	
+	/**
+	 * A parameterben megadott tipusnak megfeleloen feltolti a magot nyersanyaggal
+	 * @param whichmaterial
+	 */
 	public void setAsteroidCore(String whichmaterial)
 	{
 		switch(whichmaterial)
