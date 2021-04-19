@@ -10,7 +10,7 @@ public class Reader {
     //A tesztek folderje ahonnan listázzuk a teszteket
 
 public Reader(){
-    File workfolder = new File("C:\\tesztfileok");
+    File workfolder = new File("TestFiles");
     filelist = workfolder.list();
 }
 
@@ -29,7 +29,7 @@ public Vector<String[]> readtest(String whichtest) {
     //Kell egy "+txt" a kiterjesztés miatt
     whichtest += ".txt";
 
-    String path = new String("C:\\tesztfileok\\");
+    String path = new String("TestFiles\\");
     path += whichtest;
     //a beolvasásás
     try {

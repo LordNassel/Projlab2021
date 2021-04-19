@@ -1,17 +1,15 @@
-Asteroid<A1><iron>
-Asteroid<A2><iron>
-Asteroid<A3><iron>
-Asteroid<A4><iron>
-SetNeighbor<A1, A2>
-SetNeighbor<A2, A3>
-SetNeighbor<A2, A4>
-Movable<Settler><Player><A1>
-Movesettler<A1>
-Movesettler<A2>
-Movesettler<A1>
-Movesettler<A1>
-Movesettler<A2>
-Movesettler<A3>
-Movesettler<A2>
-Movesettler<A4>
-Stats<Player>
+Asteroid,A1,iron
+Asteroid,A2,iron
+Asteroid,A3,iron
+Asteroid,A4,iron
+Stats,Asteroid,A1
+Stats,Asteroid,A2
+Stats,Asteroid,A3
+Stats,Asteroid,A4
+SetNeighbor,A1,A2
+SetNeighbor,A2,A3
+SetNeighbor,A3,A4
+Stats,Asteroid,A1
+Stats,Asteroid,A2
+Stats,Asteroid,A3
+Stats,Asteroid,A4

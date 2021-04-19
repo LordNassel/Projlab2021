@@ -3,14 +3,14 @@ package game_logic;
 import game_test_functions.*;
 import java.util.Scanner;
 import java.util.Vector;
-//Az elõrehaladott fileból is beolvasható tesztek osztálya.
+//Az el�rehaladott fileb�l is beolvashat� tesztek oszt�lya.
 public class Advanced_tests {
     //A tesztelesi keretrendszer az elorehaladott teszteknek:
     TempGenWorlds currentworlds = new TempGenWorlds();
     Reader Main_file_Reader = new Reader();
     Vector<String[]> SelectedTestInstructions;
 
-    //A tesztelési funkciók példányosítása
+    //A tesztel�si funkci�k p�ld�nyos�t�sa
     Comment_function CurrentComment = new Comment_function();
     Stats_manager CurrentStatsManager = new Stats_manager();
     SetNeighbor_funcion CurrentNeighborManager = new SetNeighbor_funcion();
@@ -35,27 +35,26 @@ public class Advanced_tests {
 
     //Ez manageli a tesztek megnyitasat
     public void AdvancedTestMgr(){
-        String current_tests[];
+        String current_tests[] = null;
 
         current_tests = this.Main_file_Reader.magicfiles();
         for( int i=0; i<current_tests.length; i++) {
             System.out.println(i+1 + " " + current_tests[i]);
         }
-        //itt töltöm be a megfelelõ instruction setet
+
+        //itt t�lt�m be a megfelel� instruction setet
         SelectedTestInstructions = Main_file_Reader.readtest(current_tests[inputmanager()-1]);
-        //ezt itt nem igazán értem miért < mint size -1. Valaki ezt nézze meg pls :D :D
+        //ezt itt nem igaz�n �rtem mi�rt < mint size -1. Valaki ezt n�zze meg pls :D :D
         for(int i = 0; i< SelectedTestInstructions.size(); i++) {
             interpreter(SelectedTestInstructions.get(i));
         }
     }
 
-
-
-    //itt példányosítom az aszteroidákat a szövegfileból
+    //itt p�ld�nyos�tom az aszteroid�kat a sz�vegfileb�l
     private void AsteroidCreator(String[] command){
         Asteroid temp;
-        //Attól függ hogy milyen hosszú, hogy melyik konstruktort hívtam meg
-        //Változott az aszteroida konstruktor ! Tudom hogy nem fordul így, de akkor is így jó. artur
+        //Att�l f�gg hogy milyen hossz�, hogy melyik konstruktort h�vtam meg
+        //V�ltozott az aszteroida konstruktor ! Tudom hogy nem fordul �gy, de akkor is �gy j�. artur
         switch (command.length){
             case 3:
                 temp = new Asteroid(command[1], command[2]);
@@ -92,7 +91,7 @@ public class Advanced_tests {
     }
     
 
-//ez a privát fgv fordítja le a megfelelõ stringeket
+//ez a priv�t fgv ford�tja le a megfelel� stringeket
 
     private void interpreter(String[] comdline){
         switch (comdline[0]){
@@ -142,7 +141,7 @@ public class Advanced_tests {
 
     }
 
-    //Ez a függvény hívja meg a Stats_manager megfelel? függvényeit
+    //Ez a f�ggv�ny h�vja meg a Stats_manager megfelel? f�ggv�nyeit
     private void Stats_Command_manager(String[] command){
         if(command[1].equals("Asteroid")){
             this.CurrentStatsManager.Asteroid_Stats_Manager(this.Field_Test_List, command);
@@ -156,6 +155,4 @@ public class Advanced_tests {
         n= myinput.nextInt();
         return n;
     }
-
-
 }
