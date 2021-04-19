@@ -14,7 +14,7 @@ public class Advanced_tests {
     Comment_function CurrentComment = new Comment_function();
     Stats_manager CurrentStatsManager = new Stats_manager();
     SetNeighbor_funcion CurrentNeighborManager = new SetNeighbor_funcion();
-    Drill_function CurrentDrilManager = new Drill_function();
+    Drill_function CurrentDrillManager = new Drill_function();
     Mine_function CurrentMineManager = new Mine_function();		
     PutMaterial_function CurrentPutMaterialManager = new  PutMaterial_function();
     Move_function CurrentMoveManager = new Move_function();
@@ -111,7 +111,7 @@ public class Advanced_tests {
             case "Movable":
             	this.Movable(comdline);
             case "Drill":
-            	this.CurrentDrilManager.Drill(Movable_Test_List, comdline);
+            	this.CurrentDrillManager.Drill(Movable_Test_List, comdline);
             case "Mine":
             	this.CurrentMineManager.Mine(Movable_Test_List, comdline);
             case "PutMaterial":
