@@ -66,7 +66,6 @@ public class Robot extends Movable {
 		}
     }
 
-	//estere most nincs jobb otlet majd reggel
-	public void Mine() {}
+
 	
 }

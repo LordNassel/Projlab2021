@@ -47,7 +47,7 @@ public abstract class Movable implements Steppable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 		
 	}
-	public abstract void Mine();
+
 
 	//Elpusztul az obejektu,
 	public void Die()
