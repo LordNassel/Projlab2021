@@ -287,5 +287,7 @@ public class Settler extends Movable {
 	{
 		inventoryTeleport.add(t);
 	}
+	
+	public List<Material> GetInventory_DEBUG(){return this.inventoryMain ;}
 
 }
