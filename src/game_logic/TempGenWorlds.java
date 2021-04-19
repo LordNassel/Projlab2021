@@ -60,7 +60,7 @@ public class TempGenWorlds {
 
                 Boroughton.SetNeighbor(Beckistale);
 
-                Settler S = new Settler("Plaayer1", Auchen);
+                Settler S = new Settler("Player1", Auchen);
                 Settler S2 = new Settler("Player2", Auchen);
                 Settler s3 = new Settler("Player3", Auchen);
                 Vector<Material> list = new Vector<Material>();

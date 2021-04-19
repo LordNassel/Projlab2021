@@ -79,7 +79,6 @@ public class Asteroid extends Field{
 
 	@Override //The mining function
 	public Material GetMined(){
-		System.out.println("Asteroid.GetMined() Called");
 		
 	//ha az aszteroida nem ures	
 		if(!CoreMaterial.isEmpty())

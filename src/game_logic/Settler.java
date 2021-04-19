@@ -1,8 +1,5 @@
 package game_logic;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 	import java.util.List;
 import java.util.Scanner;
@@ -22,7 +19,9 @@ public class Settler extends Movable {
 		inventoryMain = new ArrayList<Material>();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}
-	
+
+	public List<Material> GetInventory_DEBUG(){return this.inventoryMain ;}
+
 	public Settler(String name, Asteroid position)
 	{
 		super(position);
