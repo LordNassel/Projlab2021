@@ -18,7 +18,6 @@ public class Settler extends Movable {
 	public Settler(Asteroid position)
 	{
 		super(position);
-		System.out.println("Settler constructor called");
 		inventoryMain = new ArrayList<Material>();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}
@@ -26,7 +25,6 @@ public class Settler extends Movable {
 	public Settler(String name, Asteroid position)
 	{
 		super(position);
-		System.out.println("Settler constructor called");
 		movablesName = name;
 		inventoryMain = new ArrayList<Material>();
 		inventoryMain.clear();
@@ -37,7 +35,6 @@ public class Settler extends Movable {
 	{
 		if(!isHidden)
 		{
-		System.out.println("Mine");
 		Material minedMaterial = ((Asteroid)currentField).GetMined();
 		if(minedMaterial != null)
 			this.Store(minedMaterial);
@@ -48,7 +45,6 @@ public class Settler extends Movable {
 	//Egy anyagot eltarol az inventoryban
 	public void Store(Material material)
 	{	
-		System.out.println("Store");
 		inventoryMain.add(material);
 	}
 	
@@ -58,8 +54,6 @@ public class Settler extends Movable {
 	{
 		if(!isHidden)
 		{
-		System.out.println("CraftRobot");
-
 		Coal coal = new Coal();
 		Iron iron = new Iron();
 		Uranium uran = new Uranium();
@@ -84,13 +78,11 @@ public class Settler extends Movable {
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
 
 	}
-	//Teleport letrehozasa, parameterei a tp-k neve
+	//Teleport letrehozasa
 	public void CraftTeleports(String name1, String name2)
 	{
 		if(!isHidden)
 		{
-		System.out.println("CraftTeleports");
-
 		int niron, nuran, nice;
 		Iron iron = new Iron();
 		Ice ice = new Ice();
@@ -114,7 +106,7 @@ public class Settler extends Movable {
 			inventoryMain.remove(ice);
 			inventoryMain.remove(uranium);
 			
-			System.out.println("Teleport pair  created");
+			System.out.println("Teleport pair created");
 		}
 		else
 			System.out.println("Failed: Not enough materials");
@@ -139,11 +131,9 @@ public class Settler extends Movable {
 	{
 		if(!isHidden)
 		{
-			System.out.println("ActivateTeleport");
 			teleport.setIsActive();
-			((Asteroid)currentField).setTeleportOnAsteroid(teleport);
+			((Asteroid)currentField).addTeleportOnAsteroid(teleport);
 			teleport.SetNeighbor(currentField);
-			currentField.SetNeighbor(teleport);
 			teleport.setOnAsteroid(((Asteroid)currentField));
 			inventoryTeleport.remove(teleport);
 		}
@@ -175,7 +165,6 @@ public class Settler extends Movable {
 	{
 		if(!isHidden)
 		{
-		System.out.println("PutMaterial");
 		((Asteroid)currentField).StoreMaterial(material);
 		inventoryMain.remove(material);
 		}
@@ -194,14 +183,11 @@ public class Settler extends Movable {
 		else
 		{
 			System.out.println("Valasz ki melyik nyersanyagot szeretned eltarolni:");
-			//if(!inventoryMain.isEmpty())
-			//{
-				for(int i=0; i<inventoryMain.size(); i++)
-					System.out.println(i + ". " + inventoryMain.get(i));
+			for(int i=0; i<inventoryMain.size(); i++)
+				System.out.println(i + ". " + inventoryMain.get(i));
 			Scanner myinput = new Scanner(System.in);
 			int input = myinput.nextInt();
 			return inventoryMain.get(input);
-			//}
 		}
 	}
 
@@ -215,7 +201,7 @@ public class Settler extends Movable {
 			return null;
 		}
 		else {
-		System.out.println("Válaszd ki melyik szomszédos bolygóra akarsz utazni:");
+		System.out.println("Válasz egy teleportot vagy szomszédos bolgyót az utazáshoz:");
 		for(int i = 0; i<currentlist.size(); i++) {
 			System.out.println(i + ". " + currentlist.get(i).Getname());
 		}
@@ -225,7 +211,6 @@ public class Settler extends Movable {
 		n= myinput.nextInt();
 		return currentlist.get(n);
 		}
-		//this.Move(currentlist.get(n));
 	}
 	
 	public String getSettlerName()
@@ -240,9 +225,19 @@ public class Settler extends Movable {
 	
 	public void Step()
 	{
-		System.out.println("Az akutalis jatekos: " + movablesName);
+		System.out.println("\nAz akutalis jatekos: " + movablesName);
 		System.out.println("A jelenlegi poziciod: " + this.GetCurrentField().Getname() + " aszteroida");
 		System.out.println("Mit szeretnél csinálni?");
+		System.out.println("1. Mozgas");
+		System.out.println("2. Furas");
+		System.out.println("3. Bujas");
+		System.out.println("4. Banyaszas");
+		System.out.println("5. Nyersanyag tarolas aszteroidaban");
+		System.out.println("6. Teleport lerakas");
+		System.out.println("7. Robot craftolas");
+		System.out.println("8. Teleport par craftolas");
+		System.out.println("9. Bazis felepites");
+
 		Scanner myinput = new Scanner(System.in);
 		int valasz = myinput.nextInt(); // TO-DO: Ha bezarod akkor a System.in-is amit nem tudunk ujra megnyitni
 		
@@ -268,16 +263,21 @@ public class Settler extends Movable {
 			break;
 		case 6:
 			Teleport selected = selectTeleportFromInventory();
-			ActivateTeleport(selected);
+			if(selected != null)
+				ActivateTeleport(selected);
 			break;
 		case 7:
 			CraftRobot();
 			break;
 		case 8:
-			CraftTeleports("tp1", "tp2");
+			CraftTeleports("Teleport1", "Teleport2");  //TO-DO név beolvasása
 			break;
 		case 9:
-			Build();
+			if(currentField.getClass() == Goal_Asteroid.class)
+				Build();
+			else 
+				System.out.println("Hiba, nem a cel aszteroidan vagy");
+			break;
 		default:
 			break;
 		}

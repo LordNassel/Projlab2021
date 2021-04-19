@@ -10,13 +10,11 @@ public class Goal_Asteroid extends Asteroid  {
 	//Constructor it will need a list of materials, these materials if collected will win the game
 	public Goal_Asteroid(String name, String M, Vector<Material> list) {
 		super(name, M);
-		System.out.println("Goal_Asteroid.Constructor Called");
 		CurrentMaterials = list;
 	}
 	
 	//Kap egy "felhalmozando" anyagot es elhelyezi a tarban, ellenorzi, hogy ettol komplett-e a lista
 	public void CompleteMaterial(Material M) {
-		System.out.println("CompleteMaterial Called");
 		CurrentMaterials.add(M);
 		gamewin = true;
 	}
@@ -25,7 +23,7 @@ public class Goal_Asteroid extends Asteroid  {
 	{
 		CurrentMaterials.add(m);
 	}
-	// ezt szerintem mergelni kene a completematerial fv-nyel
+	
 	public void BuildBase()
 	{
 		Uranium u = new Uranium();
@@ -38,7 +36,10 @@ public class Goal_Asteroid extends Asteroid  {
 		int ice_db = getMaterialTypeNumber(ice);
 		
 		if(uran_db >= 3 && coal_db >= 3&& iron_db >= 3 && ice_db >=3)
+		{
 			Game.Wingame();
+			return;
+		}
 		else
 			System.out.println("Nincs eleg nyersanyag meg a bazis felepitesehez");
 	}
