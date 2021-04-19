@@ -33,12 +33,15 @@ public class Stats_manager {
             for(int i=0; i<A1.getMats().size(); i++){
                 if (A1.getMats().get(i) instanceof Uranium )
                     System.out.println("Uranium, ");
-                if (A1.getMats().get(i) instanceof Ice )
+                else if (A1.getMats().get(i) instanceof Ice )
                     System.out.println("Ice, ");
-                if (A1.getMats().get(i) instanceof Coal)
+                else if (A1.getMats().get(i) instanceof Coal)
                     System.out.println("Coal, ");
-                if (A1.getMats().get(i) instanceof Iron )
+                else if (A1.getMats().get(i) instanceof Iron )
                     System.out.println("Iron, ");
+                else
+                	System.out.println("Uranium, ");
+                	
                 }
 
         }
