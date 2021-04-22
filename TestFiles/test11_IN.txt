@@ -1,5 +1,5 @@
-Asteroid,A1,null,0,false
+Asteroid,A1,null,false,0
 Movable,Settler,S1,A1
 Mine,S1
-Stats,A1
-Stats,S1
+Stats,Asteroid,A1
+Stats,Settler,S1

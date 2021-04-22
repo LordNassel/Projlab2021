@@ -69,7 +69,10 @@ public class Settler extends Movable {
 		if(inventoryMain.size()<10)
 			inventoryMain.add(material);
 		else
+		{
 			System.out.println("Hiba: A tarhely tele van");
+			return;
+		}
 	}
 
 	/**

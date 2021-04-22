@@ -1,5 +1,5 @@
-Asteroid,A1,Ice,3,false
+Asteroid,A1,Ice,false,3
 Movable,Robot,R1,A1
 Drill,R1
-Stats,A1
-Stats,R1
+Stats,Asteroid,A1
+Stats,Robot,R1

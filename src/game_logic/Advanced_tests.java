@@ -1,6 +1,8 @@
 package game_logic;
 
 import game_test_functions.*;
+
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 //Az el�rehaladott fileb�l is beolvashat� tesztek oszt�lya.
@@ -65,8 +67,8 @@ public class Advanced_tests {
                 Field_Test_List.add(temp);
                 break;
             case 5:
-                //temp = new Asteroid(command[1], command[2], Boolean.parseBoolean(command[3]), Integer.parseInt(command[4])); // BAZDMEG
-                temp = new Asteroid(command[1], command[2], Boolean.parseBoolean(command[3]), Integer.parseInt(command[4])); // BAZDMEG
+                //temp = new Asteroid(command[1], command[2], Boolean.parseBoolean(command[3]), Integer.parseInt(command[4]));
+                temp = new Asteroid(command[1], command[2], Boolean.parseBoolean(command[3]), Integer.parseInt(command[4]));
 
                 Field_Test_List.add(temp);
                 break;
@@ -75,19 +77,25 @@ public class Advanced_tests {
 
     // movable peldanyositasa
     private void Movable(String[] command) {
+    	Asteroid as = new Asteroid("temp");
+    	for(int y=0; y<Field_Test_List.size();y++)
+    	{
+    		if(Field_Test_List.get(y).Getname().equals(command[3]))
+    			as=((Asteroid)Field_Test_List.get(y));
+    	}
     	if(command[1].equals("Robot")) {
-    		Asteroid ar = new Asteroid(command[3]);
-    		Robot r = new Robot(command[2],ar);
+    		//Asteroid ar = new Asteroid(command[3]);
+    		Robot r = new Robot(command[2],as);
     		Movable_Test_List.add(r);
     	}
     	else if(command[1].equals("Settler")) {
-    		Asteroid as = new Asteroid(command[3]);
+    		//Asteroid as = new Asteroid(command[3]);
     		Settler s = new Settler(command[2],as);
     		Movable_Test_List.add(s);
     	}
     	else if(command[1].equals("Alien")) {
-    		Asteroid aa = new Asteroid(command[3]);
-    		Alien a = new Alien(command[2], aa); 
+    		//Asteroid aa = new Asteroid(command[3]);
+    		Alien a = new Alien(command[2], as); 
     		Movable_Test_List.add(a);
     	}
     }
@@ -151,6 +159,9 @@ public class Advanced_tests {
             case "CompleteMaterial":
             	this.CurrentCompleteMaterialManager.CompleteMaterial(Field_Test_List, comdline);
             	break;
+            case "List":
+            	this.List_Universe();
+            	break;
             default:
                 System.out.println("ejjoj");
                 break;
@@ -176,7 +187,47 @@ public class Advanced_tests {
             this.CurrentStatsManager.Teleport_StatsManager(this.Field_Test_List, command);
         }
     }
-
+    
+    private void List_Universe()
+    {
+    	for(int i=0; i<Field_Test_List.size(); i++)
+    	{
+    		if(Field_Test_List.get(i).getClass().equals(Asteroid.class))
+    		{
+    			//MINDIG aszteroida, a kommand definiálja
+    			Asteroid A1 = (Asteroid)Field_Test_List.get(i);
+                //itt írom ki a nevét a bolygónak
+                System.out.println("Name: " + A1.Getname());
+                //napkozeli e
+                System.out.println("IsSunSide: " + String.valueOf(A1.getSunSide()));
+                //vastagsaga
+                System.out.println("Thickness:" +  A1.getThickness());
+                //A szomszédok kiírása
+                System.out.println("Neighbours: ");
+                Vector<Field> temp = A1.FindNeighbor();
+                if(temp!= null) {
+                    for (int y = 0; y < temp.size(); y++)
+                        System.out.println(temp.get(y).Getname());
+                }
+                //Materials benne
+                System.out.println("Materials: ");
+                List<Material> mats = A1.getMats();
+                for(int x=0; x<A1.getMats().size(); x++){
+                    if (A1.getMats().get(x) instanceof Uranium )
+                        System.out.println("Uranium, ");
+                    else if (A1.getMats().get(x) instanceof Ice )
+                        System.out.println("Ice, ");
+                    else if (A1.getMats().get(x) instanceof Coal)
+                        System.out.println("Coal, ");
+                    else if (A1.getMats().get(x) instanceof Iron )
+                        System.out.println("Iron, ");
+                    else
+                    	System.out.println("Uranium, ");
+                    	
+                    }
+    		}
+    	}
+    }
     //Egy egyszeru rendszer amely beolvas az inputrol. Lehet lesz ennek bovitese
     private int inputmanager() {
         Scanner myinput =new Scanner(System.in);

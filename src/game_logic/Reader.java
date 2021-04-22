@@ -26,7 +26,7 @@ public String[] magicfiles(){
 public Vector<String[]> readtest(String whichtest) {
 
     Vector<String[]> temp = new Vector<String[]>();
-    //Kell egy "+txt" a kiterjesztï¿½s miatt
+    //Kell egy "+txt" a w½s miatt
     whichtest += ".txt";
 
     String path = new String("TestFiles\\");

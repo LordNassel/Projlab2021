@@ -22,7 +22,11 @@ public class Main{
 			case 3:
 				temp.Generateworlds(1);
 				break;
+			default:
+				break;
 		}
+		Scanner input = new Scanner(System.in);
+		String in = input.next();
 	}
 
 	private static int inputmanager() {

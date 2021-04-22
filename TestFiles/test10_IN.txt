@@ -1,8 +1,8 @@
-Asteroid,A1,Iron,3,true
-Asteroid,A2,Ice,3,false
-SetNeighbour,A1,A2
+Asteroid,A1,Iron,true,3
+Asteroid,A2,Ice,false,3
+SetNeighbor,A1,A2
 Movable,Robot,R1,A1
 Move,R1,A2
-Stats,A1
-Stats,A2
-Stats,R1
+Stats,Asteroid,A1
+Stats,Asteroid,A2
+Stats,Robot,R1

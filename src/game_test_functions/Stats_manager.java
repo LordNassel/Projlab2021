@@ -15,7 +15,7 @@ public class Stats_manager {
             //MINDIG aszteroida, a kommand definiálja
             Asteroid A1 = (Asteroid) Field_Temp_List.get(n);
             //itt írom ki a nevét a bolygónak
-            System.out.println("Name: " + A1.Getname());
+            System.out.println("\nName: " + A1.Getname());
             //napkozeli e
             System.out.println("IsSunSide: " + String.valueOf(A1.getSunSide()));
             //vastagsaga
@@ -47,12 +47,16 @@ public class Stats_manager {
         }
     public void Settler_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {
         int n=0; 
-        while (Movable_Temp_List.get(n).Getname().equals(command[1]) == false)
-            n++;
-        System.out.println(Movable_Temp_List.get(n).Getname());
-        System.out.println(Movable_Temp_List.get(n).GetCurrentField().Getname());
+        for(int y=0; y<Movable_Temp_List.size();y++)
+        {
+        	if(Movable_Temp_List.get(y).Getname().equals(command[2]))
+        		n=y;
+        }
+        System.out.println("\nNev: " + Movable_Temp_List.get(n).Getname());
+        System.out.println("Pozicio: " + Movable_Temp_List.get(n).GetCurrentField().Getname());
         //Tudom hogy settler
         Settler S1 = (Settler) Movable_Temp_List.get(n);
+        System.out.println("Nyersanyag tarolva: ");
         for(int i=0; i<S1.GetInventory_DEBUG().size(); i++){
             if (S1.GetInventory_DEBUG().get(i) instanceof Uranium )
                 System.out.println("Uranium");
@@ -63,21 +67,35 @@ public class Stats_manager {
             if (S1.GetInventory_DEBUG().get(i) instanceof Iron )
                 System.out.println("Iron");
             }
+        System.out.println("\n");
         }
 
     public void Robot_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {
         int n=0;
-        while (Movable_Temp_List.get(n).Getname().equals(command[2]) == false)
-            n++;
-        System.out.println("Név :" + Movable_Temp_List.get(n).Getname());
-        System.out.println("Szomszédos aszteroidák :" + Movable_Temp_List.get(n).GetCurrentField().Getname());
+        /*while (Movable_Temp_List.get(n).Getname().equals(command[2]) == false)
+            n++;*/
+        for(int y=0; y<Movable_Temp_List.size();y++)
+        {
+        	if(Movable_Temp_List.get(y).Getname().equals(command[2]))
+        		n=y;
+        }
+        System.out.println("\nNév:" + Movable_Temp_List.get(n).Getname());
+        System.out.println("Pozicio: " + Movable_Temp_List.get(n).GetCurrentField().Getname());
+        //System.out.println("Szomszédos aszteroidák :" + Movable_Temp_List.get(n).GetCurrentField().Getname());
+
     }
     public void Alien_StatsManager(Vector<Movable> Movable_Temp_List, String[] command) {
         int n=0;
-        while (Movable_Temp_List.get(n).Getname().equals(command[2]) == false)
-            n++;
-        System.out.println(Movable_Temp_List.get(n).Getname());
-        System.out.println(Movable_Temp_List.get(n).GetCurrentField().Getname());
+        /*while (Movable_Temp_List.get(n).Getname().equals(command[2]) == false)
+            n++;*/
+        for(int y=0; y<Movable_Temp_List.size();y++)
+        {
+        	if(Movable_Temp_List.get(y).Getname().equals(command[2]))
+        		n=y;
+        }
+        System.out.println("\nNev: " + Movable_Temp_List.get(n).Getname());
+        System.out.println("Pozicio: " + Movable_Temp_List.get(n).GetCurrentField().Getname());
+
     }
     public void Teleport_StatsManager(Vector<Field> Field_Temp_List, String[] command) {
         int n=0;
@@ -86,5 +104,7 @@ public class Stats_manager {
         Teleport T1 = (Teleport) Field_Temp_List.get(n);
         System.out.println("Aktivitás: " + Field_Temp_List.get(n).Getname());
         System.out.println("Aktivitás: " + Field_Temp_List.get(n).Getname());
+        System.out.println("\n");
+
     }
  }
