@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import view.AsteroidView;
+
 /**
  * Tárolja azokat az objektumokat (Movable), amelyekelõfordulhatnak az aszteroidaövben
  * továbbá ismeri a szomszédos mezõket. További felelõsségereagálni az aszteroidaövbenlétrejövõ különbözõ eseményekre
  */
 public abstract class Field{
+	
+	public AsteroidView view;
 /**
  * Tárolja a szomszédos mezõket
  */
@@ -41,6 +45,7 @@ private String name;
 		Neighbors.get(i).RemoveNeighbor(this);
 	}
 	Neighbors = null;
+	view.setVisible(false);
 	}
 
 	/**
