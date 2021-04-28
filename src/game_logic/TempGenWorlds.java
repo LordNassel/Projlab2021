@@ -132,6 +132,16 @@ public class TempGenWorlds {
                 Boroughton.SetNeighbor(Beckistale);
 
                 Settler S = new Settler("Player1", Auchen);
+                
+                S.view = new SettlerView();
+                S.view.setPos(10,170); //10,250
+				MenuView.addMovableView(S.view);
+				
+				S.Move(Benqua);
+				int posx = Benqua.view.getPosx();
+				int posy = Benqua.view.getPosy();
+				//S.view.setPos(posx, posy-80);
+				
                 Settler S2 = new Settler("Player2", Auchen);
                 Vector<Material> list = new Vector<Material>();
 

@@ -3,19 +3,21 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 import game_logic.TempGenWorlds;
 
-public class MenuView implements ActionListener {
+public class MenuView extends JPanel implements ActionListener {
 	 SettingsView settings;
 	 GameView game;
 	JFrame frame;
 	JButton button_start_game = new JButton("Start Game");
 	JButton button_settings = new JButton("Settings");
 	private static ArrayList<AsteroidView> asteroidViews = new ArrayList<AsteroidView>();
+	private static ArrayList<SettlerView> settlerViews = new ArrayList<SettlerView>();
 	JPanel panel;
 
 	public MenuView()
@@ -47,6 +49,10 @@ public class MenuView implements ActionListener {
 		for (AsteroidView bv : asteroidViews) {
 			panel.add(bv);
 		}
+		
+		for (SettlerView sv : settlerViews) {
+			panel.add(sv);
+		}
 	}
 
 	@Override
@@ -67,5 +73,42 @@ public class MenuView implements ActionListener {
 	
 	public static void addView(AsteroidView v) {
 		asteroidViews.add(v);
+	}
+	
+	public static void addMovableView(SettlerView s)
+	{
+		settlerViews.add(s);
+	}
+	
+	/*public void update() {
+        for (AsteroidView iuv : asteroidViews.values()) {
+            iuv.clearParts();
+        }
+        for(PartView pv : parts) {
+            IceUnit iceUnit = pv.checkIceUnit();
+            if(iceUnit != null) {
+                iceUnitViews.get(iceUnit).addPart(pv);
+            }
+        }
+        repaint();
+    }*/
+	
+	public void updatePanel() {
+		removeAll();
+		drawPanel();
+		//buildHUD();
+		revalidate();
+		repaint();
+	}
+
+	private void drawPanel() {
+		// TODO Auto-generated method stub
+		for (AsteroidView bv : asteroidViews) {
+			panel.add(bv);
+		}
+		
+		for (SettlerView sv : settlerViews) {
+			panel.add(sv);
+		}
 	}
 }

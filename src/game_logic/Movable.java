@@ -2,11 +2,15 @@ package game_logic;
 
 import java.util.*;
 
+import view.SettlerView;
+
+
 /**
  * A játékban előforduló, mozgóképes objektumokat reprezentálja egy mezőn. Tárolja az éppen aktuális helyét a pályán.
  */
 public abstract class Movable implements Steppable {
 
+	public SettlerView view;
 	/**
 	 * Egy segéd tagváltozó, ami megmondja,hogy az adott movableelbújt-e egy aszteroidában.
 	 * Ha az értéke true, akkorigen, ha false akkor nem

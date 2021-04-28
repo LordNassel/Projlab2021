@@ -38,6 +38,16 @@ public class View extends JLabel {
 		super.setBounds(x, y, w, h);
 	}
 	
+	public int getPosx()
+	{
+		return x;
+	}
+	
+	public int getPosy()
+	{
+		return y;
+	}
+	
 	public void scale(int w, int h)
 	{
 		icon.getImage().getScaledInstance(w, h, java.awt.Image.SCALE_DEFAULT);

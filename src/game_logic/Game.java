@@ -2,6 +2,8 @@ package game_logic;
 
 import java.util.*;
 
+import view.MenuView;
+
 
 /**
  * Ez az osztály felelsõs a játékmenet elvárt futásáért.Elkezdi/befejezi az adott játszmát,
@@ -9,6 +11,8 @@ import java.util.*;
  */
 public class Game {
 
+	
+	public static MenuView view;
 	/**
 	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
 	 */
@@ -28,6 +32,12 @@ public class Game {
     public Game() {
     	map = new Map();
     	running = true;
+    }
+    
+    public Game(MenuView v, Map m) {
+    	map = m;
+    	running = true;
+    	view = v;
     }
     
     /**
@@ -80,6 +90,11 @@ public class Game {
     		}
     		number++;
     	}
+    }
+    
+    public void ExplodeAction()
+    {
+    	
     }
 
     /**

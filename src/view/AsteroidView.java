@@ -3,21 +3,25 @@ package view;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import game_logic.*;
+import java.util.ArrayList;
 
+import game_logic.*;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class AsteroidView extends View {
-	private static final long serialVersionUID = 7891103595669365281L;
+	//private static final long serialVersionUID = 7891103595669365281L;
 
 	private Asteroid a;
+	
+    private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
 
-	public Asteroid getTile() {
+
+	public Asteroid getAsteroid() {
 		return a;
 	}
 
-	public void setTile(Asteroid t) {
+	public void setAsteroid(Asteroid t) {
 		this.a = t;
 	}
 
@@ -34,6 +38,11 @@ public class AsteroidView extends View {
 			icon = tmp;
 			this.setIcon(icon);
 		}
+	}
+	
+	public void draw()
+	{
+		
 	}
 }
 
