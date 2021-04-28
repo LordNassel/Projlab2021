@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Graphics;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import game_logic.*;
@@ -9,7 +11,7 @@ import game_logic.*;
  * @author Gabor
  *
  */
-public class View extends JLabel {
+public class View extends JLabel implements Drawable {
 
 	/**
 	 * 
@@ -68,6 +70,12 @@ public class View extends JLabel {
 	public void Draw() {
 		this.getParent().validate();
 		this.getParent().repaint();
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

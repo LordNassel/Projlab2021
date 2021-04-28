@@ -11,7 +11,7 @@ import view.MenuView;
  */
 public class Game {
 
-	
+	private static Game instance = null;
 	public static MenuView view;
 	/**
 	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
@@ -140,5 +140,17 @@ public class Game {
 			return false;
 		return true;
 	}
+    
+    public static Game getInstance()
+    {
+    	if(instance == null)
+    		instance = new Game();
+    	return instance;
+    }
+    
+    public Map getMap()
+    {
+    	return map;
+    }
 
 }

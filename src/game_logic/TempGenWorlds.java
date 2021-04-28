@@ -10,7 +10,7 @@ import java.util.Vector;
 public class TempGenWorlds {
     //Ez most itt azert ilyen bajos, mert a game feladatat vegzem el. A game majd file-bol olvassa be ezeket.
 // Azonban a process jellege nem valtozik elore megtervezett vilagokkal dolgozunk majd
-    public Vector<Asteroid> Generateworlds(int which) throws IOException{
+    public Game Generateworlds(int which) throws IOException{
         Iron i = new Iron();
         Coal c = new Coal();
         Ice ice = new Ice();
@@ -59,7 +59,7 @@ public class TempGenWorlds {
                 	y+=50;
                 }*/
                 
-                Benqua.view = new AsteroidView();
+                /*Benqua.view = new AsteroidView();
                 Benqua.view.setPos(10,10);
 				MenuView.addView(Benqua.view);
 				
@@ -97,7 +97,7 @@ public class TempGenWorlds {
 				
 				Sotrun.view = new AsteroidView();
 				Sotrun.view.setPos(710,10);
-				MenuView.addView(Sotrun.view);
+				MenuView.addView(Sotrun.view);*/
 				
 				//Benqua.view.setSize(30, 30);
 
@@ -133,13 +133,13 @@ public class TempGenWorlds {
 
                 Settler S = new Settler("Player1", Auchen);
                 
-                S.view = new SettlerView();
+                /*S.view = new SettlerView();
                 S.view.setPos(10,170); //10,250
-				MenuView.addMovableView(S.view);
+				MenuView.addMovableView(S.view);*/
 				
 				S.Move(Benqua);
-				int posx = Benqua.view.getPosx();
-				int posy = Benqua.view.getPosy();
+				//int posx = Benqua.view.getPosx();
+				//int posy = Benqua.view.getPosy();
 				//S.view.setPos(posx, posy-80);
 				
                 Settler S2 = new Settler("Player2", Auchen);
@@ -177,7 +177,7 @@ public class TempGenWorlds {
 
                 //game.StartGame();
 
-                return temp;
+                return game;
         }
         /*if(which ==2){
             System.out.println("Az inner worlds 200 evvel ezelotti konstruktora hivodott meg. " +

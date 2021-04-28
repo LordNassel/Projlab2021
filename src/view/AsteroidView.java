@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class AsteroidView extends View {
 	private Asteroid a;
 	
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
-
+    protected Image image;
 
 	public Asteroid getAsteroid() {
 		return a;
@@ -31,6 +32,7 @@ public class AsteroidView extends View {
 		ImageIcon tmp = new ImageIcon(image);
 		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		this.image = newimg;
 		tmp = new ImageIcon(newimg);
 		//ImageIcon tmp = new ImageIcon(AsteroidView.class.getResource("/images/tent.png"));
 		if(tmp != null)
@@ -40,9 +42,9 @@ public class AsteroidView extends View {
 		}
 	}
 	
-	public void draw()
-	{
-		
+	@Override
+	public void draw(Graphics g) {
+		g.drawImage(image, 100, 100, null);
 	}
 }
 

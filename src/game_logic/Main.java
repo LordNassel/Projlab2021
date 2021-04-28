@@ -1,6 +1,7 @@
 //Sorry for the english, but eclipse throws all sorts of errors with the HU special characters
 package game_logic;
 import game_logic.Asteroid;
+import view.GameView;
 import view.MenuView;
 
 import java.io.IOException;
@@ -12,10 +13,10 @@ public class Main{
 	public static void main(String[] args) throws IOException {
 		System.out.println("Every man's sky");
 		//tesztpark peldanyositasa
-		Advanced_tests currenttests = new Advanced_tests();
+		//Advanced_tests currenttests = new Advanced_tests();
 		//Az ideiglenes világ példányosítása
 		TempGenWorlds temp = new TempGenWorlds();
-		Vector<Asteroid> asteroids = temp.Generateworlds(1);
+		Game gm = temp.Generateworlds(1);
 		//Hagyományos tesztek
 		//Test Normaltest = new Test();
 		/*System.out.println("Mit szeretnél csinálni?  2-es elorehaladott tesztek, 3-as uj jatek inditasa");
@@ -31,8 +32,10 @@ public class Main{
 		}
 		Scanner input = new Scanner(System.in);
 		String in = input.next();*/
-		MenuView menu = new MenuView();
-		asteroids.get(1).Explode();
+		//MenuView menu = new MenuView();
+		///asteroids.get(1).Explode();
+		GameView game = new GameView(gm);
+		game.setVisible(true);
 		
 		//menu.setVisible(true);
 	}
