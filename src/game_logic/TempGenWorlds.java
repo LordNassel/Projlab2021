@@ -132,12 +132,13 @@ public class TempGenWorlds {
                 Boroughton.SetNeighbor(Beckistale);
 
                 Settler S = new Settler("Player1", Auchen);
+                Robot robi = new Robot("Robi", Auchen);
                 
                 /*S.view = new SettlerView();
                 S.view.setPos(10,170); //10,250
 				MenuView.addMovableView(S.view);*/
 				
-				S.Move(Benqua);
+				//S.Move(Benqua);
 				//int posx = Benqua.view.getPosx();
 				//int posy = Benqua.view.getPosy();
 				//S.view.setPos(posx, posy-80);
@@ -172,6 +173,7 @@ public class TempGenWorlds {
                 game.AddMovable(a, Auchen);
                 game.AddMovable(S, Auchen);
                 game.AddMovable(S2, Auchen);
+                game.AddMovable(robi, Auchen);
                // game.AddMovable(r, Auchen);
                 game.AddSteppable(map);
 

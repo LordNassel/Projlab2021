@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import game_logic.*;
 import javax.imageio.ImageIO;
@@ -17,6 +18,8 @@ public class AsteroidView extends View {
 	
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
     protected Image image;
+    private int posX;
+    private int posY;
 
 	public Asteroid getAsteroid() {
 		return a;
@@ -26,7 +29,7 @@ public class AsteroidView extends View {
 		this.a = t;
 	}
 
-	public AsteroidView() throws IOException {
+	public AsteroidView(Asteroid a, int x, int y) throws IOException {
 		super();
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/asteroid.png"));
 		ImageIcon tmp = new ImageIcon(image);
@@ -40,11 +43,50 @@ public class AsteroidView extends View {
 			icon = tmp;
 			this.setIcon(icon);
 		}
+		this.posX = x;
+		this.posY = y;
+		this.a = a;
 	}
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawImage(image, 100, 100, null);
+		g.drawImage(image, posX, posY, null);
+		List<Movable> list = a.getMovableList();
+		for(int i=0; i<list.size(); i++)
+		{
+			if(list.get(i) instanceof Settler)
+			{
+				try {
+					SettlerView sw = new SettlerView(this.posX, this.posY-80);
+					sw.draw(g);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			else if(list.get(i) instanceof Robot)
+			{
+				try {
+					RobotView rw = new RobotView(this.posX+80, this.posY-80);
+					rw.draw(g);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			else if(list.get(i) instanceof Alien)
+			{
+				try {
+					AlienView aw = new AlienView(this.posX+130, this.posY);
+					aw.draw(g);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+			}
+		}
 	}
 }
 

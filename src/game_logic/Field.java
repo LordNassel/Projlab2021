@@ -118,6 +118,11 @@ private String name;
 	 * @return
 	 */
 	public abstract boolean GetDrilled();
+	
+	public List<Movable> getMovableList()
+	{
+		return MovableList;
+	}
 
 }
 

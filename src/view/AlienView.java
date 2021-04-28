@@ -9,7 +9,7 @@ import game_logic.*;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class SettlerView extends View {
+public class AlienView extends View {
 	private static final long serialVersionUID = 7891103595669365281L;
 
 	private Asteroid a;
@@ -25,9 +25,9 @@ public class SettlerView extends View {
 		this.a = t;
 	}
 
-	public SettlerView(int x, int y) throws IOException {
+	public AlienView(int x, int y) throws IOException {
 		super();
-		BufferedImage image = ImageIO.read(SettlerView.class.getResource("/kep/settler.png"));
+		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/alien.png"));
 		ImageIcon tmp = new ImageIcon(image);
 		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
