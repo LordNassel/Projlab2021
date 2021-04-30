@@ -1,6 +1,9 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -10,6 +13,8 @@ import java.util.List;
 import game_logic.*;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class AsteroidView extends View {
 	//private static final long serialVersionUID = 7891103595669365281L;
@@ -18,6 +23,8 @@ public class AsteroidView extends View {
 	
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
     protected Image image;
+    JTextField asteroid_name = new JTextField();
+    JPanel panel;
 
 	public Asteroid getAsteroid() {
 		return a;
@@ -44,11 +51,23 @@ public class AsteroidView extends View {
 		this.x = x;
 		this.y = y;
 		this.a = a;
+		panel = new JPanel();
+		panel.setLayout(new GridBagLayout());
+	//	this.add(asteroid_name);
+		panel.add(this);
+		panel.add(asteroid_name);
+		panel.setVisible(true);
+		
 	}
 	
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, x, y, null);
+		asteroid_name.setText(a.Getname());
+		asteroid_name.setBounds(500, 500, WIDTH, HEIGHT);
+		asteroid_name.setVisible(true);
+		//this.add(asteroid_name);
+		
 		List<Movable> list = a.getMovableList();
 		for(int i=0; i<list.size(); i++)
 		{

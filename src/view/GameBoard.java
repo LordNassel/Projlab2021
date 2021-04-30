@@ -86,6 +86,12 @@ public class GameBoard extends JPanel {
 		
 		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(0),100,100));
 		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(1),300,300));
+		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(2),100,400));
+		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(3),500,500));
+		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(4),250,650));
+
+
+
 
 		//Míg nem találjuk ki a map koordinátákat, de amúgy lehetne így is fancy módon
 		/*for(int i=0; i<2; i++)
