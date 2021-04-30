@@ -84,28 +84,39 @@ public class GameBoard extends JPanel {
 		Vector<Field> fields = map.getFieldList(); //ez it null-t ad vissza
 		Random rand = new Random();
 		
-		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(0),100,100));
-		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(1),300,300));
+		/*fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(0),100,100));
+		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(1),400,100));
 		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(2),100,400));
-		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(3),500,500));
-		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(4),250,650));
+		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(3),400,400));
+		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(4),100,650));*/
+		
 
-
-
+		int offsetx = 0;
+		int offsety = 0;
+		int cnt=0;
 
 		//Míg nem találjuk ki a map koordinátákat, de amúgy lehetne így is fancy módon
-		/*for(int i=0; i<2; i++)
+		for(int i=0; i<fields.size(); i++)
 		{
-			int x = rand.nextInt(500);
-			int y = rand.nextInt(500);
 			Field field = fields.get(i);
 			if(field instanceof Asteroid)
-				fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(i),x,y));
+			{
+				fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(i),100+offsetx,100+offsety));
+				cnt++;
+			}
+			
+			if(cnt<4)
+				offsetx+=300;
+			if(cnt==4)
+			{
+				offsetx=0;
+				offsety+=300;
+				cnt=0;
+			}
+			
 			//else if(field instanceof Teleport)
 			//	fieldstoDraw.add(new TeleportView());
-			//x+=100;
-			//y+=100;
-		}*/
+		}
 	}
 	
 	@Override
