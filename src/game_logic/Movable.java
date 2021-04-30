@@ -42,6 +42,7 @@ public abstract class Movable implements Steppable {
 	 */
 	public void Move(Field a)
 	{
+		
 		if(!isHidden)
 		{
 		this.currentField.RemovePlayer(this);

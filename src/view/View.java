@@ -42,12 +42,12 @@ public class View extends JLabel implements Drawable {
 	
 	public int getPosx()
 	{
-		return x;
+		return this.x;
 	}
 	
 	public int getPosy()
 	{
-		return y;
+		return this.y;
 	}
 	
 	public void scale(int w, int h)
@@ -67,10 +67,10 @@ public class View extends JLabel implements Drawable {
 	 * 
 	 * Kirajzolasert felelos fuggveny, mely eloszor validalja, majd ujrarajzolja a grafikus komponenst.
 	 */
-	public void Draw() {
+	/*public void Draw() {
 		this.getParent().validate();
 		this.getParent().repaint();
-	}
+	}*/
 
 	@Override
 	public void draw(Graphics g) {

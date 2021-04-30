@@ -18,8 +18,6 @@ public class AsteroidView extends View {
 	
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
     protected Image image;
-    private int posX;
-    private int posY;
 
 	public Asteroid getAsteroid() {
 		return a;
@@ -43,21 +41,21 @@ public class AsteroidView extends View {
 			icon = tmp;
 			this.setIcon(icon);
 		}
-		this.posX = x;
-		this.posY = y;
+		this.x = x;
+		this.y = y;
 		this.a = a;
 	}
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawImage(image, posX, posY, null);
+		g.drawImage(image, x, y, null);
 		List<Movable> list = a.getMovableList();
 		for(int i=0; i<list.size(); i++)
 		{
 			if(list.get(i) instanceof Settler)
 			{
 				try {
-					SettlerView sw = new SettlerView(this.posX, this.posY-80);
+					SettlerView sw = new SettlerView(this.x, this.y-80);
 					sw.draw(g);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -68,7 +66,7 @@ public class AsteroidView extends View {
 			else if(list.get(i) instanceof Robot)
 			{
 				try {
-					RobotView rw = new RobotView(this.posX+80, this.posY-80);
+					RobotView rw = new RobotView(this.x+80, this.y-80);
 					rw.draw(g);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -79,7 +77,7 @@ public class AsteroidView extends View {
 			else if(list.get(i) instanceof Alien)
 			{
 				try {
-					AlienView aw = new AlienView(this.posX+130, this.posY);
+					AlienView aw = new AlienView(this.x+130, this.y);
 					aw.draw(g);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

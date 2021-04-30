@@ -14,8 +14,6 @@ public class SettlerView extends View {
 
 	private Asteroid a;
 	protected Image image;
-	protected int posX;
-	protected int posY;
 
 	public Asteroid getTile() {
 		return a;
@@ -39,14 +37,14 @@ public class SettlerView extends View {
 			icon = tmp;
 			this.setIcon(icon);
 		}
-		this.posX=x;
-		this.posY=y;
+		this.x=x;
+		this.y=y;
 	}
 	
 	@Override
 	public void draw(Graphics g)
 	{
-		g.drawImage(image, posX, posY, null);
+		g.drawImage(image, x, y, null);
 	}
 }
 

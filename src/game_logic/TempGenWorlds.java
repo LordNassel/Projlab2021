@@ -178,6 +178,7 @@ public class TempGenWorlds {
                 game.AddSteppable(map);
 
                 //game.StartGame();
+                S.Move(FormFoss);
 
                 return game;
         }

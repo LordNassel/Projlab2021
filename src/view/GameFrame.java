@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -10,12 +12,14 @@ public class GameFrame extends JFrame{
 	
 	GameFrame(Game game) throws IOException
 	{
-		GameBoard gameBoard = new GameBoard(game);
+		GameBoard gameBoard = new GameBoard(game, this);
 		add(gameBoard);
-		setSize(600,600);
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setSize(screenSize.width, screenSize.height );
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Aszteroidabanyaszat");
 		setLocationRelativeTo(null);
+
 	}
 
 }

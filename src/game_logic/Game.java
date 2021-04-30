@@ -2,6 +2,7 @@ package game_logic;
 
 import java.util.*;
 
+import view.GameBoard;
 import view.MenuView;
 
 
@@ -11,8 +12,10 @@ import view.MenuView;
  */
 public class Game {
 
+	public static boolean button=false;
 	private static Game instance = null;
 	public static MenuView view;
+	private Settler activeSettler;
 	/**
 	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
 	 */
@@ -74,7 +77,7 @@ public class Game {
     * akkor befejezi a játékot
     */
     public void StartGame() {
-    	System.out.println("A jatek elkezdodott, jo szorakozast!");
+    	//System.out.println("A jatek elkezdodott, jo szorakozast!");
     	int number = 1;
     	while(running)
     	{
@@ -86,7 +89,20 @@ public class Game {
     				Losegame();
     				return;
     			}
-    			steppableList.get(i).Step();
+    			if(steppableList.get(i) instanceof Settler)
+    			{
+    				activeSettler = (Settler)steppableList.get(i);
+    				GameBoard.selectAction();
+    				/*while(button==false)
+    				{
+    					
+    				}*/
+    				//szólni kell a view-nak, hogy most settler van
+    				// -> pl. itt most várakoztatunk GUI eseményre (dialogbox?)
+    			}
+    			else //ha nem settler akkkor mehet automatikusan
+    				steppableList.get(i).Step();
+    			button=false;
     		}
     		number++;
     	}
@@ -151,6 +167,63 @@ public class Game {
     public Map getMap()
     {
     	return map;
+    }
+    
+    public Settler getActiveSettler()
+    {
+    	return activeSettler;
+    }
+    
+    public void DrillAction()
+    {
+    	//getActiveSettler().setValasz(2);
+    	System.out.println(getActiveSettler().Getname());
+    	getActiveSettler().Drill();
+    }
+    
+    public void CraftTeleportAction(String name1, String name2)
+    {
+    	getActiveSettler().CraftTeleports(name1, name2);
+    }
+    
+    public void CraftRobotAction()
+    {
+    	getActiveSettler().CraftRobot();
+    }
+    
+    public void HideAction()
+    {
+    	getActiveSettler().Hide();
+    }
+    
+    public void MineAction()
+    {
+    	getActiveSettler().Mine();
+    }
+    
+    public void MoveAction(Field f)
+    {
+    	getActiveSettler().Move(f);
+    }
+    
+    public void PutAction(Material m)
+    {
+    	getActiveSettler().PutMaterial(m);
+    }
+    
+    public void ActivateAction(Teleport t)
+    {
+    	getActiveSettler().ActivateTeleport(t);
+    }
+    
+    public void StoreAction(Material m)
+    {
+    	getActiveSettler().Store(m);
+    }
+    
+    public void BuildAction()
+    {
+    	getActiveSettler().Build();
     }
 
 }

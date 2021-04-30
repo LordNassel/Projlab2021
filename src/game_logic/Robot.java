@@ -49,6 +49,7 @@ public class Robot extends Movable {
 	 */
 	@Override
     public void Step() {
+		System.out.println("Robot step");
 		if(((Asteroid)currentField).getThickness() == 0) {
 			Vector<Field> neighbors = currentField.FindNeighbor();
 			Field randomNeighbor = neighbors.get(rand.nextInt(neighbors.size()));
