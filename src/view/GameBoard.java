@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -51,6 +52,9 @@ public class GameBoard extends JPanel {
 	JButton build = new JButton("Build base");
 	JPanel asteroids = new JPanel(null);
 	JPanel buttons = new JPanel(new GridBagLayout());
+	JLabel active_player = new JLabel();
+	JLabel player_pos = new JLabel();
+	JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
 	volatile private static boolean clicked = false;
 	
 	
@@ -59,16 +63,21 @@ public class GameBoard extends JPanel {
 		setLayout(new BorderLayout());
 	    add(asteroids, BorderLayout.WEST);
 	    add(buttons, BorderLayout.EAST);
-	    buttons.setAlignmentY(Component.CENTER_ALIGNMENT);
-	    buttons.setBackground(new Color(150,100,100));
+	  //  buttons.setAlignmentY(Component.CENTER_ALIGNMENT);
+	    buttons.setLayout(new FlowLayout());
+	    buttons.setAlignmentY(BOTTOM_ALIGNMENT);
+	    buttons.setBackground(new Color(250,240,170));
 	    asteroids.setLayout(null);
-	    JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
-	    buttonsCentered.setBackground(new Color(150,100,100));
+	   // JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
+	    buttonsCentered.setBackground(new Color(250,240,170));
 	    buttons.add(buttonsCentered);
 		//setLayout(null);
 		this.game = game;
 		this.frame = frame;
 		initDrawable(game);
+		
+		buttonsCentered.add(active_player);
+		buttonsCentered.add(player_pos);
 		buttonsCentered.add(move,BorderLayout.SOUTH);
 		buttonsCentered.add(drill,BorderLayout.SOUTH);
 		buttonsCentered.add(mine,BorderLayout.SOUTH);
@@ -81,15 +90,17 @@ public class GameBoard extends JPanel {
 		buttonsCentered.add(build,BorderLayout.SOUTH);
 		//setFocusable(true);
 		actionClickListeners();
+		
+	
 
 		
 	}
 	
-	public void drawAsteroidsName(Graphics g)
+	public void drawAsteroidsInfo(Graphics g)
 	{
 		for(int i=0; i<fieldstoDraw.size(); i++)
 		{
-			fieldstoDraw.get(i).drawName(g);
+			fieldstoDraw.get(i).drawAsteroidInfos(g);
 		}
 	}
 	
@@ -118,7 +129,7 @@ public class GameBoard extends JPanel {
 
 		for(int i=0; i<fields.size(); i++)
 		{
-				Field field = fields.get(i);
+			Field field = fields.get(i);
 			if(field instanceof Asteroid)
 			{
 				fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(i),70+offsetx,100+offsety));
@@ -143,16 +154,18 @@ public class GameBoard extends JPanel {
 	public void paintComponent(Graphics g)
 	{
 	    super.paintComponent(g);
-
+	    
 		//super.paint(g);
 		try {
+			active_player.setText("Active player: "+game.getActiveSettler().Getname());
+			player_pos.setText("Position: "+game.getActiveSettler().GetCurrentField().Getname());
 			initDrawable(this.game);
 			g.setColor(new Color(250,240,170));
 	        g.fillRect(0, 0, this.getWidth(), this.getHeight());
 			g.setColor(Color.red);
 			drawLines(g);
 			drawMap(g); //Vonalra fogja rajzolni az aszteroidákat, nem fordítva -> nem baj ha a vonal átmegy az aszteroidán
-			drawAsteroidsName(g);
+			drawAsteroidsInfo(g);
 
 			//Graphics2D g2d = (Graphics2D) g;
 			//g2d.drawLine(100, 100, 200, 200);
@@ -264,12 +277,13 @@ public class GameBoard extends JPanel {
 		mine.addActionListener(e ->{
 			game.MineAction();
 			clicked=true;
+			this.repaint();
 		});
 		
 		craft_robot.addActionListener(e ->{
 			game.CraftRobotAction();
 			clicked=true;
-
+			this.repaint();
 		});
 		
 		craft_teleport.addActionListener(e ->{
@@ -291,13 +305,13 @@ public class GameBoard extends JPanel {
 			//String telep2 = JOptionPane.showInputDialog("Name of the second teleport:");
 			game.CraftTeleportAction(teleport1.toString(), teleport2.toString());
 			clicked=true;
-
+			this.repaint();
 		});
 		
 		hide.addActionListener(e ->{
 			game.HideAction();
 			clicked=true;
-
+			this.repaint();
 		});
 		
 		putback.addActionListener(e ->{
@@ -353,7 +367,7 @@ public class GameBoard extends JPanel {
 			
 			game.PutAction(selectedMaterial);
 			clicked=true;
-
+			this.repaint();
 		});
 		
 		activate_teleport.addActionListener(e ->{
@@ -411,7 +425,7 @@ public class GameBoard extends JPanel {
 			
 			game.ActivateAction(selectedTeleport);
 			clicked=true;
-
+			this.repaint();
 		});
 		
 		store_in_base.addActionListener(e ->{
@@ -467,13 +481,13 @@ public class GameBoard extends JPanel {
 	        
 			game.StoreAction(selectedMaterial);
 			clicked=true;
-
+			this.repaint();
 		});
 		
 		build.addActionListener(e ->{
 			game.BuildAction();
 			clicked=true;
-
+			this.repaint();
 		});
 	}
 	

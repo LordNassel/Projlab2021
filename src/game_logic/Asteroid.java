@@ -120,7 +120,7 @@ public class Asteroid extends Field{
 	 */
 	public boolean StoreMaterial(Material M) {
 		
-		if(CoreMaterial.size()<3 && CoreMaterial.size() > 0 && CoreMaterial.get(0).getClass().equals(M.getClass())) // Ha van benne de nincs tele maradjon homogen
+		if(!CoreMaterial.isEmpty() && CoreMaterial.getClass().equals(M.getClass())) // Ha van benne de nincs tele maradjon homogen
 		{
 			CoreMaterial.add(M);
 			return true;

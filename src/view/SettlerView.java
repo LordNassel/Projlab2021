@@ -1,6 +1,9 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -12,19 +15,20 @@ import javax.swing.ImageIcon;
 public class SettlerView extends View {
 	private static final long serialVersionUID = 7891103595669365281L;
 
-	private Asteroid a;
+	private Settler s;
 	protected Image image;
 
-	public Asteroid getTile() {
-		return a;
+	public Settler getSettler() {
+		return s;
 	}
 
-	public void setTile(Asteroid t) {
-		this.a = t;
+	public void setSettler(Settler t) {
+		this.s = t;
 	}
 
-	public SettlerView(int x, int y) throws IOException {
+	public SettlerView(Settler settler, int x, int y) throws IOException {
 		super();
+		this.s=settler;
 		BufferedImage image = ImageIO.read(SettlerView.class.getResource("/kep/settler.png"));
 		ImageIcon tmp = new ImageIcon(image);
 		Image img = tmp.getImage();
@@ -40,6 +44,19 @@ public class SettlerView extends View {
 		this.x=x;
 		this.y=y;
 	}
+	
+	/*public void drawSettlerInfos(Graphics g)
+	{
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.black);
+		g2d.setFont(new Font("Verdana", Font.BOLD, 13));
+		/* Settler neve */
+		/*g2d.drawString(s.Getname(), x+1000, y+130);
+		
+		/* Aszteroida vastagsaga */
+		//String thickness = String.valueOf(s.getThickness());
+		//g2d.drawString("Thickness: "+thickness, x+10, y+150);
+	/*}*/
 	
 	@Override
 	public void draw(Graphics g)
