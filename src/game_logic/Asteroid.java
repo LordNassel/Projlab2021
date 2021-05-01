@@ -149,7 +149,7 @@ public class Asteroid extends Field{
 			System.out.println("Success\n");
 		}
 		else
-			System.out.println("Asteroid is not empty to hide\n");
+			System.out.println("Asteroid is not empty to hide\n"); 
 	}
 
 	/**

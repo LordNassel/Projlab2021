@@ -16,20 +16,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class AsteroidView extends View {
+public class Goal_AsteroidView extends AsteroidView {
 	//private static final long serialVersionUID = 7891103595669365281L;
 
-	private Asteroid a;
+	private Goal_Asteroid a;
 	
 	
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
-    protected Image image;
+   // protected Image image;
 
-	public Asteroid getAsteroid() {
+	public Goal_Asteroid getAsteroid() {
 		return a;
 	}
 
-	public void setAsteroid(Asteroid t) {
+	public void setAsteroid(Goal_Asteroid t) {
 		this.a = t;
 	}
 	
@@ -67,11 +67,11 @@ public class AsteroidView extends View {
 		g2d.drawString(materialtype + numbofmat, x+10, y+170);
 	}
 
-	public AsteroidView(Asteroid a, int x, int y) throws IOException {
-		super();
-		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/asteroid.png"));
-		if(a.getSunSide() == true)
-			image = ImageIO.read(AsteroidView.class.getResource("/kep/sunside_asteroid.png"));
+	public Goal_AsteroidView(Goal_Asteroid a, int x, int y) throws IOException {
+		super(a,x,y);
+		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/base.png"));
+	//	if(a.getSunSide() == true)
+		//	image = ImageIO.read(AsteroidView.class.getResource("/kep/sunside_asteroid.png"));
 		ImageIcon tmp = new ImageIcon(image);
 		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(110, 110, Image.SCALE_SMOOTH);

@@ -78,4 +78,9 @@ public class View extends JLabel implements Drawable {
 		
 	}
 
+	public void drawAsteroidInfos(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

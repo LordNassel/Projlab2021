@@ -130,7 +130,12 @@ public class GameBoard extends JPanel {
 		for(int i=0; i<fields.size(); i++)
 		{
 			Field field = fields.get(i);
-			if(field instanceof Asteroid)
+			if(field instanceof Goal_Asteroid)
+			{
+				fieldstoDraw.add(new Goal_AsteroidView((Goal_Asteroid)fields.get(i),70+offsetx,100+offsety));
+				cnt++;
+			}
+			else if(field instanceof Asteroid)
 			{
 				fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(i),70+offsetx,100+offsety));
 				cnt++;
@@ -181,8 +186,11 @@ public class GameBoard extends JPanel {
 
         for(int i=0; i<fieldstoDraw.size(); i++)
         {
-        	AsteroidView item = fieldstoDraw.get(i);
-        	item.draw(g);
+        	if(fieldstoDraw.get(i) instanceof AsteroidView)
+        	{
+        		AsteroidView item = fieldstoDraw.get(i);
+        		item.draw(g);
+        	}
         	//fieldstoDraw.get(i).drawName(asteroids);
         }
 	}

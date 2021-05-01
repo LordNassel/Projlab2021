@@ -146,7 +146,7 @@ public class TempGenWorlds {
                 Settler S2 = new Settler("Player2", Auchen);
                 Vector<Material> list = new Vector<Material>();
 
-                Goal_Asteroid goal = new Goal_Asteroid("Goal_Asteroid", "Iron", list);
+                Goal_Asteroid goal = new Goal_Asteroid("Goal_Asteroid", "", list);
                 Alien a = new Alien("Alien", Auchen);
                 goal.SetNeighbor(Auchen);
                 Auchen.SetNeighbor(goal);
@@ -162,7 +162,14 @@ public class TempGenWorlds {
                 fieldlist.add(LongDale);
                 fieldlist.add(Sotrun);
                 fieldlist.add(Benqua);
-
+                fieldlist.add(goal);
+                
+                Teleport t = new Teleport("Bab is");
+                Teleport t2= new Teleport("hus");
+                t.setPair(t2);
+                t2.setPair(t);
+                S.addTelportToInventory(t);
+                S.addTelportToInventory(t2);
 
 
                 

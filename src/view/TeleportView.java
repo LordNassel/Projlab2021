@@ -12,23 +12,23 @@ import game_logic.*;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class SettlerView extends View {
+public class TeleportView extends View {
 	private static final long serialVersionUID = 7891103595669365281L;
 
-	private Settler s;
+	private Teleport s;
 	protected Image image;
 
-	public Settler getSettler() {
+	public Teleport getSettler() {
 		return s;
 	}
 
-	public void setSettler(Settler t) {
+	public void setSettler(Teleport t) {
 		this.s = t;
 	}
 
-	public SettlerView(int x, int y) throws IOException {
+	public TeleportView(int x, int y) throws IOException {
 		super();
-		BufferedImage image = ImageIO.read(SettlerView.class.getResource("/kep/settler.png"));
+		BufferedImage image = ImageIO.read(SettlerView.class.getResource("/kep/teleport.png"));
 		ImageIcon tmp = new ImageIcon(image);
 		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(75, 75, Image.SCALE_SMOOTH);
@@ -43,19 +43,7 @@ public class SettlerView extends View {
 		this.x=x;
 		this.y=y;
 	}
-	
-	/*public void drawSettlerInfos(Graphics g)
-	{
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.black);
-		g2d.setFont(new Font("Verdana", Font.BOLD, 13));
-		/* Settler neve */
-		/*g2d.drawString(s.Getname(), x+1000, y+130);
-		
-		/* Aszteroida vastagsaga */
-		//String thickness = String.valueOf(s.getThickness());
-		//g2d.drawString("Thickness: "+thickness, x+10, y+150);
-	/*}*/
+
 	
 	@Override
 	public void draw(Graphics g)
