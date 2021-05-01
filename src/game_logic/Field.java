@@ -12,7 +12,6 @@ import view.AsteroidView;
  */
 public abstract class Field{
 	
-	public AsteroidView view;
 /**
  * Tárolja a szomszédos mezõket
  */
@@ -45,7 +44,6 @@ private String name;
 		Neighbors.get(i).RemoveNeighbor(this);
 	}
 	Neighbors = null;
-	view.setVisible(false);
 	}
 
 	/**

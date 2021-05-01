@@ -30,7 +30,7 @@ public class AlienView extends View {
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/alien.png"));
 		ImageIcon tmp = new ImageIcon(image);
 		Image img = tmp.getImage();
-		Image newimg = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		Image newimg = image.getScaledInstance(75, 75, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);
 		//ImageIcon tmp = new ImageIcon(AsteroidView.class.getResource("/images/tent.png"));

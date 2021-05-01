@@ -14,9 +14,7 @@ import java.util.Random;
  *
  */
 public class Asteroid extends Field{
-	
-	//public AsteroidView view;
-	
+		
 	/**
 	 * Megadja, hogy az aszteroida napközelben van vagy sem. Ha azértéke true, akkor igen, ha false akkor pedig nem.
 	 */

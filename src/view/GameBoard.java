@@ -3,9 +3,12 @@ package view;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Stroke;
 import java.awt.event.ActionEvent;
@@ -46,30 +49,48 @@ public class GameBoard extends JPanel {
 	JButton activate_teleport = new JButton("Activate teleport");
 	JButton store_in_base = new JButton("Store material on base");
 	JButton build = new JButton("Build base");
+	JPanel asteroids = new JPanel(null);
+	JPanel buttons = new JPanel(new GridBagLayout());
 	volatile private static boolean clicked = false;
 	
 	
 	GameBoard(Game game, GameFrame frame) throws IOException
 	{
+		setLayout(new BorderLayout());
+	    add(asteroids, BorderLayout.WEST);
+	    add(buttons, BorderLayout.EAST);
+	    buttons.setAlignmentY(Component.CENTER_ALIGNMENT);
+	    buttons.setBackground(new Color(150,100,100));
+	    asteroids.setLayout(null);
+	    JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
+	    buttonsCentered.setBackground(new Color(150,100,100));
+	    buttons.add(buttonsCentered);
+		//setLayout(null);
 		this.game = game;
 		this.frame = frame;
 		initDrawable(game);
-		add(move);
-		add(drill);
-		add(mine);
-		add(craft_robot);
-		add(craft_teleport);
-		add(hide);
-		add(putback);
-		add(activate_teleport);
-		add(store_in_base);
-		add(build);
+		buttonsCentered.add(move,BorderLayout.SOUTH);
+		buttonsCentered.add(drill,BorderLayout.SOUTH);
+		buttonsCentered.add(mine,BorderLayout.SOUTH);
+		buttonsCentered.add(craft_robot,BorderLayout.SOUTH);
+		buttonsCentered.add(craft_teleport,BorderLayout.SOUTH);
+		buttonsCentered.add(hide,BorderLayout.SOUTH);
+		buttonsCentered.add(putback,BorderLayout.SOUTH);
+		buttonsCentered.add(activate_teleport,BorderLayout.SOUTH);
+		buttonsCentered.add(store_in_base,BorderLayout.SOUTH);
+		buttonsCentered.add(build,BorderLayout.SOUTH);
 		//setFocusable(true);
 		actionClickListeners();
-		
-		
 
 		
+	}
+	
+	public void drawAsteroidsName(Graphics g)
+	{
+		for(int i=0; i<fieldstoDraw.size(); i++)
+		{
+			fieldstoDraw.get(i).drawName(g);
+		}
 	}
 	
 	public void chechIntersection()
@@ -95,22 +116,21 @@ public class GameBoard extends JPanel {
 		int offsety = 0;
 		int cnt=0;
 
-		//Míg nem találjuk ki a map koordinátákat, de amúgy lehetne így is fancy módon
 		for(int i=0; i<fields.size(); i++)
 		{
-			Field field = fields.get(i);
+				Field field = fields.get(i);
 			if(field instanceof Asteroid)
 			{
-				fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(i),100+offsetx,100+offsety));
+				fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(i),70+offsetx,100+offsety));
 				cnt++;
 			}
 			
-			if(cnt<4)
-				offsetx+=300;
-			if(cnt==4)
+			if(cnt<5)
+				offsetx+=270;
+			if(cnt==5)
 			{
 				offsetx=0;
-				offsety+=300;
+				offsety+=270;
 				cnt=0;
 			}
 			
@@ -123,6 +143,7 @@ public class GameBoard extends JPanel {
 	public void paintComponent(Graphics g)
 	{
 	    super.paintComponent(g);
+
 		//super.paint(g);
 		try {
 			initDrawable(this.game);
@@ -131,6 +152,7 @@ public class GameBoard extends JPanel {
 			g.setColor(Color.red);
 			drawLines(g);
 			drawMap(g); //Vonalra fogja rajzolni az aszteroidákat, nem fordítva -> nem baj ha a vonal átmegy az aszteroidán
+			drawAsteroidsName(g);
 
 			//Graphics2D g2d = (Graphics2D) g;
 			//g2d.drawLine(100, 100, 200, 200);
@@ -148,7 +170,8 @@ public class GameBoard extends JPanel {
         {
         	AsteroidView item = fieldstoDraw.get(i);
         	item.draw(g);
-        }        
+        	//fieldstoDraw.get(i).drawName(asteroids);
+        }
 	}
 	
 	public void drawLines(Graphics g)
@@ -461,6 +484,11 @@ public class GameBoard extends JPanel {
 			//System.out.println();
 		}
 		clicked=false;
+	}
+	
+	public List<AsteroidView> getFieldstoDraw()
+	{
+		return fieldstoDraw;
 	}
 
 }
