@@ -56,7 +56,7 @@ public class Game {
      * és a running-ot false-ra állítja
      */
     public static void Wingame() {
-    	System.out.println("Wingame called");
+    	//System.out.println("Wingame called");
     	running=false;
     }
 
@@ -66,7 +66,7 @@ public class Game {
      */
     public void Losegame() {
     	running = false;
-    	System.out.println("Losegame called");
+    	//System.out.println("Losegame called");
 
         
     }
@@ -219,6 +219,10 @@ public class Game {
     public void StoreAction(Material m)
     {
     	getActiveSettler().Store(m);
+    }
+    public void StoreInBaseAction(Material m)
+    {
+    	getActiveSettler().storeOnBaseMaterial(m);
     }
     
     public void BuildAction()

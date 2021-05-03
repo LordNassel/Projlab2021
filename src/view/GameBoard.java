@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -271,30 +272,87 @@ public class GameBoard extends JPanel {
 						target=neighbors.get(i);
 	        }
 			game.MoveAction(target);
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+			JLabel jb = new JLabel("Successfull moving!");
+			jp.setSize(100, 200);
+			
+			jp.add(jb, BorderLayout.CENTER);
+			JOptionPane.showMessageDialog(frame, jp);
 			
 			clicked = true;
 			this.repaint();
 		});
 		
 		drill.addActionListener(e ->{
+			int thick = ((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness();
 			game.DrillAction();
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+			JLabel success = new JLabel("Successfull drilling!");
+			JLabel failure = new JLabel("Thickness is zero!");
+			jp.setSize(100, 200);
+			
+			if(thick > ((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness()) 
+			{
+				jp.add(success, BorderLayout.CENTER);
+			}
+			else
+			{
+				jp.add(failure, BorderLayout.CENTER);
+			}
+			JOptionPane.showMessageDialog(frame, jp);
 			clicked=true;
 			this.repaint();
 		});
 		
 		mine.addActionListener(e ->{
+			List<Material> settlermats = game.getActiveSettler().GetInventory_DEBUG();
+			int matNum = settlermats.size();
 			game.MineAction();
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+			JLabel success = new JLabel("Successfull Mining!");
+			JLabel failure = new JLabel("Can't mine the asteroid!");
+			jp.setSize(100, 200);
+			
+			if(matNum < game.getActiveSettler().GetInventory_DEBUG().size()) 
+			{
+				jp.add(success, BorderLayout.CENTER);
+			}
+			else
+			{
+				jp.add(failure, BorderLayout.CENTER);
+			}
+			JOptionPane.showMessageDialog(frame, jp);
 			clicked=true;
 			this.repaint();
 		});
 		
 		craft_robot.addActionListener(e ->{
+			Coal coal = new Coal();
+			
+			int ncoal = game.getActiveSettler().getMaterialTypeNumber(coal);
+			
 			game.CraftRobotAction();
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+			JLabel success = new JLabel("Successfull Crafting!");
+			JLabel failure = new JLabel("Not enough Materials!");
+			jp.setSize(100, 200);
+			if(ncoal > game.getActiveSettler().getMaterialTypeNumber(coal))
+			{
+				jp.add(success, BorderLayout.CENTER);
+			}
+			else
+			{
+				jp.add(failure, BorderLayout.CENTER);
+			}
+			JOptionPane.showMessageDialog(frame, jp);
 			clicked=true;
 			this.repaint();
 		});
 		
 		craft_teleport.addActionListener(e ->{
+			Uranium uran = new Uranium();
+			
+			int nuran = game.getActiveSettler().getMaterialTypeNumber(uran);
 			JPanel panel = new JPanel(new BorderLayout(5, 5));
 			
 			JPanel label = new JPanel(new GridLayout(0, 1, 2, 2));
@@ -311,13 +369,47 @@ public class GameBoard extends JPanel {
 			JOptionPane.showMessageDialog(frame, panel, "Add teleport names", JOptionPane.QUESTION_MESSAGE);
 			//String telep1 = JOptionPane.showInputDialog("Name of the first teleport:");
 			//String telep2 = JOptionPane.showInputDialog("Name of the second teleport:");
-			game.CraftTeleportAction(teleport1.toString(), teleport2.toString());
+			game.CraftTeleportAction(teleport1.getText(), teleport2.getText());
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+			JLabel success = new JLabel("Successfull Crafting!");
+			JLabel failure = new JLabel("Not enough Materials!");
+			jp.setSize(100, 200);
+			if(nuran > game.getActiveSettler().getMaterialTypeNumber(uran))
+			{
+				jp.add(success, BorderLayout.CENTER);
+			}
+			else
+			{
+				jp.add(failure, BorderLayout.CENTER);
+			}
+			JOptionPane.showMessageDialog(frame, jp);
 			clicked=true;
 			this.repaint();
 		});
 		
 		hide.addActionListener(e ->{
 			game.HideAction();
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+			JLabel successhidden = new JLabel("You are now hidden!");
+			JLabel successnothidden = new JLabel("You are now not hidden!");
+			JLabel failure = new JLabel("Can't hide there!");
+			jp.setSize(100, 200);
+			if(!game.getActiveSettler().GetIsHidden())
+			{
+				if(((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness() == 0 && ((Asteroid)game.getActiveSettler().GetCurrentField()).getMats().isEmpty()) 
+				{
+					jp.add(successnothidden, BorderLayout.CENTER);
+				}
+				else 
+				{
+					jp.add(failure, BorderLayout.CENTER);
+				}				
+			}
+			else 
+			{
+				jp.add(successhidden, BorderLayout.CENTER);
+			}
+			JOptionPane.showMessageDialog(frame, jp);
 			clicked=true;
 			this.repaint();
 		});
@@ -327,7 +419,8 @@ public class GameBoard extends JPanel {
 			Vector<Material> mat = new Vector<Material>();
 			Settler activeSettler = game.getActiveSettler();
 			inInventory = activeSettler.GetInventory_DEBUG();
-			Iron iron = new Iron();
+			int mats = inInventory.size();
+			//Iron iron = new Iron();
 			//inInventory.add(iron);
 			for(int i=0; i<inInventory.size(); i++)
 			{
@@ -362,6 +455,7 @@ public class GameBoard extends JPanel {
 	        	{
 	        		JOptionPane.showMessageDialog(frame, splitPane, "Select neighbor", JOptionPane.QUESTION_MESSAGE);
 	        	}
+	        	
 	        }
 	        else
 	        	JOptionPane.showMessageDialog(frame, "Empty inventory");
@@ -374,6 +468,18 @@ public class GameBoard extends JPanel {
 			}
 			
 			game.PutAction(selectedMaterial);
+			
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+			JLabel success = new JLabel("Material placed!");
+			JLabel failure = new JLabel("Can't place it!");
+			jp.setSize(100, 200);
+			if(mats > game.getActiveSettler().GetInventory_DEBUG().size()) {
+				jp.add(success);
+			}
+			else {
+				jp.add(failure);
+			}
+			JOptionPane.showMessageDialog(frame, jp);
 			clicked=true;
 			this.repaint();
 		});
@@ -385,7 +491,7 @@ public class GameBoard extends JPanel {
 			Settler activeSettler = game.getActiveSettler();
 			teleportInventory = activeSettler.getTeleportInventory();
 			Vector<Teleport> teleports = new Vector<Teleport>();
-			Teleport t1 = new Teleport("aas");
+			//Teleport t1 = new Teleport("aas");
 			//teleportInventory.add(t1);
 			for(int i=0; i<teleportInventory.size(); i++)
 			{
@@ -414,11 +520,15 @@ public class GameBoard extends JPanel {
 			JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
 			splitPane.setDividerLocation(250);
 	        splitPane.setEnabled(false);
+	        JPanel jp = new JPanel(new BorderLayout(5, 5));
+	        JLabel success = new JLabel("Teleport activated!");
+	        jp.add(success);
 	        if(!teleportInventory.isEmpty())
 	        {
 	        	while(choosen.getText().length()<2)
 	        	{
 	        		JOptionPane.showMessageDialog(frame, splitPane, "Select teleport", JOptionPane.QUESTION_MESSAGE);
+	        		JOptionPane.showMessageDialog(frame, jp);
 	        	}
 	        }
 	        else
@@ -441,7 +551,7 @@ public class GameBoard extends JPanel {
 			Vector<Material> mat = new Vector<Material>();
 			Settler activeSettler = game.getActiveSettler();
 			inInventory = activeSettler.GetInventory_DEBUG();
-			Iron iron = new Iron();
+			//Iron iron = new Iron();
 			//inInventory.add(iron);
 			for(int i=0; i<inInventory.size(); i++)
 			{
@@ -470,16 +580,28 @@ public class GameBoard extends JPanel {
 			JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
 			splitPane.setDividerLocation(250);
 	        splitPane.setEnabled(false);
-	        if(!inInventory.isEmpty())
+	        JPanel jp = new JPanel(new BorderLayout(5, 5));
+	        JLabel success = new JLabel("Material placed!");
+	        JLabel notgood = new JLabel("Not goal Asteroid!");
+	        
+	        
+	        if(game.getActiveSettler().GetCurrentField().getClass() != Goal_Asteroid.class) 
+	        {
+	        	jp.add(notgood);
+	        }
+        
+	        else if(!inInventory.isEmpty())
 	        {
 	        	while(choosen.getText().length()<2)
 	        	{
-	        		JOptionPane.showMessageDialog(frame, splitPane, "Select neighbor", JOptionPane.QUESTION_MESSAGE);
+	        		JOptionPane.showMessageDialog(frame, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);
+	        		jp.add(success);	        		
 	        	}
 	        }
 	        else
 	        	JOptionPane.showMessageDialog(frame, "Empty inventory");
 	        Material selectedMaterial = null;
+	        JOptionPane.showMessageDialog(frame, jp);
 	        
 	        for(int i=0; i<inInventory.size(); i++)
 			{
@@ -487,7 +609,7 @@ public class GameBoard extends JPanel {
 					selectedMaterial=inInventory.get(i);
 			}
 	        
-			game.StoreAction(selectedMaterial);
+			game.StoreInBaseAction(selectedMaterial);
 			clicked=true;
 			this.repaint();
 		});

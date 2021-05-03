@@ -13,7 +13,7 @@ public abstract class Movable implements Steppable {
 	 * Egy segéd tagváltozó, ami megmondja,hogy az adott movableelbújt-e egy aszteroidában.
 	 * Ha az értéke true, akkorigen, ha false akkor nem
 	 */
-	protected boolean isHidden;
+	protected boolean isHidden = false;
 	/**
 	 * Movable neve. Azonositast segit
 	 */
@@ -140,9 +140,19 @@ public abstract class Movable implements Steppable {
 		isHidden=!isHidden;
 	}
 	
+	
 	/**
 	 * Getter
-	 * @return
+	 * @return boolean
+	 */
+	public boolean GetIsHidden()
+	{
+		return isHidden;
+	}
+	
+	/**
+	 * Getter
+	 * @return String
 	 */
 	public String Getname() {
 		return this.movablesName;

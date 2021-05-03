@@ -94,9 +94,9 @@ public class Asteroid extends Field{
 	 * Az aszteroidat banyasszak. Ha sikeres vissza ad egy Materialt
 	 * @return
 	 */
-	public Material GetMined(){		
+	public Material GetMined(){
 	//ha az aszteroida nem ures	
-		if(!CoreMaterial.isEmpty())
+		if(!CoreMaterial.isEmpty() && Thickness == 0)
 		{
 			CoreMaterial.get(0).GetExposed(isSunside, this);
 			Material mined = CoreMaterial.get(0);
@@ -120,7 +120,7 @@ public class Asteroid extends Field{
 	 */
 	public boolean StoreMaterial(Material M) {
 		
-		if(!CoreMaterial.isEmpty() && CoreMaterial.getClass().equals(M.getClass())) // Ha van benne de nincs tele maradjon homogen
+		if(!CoreMaterial.isEmpty() && CoreMaterial.get(0).getClass().equals(M.getClass())) // Ha van benne de nincs tele maradjon homogen
 		{
 			CoreMaterial.add(M);
 			return true;
