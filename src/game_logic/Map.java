@@ -84,5 +84,10 @@ public class Map implements Steppable {
     	Field asteroid = FieldList.get(idx);
     	return asteroid;
     }
+    
+    public Vector<Field> getFieldList()
+    {
+    	return FieldList;
+    }
 
 }

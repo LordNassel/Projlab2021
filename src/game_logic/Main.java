@@ -1,20 +1,25 @@
 //Sorry for the english, but eclipse throws all sorts of errors with the HU special characters
 package game_logic;
 import game_logic.Asteroid;
+import view.GameView;
+import view.MenuView;
 
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Main{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.out.println("Every man's sky");
 		//tesztpark peldanyositasa
-		Advanced_tests currenttests = new Advanced_tests();
+		//Advanced_tests currenttests = new Advanced_tests();
 		//Az ideiglenes világ példányosítása
 		TempGenWorlds temp = new TempGenWorlds();
+		Game gm = temp.Generateworlds(1);
 		//Hagyományos tesztek
 		//Test Normaltest = new Test();
-		System.out.println("Mit szeretnél csinálni?  2-es elorehaladott tesztek, 3-as uj jatek inditasa");
+		/*System.out.println("Mit szeretnél csinálni?  2-es elorehaladott tesztek, 3-as uj jatek inditasa");
 		switch (inputmanager()){
 			case 2:
 				currenttests.AdvancedTestMgr();
@@ -26,7 +31,13 @@ public class Main{
 				break;
 		}
 		Scanner input = new Scanner(System.in);
-		String in = input.next();
+		String in = input.next();*/
+		//MenuView menu = new MenuView();
+		///asteroids.get(1).Explode();
+		GameView game = new GameView(gm);
+		game.setVisible(true);
+		gm.StartGame();
+		//menu.setVisible(true);
 	}
 
 	private static int inputmanager() {

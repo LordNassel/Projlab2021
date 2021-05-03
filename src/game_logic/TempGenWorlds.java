@@ -1,13 +1,16 @@
 package game_logic;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import view.*;
 import java.util.List;
+import java.util.Random;
 import java.util.Vector;
 
 public class TempGenWorlds {
     //Ez most itt azert ilyen bajos, mert a game feladatat vegzem el. A game majd file-bol olvassa be ezeket.
 // Azonban a process jellege nem valtozik elore megtervezett vilagokkal dolgozunk majd
-    public Vector<Field> Generateworlds(int which){
+    public Game Generateworlds(int which) throws IOException{
         Iron i = new Iron();
         Coal c = new Coal();
         Ice ice = new Ice();
@@ -17,7 +20,7 @@ public class TempGenWorlds {
                 System.out.println("Az inner worlds konstruktora hivodott meg. " +
                         "Ez azon resze a vilagnak, ahol minden rendben megy, es a nap messze van. Nagyon kellemes kirandulohelyszin, ellenben itt nyerni nem lehet. " +
                         "Jo kikapcsolodast");
-                Vector<Field> temp = new Vector<Field>();
+                Vector<Asteroid> temp = new Vector<Asteroid>();
                 //Minden uj aszteroida
                 Asteroid Auchen = new Asteroid("Auchenshuggle", "Uranium", true, 0);
                 //tring name, Material M, boolean isSunside
@@ -30,6 +33,74 @@ public class TempGenWorlds {
                 Asteroid LongDale = new Asteroid("LongDale", "Iron");
                 Asteroid Sotrun = new Asteroid("Sotrun", "Uranium");
                 Asteroid Benqua = new Asteroid("Benqua", "Iron"); //rand
+               
+                temp.add(Auchen);
+                temp.add(FormFoss);
+                temp.add(Timeston);
+                temp.add(Hewe);
+                temp.add(Beckistale);
+                temp.add(Boroughton);
+                temp.add(MyreFall);
+                temp.add(LongDale);
+                temp.add(Sotrun);
+                temp.add(Benqua);
+                
+                int x = 5;
+                int y = 5;
+                Random rand = new Random();
+                
+                
+                /*for(int b=0; b<temp.size(); b++)
+                {
+                	temp.get(b).view = new AsteroidView();
+                	temp.get(b).view.setPos(x+rand.nextInt(200-100) + 100, y+rand.nextInt(200-100)+100);
+                	MenuView.addView(temp.get(b).view);
+                	x+=50;
+                	y+=50;
+                }*/
+                
+                /*Benqua.view = new AsteroidView();
+                Benqua.view.setPos(10,10);
+				MenuView.addView(Benqua.view);
+				
+				Auchen.view = new AsteroidView();
+				Auchen.view.setPos(10,250); //x,y
+				MenuView.addView(Auchen.view);
+				
+				FormFoss.view = new AsteroidView();
+				FormFoss.view.setPos(10,460);
+				MenuView.addView(FormFoss.view);
+				
+				Timeston.view = new AsteroidView();
+				Timeston.view.setPos(250,10);
+				MenuView.addView(Timeston.view);
+				
+				Hewe.view = new AsteroidView();
+				Hewe.view.setPos(250,250);
+				MenuView.addView(Hewe.view);
+				
+				Beckistale.view = new AsteroidView();
+				Beckistale.view.setPos(250,460);
+				MenuView.addView(Beckistale.view);
+				
+				Boroughton.view = new AsteroidView();
+				Boroughton.view.setPos(460,10);
+				MenuView.addView(Boroughton.view);
+				
+				MyreFall.view = new AsteroidView();
+				MyreFall.view.setPos(460,250);
+				MenuView.addView(MyreFall.view);
+				
+				LongDale.view = new AsteroidView();
+				LongDale.view.setPos(460,460);
+				MenuView.addView(LongDale.view);
+				
+				Sotrun.view = new AsteroidView();
+				Sotrun.view.setPos(710,10);
+				MenuView.addView(Sotrun.view);*/
+				
+				//Benqua.view.setSize(30, 30);
+
                 //Szomszedok
                 Auchen.SetNeighbor(FormFoss);
                 Auchen.SetNeighbor(Timeston);
@@ -61,10 +132,21 @@ public class TempGenWorlds {
                 Boroughton.SetNeighbor(Beckistale);
 
                 Settler S = new Settler("Player1", Auchen);
+                Robot robi = new Robot("Robi", Auchen);
+                
+                /*S.view = new SettlerView();
+                S.view.setPos(10,170); //10,250
+				MenuView.addMovableView(S.view);*/
+				
+				//S.Move(Benqua);
+				//int posx = Benqua.view.getPosx();
+				//int posy = Benqua.view.getPosy();
+				//S.view.setPos(posx, posy-80);
+				
                 Settler S2 = new Settler("Player2", Auchen);
                 Vector<Material> list = new Vector<Material>();
 
-                Goal_Asteroid goal = new Goal_Asteroid("Goal_Asteroid", "Iron", list);
+                Goal_Asteroid goal = new Goal_Asteroid("Goal_Asteroid", "", list);
                 Alien a = new Alien("Alien", Auchen);
                 goal.SetNeighbor(Auchen);
                 Auchen.SetNeighbor(goal);
@@ -80,19 +162,16 @@ public class TempGenWorlds {
                 fieldlist.add(LongDale);
                 fieldlist.add(Sotrun);
                 fieldlist.add(Benqua);
+                fieldlist.add(goal);
+                
+                Teleport t = new Teleport("Bab is");
+                Teleport t2= new Teleport("hus");
+                t.setPair(t2);
+                t2.setPair(t);
+                S.addTelportToInventory(t);
+                S.addTelportToInventory(t2);
 
 
-
-                temp.add(Auchen);
-                temp.add(FormFoss);
-                temp.add(Timeston);
-                temp.add(Hewe);
-                temp.add(Beckistale);
-                temp.add(Boroughton);
-                temp.add(MyreFall);
-                temp.add(LongDale);
-                temp.add(Sotrun);
-                temp.add(Benqua);
                 
                 
                 Map map = new Map(true, fieldlist);
@@ -101,12 +180,14 @@ public class TempGenWorlds {
                 game.AddMovable(a, Auchen);
                 game.AddMovable(S, Auchen);
                 game.AddMovable(S2, Auchen);
+                game.AddMovable(robi, Auchen);
                // game.AddMovable(r, Auchen);
                 game.AddSteppable(map);
 
-                game.StartGame();
+                //game.StartGame();
+                S.Move(FormFoss);
 
-                return temp;
+                return game;
         }
         /*if(which ==2){
             System.out.println("Az inner worlds 200 evvel ezelotti konstruktora hivodott meg. " +

@@ -33,6 +33,7 @@ public class Alien extends Movable  {
      *  Az AI lépteti egy másik bolygóra vagy pedig bányászik a jelenlegin.
      */
     public void Step(){
+    	System.out.println("Alien step");
     	if(thisasteroidempty == false) {
         	Mine();
         }

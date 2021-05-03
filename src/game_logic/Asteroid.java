@@ -1,4 +1,6 @@
 package game_logic;
+
+import view.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +14,7 @@ import java.util.Random;
  *
  */
 public class Asteroid extends Field{
+		
 	/**
 	 * Megadja, hogy az aszteroida napközelben van vagy sem. Ha azértéke true, akkor igen, ha false akkor pedig nem.
 	 */
@@ -117,7 +120,7 @@ public class Asteroid extends Field{
 	 */
 	public boolean StoreMaterial(Material M) {
 		
-		if(CoreMaterial.size()<3 && CoreMaterial.size() > 0 && CoreMaterial.get(0).getClass().equals(M.getClass())) // Ha van benne de nincs tele maradjon homogen
+		if(!CoreMaterial.isEmpty() && CoreMaterial.getClass().equals(M.getClass())) // Ha van benne de nincs tele maradjon homogen
 		{
 			CoreMaterial.add(M);
 			return true;
@@ -146,7 +149,7 @@ public class Asteroid extends Field{
 			System.out.println("Success\n");
 		}
 		else
-			System.out.println("Asteroid is not empty to hide\n");
+			System.out.println("Asteroid is not empty to hide\n"); 
 	}
 
 	/**

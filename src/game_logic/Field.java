@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import view.AsteroidView;
+
 /**
  * Tárolja azokat az objektumokat (Movable), amelyekelõfordulhatnak az aszteroidaövben
  * továbbá ismeri a szomszédos mezõket. További felelõsségereagálni az aszteroidaövbenlétrejövõ különbözõ eseményekre
  */
 public abstract class Field{
+	
 /**
  * Tárolja a szomszédos mezõket
  */
@@ -33,7 +36,7 @@ private String name;
 	/**
 	 * Meghívja a rajta lévõ movablek Explode függvényé
 	 */
-	protected void Explode() {
+	public void Explode() {
 	for(int i=MovableList.size()-1; i>=0; i--) // Iteráció közben törölünk elemeket ezért inkább így
 		MovableList.get(i).HitByExplosion();
 	for(int i = Neighbors.size()-1 ; i>=0; i--)
@@ -113,6 +116,11 @@ private String name;
 	 * @return
 	 */
 	public abstract boolean GetDrilled();
+	
+	public List<Movable> getMovableList()
+	{
+		return MovableList;
+	}
 
 }
 
