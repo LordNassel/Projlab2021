@@ -1,7 +1,6 @@
 //Sorry for the english, but eclipse throws all sorts of errors with the HU special characters
 package game_logic;
 import game_logic.Asteroid;
-import graphics.TestClass_For_Getting_Our_Bearings;
 
 import java.util.Scanner;
 
@@ -15,10 +14,6 @@ public class Main{
 		TempGenWorlds temp = new TempGenWorlds();
 		//Hagyományos tesztek
 		//Test Normaltest = new Test();
-
-		TestClass_For_Getting_Our_Bearings test = new TestClass_For_Getting_Our_Bearings();
-		test.thethingtocall();
-
 		System.out.println("Mit szeretnél csinálni?  2-es elorehaladott tesztek, 3-as uj jatek inditasa");
 		switch (inputmanager()){
 			case 2:
