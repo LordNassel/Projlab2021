@@ -588,6 +588,7 @@ public class GameBoard extends JPanel {
 	        if(game.getActiveSettler().GetCurrentField().getClass() != Goal_Asteroid.class) 
 	        {
 	        	jp.add(notgood);
+	        	JOptionPane.showMessageDialog(frame, jp);
 	        }
         
 	        else if(!inInventory.isEmpty())
@@ -595,13 +596,13 @@ public class GameBoard extends JPanel {
 	        	while(choosen.getText().length()<2)
 	        	{
 	        		JOptionPane.showMessageDialog(frame, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);
-	        		jp.add(success);	        		
+	        		jp.add(success);	 
+	        		JOptionPane.showMessageDialog(frame, jp);
 	        	}
 	        }
 	        else
 	        	JOptionPane.showMessageDialog(frame, "Empty inventory");
-	        Material selectedMaterial = null;
-	        JOptionPane.showMessageDialog(frame, jp);
+	        Material selectedMaterial = null;	        
 	        
 	        for(int i=0; i<inInventory.size(); i++)
 			{
