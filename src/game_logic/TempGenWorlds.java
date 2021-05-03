@@ -24,7 +24,7 @@ public class TempGenWorlds {
                 //Minden uj aszteroida
                 Asteroid Auchen = new Asteroid("Auchenshuggle", "Uranium", true, 0);
                 //tring name, Material M, boolean isSunside
-                Asteroid FormFoss = new Asteroid("FormFoss", "Coal");
+                Asteroid FormFoss = new Asteroid("FormFoss", "Ice");
                 Asteroid Timeston = new Asteroid("Timeston", "Uranium");
                 Asteroid Hewe = new Asteroid("Hewe", "Uranium");
                 Asteroid Beckistale = new Asteroid("Beckistale", "Iron"); //rand
@@ -164,12 +164,13 @@ public class TempGenWorlds {
                 fieldlist.add(Benqua);
                 fieldlist.add(goal);
                 
+                /*
                 Teleport t = new Teleport("Bab is");
                 Teleport t2= new Teleport("hus");
                 t.setPair(t2);
                 t2.setPair(t);
                 S.addTelportToInventory(t);
-                S.addTelportToInventory(t2);
+                S.addTelportToInventory(t2);*/
 
 
                 

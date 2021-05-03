@@ -209,9 +209,9 @@ public class Settler extends Movable {
 	 */
 	public void PutMaterial(Material material)
 	{
-		if(!isHidden)
+		if(!isHidden && ((Asteroid)currentField).StoreMaterial(material))
 		{
-		((Asteroid)currentField).StoreMaterial(material);
+		//((Asteroid)currentField).StoreMaterial(material);
 		inventoryMain.remove(material);
 		}
 		else
