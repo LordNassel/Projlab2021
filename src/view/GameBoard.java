@@ -2,22 +2,16 @@ package view;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Stroke;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Vector;
@@ -25,7 +19,6 @@ import java.util.Vector;
 import game_logic.*;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -51,11 +44,15 @@ public class GameBoard extends JPanel {
 	JButton activate_teleport = new JButton("Activate teleport");
 	JButton store_in_base = new JButton("Store material on base");
 	JButton build = new JButton("Build base");
+	//Az inventory gomv
+	JButton inventoryButton = new JButton("Inventory");
 	JPanel asteroids = new JPanel(null);
 	JPanel buttons = new JPanel(new GridBagLayout());
 	JLabel active_player = new JLabel();
 	JLabel player_pos = new JLabel();
 	JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
+	//Az inventory label
+	JLabel inventory = new JLabel("");
 	volatile private static boolean clicked = false;
 	
 	
@@ -79,6 +76,7 @@ public class GameBoard extends JPanel {
 		
 		buttonsCentered.add(active_player);
 		buttonsCentered.add(player_pos);
+		buttonsCentered.add(inventory);
 		buttonsCentered.add(move,BorderLayout.SOUTH);
 		buttonsCentered.add(drill,BorderLayout.SOUTH);
 		buttonsCentered.add(mine,BorderLayout.SOUTH);
@@ -89,6 +87,8 @@ public class GameBoard extends JPanel {
 		buttonsCentered.add(activate_teleport,BorderLayout.SOUTH);
 		buttonsCentered.add(store_in_base,BorderLayout.SOUTH);
 		buttonsCentered.add(build,BorderLayout.SOUTH);
+		buttonsCentered.add(inventoryButton, BorderLayout.SOUTH);
+
 		//setFocusable(true);
 		actionClickListeners();
 		
@@ -305,7 +305,7 @@ public class GameBoard extends JPanel {
 		});
 		
 		mine.addActionListener(e ->{
-			List<Material> settlermats = game.getActiveSettler().GetInventory_DEBUG();
+			List<Material> settlermats = game.getActiveSettler().GetInventory();
 			int matNum = settlermats.size();
 			game.MineAction();
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
@@ -313,7 +313,7 @@ public class GameBoard extends JPanel {
 			JLabel failure = new JLabel("Can't mine the asteroid!");
 			jp.setSize(100, 200);
 			
-			if(matNum < game.getActiveSettler().GetInventory_DEBUG().size()) 
+			if(matNum < game.getActiveSettler().GetInventory().size())
 			{
 				jp.add(success, BorderLayout.CENTER);
 			}
@@ -418,7 +418,7 @@ public class GameBoard extends JPanel {
 			List<Material> inInventory = new ArrayList<Material>();
 			Vector<Material> mat = new Vector<Material>();
 			Settler activeSettler = game.getActiveSettler();
-			inInventory = activeSettler.GetInventory_DEBUG();
+			inInventory = activeSettler.GetInventory();
 			int mats = inInventory.size();
 			//Iron iron = new Iron();
 			//inInventory.add(iron);
@@ -473,7 +473,7 @@ public class GameBoard extends JPanel {
 			JLabel success = new JLabel("Material placed!");
 			JLabel failure = new JLabel("Can't place it!");
 			jp.setSize(100, 200);
-			if(mats > game.getActiveSettler().GetInventory_DEBUG().size()) {
+			if(mats > game.getActiveSettler().GetInventory().size()) {
 				jp.add(success);
 			}
 			else {
@@ -550,7 +550,7 @@ public class GameBoard extends JPanel {
 			List<Material> inInventory = new ArrayList<Material>();
 			Vector<Material> mat = new Vector<Material>();
 			Settler activeSettler = game.getActiveSettler();
-			inInventory = activeSettler.GetInventory_DEBUG();
+			inInventory = activeSettler.GetInventory();
 			//Iron iron = new Iron();
 			//inInventory.add(iron);
 			for(int i=0; i<inInventory.size(); i++)
@@ -619,6 +619,39 @@ public class GameBoard extends JPanel {
 			clicked=true;
 			this.repaint();
 		});
+		//Az inventory kiírása
+		inventoryButton.addActionListener(e ->{
+
+			List<Material> temp = game.getActiveSettler().GetInventory();
+			String s = new String();
+			if(temp.size()==0){
+				inventory.setText("The inventory is empty!");
+				return;
+			}
+
+				int[] inventorycnt = MaterialDictionary(temp);
+				s+= "Coal: " + String.valueOf(inventorycnt[0]) + ", ";
+				s+= "Ice: " + String.valueOf(inventorycnt[1]) + ", ";
+				s+= "Iron: " + String.valueOf(inventorycnt[2]) + ", ";
+				s+= "Uranium: " + String.valueOf(inventorycnt[3]);
+
+
+			inventory.setText(s);
+		});
+
+	}
+
+	private int[] MaterialDictionary(List<Material> M){
+
+		int[] temp = new int[5];
+		for(int i=0; i<M.size(); i++) {
+			if (M.get(i) instanceof Coal) temp[0] += 1;
+			else if (M.get(i) instanceof Ice) temp[1] += 1;
+			else if (M.get(i) instanceof Iron) temp[2] += 1;
+			else if (M.get(i) instanceof Uranium) temp[3] += 1;
+		}
+		return temp;
+
 	}
 	
 	public static void selectAction()
