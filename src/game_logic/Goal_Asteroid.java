@@ -1,5 +1,7 @@
 package game_logic;
 
+import view.Specialframe;
+
 import java.util.Vector;
 
 /**

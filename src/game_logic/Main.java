@@ -36,7 +36,7 @@ public class Main{
 		///asteroids.get(1).Explode();
 		GameView game = new GameView(gm);
 		game.setVisible(true);
-		gm.StartGame();
+		//gm.StartGame();
 		//menu.setVisible(true);
 	}
 
