@@ -26,12 +26,19 @@ public class GameView extends JFrame {
 		buttonContainer.setLayout(new GridLayout());
 		buttonContainer.add(start_game);
 		
+		Thread thread = new Thread() {
+			public void run() {
+				game.StartGame();
+			}
+		};
+		
 		start_game.addActionListener(e -> {
 			//Game game = Game.getInstance();
 			// Map betöltése: game.init -> map = new Map stb. mint nekünk a TempGenWorld
 			GameFrame gameView;
 			try {
 				gameView = new GameFrame(game);
+				thread.start();
 				gameView.setVisible(true);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
