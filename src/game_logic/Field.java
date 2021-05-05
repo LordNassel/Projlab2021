@@ -39,6 +39,7 @@ private String name;
 	public void Explode() {
 	for(int i=MovableList.size()-1; i>=0; i--) // Iteráció közben törölünk elemeket ezért inkább így
 		MovableList.get(i).HitByExplosion();
+
 	for(int i = Neighbors.size()-1 ; i>=0; i--)
 	{
 		Neighbors.get(i).RemoveNeighbor(this);

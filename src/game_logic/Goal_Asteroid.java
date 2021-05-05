@@ -1,5 +1,7 @@
 package game_logic;
 
+import view.Specialframe;
+
 import java.util.Vector;
 
 /**
@@ -47,7 +49,6 @@ public class Goal_Asteroid extends Asteroid  {
 		
 		if(uran_db >= 3 && coal_db >= 3&& iron_db >= 3 && ice_db >=3)
 		{
-			gamewin = true;
 			Game.Wingame();
 			return;
 		}
@@ -72,5 +73,5 @@ public class Goal_Asteroid extends Asteroid  {
 	/**
 	 *  Visszaadja a gamewin valtozot.
 	 */
-	public boolean GetGamewin() { return gamewin;}
+	public boolean GetGamewin() {System.out.println("GetGamewin called"); return gamewin;}
 }
