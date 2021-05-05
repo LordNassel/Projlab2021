@@ -3,9 +3,7 @@ package game_logic;
 import java.util.*;
 
 import view.GameBoard;
-import view.GameFrame;
 import view.MenuView;
-import view.Specialframe;
 
 
 /**
@@ -18,7 +16,6 @@ public class Game {
 	private static Game instance = null;
 	public static MenuView view;
 	private Settler activeSettler;
-
 	/**
 	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
 	 */
@@ -27,7 +24,6 @@ public class Game {
 	 * Az aktuális pálya, amin játszunk
 	 */
 	private Map map;
-
 	/**
 	 * Steppable, vagyis a mozgásra képes objektumok listája
 	 */
@@ -62,7 +58,6 @@ public class Game {
     public static void Wingame() {
     	//System.out.println("Wingame called");
     	running=false;
-		GameBoard.Wingame();
     }
 
     /**
@@ -72,7 +67,8 @@ public class Game {
     public void Losegame() {
     	running = false;
     	//System.out.println("Losegame called");
-		GameBoard.Losegame();
+
+        
     }
 
    /**
@@ -233,9 +229,5 @@ public class Game {
     {
     	getActiveSettler().Build();
     }
-
-
-
-
 
 }

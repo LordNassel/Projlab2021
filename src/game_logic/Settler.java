@@ -87,10 +87,6 @@ public class Settler extends Movable {
 		Iron iron = new Iron();
 		Uranium uran = new Uranium();
 		
-		boolean coalremoved = false;
-		boolean ironremoved = false;
-		boolean uranremoved = false;
-		
 		int ncoal = getMaterialTypeNumber(coal);
 		int niron = getMaterialTypeNumber(iron);
 		int nuran = getMaterialTypeNumber(uran);
@@ -99,25 +95,6 @@ public class Settler extends Movable {
 			Robot craftedRobot = new Robot((Asteroid)currentField);
 			currentField.AcceptPlayer(craftedRobot);
 			Game.AddSteppable(craftedRobot);
-			for(int i=0; i<inventoryMain.size(); i++)
-			{
-				if(inventoryMain.get(i) instanceof Coal && coalremoved == false)
-				{
-					coal = (Coal) inventoryMain.get(i);
-					coalremoved = true;
-				}
-				else if(inventoryMain.get(i) instanceof Iron && ironremoved == false)
-				{
-					iron = (Iron) inventoryMain.get(i);
-					ironremoved = true;
-				}
-				else if(inventoryMain.get(i) instanceof Uranium && uranremoved == false)
-				{
-					uran = (Uranium) inventoryMain.get(i);
-				}
-				
-			}
-			
 			inventoryMain.remove(coal);
 			inventoryMain.remove(iron);
 			inventoryMain.remove(uran);
@@ -148,12 +125,6 @@ public class Settler extends Movable {
 		nuran = getMaterialTypeNumber(uranium);
 		nice = getMaterialTypeNumber(ice);
 		
-		int ironremoved = 0;
-		List<Iron> usedirons = new ArrayList<Iron>();
-		int iceremoved = 0;
-		List<Ice> usedices = new ArrayList<Ice>();
-		int uranremoved = 0;
-		
 		if(niron >=2 && nice >= 2 && nuran >=1)
 		{
 			Teleport t1 = new Teleport(name1);
@@ -163,28 +134,11 @@ public class Settler extends Movable {
 			inventoryTeleport.add(t1);
 			inventoryTeleport.add(t2);
 			
-			for(int i=0; i<inventoryMain.size(); i++)
-			{
-				if(inventoryMain.get(i) instanceof Iron && ironremoved < 2)
-				{
-					usedirons.add((Iron) inventoryMain.get(i));
-					ironremoved++;
-				}
-				else if(inventoryMain.get(i) instanceof Ice && iceremoved < 2)
-				{
-					usedices.add((Ice) inventoryMain.get(i));
-					iceremoved++;
-				}
-				else if(inventoryMain.get(i) instanceof Uranium && uranremoved < 1)
-				{
-					uranium = (Uranium) inventoryMain.get(i);
-					uranremoved++;
-				}
-			}
-			
+			inventoryMain.remove(iron);
+			inventoryMain.remove(iron);
+			inventoryMain.remove(ice);
+			inventoryMain.remove(ice);
 			inventoryMain.remove(uranium);
-			inventoryMain.removeAll(usedices);
-			inventoryMain.removeAll(usedirons);
 			
 			System.out.println("Teleport pair created");
 		}
@@ -422,7 +376,7 @@ public class Settler extends Movable {
 		inventoryTeleport.add(t);
 	}
 	
-	public List<Material> GetInventory(){return this.inventoryMain ;}
+	public List<Material> GetInventory_DEBUG(){return this.inventoryMain ;}
 	
 	public List<Teleport> getTeleportInventory()
 	{
