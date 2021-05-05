@@ -57,14 +57,14 @@ public class Stats_manager {
         //Tudom hogy settler
         Settler S1 = (Settler) Movable_Temp_List.get(n);
         System.out.println("Nyersanyag tarolva: ");
-        for(int i=0; i<S1.GetInventory_DEBUG().size(); i++){
-            if (S1.GetInventory_DEBUG().get(i) instanceof Uranium )
+        for(int i = 0; i<S1.GetInventory().size(); i++){
+            if (S1.GetInventory().get(i) instanceof Uranium )
                 System.out.println("Uranium");
-            if (S1.GetInventory_DEBUG().get(i) instanceof Ice )
+            if (S1.GetInventory().get(i) instanceof Ice )
                 System.out.println("Ice");
-            if (S1.GetInventory_DEBUG().get(i) instanceof Coal)
+            if (S1.GetInventory().get(i) instanceof Coal)
                 System.out.println("Coal");
-            if (S1.GetInventory_DEBUG().get(i) instanceof Iron )
+            if (S1.GetInventory().get(i) instanceof Iron )
                 System.out.println("Iron");
             }
         System.out.println("\n");

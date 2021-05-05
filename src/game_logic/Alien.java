@@ -67,7 +67,7 @@ public class Alien extends Movable  {
         Vector<Field> neighbor = currentField.FindNeighbor();
         Random Dirgen = new Random();
         //elmegy egy random bolygora
-        super.Move(neighbor.get(Dirgen.nextInt(neighbor.size()-1)));
+        super.Move(neighbor.get(Dirgen.nextInt(neighbor.size())));
     }
     
     public void HitBySunStorm()
