@@ -16,7 +16,7 @@ public class Game {
 	private static Game instance = null;
 	public static MenuView view;
 	private Settler activeSettler;
-
+	int currentgamestatus =0;
 	/**
 	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
 	 */
@@ -60,6 +60,7 @@ public class Game {
     public static void Wingame() {
     	//System.out.println("Wingame called");
     	running=false;
+		int currentgamestatus =+1;
     }
 
     /**
@@ -69,7 +70,7 @@ public class Game {
     public void Losegame() {
     	running = false;
     	//System.out.println("Losegame called");
-
+		int currentgamestatus =-1;
         
     }
 
@@ -232,4 +233,7 @@ public class Game {
     	getActiveSettler().Build();
     }
 
+    //a getstatus getterje, a GUI-nak segít eldönteni, hogy ha megállt a játék gy?zelem vagy elbukás miatt állt meg
+
+	public int getcurrentgamestatus(){return  currentgamestatus;}
 }
