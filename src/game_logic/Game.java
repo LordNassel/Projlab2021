@@ -16,6 +16,7 @@ public class Game {
 	private static Game instance = null;
 	public static MenuView view;
 	private Settler activeSettler;
+
 	/**
 	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
 	 */
@@ -24,6 +25,7 @@ public class Game {
 	 * Az aktuális pálya, amin játszunk
 	 */
 	private Map map;
+
 	/**
 	 * Steppable, vagyis a mozgásra képes objektumok listája
 	 */
