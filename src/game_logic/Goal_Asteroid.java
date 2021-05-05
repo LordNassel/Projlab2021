@@ -49,6 +49,7 @@ public class Goal_Asteroid extends Asteroid  {
 		
 		if(uran_db >= 3 && coal_db >= 3&& iron_db >= 3 && ice_db >=3)
 		{
+			gamewin = true;
 			Game.Wingame();
 			return;
 		}

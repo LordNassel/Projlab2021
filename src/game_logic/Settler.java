@@ -338,7 +338,12 @@ public class Settler extends Movable {
 	 */
 	public void Build()
 	{
+		if(this.currentField.getClass() == Goal_Asteroid.class)
+		{
 		((Goal_Asteroid)currentField).BuildBase();
+		}
+		else
+			System.out.println("Hiba: Nem a cel aszteroidan vagy");
 	}
 
 	/**
