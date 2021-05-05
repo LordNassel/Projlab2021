@@ -615,7 +615,7 @@ public class GameBoard extends JPanel {
 	public static void Losegame() {
 
 		Specialframe sf = new Specialframe();
-		sf.WinScreen();
+		sf.LoseScreen();
 		frame.dispose();
 	}
 }
