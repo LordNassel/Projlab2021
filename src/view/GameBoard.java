@@ -274,24 +274,15 @@ public class GameBoard extends JPanel {
 			game.MoveAction(target);
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
 			JLabel hidden = new JLabel("You are hidden!");
-			JLabel nopair = new JLabel("No pair!");
 			
 			if(game.getActiveSettler().GetIsHidden()) 
 			{
 				jp.add(hidden, BorderLayout.CENTER);
 				JOptionPane.showMessageDialog(frame, jp);
 			}
-			else if(target.getClass() == Teleport.class && ((Teleport) target).getPair().getIsActive() == false) 
-			{
-				jp.add(nopair, BorderLayout.CENTER);
-				JOptionPane.showMessageDialog(frame, jp);
-			}
-			if(!(target.getClass() == Teleport.class && ((Teleport) target).getPair().getIsActive() == false)) {
 			clicked = true;
 			this.repaint();
-			}
 		});
-		
 		
 		drill.addActionListener(e ->{
 			int thick = ((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness();
@@ -462,7 +453,7 @@ public class GameBoard extends JPanel {
 	        	{
 	        		while(choosen.getText().length()<2)
 	        		{
-	        			JOptionPane.showMessageDialog(frame, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);
+	        			JOptionPane.showMessageDialog(frame, splitPane, "Select neighbor", JOptionPane.QUESTION_MESSAGE);
 	        		}
 	        	
 	        	}
@@ -495,7 +486,7 @@ public class GameBoard extends JPanel {
 				jp.add(thick);
 				JOptionPane.showMessageDialog(frame, jp);
 			}
-			else if(mats == game.getActiveSettler().GetInventory_DEBUG().size()) 
+			else if(mats > game.getActiveSettler().GetInventory_DEBUG().size()) 
 			{
 				jp.add(wrong);
 				JOptionPane.showMessageDialog(frame, jp);
