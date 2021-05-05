@@ -45,6 +45,7 @@ private String name;
 		Neighbors.get(i).RemoveNeighbor(this);
 	}
 	Neighbors = null;
+	Game.getMap().FieldList.remove(this);
 	}
 
 	/**

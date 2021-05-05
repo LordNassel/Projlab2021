@@ -26,7 +26,7 @@ public class Game {
 	/**
 	 * Az aktuális pálya, amin játszunk
 	 */
-	private Map map;
+	private static Map map;
 
 	/**
 	 * Steppable, vagyis a mozgásra képes objektumok listája
@@ -168,7 +168,7 @@ public class Game {
     	return instance;
     }
     
-    public Map getMap()
+    public static Map getMap()
     {
     	return map;
     }
