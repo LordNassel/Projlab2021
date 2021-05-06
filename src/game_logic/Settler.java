@@ -101,17 +101,17 @@ public class Settler extends Movable {
 			Game.AddSteppable(craftedRobot);
 			for(int i=0; i<inventoryMain.size(); i++)
 			{
-				if(inventoryMain.get(i) instanceof Coal && coalremoved == false)
+				if(inventoryMain.get(i).getname() =="Coal" && coalremoved == false)
 				{
 					coal = (Coal) inventoryMain.get(i);
 					coalremoved = true;
 				}
-				else if(inventoryMain.get(i) instanceof Iron && ironremoved == false)
+				else if(inventoryMain.get(i).getname() =="Iron" && ironremoved == false)
 				{
 					iron = (Iron) inventoryMain.get(i);
 					ironremoved = true;
 				}
-				else if(inventoryMain.get(i) instanceof Uranium && uranremoved == false)
+				else if(inventoryMain.get(i).getname() =="Uranium" && uranremoved == false)
 				{
 					uran = (Uranium) inventoryMain.get(i);
 				}
@@ -165,17 +165,17 @@ public class Settler extends Movable {
 			
 			for(int i=0; i<inventoryMain.size(); i++)
 			{
-				if(inventoryMain.get(i) instanceof Iron && ironremoved < 2)
+				if(inventoryMain.get(i).getname() == "Iron" && ironremoved < 2)
 				{
 					usedirons.add((Iron) inventoryMain.get(i));
 					ironremoved++;
 				}
-				else if(inventoryMain.get(i) instanceof Ice && iceremoved < 2)
+				else if(inventoryMain.get(i).getname() =="Ice" && iceremoved < 2)
 				{
 					usedices.add((Ice) inventoryMain.get(i));
 					iceremoved++;
 				}
-				else if(inventoryMain.get(i) instanceof Uranium && uranremoved < 1)
+				else if(inventoryMain.get(i).getname() =="Uranium" && uranremoved < 1)
 				{
 					uranium = (Uranium) inventoryMain.get(i);
 					uranremoved++;

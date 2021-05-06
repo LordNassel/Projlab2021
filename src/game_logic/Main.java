@@ -9,14 +9,16 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Main{
-
+	static int num =1;
+	public void setNum(int szam) {num = szam;}
 	public static void main(String[] args) throws IOException {
 		System.out.println("Every man's sky");
+
 		//tesztpark peldanyositasa
 		//Advanced_tests currenttests = new Advanced_tests();
 		//Az ideiglenes világ példányosítása
 		TempGenWorlds temp = new TempGenWorlds();
-		Game gm = temp.Generateworlds(1);
+		Game gm = temp.Generateworlds(num);
 		//Hagyományos tesztek
 		//Test Normaltest = new Test();
 		/*System.out.println("Mit szeretnél csinálni?  2-es elorehaladott tesztek, 3-as uj jatek inditasa");
@@ -46,6 +48,7 @@ public class Main{
 		n= myinput.nextInt();
 		return n;
 	}
+
 
 
 }

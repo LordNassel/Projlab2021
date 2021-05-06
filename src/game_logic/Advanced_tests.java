@@ -213,13 +213,13 @@ public class Advanced_tests {
                 System.out.println("Materials: ");
                 List<Material> mats = A1.getMats();
                 for(int x=0; x<A1.getMats().size(); x++){
-                    if (A1.getMats().get(x) instanceof Uranium )
+                    if (A1.getMats().get(x).getname() == "Uranium" )
                         System.out.println("Uranium, ");
-                    else if (A1.getMats().get(x) instanceof Ice )
+                    else if (A1.getMats().get(x).getname() == "Ice")
                         System.out.println("Ice, ");
-                    else if (A1.getMats().get(x) instanceof Coal)
+                    else if (A1.getMats().get(x).getname() == "Coal")
                         System.out.println("Coal, ");
-                    else if (A1.getMats().get(x) instanceof Iron )
+                    else if (A1.getMats().get(x).getname() == "Iron")
                         System.out.println("Iron, ");
                     else
                     	System.out.println("Uranium, ");
