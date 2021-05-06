@@ -212,11 +212,11 @@ public class GameBoard extends JPanel {
 			//TODO: Ha teleportot választunk ki és nincs párja kezelni
 			Vector<String> neighbors_name = new Vector<String>();
 			Vector<Field> neighbors = new Vector<Field>();
-			neighbors = game.getActiveSettler().GetCurrentField().FindNeighbor();
-			for (int i = 0; i < neighbors.size(); i++)
+			neighbors=game.getActiveSettler().GetCurrentField().FindNeighbor();
+			for(int i=0; i<neighbors.size();i++)
 				neighbors_name.add(neighbors.get(i).Getname());
 			JTextField choosen = new JTextField("");
-
+			
 			JList<String> jlist = new JList<>(neighbors_name);
 			jlist.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -226,77 +226,90 @@ public class GameBoard extends JPanel {
 					choosen.setText(selected);
 				}
 			});
-
+			
 			System.out.println(choosen.getText());
-
+			
 			JScrollPane pane = new JScrollPane(jlist);
-			pane.setPreferredSize(new Dimension(100, 100));
+			pane.setPreferredSize(new Dimension(100,100));
 			JPanel buttonPane = new JPanel();
 			JButton but = new JButton("But");
 			buttonPane.add(choosen);
 			buttonPane.add(but);
-
+			
 			JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
 			splitPane.setDividerLocation(250);
-			splitPane.setEnabled(false);
-			while (choosen.getText().length() < 2) {
-				JOptionPane.showMessageDialog(frame, splitPane, "Select neighbor", JOptionPane.QUESTION_MESSAGE);
-			}
-
-			Field target = null;
-			for (int i = 0; i < neighbors.size(); i++) {
-				if (neighbors.get(i).Getname().equals(choosen.getText()))
-					target = neighbors.get(i);
-			}
+	        splitPane.setEnabled(false);
+	        while(choosen.getText().length()<2)
+	        {
+	        	JOptionPane.showMessageDialog(frame, splitPane, "Select neighbor", JOptionPane.QUESTION_MESSAGE);
+	        }
+			
+	        Field target = null;
+	        for(int i=0; i<neighbors.size();i++)
+	        {
+				if(neighbors.get(i).Getname().equals(choosen.getText()))
+						target=neighbors.get(i);
+	        }
 			game.MoveAction(target);
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
-			JLabel jb = new JLabel("Successfull moving!");
-			jp.setSize(100, 200);
-
-			jp.add(jb, BorderLayout.CENTER);
-			JOptionPane.showMessageDialog(frame, jp);
-
+			JLabel hidden = new JLabel("You are hidden!");
+			JLabel nopair = new JLabel("No pair!");
+			
+			if(game.getActiveSettler().GetIsHidden()) 
+			{
+				jp.add(hidden, BorderLayout.CENTER);
+				JOptionPane.showMessageDialog(frame, jp);
+			}
+			else if(target.getClass() == Teleport.class && ((Teleport) target).getPair().getIsActive() == false) 
+			{
+				jp.add(nopair, BorderLayout.CENTER);
+				JOptionPane.showMessageDialog(frame, jp);
+			}
+			if(!(target.getClass() == Teleport.class && ((Teleport) target).getPair().getIsActive() == false)) {
 			clicked = true;
 			this.repaint();
+			}
 		});
 
-		drill.addActionListener(e -> {
+		drill.addActionListener(e ->{
 			int thick = ((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness();
 			game.DrillAction();
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
-			JLabel success = new JLabel("Successfull drilling!");
-			JLabel failure = new JLabel("Thickness is zero!");
+			JLabel zero = new JLabel("Thickness is zero!");
 			jp.setSize(100, 200);
-
-			if (thick > ((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness()) {
-				jp.add(success, BorderLayout.CENTER);
-			} else {
-				jp.add(failure, BorderLayout.CENTER);
+				
+			if(thick == 0)
+			{
+				jp.add(zero, BorderLayout.CENTER);
+				JOptionPane.showMessageDialog(frame, jp);
 			}
-			JOptionPane.showMessageDialog(frame, jp);
-			clicked = true;
+
+			clicked=true;
 			this.repaint();
 		});
 
-		mine.addActionListener(e -> {
-			List<Material> settlermats = game.getActiveSettler().GetInventory();
-			int matNum = settlermats.size();
+		mine.addActionListener(e ->{
+			//List<Material> settlermats = game.getActiveSettler().GetInventory_DEBUG();
+			int matNum = ((Asteroid) game.getActiveSettler().GetCurrentField()).getMats().size();
 			game.MineAction();
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
-			JLabel success = new JLabel("Successfull Mining!");
-			JLabel failure = new JLabel("Can't mine the asteroid!");
+			JLabel empty = new JLabel("The asteroid is empty!");
+			JLabel thick = new JLabel("Thickness is not zero!");
 			jp.setSize(100, 200);
-
-			if (matNum < game.getActiveSettler().GetInventory().size()) {
-				jp.add(success, BorderLayout.CENTER);
-			} else {
-				jp.add(failure, BorderLayout.CENTER);
+			if(((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness() != 0)
+			{
+				jp.add(thick, BorderLayout.CENTER);
+				JOptionPane.showMessageDialog(frame, jp);
 			}
-			JOptionPane.showMessageDialog(frame, jp);
-			clicked = true;
+			else if(matNum == 0) 
+			{
+				jp.add(empty, BorderLayout.CENTER);
+				JOptionPane.showMessageDialog(frame, jp);
+			}
+			
+			clicked=true;
 			this.repaint();
 		});
-
 		craft_robot.addActionListener(e -> {
 			Coal coal = new Coal();
 
@@ -352,28 +365,34 @@ public class GameBoard extends JPanel {
 			this.repaint();
 		});
 
-		hide.addActionListener(e -> {
+		hide.addActionListener(e ->{
 			game.HideAction();
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
 			JLabel successhidden = new JLabel("You are now hidden!");
 			JLabel successnothidden = new JLabel("You are now not hidden!");
 			JLabel failure = new JLabel("Can't hide there!");
 			jp.setSize(100, 200);
-			if (!game.getActiveSettler().GetIsHidden()) {
-				if (((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness() == 0 && ((Asteroid) game.getActiveSettler().GetCurrentField()).getMats().isEmpty()) {
+			if(!game.getActiveSettler().GetIsHidden())
+			{
+				if(((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness() == 0 && ((Asteroid)game.getActiveSettler().GetCurrentField()).getMats().isEmpty()) 
+				{
 					jp.add(successnothidden, BorderLayout.CENTER);
-				} else {
-					jp.add(failure, BorderLayout.CENTER);
 				}
-			} else {
+				else 
+				{
+					jp.add(failure, BorderLayout.CENTER);
+				}				
+			}
+			else 
+			{
 				jp.add(successhidden, BorderLayout.CENTER);
 			}
 			JOptionPane.showMessageDialog(frame, jp);
-			clicked = true;
+			clicked=true;
 			this.repaint();
 		});
 
-		putback.addActionListener(e -> {
+		putback.addActionListener(e ->{
 			List<Material> inInventory = new ArrayList<Material>();
 			Vector<Material> mat = new Vector<Material>();
 			Settler activeSettler = game.getActiveSettler();
@@ -381,12 +400,13 @@ public class GameBoard extends JPanel {
 			int mats = inInventory.size();
 			//Iron iron = new Iron();
 			//inInventory.add(iron);
-			for (int i = 0; i < inInventory.size(); i++) {
+			for(int i=0; i<inInventory.size(); i++)
+			{
 				mat.add(inInventory.get(i));
 			}
-
+			
 			JTextField choosen = new JTextField("");
-
+			
 			JList<Material> jlist = new JList<>(mat);
 			jlist.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -396,49 +416,68 @@ public class GameBoard extends JPanel {
 					choosen.setText(selected.toString());
 				}
 			});
-
+						
 			JScrollPane pane = new JScrollPane(jlist);
-			pane.setPreferredSize(new Dimension(100, 100));
+			pane.setPreferredSize(new Dimension(100,100));
 			JPanel buttonPane = new JPanel();
 			JButton but = new JButton("But");
 			buttonPane.add(choosen);
 			buttonPane.add(but);
-
+			
 			JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
 			splitPane.setDividerLocation(250);
-			splitPane.setEnabled(false);
-			if (!inInventory.isEmpty()) {
-				while (choosen.getText().length() < 2) {
-					JOptionPane.showMessageDialog(frame, splitPane, "Select neighbor", JOptionPane.QUESTION_MESSAGE);
-				}
+	        splitPane.setEnabled(false);
+	        
 
-			} else
-				JOptionPane.showMessageDialog(frame, "Empty inventory");
-			Material selectedMaterial = null;
+	        	if(!inInventory.isEmpty())
+	        	{
+	        		while(choosen.getText().length()<2)
+	        		{
+	        			JOptionPane.showMessageDialog(frame, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);
+	        		}
+	        	
+	        	}
+	        		else
+	        			JOptionPane.showMessageDialog(frame, "Empty inventory");
+	        	
 
-			for (int i = 0; i < inInventory.size(); i++) {
-				if (inInventory.get(i).toString().equals(choosen.getText()))
-					selectedMaterial = inInventory.get(i);
+	        Material selectedMaterial = null;
+	        
+	        for(int i=0; i<inInventory.size(); i++)
+			{
+				if(inInventory.get(i).toString().equals(choosen.getText()))
+					selectedMaterial=inInventory.get(i);
 			}
-
+			
 			game.PutAction(selectedMaterial);
-
+			
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
-			JLabel success = new JLabel("Material placed!");
-			JLabel failure = new JLabel("Can't place it!");
+			JLabel hidden = new JLabel("You are hidden!");
+			JLabel wrong = new JLabel("Wrong Material!");
+			JLabel thick = new JLabel("Thickness is not 0!");
 			jp.setSize(100, 200);
-			if (mats > game.getActiveSettler().GetInventory().size()) {
-				jp.add(success);
-			} else {
-				jp.add(failure);
+			if(game.getActiveSettler().GetIsHidden()) 
+			{
+				jp.add(hidden);
+				JOptionPane.showMessageDialog(frame, jp);
 			}
-			JOptionPane.showMessageDialog(frame, jp);
-			clicked = true;
+			else if (((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness() != 0)
+			{
+				jp.add(thick);
+				JOptionPane.showMessageDialog(frame, jp);
+			}
+			else if(mats == game.getActiveSettler().GetInventory().size()) 
+			{
+				jp.add(wrong);
+				JOptionPane.showMessageDialog(frame, jp);
+			}
+			
+			clicked=true;
 			this.repaint();
 		});
 
-		activate_teleport.addActionListener(e -> {
-
+		activate_teleport.addActionListener(e ->{
+			
 			List<Teleport> teleportInventory = new ArrayList<Teleport>();
 			Vector<String> teleportNames = new Vector<String>();
 			Settler activeSettler = game.getActiveSettler();
@@ -446,12 +485,13 @@ public class GameBoard extends JPanel {
 			Vector<Teleport> teleports = new Vector<Teleport>();
 			//Teleport t1 = new Teleport("aas");
 			//teleportInventory.add(t1);
-			for (int i = 0; i < teleportInventory.size(); i++) {
+			for(int i=0; i<teleportInventory.size(); i++)
+			{
 				teleportNames.add(teleportInventory.get(i).Getname());
 			}
-
+			
 			JTextField choosen = new JTextField("");
-
+			
 			JList<String> jlist = new JList<>(teleportNames);
 			jlist.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -461,52 +501,63 @@ public class GameBoard extends JPanel {
 					choosen.setText(selected);
 				}
 			});
-
+						
 			JScrollPane pane = new JScrollPane(jlist);
-			pane.setPreferredSize(new Dimension(100, 100));
+			pane.setPreferredSize(new Dimension(100,100));
 			JPanel buttonPane = new JPanel();
 			JButton but = new JButton("But");
 			buttonPane.add(choosen);
 			buttonPane.add(but);
-
+			
 			JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
 			splitPane.setDividerLocation(250);
-			splitPane.setEnabled(false);
-			JPanel jp = new JPanel(new BorderLayout(5, 5));
-			JLabel success = new JLabel("Teleport activated!");
-			jp.add(success);
-			if (!teleportInventory.isEmpty()) {
-				while (choosen.getText().length() < 2) {
-					JOptionPane.showMessageDialog(frame, splitPane, "Select teleport", JOptionPane.QUESTION_MESSAGE);
-					JOptionPane.showMessageDialog(frame, jp);
-				}
-			} else
-				JOptionPane.showMessageDialog(frame, "Empty inventory");
-			Teleport selectedTeleport = null;
-
-			for (int i = 0; i < teleportInventory.size(); i++) {
-				if (teleportInventory.get(i).Getname().equals(choosen.getText()))
-					selectedTeleport = teleportInventory.get(i);
+	        splitPane.setEnabled(false);
+	        JPanel jp = new JPanel(new BorderLayout(5, 5));
+	        JLabel hidden = new JLabel("You are hidden!");
+	        if(!game.getActiveSettler().GetIsHidden()) 
+	        {
+	        	if(!teleportInventory.isEmpty())
+	        	{
+	        		while(choosen.getText().length()<2)
+	        		{
+	        			JOptionPane.showMessageDialog(frame, splitPane, "Select teleport", JOptionPane.QUESTION_MESSAGE);
+	        		}
+	        	}
+	        	else
+	        		JOptionPane.showMessageDialog(frame, "Empty inventory");
+	        }
+	        else 
+	        {
+	          	jp.add(hidden, BorderLayout.CENTER);
+	        	JOptionPane.showMessageDialog(frame, hidden);	
+	        }
+	        Teleport selectedTeleport = null;
+	        
+	        for(int i=0; i<teleportInventory.size(); i++)
+			{
+				if(teleportInventory.get(i).Getname().equals(choosen.getText()))
+					selectedTeleport=teleportInventory.get(i);
 			}
-
+			
 			game.ActivateAction(selectedTeleport);
-			clicked = true;
+			clicked=true;
 			this.repaint();
 		});
 
-		store_in_base.addActionListener(e -> {
+		store_in_base.addActionListener(e ->{
 			List<Material> inInventory = new ArrayList<Material>();
 			Vector<Material> mat = new Vector<Material>();
 			Settler activeSettler = game.getActiveSettler();
 			inInventory = activeSettler.GetInventory();
 			//Iron iron = new Iron();
 			//inInventory.add(iron);
-			for (int i = 0; i < inInventory.size(); i++) {
+			for(int i=0; i<inInventory.size(); i++)
+			{
 				mat.add(inInventory.get(i));
 			}
-
+			
 			JTextField choosen = new JTextField("");
-
+			
 			JList<Material> jlist = new JList<>(mat);
 			jlist.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -516,49 +567,84 @@ public class GameBoard extends JPanel {
 					choosen.setText(selected.toString());
 				}
 			});
-
+						
 			JScrollPane pane = new JScrollPane(jlist);
-			pane.setPreferredSize(new Dimension(100, 100));
+			pane.setPreferredSize(new Dimension(100,100));
 			JPanel buttonPane = new JPanel();
 			JButton but = new JButton("But");
 			buttonPane.add(choosen);
 			buttonPane.add(but);
-
+			
 			JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
 			splitPane.setDividerLocation(250);
-			splitPane.setEnabled(false);
-			JPanel jp = new JPanel(new BorderLayout(5, 5));
-			JLabel success = new JLabel("Material placed!");
-			JLabel notgood = new JLabel("Not goal Asteroid!");
-
-
-			if (game.getActiveSettler().GetCurrentField().getClass() != Goal_Asteroid.class) {
-				jp.add(notgood);
-			} else if (!inInventory.isEmpty()) {
-				while (choosen.getText().length() < 2) {
-					JOptionPane.showMessageDialog(frame, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);
-					jp.add(success);
-				}
-			} else
-				JOptionPane.showMessageDialog(frame, "Empty inventory");
-			Material selectedMaterial = null;
-			JOptionPane.showMessageDialog(frame, jp);
-
-			for (int i = 0; i < inInventory.size(); i++) {
-				if (inInventory.get(i).toString().equals(choosen.getText()))
-					selectedMaterial = inInventory.get(i);
+	        splitPane.setEnabled(false);
+	        JPanel jp = new JPanel(new BorderLayout(5, 5));
+	        JLabel notgood = new JLabel("Not goal Asteroid!");
+	        JLabel hidden = new JLabel("You are hidden!");
+	        if(!game.getActiveSettler().GetIsHidden()) 
+	        {	        
+	        	if(game.getActiveSettler().GetCurrentField().getClass() != Goal_Asteroid.class) 
+	        	{
+	        		jp.add(notgood);
+	        		JOptionPane.showMessageDialog(frame, jp);
+	        	}      
+	        	else if(!inInventory.isEmpty())
+	        	{
+	        		while(choosen.getText().length()<2)
+	        		{
+	        			JOptionPane.showMessageDialog(frame, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);	        	
+	        		}
+	        	}
+	        	else
+	        		JOptionPane.showMessageDialog(frame, "Empty inventory");
+	        }
+	        else 
+	        {
+	        	jp.add(hidden, BorderLayout.CENTER);
+	        	JOptionPane.showMessageDialog(frame, hidden);
+	        }
+	        Material selectedMaterial = null;	        
+	        
+	        for(int i=0; i<inInventory.size(); i++)
+			{
+				if(inInventory.get(i).toString().equals(choosen.getText()))
+					selectedMaterial=inInventory.get(i);
 			}
-
+	        
 			game.StoreInBaseAction(selectedMaterial);
-			clicked = true;
+			clicked=true;
 			this.repaint();
 		});
-
-		build.addActionListener(e -> {
+		
+		build.addActionListener(e ->{
 			game.BuildAction();
-			clicked = true;
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+	        JLabel notgood = new JLabel("Not goal Asteroid!");
+	        JLabel notEnough = new JLabel("Not enough materials!");
+	        JLabel hidden = new JLabel("You are hidden!");
+	        if(!game.getActiveSettler().GetIsHidden()) 
+	        {
+		        if(game.getActiveSettler().GetCurrentField().getClass() != Goal_Asteroid.class) 
+		        {
+		        	jp.add(notgood);
+		        	JOptionPane.showMessageDialog(frame, jp);
+		        }
+		        else if(!((Goal_Asteroid) game.getActiveSettler().GetCurrentField()).GetGamewin())
+		        {
+		        	jp.add(notEnough);
+		        	JOptionPane.showMessageDialog(frame, jp);
+		        }
+	        }
+	        else 
+	        {
+	        	jp.add(hidden, BorderLayout.CENTER);
+	        	JOptionPane.showMessageDialog(frame, hidden);
+	        }
+			clicked=true;
 			this.repaint();
 		});
+	
+		
 		//Az inventory kiírása
 		inventoryButton.addActionListener(e -> {
 
