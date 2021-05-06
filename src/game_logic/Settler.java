@@ -7,6 +7,9 @@ import java.util.ArrayList;
 	import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
+
+import view.SettlerView;
+import view.View;
 /**
  *   A játékosok által irányítható telepeseket reprezentálja.
  *   Nyersanyagot gyûjtenek és robotot vagy teleport kaput képesek craftolni.
@@ -29,6 +32,7 @@ public class Settler extends Movable {
 	public Settler(Asteroid position)
 	{
 		super(position);
+		createMovableView();
 		inventoryMain = new ArrayList<Material>();
 		inventoryTeleport = new ArrayList<Teleport>();
 	}
@@ -39,6 +43,7 @@ public class Settler extends Movable {
 	public Settler(String name, Asteroid position)
 	{
 		super(position);
+		createMovableView();
 		movablesName = name;
 		inventoryMain = new ArrayList<Material>();
 		inventoryMain.clear();
@@ -427,6 +432,19 @@ public class Settler extends Movable {
 	public List<Teleport> getTeleportInventory()
 	{
 		return inventoryTeleport;
+	}
+	
+	@Override
+	public void createMovableView()
+	{
+		int x = this.currentField.getFieldView().getPosx();
+		int y = this.currentField.getFieldView().getPosy();
+		try {
+			this.movableView = new SettlerView(x-20, y-60);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

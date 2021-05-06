@@ -1,6 +1,8 @@
 package game_logic;
 
 import view.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -43,6 +45,7 @@ public class Asteroid extends Field{
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
 		setAsteroidCore(type);
+		createFieldView();
 
 	}
 	//Default empty constructor
@@ -51,6 +54,8 @@ public class Asteroid extends Field{
 			Random thicknessgen = new Random();
 			Thickness = thicknessgen.nextInt(11);
 			CoreMaterial.clear();
+			createFieldView();
+
 		}
 
 	//sunside constructor
@@ -59,9 +64,9 @@ public class Asteroid extends Field{
 		Random thicknessgen = new Random();
 		Thickness = thicknessgen.nextInt(11);
 		setAsteroidCore(M);
-
-
 		this.isSunside = isSunside;
+		createFieldView();
+
 	}
 	//EZ EGY DEBUG KONSTRUKTOR, NE HIVD NORMALIS UZEMBEN
 	public Asteroid(String name, String M, boolean sunside, int thiccboi) {
@@ -69,9 +74,9 @@ public class Asteroid extends Field{
 		int n=0;
 		
 		setAsteroidCore(M);
-		
 		Thickness = thiccboi;
 		this.isSunside =sunside;
+		createFieldView();
 	}
 	//Operations
 	
@@ -249,5 +254,16 @@ public class Asteroid extends Field{
 		}
 		public List<Material> getMats(){
 			return CoreMaterial;
+		}
+		
+		@Override
+		public void createFieldView()
+		{
+			try {
+				this.fieldView = new AsteroidView(this);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 }

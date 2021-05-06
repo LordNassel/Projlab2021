@@ -50,6 +50,12 @@ public class View extends JLabel implements Drawable {
 		return this.y;
 	}
 	
+	public void setViewPosition(int x, int y)
+	{
+		this.x= x;
+		this.y=y;
+	}
+	
 	public void scale(int w, int h)
 	{
 		icon.getImage().getScaledInstance(w, h, java.awt.Image.SCALE_DEFAULT);

@@ -1,7 +1,10 @@
 package game_logic;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
+
+import view.RobotView;
 
 /**
  * Egy mesterséges intelligencia által irányított Robot-ot reprezentál az aszteroidaövben.
@@ -17,6 +20,7 @@ public class Robot extends Movable {
 	 */
 	public Robot(Asteroid position) {
 		super(position);
+		createMovableView();
 	}
 
 	/**
@@ -25,6 +29,7 @@ public class Robot extends Movable {
 	public Robot(String name, Asteroid position) {
 		super(position);
 		movablesName = name;
+		createMovableView();
 	}
 	
 	/**
@@ -60,5 +65,18 @@ public class Robot extends Movable {
 			Drill();
 		}
     }
+	
+	@Override
+	public void createMovableView()
+	{
+		int x = this.currentField.getFieldView().getPosx();
+		int y = this.currentField.getFieldView().getPosy();
+		try {
+			this.movableView = new RobotView(x+60,y-60);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }

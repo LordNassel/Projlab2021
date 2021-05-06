@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Vector;
 
 import view.AsteroidView;
+import view.View;
 
 /**
  * Tárolja azokat az objektumokat (Movable), amelyekelõfordulhatnak az aszteroidaövben
  * továbbá ismeri a szomszédos mezõket. További felelõsségereagálni az aszteroidaövbenlétrejövõ különbözõ eseményekre
  */
 public abstract class Field{
+	
+	protected View fieldView;
 	
 /**
  * Tárolja a szomszédos mezõket
@@ -122,6 +125,13 @@ private String name;
 	public List<Movable> getMovableList()
 	{
 		return MovableList;
+	}
+	
+	public abstract void createFieldView();
+	
+	public View getFieldView()
+	{
+		return fieldView;
 	}
 
 }

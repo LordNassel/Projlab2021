@@ -67,7 +67,7 @@ public class AsteroidView extends View {
 		g2d.drawString(materialtype + numbofmat, x+10, y+170);
 	}
 
-	public AsteroidView(Asteroid a, int x, int y) throws IOException {
+	public AsteroidView(Asteroid a) throws IOException {
 		super();
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/asteroid.png"));
 		if(a.getSunSide() == true)
@@ -82,16 +82,14 @@ public class AsteroidView extends View {
 		{
 			icon = tmp;
 			this.setIcon(icon);
-		}
-		this.x = x;
-		this.y = y;
+		} 
 		this.a = a;
 	}
 	
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, x, y, null);
-		List<Movable> list = a.getMovableList();
+		/*List<Movable> list = a.getMovableList();
 		for(int i=0; i<list.size(); i++)
 		{
 			if(list.get(i) instanceof Settler)
@@ -141,7 +139,7 @@ public class AsteroidView extends View {
 					e.printStackTrace();
 				}
 			}
-		}
+		}*/
 	}
 }
 

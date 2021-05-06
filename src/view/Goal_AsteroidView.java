@@ -67,8 +67,8 @@ public class Goal_AsteroidView extends AsteroidView {
 		g2d.drawString(materialtype + numbofmat, x+10, y+170);
 	}
 
-	public Goal_AsteroidView(Goal_Asteroid a, int x, int y) throws IOException {
-		super(a,x,y);
+	public Goal_AsteroidView(Goal_Asteroid a) throws IOException {
+		super(a);
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/base.png"));
 	//	if(a.getSunSide() == true)
 		//	image = ImageIO.read(AsteroidView.class.getResource("/kep/sunside_asteroid.png"));
@@ -83,15 +83,13 @@ public class Goal_AsteroidView extends AsteroidView {
 			icon = tmp;
 			this.setIcon(icon);
 		}
-		this.x = x;
-		this.y = y;
 		this.a = a;
 	}
 	
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, x, y, null);
-		List<Movable> list = a.getMovableList();
+		/*List<Movable> list = a.getMovableList();
 		for(int i=0; i<list.size(); i++)
 		{
 			if(list.get(i) instanceof Settler)
@@ -141,7 +139,7 @@ public class Goal_AsteroidView extends AsteroidView {
 					e.printStackTrace();
 				}
 			}
-		}
+		}*/
 	}
 }
 

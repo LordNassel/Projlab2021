@@ -31,9 +31,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class GameBoard extends JPanel {
-	private static Game game;
+	private Game game;
 	private static GameFrame frame;
 	private List<AsteroidView> fieldstoDraw = new ArrayList<>();
+	private List<View> movablestoDraw = new ArrayList<>();
 	private JButton move = new JButton("Move");
 	private JButton drill = new JButton("Drill");
 	JButton mine = new JButton("Mine");
@@ -107,9 +108,11 @@ public class GameBoard extends JPanel {
 	private void initDrawable(Game game) throws IOException //init map lényegében
 	{
 		fieldstoDraw.clear();
+		movablestoDraw.clear();
 		Map map = game.getMap();
 		Vector<Field> fields = map.getFieldList(); //ez it null-t ad vissza
 		Random rand = new Random();
+		List<Movable> movables = new ArrayList<Movable>();
 		
 		/*fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(0),100,100));
 		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(1),400,100));
@@ -124,13 +127,21 @@ public class GameBoard extends JPanel {
 
 		for (int i = 0; i < fields.size(); i++) {
 			Field field = fields.get(i);
-			if (field instanceof Goal_Asteroid) {
+			/*if (field instanceof Goal_Asteroid) {
 				fieldstoDraw.add(new Goal_AsteroidView((Goal_Asteroid) fields.get(i), 70 + offsetx, 100 + offsety));
 				cnt++;
 			} else if (field instanceof Asteroid) {
 				fieldstoDraw.add(new AsteroidView((Asteroid) fields.get(i), 70 + offsetx, 100 + offsety));
 				cnt++;
-			}
+			}*/
+			
+			movables.addAll(field.getMovableList());
+			
+			AsteroidView view = (AsteroidView) field.getFieldView();
+			view.setViewPosition(70+offsetx, 100+offsety);
+					//field.createFieldView(70+offsetx, 100+offsety);
+			fieldstoDraw.add(view);
+			cnt++;
 
 			if (cnt < 5)
 				offsetx += 270;
@@ -143,6 +154,12 @@ public class GameBoard extends JPanel {
 			//else if(field instanceof Teleport)
 			//	fieldstoDraw.add(new TeleportView());
 		}
+		
+		for(int x=0; x<movables.size(); x++)
+		{
+			movables.get(x).createMovableView();
+			movablestoDraw.add(movables.get(x).getView());
+		}
 	}
 
 	@Override
@@ -151,8 +168,11 @@ public class GameBoard extends JPanel {
 
 		//super.paint(g);
 		try {
-			active_player.setText("Active player: " + game.getActiveSettler().Getname());
-			player_pos.setText("Position: " + game.getActiveSettler().GetCurrentField().Getname());
+			if(!(game.getActiveSettler()==null))
+			{
+				active_player.setText("Active player: " + game.getActiveSettler().Getname());
+				player_pos.setText("Position: " + game.getActiveSettler().GetCurrentField().Getname());
+			}
 			initDrawable(this.game);
 			g.setColor(new Color(250, 240, 170));
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -160,6 +180,7 @@ public class GameBoard extends JPanel {
 			drawLines(g);
 			drawMap(g); //Vonalra fogja rajzolni az aszteroidákat, nem fordítva -> nem baj ha a vonal átmegy az aszteroidán
 			drawAsteroidsInfo(g);
+			
 
 			//Graphics2D g2d = (Graphics2D) g;
 			//g2d.drawLine(100, 100, 200, 200);
@@ -173,11 +194,15 @@ public class GameBoard extends JPanel {
 	public void drawMap(Graphics g) {
 
 		for (int i = 0; i < fieldstoDraw.size(); i++) {
-			if (fieldstoDraw.get(i) instanceof AsteroidView) {
-				AsteroidView item = fieldstoDraw.get(i);
-				item.draw(g);
-			}
+			fieldstoDraw.get(i).draw(g);;
+			//item.draw(g);
 			//fieldstoDraw.get(i).drawName(asteroids);
+		}
+		
+		for(int y=0; y<movablestoDraw.size(); y++)
+		{
+			movablestoDraw.get(y).draw(g);;
+			//view.draw(g);
 		}
 	}
 

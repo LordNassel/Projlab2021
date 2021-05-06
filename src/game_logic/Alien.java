@@ -2,8 +2,12 @@
 //Az ufo osztaly, egy AI iranyitott karater fuggvenyei, es osztalya
 package game_logic;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
+
+import view.AlienView;
+import view.SettlerView;
 
 /**
  *  Az aszteroidaövben bóklászó földönkívüliek osztálya, amit egy mesterséges intelligencia vezérel.
@@ -26,6 +30,7 @@ public class Alien extends Movable  {
     public Alien(String name, Field f) {
         super(f);
 		movablesName = name;
+		createMovableView();
     }
 
 
@@ -74,4 +79,17 @@ public class Alien extends Movable  {
     {
     	return;
     }
+    
+	@Override
+	public void createMovableView()
+	{
+		int x = this.currentField.getFieldView().getPosx();
+		int y = this.currentField.getFieldView().getPosy();
+		try {
+			this.movableView = new AlienView(x+110,y+10);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

@@ -1,7 +1,11 @@
 package game_logic;
 
+import view.AsteroidView;
+import view.Goal_AsteroidView;
 import view.Specialframe;
+import view.View;
 
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -23,6 +27,8 @@ public class Goal_Asteroid extends Asteroid  {
 	public Goal_Asteroid(String name, String M, Vector<Material> list) {
 		super(name, M);
 		CurrentMaterials = list;
+		createFieldView();
+
 	}
 
 	/**
@@ -75,4 +81,15 @@ public class Goal_Asteroid extends Asteroid  {
 	 *  Visszaadja a gamewin valtozot.
 	 */
 	public boolean GetGamewin() {System.out.println("GetGamewin called"); return gamewin;}
+	
+	@Override
+	public void createFieldView()
+	{
+		try {
+			this.fieldView = new Goal_AsteroidView(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
