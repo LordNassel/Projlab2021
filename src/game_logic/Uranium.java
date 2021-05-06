@@ -5,6 +5,7 @@ package game_logic;
  */
 public class Uranium extends Material {
 
+
 	/**
 	 *  Urán expozíciónak száma.
 	 */
@@ -16,6 +17,7 @@ public class Uranium extends Material {
 	public Uranium() {
 		super();
 		counter = 0;
+		name = "Uranium";
 	}
 	/**
 	 *  IncreaseUraniumCnt-hoz kell.

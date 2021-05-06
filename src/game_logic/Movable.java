@@ -157,4 +157,5 @@ public abstract class Movable implements Steppable {
 	public String Getname() {
 		return this.movablesName;
 	}
+
 }

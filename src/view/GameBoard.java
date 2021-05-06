@@ -585,14 +585,15 @@ public class GameBoard extends JPanel {
 
 		int[] temp = new int[5];
 		for (int i = 0; i < M.size(); i++) {
-			if (M.get(i) instanceof Coal) temp[0] += 1;
-			else if (M.get(i) instanceof Ice) temp[1] += 1;
-			else if (M.get(i) instanceof Iron) temp[2] += 1;
-			else if (M.get(i) instanceof Uranium) temp[3] += 1;
+			if (M.get(i).getname() == "Coal") temp[0] += 1;
+			if (M.get(i).getname() == "Ice") temp[1] += 1;
+			if (M.get(i).getname() == "Iron") temp[2] += 1;
+			if (M.get(i).getname() == "Uranium") temp[3] += 1;
 		}
 		return temp;
 
 	}
+
 
 	public static void selectAction() {
 		while (clicked == false) {
@@ -600,6 +601,12 @@ public class GameBoard extends JPanel {
 		}
 		clicked = false;
 	}
+
+	private int[] mtrcntr(Ice ice, int[] temp){
+		temp[1]++;
+		return temp;
+	}
+
 
 	public List<AsteroidView> getFieldstoDraw() {
 		return fieldstoDraw;
