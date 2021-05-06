@@ -58,6 +58,8 @@ public class GameBoard extends JPanel {
 
 
 	GameBoard(Game game, GameFrame frame) throws IOException {
+		this.game = game;
+		this.frame = frame;
 		setLayout(new BorderLayout());
 		add(asteroids, BorderLayout.WEST);
 		add(buttons, BorderLayout.EAST);
@@ -70,8 +72,7 @@ public class GameBoard extends JPanel {
 		buttonsCentered.setBackground(new Color(250, 240, 170));
 		buttons.add(buttonsCentered);
 		//setLayout(null);
-		this.game = game;
-		this.frame = frame;
+
 		initDrawable(game);
 
 		buttonsCentered.add(active_player);

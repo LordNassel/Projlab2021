@@ -37,8 +37,9 @@ public class GameView extends JFrame {
 			// Map betöltése: game.init -> map = new Map stb. mint nekünk a TempGenWorld
 			GameFrame gameView;
 			try {
-				gameView = new GameFrame(game);
 				thread.start();
+
+				gameView = new GameFrame(game);
 				gameView.setVisible(true);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
