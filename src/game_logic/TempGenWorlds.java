@@ -132,8 +132,13 @@ public class TempGenWorlds {
           Asteroid A3 = new Asteroid("AhShitHereweBlowAgain", "Uranium", true, 0);
 
           A1.SetNeighbor(A2);
+          A2.SetNeighbor(A1);
+
           A1.SetNeighbor(A3);
+          A3.SetNeighbor(A1);
+
           A3.SetNeighbor(A2);
+          A2.SetNeighbor(A3);
 
           fieldlist.add(A1);
           fieldlist.add(A2);
@@ -165,6 +170,7 @@ public class TempGenWorlds {
            temp.add(G1);
 
            A1.SetNeighbor(G1);
+           G1.SetNeighbor(A1);
 
            Settler S1 = new Settler("Bruszwillisz", A1);
            Map map = new Map(true, temp);
@@ -186,8 +192,13 @@ public class TempGenWorlds {
 
            //Szomszédság
            A1.SetNeighbor(A3);
+           A3.SetNeighbor(A1);
+
            A2.SetNeighbor(A4);
+           A4.SetNeighbor(A2);
+
            A4.SetNeighbor(A3);
+           A3.SetNeighbor(A4);
 
            Vector<Field> temp = new Vector<Field>();
 
