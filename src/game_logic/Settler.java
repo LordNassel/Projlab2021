@@ -159,7 +159,7 @@ public class Settler extends Movable {
 		List<Ice> usedices = new ArrayList<Ice>();
 		int uranremoved = 0;
 		
-		if(niron >=2 && nice >= 2 && nuran >=1)
+		if(niron >=2 && nice >= 1 && nuran >=1)
 		{
 			Teleport t1 = new Teleport(name1);
 			Teleport t2 = new Teleport(name2);
