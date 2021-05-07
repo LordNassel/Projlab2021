@@ -89,5 +89,5 @@ public class Map implements Steppable {
     {
     	return FieldList;
     }
-
+	public int getSugarzas(){return sugarzas;}
 }

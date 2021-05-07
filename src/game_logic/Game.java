@@ -241,7 +241,7 @@ public class Game {
     }
 
 
-
+	public int getradiation(){return this.map.getSugarzas();}
 
 
 }

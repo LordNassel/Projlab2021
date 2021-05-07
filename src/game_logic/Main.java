@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Main{
-	static int num =3;
+	static int num =4;
 	public void setNum(int szam) {num = szam;}
 	public static void main(String[] args) throws IOException {
 		System.out.println("Every man's sky");

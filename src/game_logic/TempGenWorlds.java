@@ -174,6 +174,61 @@ public class TempGenWorlds {
            return returngame;
        }
 
+       //tesztvilag#4
+       else if (which == 4){
+           System.out.println("Ez egy nyersanyaggal tele rész, itt eleg konnyu kraftolni");
+
+           //Aszteroidak
+           Asteroid A1 = new Asteroid("DummyAsteroid1", "Iron", false, 0);
+           Asteroid A2 = new Asteroid("DummyAsteroid2", "Iron", false, 0);
+           Asteroid A3 = new Asteroid("DummyAsteroid3", "Iron", false, 0);
+           Asteroid A4 = new Asteroid("DummyAsteroid4", "Iron", false, 0);
+
+           //Szomszédság
+           A1.SetNeighbor(A3);
+           A2.SetNeighbor(A4);
+           A4.SetNeighbor(A3);
+
+           Vector<Field> temp = new Vector<Field>();
+
+           temp.add(A1);
+           temp.add(A2);
+           temp.add(A3);
+           temp.add(A4);
+
+           //Movable
+           Settler S2 = new Settler("TeleportMan", A3);
+           Settler S1 = new Settler("Robotman",A1);
+           Robot R1 = new Robot(A2);
+
+           //Material hozzáadás
+           Iron iron = new Iron();
+           Ice ice2 = new Ice();
+           Uranium uranium = new Uranium();
+           Coal coal = new Coal();
+
+
+
+           S1.Store(coal);
+           S1.Store(iron);
+           S1.Store(uranium);
+
+           S2.Store(iron);
+           S2.Store(iron);
+           S2.Store(ice2);
+           S2.Store(ice2);
+           S2.Store(uranium);
+
+
+           Map map = new Map(true, temp);
+           Game returngame = new Game(map);
+           returngame.AddMovable(S1, A1);
+           returngame.AddSteppable(map);
+           return returngame;
+
+
+       }
+
        return null;
 
 

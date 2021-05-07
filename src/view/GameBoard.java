@@ -678,10 +678,20 @@ public class GameBoard extends JPanel {
 			s += "Coal: " + String.valueOf(inventorycnt[0]) + ", ";
 			s += "Ice: " + String.valueOf(inventorycnt[1]) + ", ";
 			s += "Iron: " + String.valueOf(inventorycnt[2]) + ", ";
-			s += "Uranium: " + String.valueOf(inventorycnt[3]);
+			s += "Uranium: " + String.valueOf(inventorycnt[3])+ ", ";
 
+			//Radiation level
+
+			s+= "Radiation level: " + game.getradiation();
 
 			inventory.setText(s);
+
+			JPanel jp = new JPanel(new BorderLayout(5, 5));
+			jp.setSize(100, 200);
+			jp.add(inventory, BorderLayout.CENTER);
+			JOptionPane.showMessageDialog(frame, jp);
+			clicked = true;
+			this.repaint();
 		});
 
 	}
