@@ -3,6 +3,7 @@ package view;
 import javax.swing.JButton;
 
 import game_logic.Game;
+import game_logic.TempGenWorlds;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -12,7 +13,7 @@ import javax.swing.*;
 
 public class GameView extends JFrame {
 	
-	public GameView(Game game)
+	public GameView()
 	{
 		JButton start_game = new JButton("Start Game");
 		
@@ -26,18 +27,28 @@ public class GameView extends JFrame {
 		buttonContainer.setLayout(new GridLayout());
 		buttonContainer.add(start_game);
 		
-		Thread thread = new Thread() {
-			public void run() {
-				game.StartGame();
-			}
-		};
+		
 		
 		start_game.addActionListener(e -> {
-			thread.start();
+			
+			
 			//Game game = Game.getInstance();
 			// Map betöltése: game.init -> map = new Map stb. mint nekünk a TempGenWorld
 			GameFrame gameView;
 			try {
+				selectMap();
+				
+				
+				TempGenWorlds temp = new TempGenWorlds();
+				Game game = temp.Generateworlds(2);
+				
+				Thread thread = new Thread() {
+					public void run() {
+						game.StartGame();
+					}
+				};
+				thread.start();
+				
 				gameView = new GameFrame(game);
 				gameView.setVisible(true);
 			} catch (IOException e1) {
@@ -46,6 +57,11 @@ public class GameView extends JFrame {
 			}
 			this.dispose();
 		});
+	}
+	
+	public void selectMap()
+	{
+		
 	}
 	
 
