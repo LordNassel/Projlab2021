@@ -89,57 +89,6 @@ public class AsteroidView extends View {
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, x, y, null);
-		/*List<Movable> list = a.getMovableList();
-		for(int i=0; i<list.size(); i++)
-		{
-			if(list.get(i) instanceof Settler)
-			{
-				try {
-					SettlerView sw = new SettlerView(this.x-20, this.y-60);
-					sw.draw(g);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			else if(list.get(i) instanceof Robot)
-			{
-				try {
-					RobotView rw = new RobotView(this.x+60, this.y-60);
-					rw.draw(g);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			else if(list.get(i) instanceof Alien)
-			{
-				try {
-					AlienView aw = new AlienView(this.x+110, this.y+10);
-					aw.draw(g);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}				
-			}
-		}
-		
-		List<Teleport> teleport_list = a.getTeleportsOnAsteroid();
-		if(!teleport_list.isEmpty())
-		{
-			for(int x=0; x<teleport_list.size(); x++);
-			{
-				try {
-					TeleportView tw = new TeleportView(this.x+110, this.y+60);
-					tw.draw(g);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}*/
 	}
 }
 

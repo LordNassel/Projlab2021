@@ -103,12 +103,12 @@ public class TempGenWorlds {
                 fieldlist.add(goal);
                 
 
-               /* Teleport t = new Teleport("Bab is");
+                Teleport t = new Teleport("Bab is");
                 Teleport t2= new Teleport("hus");
                 t.setPair(t2);
                 t2.setPair(t);
                 S.addTelportToInventory(t);
-                S.addTelportToInventory(t2);*/
+                S.addTelportToInventory(t2);
 
 
                 Map map = new Map(true, fieldlist);
