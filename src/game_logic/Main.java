@@ -17,7 +17,7 @@ public class Main{
 		//tesztpark peldanyositasa
 		//Advanced_tests currenttests = new Advanced_tests();
 		//Az ideiglenes világ példányosítása
-		TempGenWorlds temp = new TempGenWorlds();
+		/*TempGenWorlds temp = new TempGenWorlds();
 		Game gm = temp.Generateworlds(num);
 		//Hagyományos tesztek
 		//Test Normaltest = new Test();
@@ -36,7 +36,7 @@ public class Main{
 		String in = input.next();*/
 		//MenuView menu = new MenuView();
 		///asteroids.get(1).Explode();
-		GameView game = new GameView(gm);
+		GameView game = new GameView();
 		game.setVisible(true);
 		//gm.StartGame();
 		//menu.setVisible(true);

@@ -127,24 +127,28 @@ public class TempGenWorlds {
            System.out.println("A lonely worlds konstruktora hivodott meg. " +
                    "Ez azon resze a vilagnak, ahol relatív könny? meghalni");
            Vector<Field> fieldlist = new Vector<Field>();
-          Asteroid A1 = new Asteroid("BigScaryAsteroidFullofBlowyUpstuff", "Uranium", true, 0);
-          Asteroid A2 = new Asteroid("UranDepo", "Uranium", true, 0);
-          Asteroid A3 = new Asteroid("AhShitHereweBlowAgain", "Uranium", true, 0);
+           Asteroid A1 = new Asteroid("BigScaryAsteroid", "Uranium", true, 0);
+           A1.getMats().clear();
+           Uranium uran = new Uranium();
+           A1.getMats().add(uran);
+      //    Asteroid A2 = new Asteroid("UranDepo", "Uranium", true, 0);
+       //   Asteroid A3 = new Asteroid("AhShitHereweBlowAgain", "Uranium", true, 0);
 
-          A1.SetNeighbor(A2);
-          A2.SetNeighbor(A1);
+      //    A1.SetNeighbor(A2);
+        //  A2.SetNeighbor(A1);
 
-          A1.SetNeighbor(A3);
-          A3.SetNeighbor(A1);
+          //A1.SetNeighbor(A3);
+          /*A3.SetNeighbor(A1);
 
           A3.SetNeighbor(A2);
-          A2.SetNeighbor(A3);
+          A2.SetNeighbor(A3);*/
 
           fieldlist.add(A1);
-          fieldlist.add(A2);
-          fieldlist.add(A3);
+         /* fieldlist.add(A2);
+          fieldlist.add(A3);*/
 
           Settler S = new Settler("Player1", A1);
+          Robot r = new Robot(A1);
 
 
           Map map = new Map(true, fieldlist);
@@ -153,6 +157,7 @@ public class TempGenWorlds {
           Game returngame = new Game(map);
 
           returngame.AddMovable(S, A1);
+          returngame.AddMovable(r, A1);
 
           returngame.AddSteppable(map);
           return returngame;
