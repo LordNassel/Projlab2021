@@ -33,12 +33,11 @@ public class GameView extends JFrame {
 		};
 		
 		start_game.addActionListener(e -> {
+			thread.start();
 			//Game game = Game.getInstance();
 			// Map betöltése: game.init -> map = new Map stb. mint nekünk a TempGenWorld
 			GameFrame gameView;
 			try {
-				thread.start();
-
 				gameView = new GameFrame(game);
 				gameView.setVisible(true);
 			} catch (IOException e1) {

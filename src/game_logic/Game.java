@@ -17,7 +17,7 @@ public class Game {
 	public static boolean button=false;
 	private static Game instance = null;
 	public static MenuView view;
-	private Settler activeSettler;
+	volatile private Settler activeSettler;
 
 	/**
 	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött

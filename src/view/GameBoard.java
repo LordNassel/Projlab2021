@@ -31,7 +31,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class GameBoard extends JPanel {
-	private Game game;
+	volatile private static Game game;
 	private static GameFrame frame;
 	private List<AsteroidView> fieldstoDraw = new ArrayList<>();
 	private List<View> movablestoDraw = new ArrayList<>();
@@ -49,8 +49,8 @@ public class GameBoard extends JPanel {
 	JButton inventoryButton = new JButton("Inventory");
 	JPanel asteroids = new JPanel(null);
 	JPanel buttons = new JPanel(new GridBagLayout());
-	JLabel active_player = new JLabel();
-	JLabel player_pos = new JLabel();
+	static JLabel active_player = new JLabel();
+	static JLabel player_pos = new JLabel();
 	JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
 	//Az inventory label
 	JLabel inventory = new JLabel("");
@@ -169,11 +169,11 @@ public class GameBoard extends JPanel {
 
 		//super.paint(g);
 		try {
-			if(!(game.getActiveSettler()==null))
+			/*if(!(game.getActiveSettler()==null))
 			{
 				active_player.setText("Active player: " + game.getActiveSettler().Getname());
 				player_pos.setText("Position: " + game.getActiveSettler().GetCurrentField().Getname());
-			}
+			}*/
 			initDrawable(this.game);
 			g.setColor(new Color(250, 240, 170));
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -708,6 +708,8 @@ public class GameBoard extends JPanel {
 
 
 	public static void selectAction() {
+		active_player.setText("Active player: " + game.getActiveSettler().Getname());
+		player_pos.setText("Position: " + game.getActiveSettler().GetCurrentField().Getname());
 		while (clicked == false) {
 			//System.out.println();
 		}
