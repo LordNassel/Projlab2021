@@ -101,16 +101,26 @@ public class TempGenWorlds {
                 fieldlist.add(Sotrun);
                 fieldlist.add(Benqua);
                 fieldlist.add(goal);
+                
+
+                Teleport t = new Teleport("Bab is");
+                Teleport t2= new Teleport("hus");
+                t.setPair(t2);
+                t2.setPair(t);
+                S.addTelportToInventory(t);
+                S.addTelportToInventory(t2);
+
 
                 Map map = new Map(true, fieldlist);
                 Game game = new Game(map);
 
-                game.AddMovable(a, Auchen);
+              
                 game.AddMovable(S, Auchen);
                 game.AddMovable(S2, Auchen);
                 game.AddMovable(robi, Auchen);
+                game.AddMovable(a, Auchen);
                 game.AddSteppable(map);
-
+                S.Move(goal);
                 return game;
         }
       else if (which == 2){

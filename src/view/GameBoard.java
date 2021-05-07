@@ -31,9 +31,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class GameBoard extends JPanel {
-	private static Game game;
+	volatile private static Game game;
 	private static GameFrame frame;
 	private List<AsteroidView> fieldstoDraw = new ArrayList<>();
+	private List<View> movablestoDraw = new ArrayList<>();
+	private List<View> teleportstoDraw = new ArrayList<>();
 	private JButton move = new JButton("Move");
 	private JButton drill = new JButton("Drill");
 	JButton mine = new JButton("Mine");
@@ -48,8 +50,8 @@ public class GameBoard extends JPanel {
 	JButton inventoryButton = new JButton("Inventory");
 	JPanel asteroids = new JPanel(null);
 	JPanel buttons = new JPanel(new GridBagLayout());
-	JLabel active_player = new JLabel();
-	JLabel player_pos = new JLabel();
+	static JLabel active_player = new JLabel();
+	static JLabel player_pos = new JLabel();
 	JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
 	//Az inventory label
 	JLabel inventory = new JLabel("");
@@ -57,6 +59,8 @@ public class GameBoard extends JPanel {
 
 
 	GameBoard(Game game, GameFrame frame) throws IOException {
+		this.game = game;
+		this.frame = frame;
 		setLayout(new BorderLayout());
 		add(asteroids, BorderLayout.WEST);
 		add(buttons, BorderLayout.EAST);
@@ -69,8 +73,7 @@ public class GameBoard extends JPanel {
 		buttonsCentered.setBackground(new Color(250, 240, 170));
 		buttons.add(buttonsCentered);
 		//setLayout(null);
-		this.game = game;
-		this.frame = frame;
+
 		initDrawable(game);
 
 		buttonsCentered.add(active_player);
@@ -107,31 +110,33 @@ public class GameBoard extends JPanel {
 	private void initDrawable(Game game) throws IOException //init map lényegében
 	{
 		fieldstoDraw.clear();
+		movablestoDraw.clear();
+		teleportstoDraw.clear();
 		Map map = game.getMap();
 		Vector<Field> fields = map.getFieldList(); //ez it null-t ad vissza
 		Random rand = new Random();
-		
-		/*fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(0),100,100));
-		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(1),400,100));
-		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(2),100,400));
-		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(3),400,400));
-		fieldstoDraw.add(new AsteroidView((Asteroid)fields.get(4),100,650));*/
-
+		List<Movable> movables = new ArrayList<Movable>();
+		List<Teleport> teleport = new ArrayList<Teleport>();
 
 		int offsetx = 0;
 		int offsety = 0;
 		int cnt = 0;
 
 		for (int i = 0; i < fields.size(); i++) {
-			Field field = fields.get(i);
-			if (field instanceof Goal_Asteroid) {
-				fieldstoDraw.add(new Goal_AsteroidView((Goal_Asteroid) fields.get(i), 70 + offsetx, 100 + offsety));
-				cnt++;
-			} else if (field instanceof Asteroid) {
-				fieldstoDraw.add(new AsteroidView((Asteroid) fields.get(i), 70 + offsetx, 100 + offsety));
-				cnt++;
-			}
-
+			Field field = fields.get(i);			
+			
+			/*Teleportok*/
+			teleport.addAll(((Asteroid) field).getTeleportsOnAsteroid());
+			//	teleportstoDraw.addAll(((Asteroid) field).getTeleportsOnAsteroid());
+			
+			/* Movalbek*/
+			movables.addAll(field.getMovableList());
+			
+			/*Aszteroidák*/
+			AsteroidView view = (AsteroidView) field.getFieldView();
+			view.setViewPosition(70+offsetx, 100+offsety);
+			fieldstoDraw.add(view);
+			cnt++;
 			if (cnt < 5)
 				offsetx += 270;
 			if (cnt == 5) {
@@ -139,9 +144,18 @@ public class GameBoard extends JPanel {
 				offsety += 270;
 				cnt = 0;
 			}
-
-			//else if(field instanceof Teleport)
-			//	fieldstoDraw.add(new TeleportView());
+		}
+		
+		for(int x=0; x<movables.size(); x++)
+		{
+			movables.get(x).createMovableView();
+			movablestoDraw.add(movables.get(x).getView());
+		}
+		
+		for(int y=0; y<teleport.size(); y++)
+		{
+			teleport.get(y).createFieldView();
+			teleportstoDraw.add(teleport.get(y).getFieldView());
 		}
 	}
 
@@ -149,10 +163,7 @@ public class GameBoard extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		//super.paint(g);
 		try {
-			active_player.setText("Active player: " + game.getActiveSettler().Getname());
-			player_pos.setText("Position: " + game.getActiveSettler().GetCurrentField().Getname());
 			initDrawable(this.game);
 			g.setColor(new Color(250, 240, 170));
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -160,24 +171,32 @@ public class GameBoard extends JPanel {
 			drawLines(g);
 			drawMap(g); //Vonalra fogja rajzolni az aszteroidákat, nem fordítva -> nem baj ha a vonal átmegy az aszteroidán
 			drawAsteroidsInfo(g);
-
-			//Graphics2D g2d = (Graphics2D) g;
-			//g2d.drawLine(100, 100, 200, 200);
-			//g.drawLine(110, 100, 200, 200);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void drawMap(Graphics g) {
+	public void drawMap(Graphics g)
+	{
+		/* Fieldek kirajzolása */
+		for (int i = 0; i < fieldstoDraw.size(); i++)
+		{
+			fieldstoDraw.get(i).draw(g);;
 
-		for (int i = 0; i < fieldstoDraw.size(); i++) {
-			if (fieldstoDraw.get(i) instanceof AsteroidView) {
-				AsteroidView item = fieldstoDraw.get(i);
-				item.draw(g);
-			}
-			//fieldstoDraw.get(i).drawName(asteroids);
+		}
+		
+		/* Karakterek kirajzolása */
+		for(int y=0; y<movablestoDraw.size(); y++)
+		{
+			movablestoDraw.get(y).draw(g);;
+			//view.draw(g);
+		}
+		
+		/* Teleportok kirajolása */
+		for(int x=0; x<teleportstoDraw.size(); x++)
+		{
+			teleportstoDraw.get(x).draw(g);
 		}
 	}
 
@@ -682,6 +701,8 @@ public class GameBoard extends JPanel {
 
 
 	public static void selectAction() {
+		active_player.setText("Active player: " + game.getActiveSettler().Getname());
+		player_pos.setText("Position: " + game.getActiveSettler().GetCurrentField().Getname());
 		while (clicked == false) {
 			//System.out.println();
 		}

@@ -1,6 +1,12 @@
 package game_logic;
 
+import java.io.IOException;
 import java.util.*;
+
+import view.AsteroidView;
+import view.Goal_AsteroidView;
+import view.TeleportView;
+import view.View;
 /**
  * A pálya egy másik lehetséges mezõje, õ reprezentáljaa teleportot az aszteroidaövben.
  * Tároljaa párjául szolgáló teleportot. Fõ feladata,
@@ -83,7 +89,6 @@ public class  Teleport extends Field {
      */
     public void setIsActive() { 
         IsActive = !IsActive;
-        
     }
 
     /**
@@ -131,6 +136,7 @@ public class  Teleport extends Field {
     public void setOnAsteroid(Asteroid a)
     {
     	onAsteroid = a;
+        createFieldView();
     }
     /**
      * Getter
@@ -146,5 +152,15 @@ public class  Teleport extends Field {
 	@Override 
 	public boolean GetDrilled() {
 		return false;
+	}
+
+	@Override
+	public void createFieldView() {
+		try {
+			this.fieldView = new TeleportView(this.onAsteroid.getFieldView().getPosx()+110, this.onAsteroid.getFieldView().getPosy()+60);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

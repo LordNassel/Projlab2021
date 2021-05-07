@@ -17,7 +17,7 @@ public class Game {
 	public static boolean button=false;
 	private static Game instance = null;
 	public static MenuView view;
-	private Settler activeSettler;
+	volatile private Settler activeSettler;
 
 	/**
 	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
@@ -95,7 +95,8 @@ public class Game {
     			}
     			if(steppableList.get(i) instanceof Settler)
     			{
-    				activeSettler = (Settler)steppableList.get(i);
+    				setSettler((Settler) steppableList.get(i));
+    				//activeSettler = (Settler)steppableList.get(i);
     				GameBoard.selectAction();
     				/*while(button==false)
     				{
@@ -176,6 +177,11 @@ public class Game {
     public Settler getActiveSettler()
     {
     	return activeSettler;
+    }
+    
+    public void setSettler(Settler s)
+    {
+    	this.activeSettler = s;
     }
     
     public void DrillAction()

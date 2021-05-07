@@ -67,7 +67,7 @@ public class AsteroidView extends View {
 		g2d.drawString(materialtype + numbofmat, x+10, y+170);
 	}
 
-	public AsteroidView(Asteroid a, int x, int y) throws IOException {
+	public AsteroidView(Asteroid a) throws IOException {
 		super();
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/asteroid.png"));
 		if(a.getSunSide() == true)
@@ -82,66 +82,13 @@ public class AsteroidView extends View {
 		{
 			icon = tmp;
 			this.setIcon(icon);
-		}
-		this.x = x;
-		this.y = y;
+		} 
 		this.a = a;
 	}
 	
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, x, y, null);
-		List<Movable> list = a.getMovableList();
-		for(int i=0; i<list.size(); i++)
-		{
-			if(list.get(i) instanceof Settler)
-			{
-				try {
-					SettlerView sw = new SettlerView(this.x-20, this.y-60);
-					sw.draw(g);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			else if(list.get(i) instanceof Robot)
-			{
-				try {
-					RobotView rw = new RobotView(this.x+60, this.y-60);
-					rw.draw(g);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			else if(list.get(i) instanceof Alien)
-			{
-				try {
-					AlienView aw = new AlienView(this.x+110, this.y+10);
-					aw.draw(g);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}				
-			}
-		}
-		
-		List<Teleport> teleport_list = a.getTeleportsOnAsteroid();
-		if(!teleport_list.isEmpty())
-		{
-			for(int x=0; x<teleport_list.size(); x++);
-			{
-				try {
-					TeleportView tw = new TeleportView(this.x+110, this.y+60);
-					tw.draw(g);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 }
 

@@ -60,7 +60,7 @@ public class SettlerView extends View {
 	@Override
 	public void draw(Graphics g)
 	{
-		g.drawImage(image, x, y, null);
+		g.drawImage(image, this.x, this.y, null);
 	}
 }
 

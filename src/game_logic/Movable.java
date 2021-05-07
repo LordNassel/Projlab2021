@@ -2,13 +2,17 @@ package game_logic;
 
 import java.util.*;
 
+import view.AsteroidView;
 import view.SettlerView;
+import view.View;
 
 
 /**
  * A játékban előforduló, mozgóképes objektumokat reprezentálja egy mezőn. Tárolja az éppen aktuális helyét a pályán.
  */
 public abstract class Movable implements Steppable {
+	
+	protected View movableView;
 	/**
 	 * Egy segéd tagváltozó, ami megmondja,hogy az adott movableelbújt-e egy aszteroidában.
 	 * Ha az értéke true, akkorigen, ha false akkor nem
@@ -156,6 +160,13 @@ public abstract class Movable implements Steppable {
 	 */
 	public String Getname() {
 		return this.movablesName;
+	}
+	
+	public abstract void createMovableView();
+	
+	public View getView()
+	{
+		return movableView;
 	}
 
 }
