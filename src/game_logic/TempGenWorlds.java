@@ -131,11 +131,13 @@ public class TempGenWorlds {
            A1.getMats().clear();
            Uranium uran = new Uranium();
            A1.getMats().add(uran);
-      //    Asteroid A2 = new Asteroid("UranDepo", "Uranium", true, 0);
+           uran.IncreaseCounter();
+           uran.IncreaseCounter();
+           Asteroid A2 = new Asteroid("UranDepo", "Uranium", true, 0);
        //   Asteroid A3 = new Asteroid("AhShitHereweBlowAgain", "Uranium", true, 0);
 
-      //    A1.SetNeighbor(A2);
-        //  A2.SetNeighbor(A1);
+           A1.SetNeighbor(A2);
+           A2.SetNeighbor(A1);
 
           //A1.SetNeighbor(A3);
           /*A3.SetNeighbor(A1);
@@ -144,10 +146,11 @@ public class TempGenWorlds {
           A2.SetNeighbor(A3);*/
 
           fieldlist.add(A1);
-         /* fieldlist.add(A2);
-          fieldlist.add(A3);*/
+          fieldlist.add(A2);
+          /*fieldlist.add(A3);*/
 
           Settler S = new Settler("Player1", A1);
+          Settler S2 = new Settler("Player2", A2);
           Robot r = new Robot(A1);
 
 
@@ -157,25 +160,41 @@ public class TempGenWorlds {
           Game returngame = new Game(map);
 
           returngame.AddMovable(S, A1);
+          returngame.AddMovable(S2, A2);
           returngame.AddMovable(r, A1);
 
           returngame.AddSteppable(map);
           return returngame;
        }
+       
        else if (which == 3){
-           System.out.println("Ez azon pálya ahol veszteni nehéz");
-           Asteroid A1 = new Asteroid("IronIronSoFarAway", "Iron", false, 0);
-           Vector<Material> oneiron = new Vector<Material>();
-           Iron Maiden = new Iron();
-           oneiron.add(Maiden);
-           Goal_Asteroid G1 = new Goal_Asteroid("WinnerWinner", "Iron", oneiron);
+           Asteroid A1 = new Asteroid("A1", "Iron", false, 0);
+           Asteroid A2 = new Asteroid("A2", "Uranium", false, 0);
+           Asteroid A3 = new Asteroid("A3", "Coal", false, 0);
+         
 
            Vector<Field> temp = new Vector<Field>();
            temp.add(A1);
-           temp.add(G1);
+           temp.add(A2);
+           temp.add(A3);
 
-           A1.SetNeighbor(G1);
-           G1.SetNeighbor(A1);
+           A1.SetNeighbor(A2);
+           A2.SetNeighbor(A1);
+           
+           A2.SetNeighbor(A3);
+           A3.SetNeighbor(A2);
+           
+           Teleport t1 = new Teleport("Teleport1", A1);
+           Teleport t2 = new Teleport("Teleport2", A3);
+           
+           t1.setPair(t2);
+           t2.setPair(t1);
+           
+           A1.addTeleportOnAsteroid(t1);
+           A3.addTeleportOnAsteroid(t2);
+           
+           t1.setIsActive();
+           t2.setIsActive();
 
            Settler S1 = new Settler("Bruszwillisz", A1);
            Map map = new Map(true, temp);
@@ -196,44 +215,44 @@ public class TempGenWorlds {
            Asteroid A4 = new Asteroid("DummyAsteroid4", "Iron", false, 0);
 
            //Szomszédság
-           A1.SetNeighbor(A3);
-           A3.SetNeighbor(A1);
+           A1.SetNeighbor(A2);
+           A2.SetNeighbor(A1);
 
-           A2.SetNeighbor(A4);
-           A4.SetNeighbor(A2);
+           A2.SetNeighbor(A3);
+           A3.SetNeighbor(A2);
 
-           A4.SetNeighbor(A3);
-           A3.SetNeighbor(A4);
+          /* A4.SetNeighbor(A3);
+           A3.SetNeighbor(A4);*/
 
            Vector<Field> temp = new Vector<Field>();
 
            temp.add(A1);
            temp.add(A2);
            temp.add(A3);
-           temp.add(A4);
+           //temp.add(A4);
 
            //Movable
-           Settler S2 = new Settler("TeleportMan", A3);
-           Settler S1 = new Settler("Robotman",A1);
-           Robot R1 = new Robot(A2);
+           Settler S1 = new Settler("Player", A1);
+
 
            //Material hozzáadás
            Iron iron = new Iron();
-           Ice ice2 = new Ice();
+           Iron iron2 = new Iron();
+           Iron iron3 = new Iron();
+           Ice ice1 = new Ice();
            Uranium uranium = new Uranium();
+           Uranium uranium2 = new Uranium();
            Coal coal = new Coal();
 
 
 
-           S1.Store(coal);
            S1.Store(iron);
+           S1.Store(iron2);
+           S1.Store(iron3);
+           S1.Store(ice1);
            S1.Store(uranium);
-
-           S2.Store(iron);
-           S2.Store(iron);
-           S2.Store(ice2);
-           S2.Store(ice2);
-           S2.Store(uranium);
+           S1.Store(uranium2);
+           S1.Store(coal);
 
 
            Map map = new Map(true, temp);

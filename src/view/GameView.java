@@ -1,15 +1,16 @@
 package view;
 
-import javax.swing.JButton;
-
 import game_logic.Game;
 import game_logic.TempGenWorlds;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.io.IOException;
+import java.util.Vector;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class GameView extends JFrame {
 	
@@ -32,9 +33,9 @@ public class GameView extends JFrame {
 			// Map betöltése: game.init -> map = new Map stb. mint nekünk a TempGenWorld
 			GameFrame gameView;
 			try {
-				selectMap();
+				int selected = selectMap();
 				TempGenWorlds temp = new TempGenWorlds();
-				Game game = temp.Generateworlds(2);
+				Game game = temp.Generateworlds(selected);
 				
 				Thread thread = new Thread() {
 					public void run() {
@@ -53,9 +54,47 @@ public class GameView extends JFrame {
 		});
 	}
 	
-	public void selectMap()
+	public int selectMap()
 	{
+		int selected = 0;
+		Vector<String> maps = new Vector<String>();
+		maps.add("1. Normal map");
+		maps.add("2. Uranium explode test map");
+		maps.add("3. Move with teleport test map");
+		maps.add("4. Crafting test map");
 		
+		JList<String> jlist = new JList<>(maps);
+		JTextField choosen = new JTextField("");
+
+		jlist.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				// TODO Auto-generated method stub
+				String selected = jlist.getSelectedValue();
+				choosen.setText(selected);
+			}
+		});
+		
+		JScrollPane pane = new JScrollPane(jlist);
+		pane.setPreferredSize(new Dimension(100,100));
+		JPanel buttonPane = new JPanel();
+		//JButton but = new JButton("But");
+		//buttonPane.add(choosen);
+		//buttonPane.add(but);
+		
+		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
+		splitPane.setDividerLocation(250);
+        splitPane.setEnabled(false);
+        JOptionPane.showMessageDialog(this, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);
+        if(choosen.getText().equals("1. Normal map"))
+        	selected=1;
+        else if(choosen.getText().equals("2. Uranium explode test map"))
+        	selected=2;
+        else if(choosen.getText().equals("3. Move with teleport test map"))
+        	selected=3;
+        else if(choosen.getText().equals("4. Crafting test map"))
+        	selected=4;
+		return selected;
 	}
 	
 
