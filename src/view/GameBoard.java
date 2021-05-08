@@ -38,6 +38,7 @@ public class GameBoard extends JPanel {
 	private List<View> teleportstoDraw = new ArrayList<>();
 	private JButton move = new JButton("Move");
 	private JButton drill = new JButton("Drill");
+	private Vector<Field> fieldlist = new Vector<Field>();
 	JButton mine = new JButton("Mine");
 	JButton craft_robot = new JButton("Craft Robot");
 	JButton craft_teleport = new JButton("Craft Teleports");
@@ -73,7 +74,7 @@ public class GameBoard extends JPanel {
 		buttonsCentered.setBackground(new Color(250, 240, 170));
 		buttons.add(buttonsCentered);
 		//setLayout(null);
-
+		initAsteroids(game);
 		initDrawable(game);
 
 		buttonsCentered.add(active_player);
@@ -106,31 +107,18 @@ public class GameBoard extends JPanel {
 	public void chechIntersection() {
 
 	}
-
-	private void initDrawable(Game game) throws IOException //init map lényegében
+	
+	private void initAsteroids(Game game)
 	{
-		fieldstoDraw.clear();
-		movablestoDraw.clear();
-		teleportstoDraw.clear();
 		Map map = game.getMap();
 		Vector<Field> fields = map.getFieldList(); //ez it null-t ad vissza
-		Random rand = new Random();
-		List<Movable> movables = new ArrayList<Movable>();
-		List<Teleport> teleport = new ArrayList<Teleport>();
-
+		
 		int offsetx = 0;
 		int offsety = 0;
 		int cnt = 0;
 
 		for (int i = 0; i < fields.size(); i++) {
 			Field field = fields.get(i);			
-			
-			/*Teleportok*/
-			teleport.addAll(((Asteroid) field).getTeleportsOnAsteroid());
-			//	teleportstoDraw.addAll(((Asteroid) field).getTeleportsOnAsteroid());
-			
-			/* Movalbek*/
-			movables.addAll(field.getMovableList());
 			
 			/*Aszteroidák*/
 			AsteroidView view = (AsteroidView) field.getFieldView();
@@ -144,6 +132,33 @@ public class GameBoard extends JPanel {
 				offsety += 270;
 				cnt = 0;
 			}
+		}
+	}
+
+	private void initDrawable(Game game) throws IOException //init map lényegében
+	{
+		fieldstoDraw.clear();
+		movablestoDraw.clear();
+		teleportstoDraw.clear();
+		Map map = game.getMap();
+		Vector<Field> fields = map.getFieldList(); //ez it null-t ad vissza
+
+		List<Movable> movables = new ArrayList<Movable>();
+		List<Teleport> teleport = new ArrayList<Teleport>();
+
+		for (int i = 0; i < fields.size(); i++) {
+			Field field = fields.get(i);			
+			
+			/*Teleportok*/
+			teleport.addAll(((Asteroid) field).getTeleportsOnAsteroid());
+			//	teleportstoDraw.addAll(((Asteroid) field).getTeleportsOnAsteroid());
+			
+			/* Movalbek*/
+			movables.addAll(field.getMovableList());
+			
+			/*Aszteroidák*/
+			AsteroidView view = (AsteroidView) field.getFieldView();
+			fieldstoDraw.add(view);
 		}
 		
 		for(int x=0; x<movables.size(); x++)

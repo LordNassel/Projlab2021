@@ -39,7 +39,7 @@ public class Alien extends Movable  {
      */
     public void Step(){
     	System.out.println("Alien step");
-    	if(thisasteroidempty == false) {
+    	if(thisasteroidempty == false || this.currentField.FindNeighbor().isEmpty()) {
         	Mine();
         }
         else {
