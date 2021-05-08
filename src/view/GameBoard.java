@@ -472,7 +472,10 @@ public class GameBoard extends JPanel {
 	        	
 	        	}
 	        		else
+	        		{
 	        			JOptionPane.showMessageDialog(frame, "Empty inventory");
+	        			return;
+	        		}
 	        	
 
 	        Material selectedMaterial = null;
@@ -558,7 +561,10 @@ public class GameBoard extends JPanel {
 	        		}
 	        	}
 	        	else
+	        	{
 	        		JOptionPane.showMessageDialog(frame, "Empty inventory");
+	        		return;
+	        	}
 	        }
 	        else 
 	        {
