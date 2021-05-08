@@ -686,6 +686,10 @@ public class GameBoard extends JPanel {
 			String s = new String();
 			if (temp.size() == 0) {
 				inventory.setText("The inventory is empty!");
+				JPanel jp = new JPanel(new BorderLayout(5, 5));
+				jp.setSize(100, 200);
+				jp.add(inventory, BorderLayout.CENTER);
+				JOptionPane.showMessageDialog(frame, jp);
 				return;
 			}
 
@@ -705,8 +709,8 @@ public class GameBoard extends JPanel {
 			jp.setSize(100, 200);
 			jp.add(inventory, BorderLayout.CENTER);
 			JOptionPane.showMessageDialog(frame, jp);
-			clicked = true;
-			this.repaint();
+			//clicked = true;
+			//this.repaint();
 		});
 
 	}
