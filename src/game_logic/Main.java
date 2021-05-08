@@ -1,7 +1,6 @@
 //Sorry for the english, but eclipse throws all sorts of errors with the HU special characters
 package game_logic;
 import game_logic.Asteroid;
-import view.GameView;
 import view.MenuView;
 
 import java.io.IOException;
@@ -36,7 +35,7 @@ public class Main{
 		String in = input.next();*/
 		//MenuView menu = new MenuView();
 		///asteroids.get(1).Explode();
-		GameView game = new GameView();
+		MenuView game = new MenuView();
 		game.setVisible(true);
 		//gm.StartGame();
 		//menu.setVisible(true);

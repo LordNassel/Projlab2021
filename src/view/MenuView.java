@@ -1,114 +1,101 @@
 package view;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.swing.*;
-
+import game_logic.Game;
 import game_logic.TempGenWorlds;
 
-public class MenuView extends JPanel implements ActionListener {
-	 SettingsView settings;
-	 GameView game;
-	JFrame frame;
-	JButton button_start_game = new JButton("Start Game");
-	JButton button_settings = new JButton("Settings");
-	private static ArrayList<AsteroidView> asteroidViews = new ArrayList<AsteroidView>();
-	private static ArrayList<SettlerView> settlerViews = new ArrayList<SettlerView>();
-	JPanel panel;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.io.IOException;
+import java.util.Vector;
 
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+public class MenuView extends JFrame {
+	
 	public MenuView()
 	{
-		frame = new JFrame();
-		frame.setTitle("Aszteroidabanyaszat");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500,500);
-		frame.setVisible(true);
-		//settings = new SettingsView();
-		//game = new GameView();
+		JButton start_game = new JButton("Start Game");
 		
-		panel = new JPanel() {
-			@Override
-			public Dimension getPreferredSize()
-			{
-				return new Dimension(300,300);
-			}
-		};
-		panel.setLayout(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(new Dimension(400,100));
+		this.setTitle("Aszteroidabanyaszat");
+		this.setLocationRelativeTo(null);
 		
-		//ActionListener al = new ActionListener()
-		button_start_game.addActionListener(this);
+		JPanel buttonContainer = new JPanel();
+		this.add(buttonContainer);
+		buttonContainer.setLayout(new GridLayout());
+		buttonContainer.add(start_game);
+		
+		start_game.addActionListener(e -> {
+			//Game game = Game.getInstance();
+			// Map betöltése: game.init -> map = new Map stb. mint nekünk a TempGenWorld
+			GameFrame gameView;
+			try {
+				int selected = selectMap();
+				TempGenWorlds temp = new TempGenWorlds();
+				Game game = temp.Generateworlds(selected);
 				
-		
-		panel.add(button_start_game);
-		panel.add(button_settings);
-		frame.add(panel);
-		for (AsteroidView bv : asteroidViews) {
-			panel.add(bv);
-		}
-		
-		for (SettlerView sv : settlerViews) {
-			panel.add(sv);
-		}
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		String valami = e.getActionCommand();
-		System.out.println(valami);
-		button_start_game = (JButton)e.getSource();
-		settings = new SettingsView();
-		System.out.println("Bazdmeg");
-		System.out.println(valami);
-
-		
-		button_settings = (JButton)e.getSource();
-		//TempGenWorlds temp = new TempGenWorlds();
-		//temp.Generateworlds(1);
+				Thread thread = new Thread() {
+					public void run() {
+						game.StartGame();
+					}
+				};
+				thread.start();
+				
+				gameView = new GameFrame(game);
+				gameView.setVisible(true);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			this.dispose();
+		});
 	}
 	
-	public static void addView(AsteroidView v) {
-		asteroidViews.add(v);
-	}
-	
-	public static void addMovableView(SettlerView s)
+	public int selectMap()
 	{
-		settlerViews.add(s);
-	}
-	
-	/*public void update() {
-        for (AsteroidView iuv : asteroidViews.values()) {
-            iuv.clearParts();
-        }
-        for(PartView pv : parts) {
-            IceUnit iceUnit = pv.checkIceUnit();
-            if(iceUnit != null) {
-                iceUnitViews.get(iceUnit).addPart(pv);
-            }
-        }
-        repaint();
-    }*/
-	
-	public void updatePanel() {
-		removeAll();
-		drawPanel();
-		//buildHUD();
-		revalidate();
-		repaint();
-	}
-
-	private void drawPanel() {
-		// TODO Auto-generated method stub
-		for (AsteroidView bv : asteroidViews) {
-			panel.add(bv);
-		}
+		int selected = 0;
+		Vector<String> maps = new Vector<String>();
+		maps.add("1. Normal map");
+		maps.add("2. Uranium explode test map");
+		maps.add("3. Move with teleport test map");
+		maps.add("4. Crafting test map");
 		
-		for (SettlerView sv : settlerViews) {
-			panel.add(sv);
-		}
+		JList<String> jlist = new JList<>(maps);
+		JTextField choosen = new JTextField("");
+
+		jlist.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				// TODO Auto-generated method stub
+				String selected = jlist.getSelectedValue();
+				choosen.setText(selected);
+			}
+		});
+		
+		JScrollPane pane = new JScrollPane(jlist);
+		pane.setPreferredSize(new Dimension(100,100));
+		JPanel buttonPane = new JPanel();
+		//JButton but = new JButton("But");
+		//buttonPane.add(choosen);
+		//buttonPane.add(but);
+		
+		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
+		splitPane.setDividerLocation(250);
+        splitPane.setEnabled(false);
+        JOptionPane.showMessageDialog(this, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);
+        if(choosen.getText().equals("1. Normal map"))
+        	selected=1;
+        else if(choosen.getText().equals("2. Uranium explode test map"))
+        	selected=2;
+        else if(choosen.getText().equals("3. Move with teleport test map"))
+        	selected=3;
+        else if(choosen.getText().equals("4. Crafting test map"))
+        	selected=4;
+		return selected;
 	}
+	
+
 }

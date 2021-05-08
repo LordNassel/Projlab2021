@@ -4,7 +4,6 @@ import java.util.*;
 
 import view.GameBoard;
 import view.GameFrame;
-import view.MenuView;
 import view.Specialframe;
 
 
@@ -16,7 +15,7 @@ public class Game {
 
 	public static boolean button=false;
 	private static Game instance = null;
-	public static MenuView view;
+	//public static MenuView view;
 	volatile private Settler activeSettler;
 
 	/**
@@ -41,11 +40,11 @@ public class Game {
     	running = true;
     }
     
-    public Game(MenuView v, Map m) {
+  /*  public Game(MenuView v, Map m) {
     	map = m;
     	running = true;
     	view = v;
-    }
+    }*/
     
     /**
      * Paraméterként átadott pályát tölt be
