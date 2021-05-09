@@ -101,9 +101,7 @@ public class GameBoard extends JPanel {
 		}
 	}
 
-	public void chechIntersection() {
 
-	}
 	
 	private void initAsteroids(Game game)
 	{
