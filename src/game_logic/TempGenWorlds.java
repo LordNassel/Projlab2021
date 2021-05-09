@@ -48,7 +48,9 @@ public class TempGenWorlds {
                 int y = 5;
                 Random rand = new Random();
 
-                //Szomszedok
+               /**
+                * Szomszedok
+                */
                 Auchen.SetNeighbor(FormFoss);
                 Auchen.SetNeighbor(Timeston);
                 Auchen.SetNeighbor(MyreFall);

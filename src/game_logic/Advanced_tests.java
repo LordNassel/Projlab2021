@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
-//Az el�rehaladott fileb�l is beolvashat� tesztek oszt�lya.
+/**
+ * Az előrehaladott, fileból is beolvasható tesztek osztálya.
+ */
 public class Advanced_tests {
     //A tesztelesi keretrendszer az elorehaladott teszteknek:
     TempGenWorlds currentworlds = new TempGenWorlds();
@@ -35,7 +37,9 @@ public class Advanced_tests {
     Vector<Movable> Movable_Test_List = new Vector<>();
     
 
-    //Ez manageli a tesztek megnyitasat
+    /**
+     * Manageli a tesztek megnyitasat.
+     */
     public void AdvancedTestMgr(){
         String current_tests[] = null;
 
@@ -52,7 +56,9 @@ public class Advanced_tests {
         }
     }
 
-    //itt p�ld�nyos�tom az aszteroid�kat a sz�vegfileb�l
+    /**
+     * Aszteroidékat peldanyosit.
+     */
     private void AsteroidCreator(String[] command){
         Asteroid temp;
         //Att�l f�gg hogy milyen hossz�, hogy melyik konstruktort h�vtam meg
@@ -75,7 +81,9 @@ public class Advanced_tests {
         }
     } 
 
-    // movable peldanyositasa
+    /**
+     * Movable-t peldanyosit.
+     */
     private void Movable(String[] command) {
     	Asteroid as = new Asteroid("temp");
     	for(int y=0; y<Field_Test_List.size();y++)
@@ -99,10 +107,10 @@ public class Advanced_tests {
     		Movable_Test_List.add(a);
     	}
     }
-    
 
-//ez a priv�t fgv ford�tja le a megfelel� stringeket
-
+    /**
+     *  Ez a függvény fordítja le a megfelelő stringeket.
+     */
     private void interpreter(String[] comdline){
         switch (comdline[0]){
             case "Comment":
@@ -169,7 +177,9 @@ public class Advanced_tests {
 
     }
 
-    //Ez a f�ggv�ny h�vja meg a Stats_manager megfelel? f�ggv�nyeit
+    /**
+     *  Ez a függvény hívja meg a Stats_manager megfelelő függvényit.
+     */
     private void Stats_Command_manager(String[] command){
         if(command[1].equals("Asteroid")){
             this.CurrentStatsManager.Asteroid_Stats_Manager(this.Field_Test_List, command);
@@ -187,7 +197,10 @@ public class Advanced_tests {
             this.CurrentStatsManager.Teleport_StatsManager(this.Field_Test_List, command);
         }
     }
-    
+
+    /**
+     *  Listázó függvény.
+     */
     private void List_Universe()
     {
     	for(int i=0; i<Field_Test_List.size(); i++)
@@ -228,7 +241,10 @@ public class Advanced_tests {
     		}
     	}
     }
-    //Egy egyszeru rendszer amely beolvas az inputrol. Lehet lesz ennek bovitese
+
+    /**
+     *  Egy egyszeru rendszer amely beolvas az inputrol.
+     */
     private int inputmanager() {
         Scanner myinput =new Scanner(System.in);
         int n=0;

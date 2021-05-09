@@ -4,7 +4,7 @@ import view.GameBoard;
 import java.util.ArrayList;
 
 /**
- * Ez az osztály felelsõs a játékmenet elvárt futásáért.
+ * Ez az osztály felelõs a játékmenet elvárt futásáért.
  * Elkezdi/befejezi az adott játszmát, betölt egy pályát, illetve kezeli a körökre osztást is.
  */
 public class Game {
@@ -20,7 +20,7 @@ public class Game {
 	private static Game instance = null;
 
 	/**
-	 *  .
+	 * Az aktív telepest.
 	 */
 	volatile private Settler activeSettler;
 
@@ -84,7 +84,7 @@ public class Game {
     		System.out.println("\nA " + number + ". kor elkezdodott");
     		for(int i= 0; i<steppableList.size(); i++)
     		{
-    			if(getIsTherAnySettler()==false)
+    			if(getIsThereAnySettler()==false)
     			{
     				Losegame();
     				return;
@@ -93,9 +93,6 @@ public class Game {
     			{
     				setSettler((Settler) steppableList.get(i));
     				GameBoard.selectAction();
-    				{
-    					
-    				}
     			}
     			else 
     				steppableList.get(i).Step();
@@ -133,7 +130,7 @@ public class Game {
     /**
      * Segédfüggvény annak az ellenõrzésére, hogy van-e játékban még Telepes
      */
-    public boolean getIsTherAnySettler()
+    public boolean getIsThereAnySettler()
 	{
     	Asteroid a = new Asteroid("bela");
     	Settler s = new Settler("Palyer", a);
@@ -172,74 +169,109 @@ public class Game {
     }
 
 	/**
-	 * Beálltja az aktív telepest.
+	 * Beállítja az aktív telepest.
 	 */
     public void setSettler(Settler s)
     {
     	this.activeSettler = s;
     }
-    
+
+	/**
+	 * Meghívja az aktív telepes fúrás függvényét.
+	 */
     public void DrillAction()
     {
     	System.out.println(getActiveSettler().Getname());
     	getActiveSettler().Drill();
     }
-    
+
+	/**
+	 * Meghívja az aktív telepes teleportpárt craftoló függvényét.
+	 */
     public void CraftTeleportAction(String name1, String name2)
     {
     	getActiveSettler().CraftTeleports(name1, name2);
     }
-    
+
+	/**
+	 * Meghívja az aktív telepes robotot craftoló függvényét.
+	 */
     public void CraftRobotAction()
     {
     	getActiveSettler().CraftRobot();
     }
-    
+
+	/**
+	 * Meghívja az aktív telepes elbújás függvényét.
+	 */
     public void HideAction()
     {
     	getActiveSettler().Hide();
     }
-    
+
+	/**
+	 * Meghívja az aktív telepes bányászás függvényét.
+	 */
     public void MineAction()
     {
     	getActiveSettler().Mine();
     }
-    
+
+	/**
+	 * Meghívja az aktív telepes mozgás függvényét.
+	 */
     public void MoveAction(Field f)
     {
     	getActiveSettler().Move(f);
     }
-    
+
+	/**
+	 * Meghívja az aktív telepes függvényét, mely elhelyez egy egységnyi nyersanyagot az aszteroidába.
+	 */
     public void PutAction(Material m)
     {
     	getActiveSettler().PutMaterial(m);
     }
-    
+
+	/**
+	 * Meghívja az aktív telepes teleportot aktiváló függvényét.
+	 */
     public void ActivateAction(Teleport t)
     {
     	getActiveSettler().ActivateTeleport(t);
     }
-    
-    public void StoreAction(Material m)
-    {
-    	getActiveSettler().Store(m);
-    }
+
+	/**
+	 * Meghívja az aktív telepes függvényét, mely eltárolja a kibányászott nyersanyagot a bázison.
+	 */
     public void StoreInBaseAction(Material m)
     {
     	getActiveSettler().storeOnBaseMaterial(m);
     }
-    
+
+    /**
+	 * Meghívja az aktív telepes bázist építõ függvényét.
+	 */
     public void BuildAction()
     {
     	getActiveSettler().Build();
     }
 
-	public void ExplodeAction()
+	/**
+	 * Meghívja az aktív telepes függvényét, mely eltárolja a kibányászott nyersanyagot az inventory-ban.
+	 */
+	public void StoreAction(Material m)
 	{
-
+		getActiveSettler().Store(m);
 	}
 
+	/**
+	 *
+	 */
+	public void ExplodeAction()	{	}
+
+	/**
+	 *  Visszaadja az aszteroidaövben uralkodo sugarzas nagysagat.
+	 */
 	public int getradiation(){return this.map.getSugarzas();}
-
-
 }
