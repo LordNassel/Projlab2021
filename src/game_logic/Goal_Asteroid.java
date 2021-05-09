@@ -1,10 +1,6 @@
 package game_logic;
 
-import view.AsteroidView;
 import view.Goal_AsteroidView;
-import view.SpecialFrame;
-import view.View;
-
 import java.io.IOException;
 import java.util.Vector;
 
@@ -13,14 +9,17 @@ import java.util.Vector;
  *  Az osztály felelõssége ellenõrizni, hogy ehhez megvan-e az elegendõ mennyiségû nyersanyag.
  */
 public class Goal_Asteroid extends Asteroid  {
+
 	/**
 	 *  Véget ért-e a játék.
 	 */
 	private boolean gamewin = false;
+
 	/**
 	 *  Az aszteroidán összegyûjtött nyersanyagok tárolója.
 	 */
 	private Vector<Material> CurrentMaterials = new Vector<Material>();
+
 	/**
 	 *  A konstruktor megkapja az összegyûjtendõ anyagok listáját.
 	 */
@@ -28,7 +27,6 @@ public class Goal_Asteroid extends Asteroid  {
 		super(name, M);
 		CurrentMaterials = list;
 		createFieldView();
-
 	}
 
 	/**
@@ -78,17 +76,19 @@ public class Goal_Asteroid extends Asteroid  {
 	}
 
 	/**
-	 *  Visszaadja a gamewin valtozot.
+	 *  Visszaadja, hogy véget ért-e a játék.
 	 */
 	public boolean GetGamewin() {System.out.println("GetGamewin called"); return gamewin;}
-	
+
+	/**
+	 *  Létrehozza a Goal_Asteroid nézetét.
+	 */
 	@Override
 	public void createFieldView()
 	{
 		try {
 			this.fieldView = new Goal_AsteroidView(this);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

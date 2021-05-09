@@ -4,36 +4,39 @@ import java.util.*;
 
 /**
  * A játék színterét, vagyis az aszteroidaövet valósítja meg.
- * Számon tartja az ott elõforduló objektumokat és õ felel az aszteroida övben létre jövõ napviharért is
+ * Számon tartja az ott elõforduló objektumokat és õ felel az aszteroidaövben létre jövõ napviharért is
  */
 public class Map implements Steppable {
 
 	/**
-	 * Az aszteroida ovben uralkodo sugarzas nagysaga
+	 * Az aszteroidaövben uralkodo sugarzas nagysaga
 	 * 7 és 10 kozott napvihar kovetkezik be
 	 */
 	private int sugarzas = 1;
+
 	/**
-	 * Az aszteroidaöv mezõi
+	 * Az aszteroidaöv mezõi.
 	 */
 	protected Vector<Field> FieldList;
-	// Default constructor
+
+	/**
+	 * Egy boolean arra, hogy élnek-e még telepesek a játékban. Ha igen, akkor az értéke igaz, ha nem, akkor hamis.
+	 */
+	private boolean AnyoneAlive;
+
+	/**
+	 * A Default constructor, kezdetben vannak élõ telepesek.
+	 */
     public Map() { AnyoneAlive = true; }
     
     /**
-     * Paraméterben átadható a map-ot alkotó fieldek
+     * Konstruktor, paraméterben átadható a map-ot alkotó fieldek.
      */
     public Map(boolean alive, Vector<Field> newdb)
     { 
     	AnyoneAlive = alive;
     	FieldList = newdb;
     }
-
-    /**
-     * Egy boolean arra, hogy élnek-emég telepesek a játékban. Haigen,akkor az értéke igaz, ha nem akkor hamis
-     */
-    private boolean AnyoneAlive;
-
 
     /**
      * Növeli a sugárzás nagyságát és ha elért egykorlátot akkor véletlenszerûengenerál egy napvihart
@@ -69,13 +72,13 @@ public class Map implements Steppable {
     		secondneighbors.addAll(neighbors.get(y).FindNeighbor()); //Nem effektív de nekünk megteszi
 
     	}
-    	for(int z=0; z< secondneighbors.size(); z++)
+    	for(int z=0; z < secondneighbors.size(); z++)
 			secondneighbors.get(z).ReachedBySunStorm();
     	sugarzas = 1;
     }
     
     /**
-     * Egy random aszteroidával tér vissza azaszteroida övbõl
+     * Egy random aszteroidával tér vissza az aszteroidaövbõl.
      */
     public Field getRandomAsteroid()
     {
@@ -84,10 +87,17 @@ public class Map implements Steppable {
     	Field asteroid = FieldList.get(idx);
     	return asteroid;
     }
-    
+
+	/**
+	 *  Visszaadja az aszteroidaöv mezõit.
+	 */
     public Vector<Field> getFieldList()
     {
     	return FieldList;
     }
+
+	/**
+	 *  Visszaadja az aszteroidaövben uralkodo sugarzas nagysagat.
+	 */
 	public int getSugarzas(){return sugarzas;}
 }

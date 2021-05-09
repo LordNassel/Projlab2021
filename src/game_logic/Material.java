@@ -16,7 +16,7 @@ public abstract class Material {
 	public void GetExposed(boolean Sunside, Asteroid whoexposed) {}
 
 	/**
-	 *  Visszaadja nyersanyag nevét.
+	 *  Visszaadja a nyersanyag nevét.
 	 */
 	public String getname() {return name;}
 }

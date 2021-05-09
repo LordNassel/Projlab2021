@@ -1,10 +1,10 @@
 package game_logic;
 
 import game_test_functions.*;
-
 import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
+
 //Az el�rehaladott fileb�l is beolvashat� tesztek oszt�lya.
 public class Advanced_tests {
     //A tesztelesi keretrendszer az elorehaladott teszteknek:
