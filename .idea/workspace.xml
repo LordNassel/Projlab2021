@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Test5">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_logic/Goal_Asteroid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_logic/Goal_Asteroid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Specialframe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SpecialFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
-    </list>
+    <list default="true" id="19e778da-786c-4c0e-9eb5-af4ab2f62cc4" name="Default Changelist" comment="Win/Lose screens done." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618761006541</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Win/Lose screens done.">
+      <created>1620519058776</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1620519058776</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,7 +134,8 @@
     <MESSAGE value="Test2" />
     <MESSAGE value="Test3" />
     <MESSAGE value="Test4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test4" />
+    <MESSAGE value="Win/Lose screens done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Win/Lose screens done." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
