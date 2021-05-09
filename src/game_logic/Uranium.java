@@ -5,14 +5,13 @@ package game_logic;
  */
 public class Uranium extends Material {
 
-
 	/**
 	 *  Urán expozíciónak száma.
 	 */
 	private int counter;
 
 	/**
-	 *  Konstruktor nullázza a számlálót.
+	 *  Konstruktor nullázza a számlálót, valamint nevet kap.
 	 */
 	public Uranium() {
 		super();
@@ -20,15 +19,15 @@ public class Uranium extends Material {
 		name = "Uranium";
 	}
 	/**
-	 *  IncreaseUraniumCnt-hoz kell.
+	 *  Növeli az expozíciók számát.
 	 */
 	public void IncreaseCounter() {
 		counter++;
 	}
 
 	/**
-	 *  Urániumként napfénnyel találkozik ha napközelben van.
-	 *  Ekkor a számláló eggyel növekszik és ha eléri a hármat, akkor robban: meghívja az aszteroida Explode() függvényét.
+	 *  Ha az urán napközelben van, és napfénnyel találkozik,
+	 *  akkor a számláló eggyel növekszik, és ha eléri a hármat, akkor robban: meghívja az aszteroida Explode() függvényét.
 	 */
 	@Override
 	public void GetExposed(boolean Sunside, Asteroid who) {

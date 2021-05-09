@@ -1,20 +1,21 @@
 package game_logic;
 
 /**
- *  A vízjeget reprezentáló osztály. Napfénnyel érintkezve elolvad.
+ *  A vízjeget reprezentáló osztály. Napfénnyel érintkezve elszublimál.
  */
 public class Ice extends Material {
 
 	/**
-	 *  Vízjégként napfénnyel találkozik aminek hatására elszublimál.
+	 *  Nevet kap a konstruktorban.
 	 */
 	public Ice(){
 		name = "Ice";
 	}
 
-
+	/**
+	 *  Vízjégként napfénnyel találkozik, aminek hatására elszublimál.
+	 */
 	@Override
-
 	public void GetExposed(boolean Sunside, Asteroid who) {
 		if(Sunside) {
 			who.GetMined();		
