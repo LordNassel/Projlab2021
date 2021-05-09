@@ -492,7 +492,7 @@ public class Test {
 		default:
 			this.TestMgr();	
 		}
-}
+	}
 
 	private void TeleportTravelTest(){
 		//Egyszeru peldanyositas
@@ -541,11 +541,11 @@ public class Test {
 		
 		
 	}
-	
-	
-	
-	
-	//Aktualis tesztek listaja
+
+
+	/**
+	 *  Aktualis tesztek listaja
+	 */
 	private void ListTests() {
 		System.out.println("Jelenlegi tesztek:");
 		System.out.println("1. Move Test");
@@ -566,9 +566,6 @@ public class Test {
 		System.out.println("16. Sun Storm Starts Test");
 		System.out.println("17. Teleport Travel Test");
 		System.out.println("18. Automatizalt tesztek DEMO!!!");
-
-
-		
 	}
 
 

@@ -3,21 +3,32 @@ package game_logic;
 import view.GameBoard;
 import java.util.ArrayList;
 
-
 /**
- * Ez az osztály felelsõs a játékmenet elvárt futásáért.Elkezdi/befejezi az adott játszmát,
- * betölt egy pályát illetve kezeli a körökre osztást is
+ * Ez az osztály felelsõs a játékmenet elvárt futásáért.
+ * Elkezdi/befejezi az adott játszmát, betölt egy pályát, illetve kezeli a körökre osztást is.
  */
 public class Game {
 
+	/**
+	 *  .
+	 */
 	public static boolean button=false;
+
+	/**
+	 *  .
+	 */
 	private static Game instance = null;
+
+	/**
+	 *  .
+	 */
 	volatile private Settler activeSettler;
 
 	/**
-	 * Statikus boolean ami igaz ha a játék éppen fut. Hamis ha befejezõdött
+	 * Statikus boolean, ami igaz ha a játék éppen fut. Hamis, ha befejezõdött.
 	 */
 	private static boolean running;
+
 	/**
 	 * Az aktuális pálya, amin játszunk
 	 */
@@ -35,10 +46,9 @@ public class Game {
     	map = new Map();
     	running = true;
     }
-    
-    
+
     /**
-     * Paraméterként átadott pályát tölt be
+     * Constructor, paraméterként átadott pályát tölt be
      */
     public Game(Map generatedmap) {
     	map = generatedmap;
@@ -55,7 +65,7 @@ public class Game {
     }
 
     /**
-     * A játékosok vesztettek, a játéknakvége,
+     * A játékosok vesztettek, a játéknak vége,
      * és a running-ot false-re állítja
      */
     public void Losegame() {
@@ -64,9 +74,8 @@ public class Game {
     }
 
    /**
-    * Elindítja a körökre osztott játékmenetet,
-    * lépteti a léptethetõ objektumokat. Ha minden telepes halott
-    * akkor befejezi a játékot
+    * Elindítja a körökre osztott játékmenetet, lépteti a léptethetõ objektumokat.
+	* Ha minden telepes halott, akkor befejezi a játékot
     */
     public void StartGame() {
     	int number = 1;
@@ -95,11 +104,6 @@ public class Game {
     		number++;
     	}
     }
-    
-    public void ExplodeAction()
-    {
-    	
-    }
 
     /**
      * Egy új mozgó objektumotadunk hozzá a játéktérhez
@@ -108,7 +112,6 @@ public class Game {
     	Playable.SetCurrentField(a);
     	a.AcceptPlayer(Playable);
     	AddSteppable(Playable);
-    	
     }
     
     /**
@@ -151,17 +154,26 @@ public class Game {
     		instance = new Game();
     	return instance;
     }
-    
+
+	/**
+	 * Visszaadja az aktuális pályát.
+	 */
     public static Map getMap()
     {
     	return map;
     }
-    
+
+	/**
+	 * Visszaadja az aktív telepest.
+	 */
     public Settler getActiveSettler()
     {
     	return activeSettler;
     }
-    
+
+	/**
+	 * Beálltja az aktív telepest.
+	 */
     public void setSettler(Settler s)
     {
     	this.activeSettler = s;
@@ -222,6 +234,10 @@ public class Game {
     	getActiveSettler().Build();
     }
 
+	public void ExplodeAction()
+	{
+
+	}
 
 	public int getradiation(){return this.map.getSugarzas();}
 
