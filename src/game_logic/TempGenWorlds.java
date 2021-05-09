@@ -150,7 +150,7 @@ public class TempGenWorlds {
           /*fieldlist.add(A3);*/
 
           Settler S = new Settler("Player1", A1);
-          Settler S2 = new Settler("Player2", A2);
+         // Settler S2 = new Settler("Player2", A2);
           Robot r = new Robot(A1);
 
 
@@ -160,7 +160,7 @@ public class TempGenWorlds {
           Game returngame = new Game(map);
 
           returngame.AddMovable(S, A1);
-          returngame.AddMovable(S2, A2);
+         // returngame.AddMovable(S2, A2);
           returngame.AddMovable(r, A1);
 
           returngame.AddSteppable(map);

@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
@@ -31,7 +32,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class GameBoard extends JPanel {
-	volatile private static Game game;
+	private static Game game;
 	private static GameFrame frame;
 	private List<AsteroidView> fieldstoDraw = new ArrayList<>();
 	private List<View> movablestoDraw = new ArrayList<>();
@@ -194,6 +195,9 @@ public class GameBoard extends JPanel {
 
 	public void drawMap(Graphics g)
 	{
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setFont(new Font("Verdana", Font.BOLD, 13));
+		g2d.drawString("Radiation: " + game.getradiation(), this.frame.size().width/2, 25 );
 		/* Fieldek kirajzolása */
 		for (int i = 0; i < fieldstoDraw.size(); i++)
 		{
@@ -704,10 +708,6 @@ public class GameBoard extends JPanel {
 			s += "Ice: " + String.valueOf(inventorycnt[1]) + ", ";
 			s += "Iron: " + String.valueOf(inventorycnt[2]) + ", ";
 			s += "Uranium: " + String.valueOf(inventorycnt[3])+ ", ";
-
-			//Radiation level
-
-			s+= "Radiation level: " + game.getradiation();
 
 			inventory.setText(s);
 
