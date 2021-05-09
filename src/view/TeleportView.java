@@ -34,7 +34,6 @@ public class TeleportView extends View {
 		Image newimg = image.getScaledInstance(75, 75, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);
-		//ImageIcon tmp = new ImageIcon(AsteroidView.class.getResource("/images/tent.png"));
 		if(tmp != null)
 		{
 			icon = tmp;

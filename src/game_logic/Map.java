@@ -69,7 +69,7 @@ public class Map implements Steppable {
     	for(int y = neighbors.size()-1; y>=0; y--)
     	{
     		neighbors.get(y).ReachedBySunStorm(); //minden szomszedra meghivjuk
-    		secondneighbors.addAll(neighbors.get(y).FindNeighbor()); //Nem effektív de nekünk megteszi
+    		secondneighbors.addAll(neighbors.get(y).FindNeighbor()); 
 
     	}
     	for(int z=0; z < secondneighbors.size(); z++)

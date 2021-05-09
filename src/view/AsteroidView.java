@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AsteroidView extends View {
-	//private static final long serialVersionUID = 7891103595669365281L;
+
 
 	private Asteroid a;
 	
@@ -77,7 +77,6 @@ public class AsteroidView extends View {
 		Image newimg = image.getScaledInstance(110, 110, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);
-		//ImageIcon tmp = new ImageIcon(AsteroidView.class.getResource("/images/tent.png"));
 		if(tmp != null)
 		{
 			icon = tmp;

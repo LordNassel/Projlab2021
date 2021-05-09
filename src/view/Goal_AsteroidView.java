@@ -17,14 +17,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Goal_AsteroidView extends AsteroidView {
-	//private static final long serialVersionUID = 7891103595669365281L;
 
 	private Goal_Asteroid a;
 	
 	
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
-   // protected Image image;
-
+    
 	public Goal_Asteroid getAsteroid() {
 		return a;
 	}
@@ -70,14 +68,12 @@ public class Goal_AsteroidView extends AsteroidView {
 	public Goal_AsteroidView(Goal_Asteroid a) throws IOException {
 		super(a);
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/base.png"));
-	//	if(a.getSunSide() == true)
-		//	image = ImageIO.read(AsteroidView.class.getResource("/kep/sunside_asteroid.png"));
+
 		ImageIcon tmp = new ImageIcon(image);
 		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(110, 110, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);
-		//ImageIcon tmp = new ImageIcon(AsteroidView.class.getResource("/images/tent.png"));
 		if(tmp != null)
 		{
 			icon = tmp;

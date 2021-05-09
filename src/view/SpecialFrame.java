@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class SpecialFrame extends View{
 
-    //Ez a frame létrehozása
     JFrame frame;
     JPanel panel;
     protected Image image;

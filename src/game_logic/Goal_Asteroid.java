@@ -34,7 +34,7 @@ public class Goal_Asteroid extends Asteroid  {
 	 */
 	public void CompleteMaterial(Material M) {
 		CurrentMaterials.add(M);
-		//gamewin = true;
+		
 	}
 
 	/**

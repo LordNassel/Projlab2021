@@ -29,8 +29,6 @@ public class MenuView extends JFrame {
 		buttonContainer.add(start_game);
 		
 		start_game.addActionListener(e -> {
-			//Game game = Game.getInstance();
-			// Map betöltése: game.init -> map = new Map stb. mint nekünk a TempGenWorld
 			GameFrame gameView;
 			try {
 				int selected = selectMap();
@@ -47,7 +45,6 @@ public class MenuView extends JFrame {
 				gameView = new GameFrame(game);
 				gameView.setVisible(true);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			this.dispose();
@@ -69,7 +66,6 @@ public class MenuView extends JFrame {
 		jlist.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
 				String selected = jlist.getSelectedValue();
 				choosen.setText(selected);
 			}
@@ -78,14 +74,11 @@ public class MenuView extends JFrame {
 		JScrollPane pane = new JScrollPane(jlist);
 		pane.setPreferredSize(new Dimension(100,100));
 		JPanel buttonPane = new JPanel();
-		//JButton but = new JButton("But");
-		//buttonPane.add(choosen);
-		//buttonPane.add(but);
 		
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pane, buttonPane);
 		splitPane.setDividerLocation(250);
         splitPane.setEnabled(false);
-        JOptionPane.showMessageDialog(this, splitPane, "Select material", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(this, splitPane, "Select map", JOptionPane.QUESTION_MESSAGE);
         if(choosen.getText().equals("1. Normal map"))
         	selected=1;
         else if(choosen.getText().equals("2. Uranium explode test map"))

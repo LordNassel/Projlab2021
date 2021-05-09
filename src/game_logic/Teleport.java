@@ -26,7 +26,6 @@ public class  Teleport extends Field {
      * Az aktuális teleport párjaként szolgáló teleport
      */
     private Teleport Pair;
-    //protected Vector<Teleport> TeleportPair = new Vector<Teleport>();
     protected Asteroid onAsteroid;
     /**
      *Default Constructor
@@ -38,7 +37,6 @@ public class  Teleport extends Field {
         onAsteroid = onField;
     }
 
-    //Erre ideiglenesen mindenkepp szukseg van, de szerintem permanensen is
     public Teleport(String name){
         super(name);
         IsActive = false;
@@ -48,7 +46,6 @@ public class  Teleport extends Field {
 
     /**
      * Two-member teleport vector
-     *     TODO:: How to set teleport as neighbors, cause Field neighbors are set already by func main OR!
      * @param WhichField
      */
 
@@ -159,7 +156,6 @@ public class  Teleport extends Field {
 		try {
 			this.fieldView = new TeleportView(this.onAsteroid.getFieldView().getPosx()+110, this.onAsteroid.getFieldView().getPosy()+60);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

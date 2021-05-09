@@ -12,7 +12,6 @@ public class Game {
 
 	public static boolean button=false;
 	private static Game instance = null;
-	//public static MenuView view;
 	volatile private Settler activeSettler;
 
 	/**
@@ -37,11 +36,6 @@ public class Game {
     	running = true;
     }
     
-  /*  public Game(MenuView v, Map m) {
-    	map = m;
-    	running = true;
-    	view = v;
-    }*/
     
     /**
      * Paraméterként átadott pályát tölt be
@@ -56,7 +50,6 @@ public class Game {
      * és a running-ot false-ra állítja
      */
     public static void Wingame() {
-    	//System.out.println("Wingame called");
     	running=false;
 		GameBoard.Wingame();
     }
@@ -66,8 +59,7 @@ public class Game {
      * és a running-ot false-re állítja
      */
     public void Losegame() {
-    	running = false;
-    	//System.out.println("Losegame called");
+    	running = false;   	
 		GameBoard.Losegame();
     }
 
@@ -77,7 +69,6 @@ public class Game {
     * akkor befejezi a játékot
     */
     public void StartGame() {
-    	//System.out.println("A jatek elkezdodott, jo szorakozast!");
     	int number = 1;
     	while(running)
     	{
@@ -92,16 +83,12 @@ public class Game {
     			if(steppableList.get(i) instanceof Settler)
     			{
     				setSettler((Settler) steppableList.get(i));
-    				//activeSettler = (Settler)steppableList.get(i);
     				GameBoard.selectAction();
-    				/*while(button==false)
     				{
     					
-    				}*/
-    				//szólni kell a view-nak, hogy most settler van
-    				// -> pl. itt most várakoztatunk GUI eseményre (dialogbox?)
+    				}
     			}
-    			else //ha nem settler akkkor mehet automatikusan
+    			else 
     				steppableList.get(i).Step();
     			button=false;
     		}
@@ -182,7 +169,6 @@ public class Game {
     
     public void DrillAction()
     {
-    	//getActiveSettler().setValasz(2);
     	System.out.println(getActiveSettler().Getname());
     	getActiveSettler().Drill();
     }

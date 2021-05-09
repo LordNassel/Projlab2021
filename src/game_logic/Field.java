@@ -45,7 +45,7 @@ public abstract class Field{
 	 * Meghívja a rajta lévõ movable-ok HitByExplosion() függvényét.
 	 */
 	public void Explode() {
-		for(int i=MovableList.size()-1; i>=0; i--) // Iteráció közben törölünk elemeket ezért inkább így
+		for(int i=MovableList.size()-1; i>=0; i--) 
 			MovableList.get(i).HitByExplosion();
 
 		for(int i = Neighbors.size()-1 ; i>=0; i--){

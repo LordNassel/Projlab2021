@@ -18,7 +18,7 @@ public class StartSunstorm_function {
         for(int y = 0; y < neighbors.size(); y++)
         {
             neighbors.get(y).ReachedBySunStorm(); //minden szomszedra meghivjuk
-            secondneighbors.addAll(neighbors.get(y).FindNeighbor()); //Nem effektív de nekünk megteszi
+            secondneighbors.addAll(neighbors.get(y).FindNeighbor()); 
             System.out.println(neighbors.get(y).Getname() + " elerte a napvihar");
         }
         for(int z=0; z < secondneighbors.size(); z++)

@@ -66,15 +66,12 @@ public class GameBoard extends JPanel {
 		setLayout(new BorderLayout());
 		add(asteroids, BorderLayout.WEST);
 		add(buttons, BorderLayout.EAST);
-		//  buttons.setAlignmentY(Component.CENTER_ALIGNMENT);
 		buttons.setLayout(new FlowLayout());
 		buttons.setAlignmentY(BOTTOM_ALIGNMENT);
 		buttons.setBackground(new Color(250, 240, 170));
 		asteroids.setLayout(null);
-		// JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
 		buttonsCentered.setBackground(new Color(250, 240, 170));
 		buttons.add(buttonsCentered);
-		//setLayout(null);
 		initAsteroids(game);
 		initDrawable(game);
 
@@ -93,7 +90,6 @@ public class GameBoard extends JPanel {
 		buttonsCentered.add(build, BorderLayout.SOUTH);
 		buttonsCentered.add(inventoryButton, BorderLayout.SOUTH);
 
-		//setFocusable(true);
 		actionClickListeners();
 
 
@@ -112,7 +108,7 @@ public class GameBoard extends JPanel {
 	private void initAsteroids(Game game)
 	{
 		Map map = game.getMap();
-		Vector<Field> fields = map.getFieldList(); //ez it null-t ad vissza
+		Vector<Field> fields = map.getFieldList(); 
 		
 		int offsetx = 0;
 		int offsety = 0;
@@ -142,7 +138,7 @@ public class GameBoard extends JPanel {
 		movablestoDraw.clear();
 		teleportstoDraw.clear();
 		Map map = game.getMap();
-		Vector<Field> fields = map.getFieldList(); //ez it null-t ad vissza
+		Vector<Field> fields = map.getFieldList(); 
 
 		List<Movable> movables = new ArrayList<Movable>();
 		List<Teleport> teleport = new ArrayList<Teleport>();
@@ -152,7 +148,6 @@ public class GameBoard extends JPanel {
 			
 			/*Teleportok*/
 			teleport.addAll(((Asteroid) field).getTeleportsOnAsteroid());
-			//	teleportstoDraw.addAll(((Asteroid) field).getTeleportsOnAsteroid());
 			
 			/* Movalbek*/
 			movables.addAll(field.getMovableList());
@@ -185,10 +180,9 @@ public class GameBoard extends JPanel {
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
 			g.setColor(Color.red);
 			drawLines(g);
-			drawMap(g); //Vonalra fogja rajzolni az aszteroidákat, nem fordítva -> nem baj ha a vonal átmegy az aszteroidán
+			drawMap(g); 
 			drawAsteroidsInfo(g);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -222,7 +216,6 @@ public class GameBoard extends JPanel {
 	public void drawLines(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 
-		//TODO: vonalak szomszédok között
 		for (int i = 0; i < fieldstoDraw.size(); i++) {
 			Vector<Field> neighbors = new Vector<Field>();
 			neighbors = fieldstoDraw.get(i).getAsteroid().FindNeighbor();
@@ -238,7 +231,6 @@ public class GameBoard extends JPanel {
 				g2d.setColor(Color.red);
 				Stroke stroke = new BasicStroke(4f);
 				g2d.setStroke(stroke);
-				//g2d.drawLine(100+offset, 100+offset, 200+offset, 200+offset);
 				offset += 50;
 				g2d.drawLine(fieldstoDraw.get(i).getPosx() + 60, fieldstoDraw.get(i).getPosy() + 60, neighborViews.get(y).getPosx() + 60, neighborViews.get(y).getPosy() + 60);
 			}
@@ -247,7 +239,6 @@ public class GameBoard extends JPanel {
 
 	public void actionClickListeners() {
 		move.addActionListener(e -> {
-			//TODO: Ha teleportot választunk ki és nincs párja kezelni
 			Vector<String> neighbors_name = new Vector<String>();
 			Vector<Field> neighbors = new Vector<Field>();
 			neighbors=game.getActiveSettler().GetCurrentField().FindNeighbor();
@@ -259,7 +250,6 @@ public class GameBoard extends JPanel {
 			jlist.addListSelectionListener(new ListSelectionListener() {
 				@Override
 				public void valueChanged(ListSelectionEvent e) {
-					// TODO Auto-generated method stub
 					String selected = jlist.getSelectedValue();
 					choosen.setText(selected);
 				}
@@ -327,7 +317,6 @@ public class GameBoard extends JPanel {
 		});
 
 		mine.addActionListener(e ->{
-			//List<Material> settlermats = game.getActiveSettler().GetInventory_DEBUG();
 			int matNum = ((Asteroid) game.getActiveSettler().GetCurrentField()).getMats().size();
 			game.MineAction();
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
@@ -386,8 +375,6 @@ public class GameBoard extends JPanel {
 			teleport_names.add(teleport2);
 			panel.add(teleport_names, BorderLayout.CENTER);
 			JOptionPane.showMessageDialog(frame, panel, "Add teleport names", JOptionPane.QUESTION_MESSAGE);
-			//String telep1 = JOptionPane.showInputDialog("Name of the first teleport:");
-			//String telep2 = JOptionPane.showInputDialog("Name of the second teleport:");
 			game.CraftTeleportAction(teleport1.getText(), teleport2.getText());
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
 			JLabel success = new JLabel("Successfull Crafting!");
@@ -436,8 +423,6 @@ public class GameBoard extends JPanel {
 			Settler activeSettler = game.getActiveSettler();
 			inInventory = activeSettler.GetInventory();
 			int mats = inInventory.size();
-			//Iron iron = new Iron();
-			//inInventory.add(iron);
 			for(int i=0; i<inInventory.size(); i++)
 			{
 				mat.add(inInventory.get(i));
@@ -449,7 +434,6 @@ public class GameBoard extends JPanel {
 			jlist.addListSelectionListener(new ListSelectionListener() {
 				@Override
 				public void valueChanged(ListSelectionEvent e) {
-					// TODO Auto-generated method stub
 					Material selected = jlist.getSelectedValue();
 					choosen.setText(selected.toString());
 				}
@@ -524,8 +508,6 @@ public class GameBoard extends JPanel {
 			Settler activeSettler = game.getActiveSettler();
 			teleportInventory = activeSettler.getTeleportInventory();
 			Vector<Teleport> teleports = new Vector<Teleport>();
-			//Teleport t1 = new Teleport("aas");
-			//teleportInventory.add(t1);
 			for(int i=0; i<teleportInventory.size(); i++)
 			{
 				teleportNames.add(teleportInventory.get(i).Getname());
@@ -537,7 +519,6 @@ public class GameBoard extends JPanel {
 			jlist.addListSelectionListener(new ListSelectionListener() {
 				@Override
 				public void valueChanged(ListSelectionEvent e) {
-					// TODO Auto-generated method stub
 					String selected = jlist.getSelectedValue();
 					choosen.setText(selected);
 				}
@@ -593,8 +574,6 @@ public class GameBoard extends JPanel {
 			Vector<Material> mat = new Vector<Material>();
 			Settler activeSettler = game.getActiveSettler();
 			inInventory = activeSettler.GetInventory();
-			//Iron iron = new Iron();
-			//inInventory.add(iron);
 			for(int i=0; i<inInventory.size(); i++)
 			{
 				mat.add(inInventory.get(i));
@@ -606,7 +585,6 @@ public class GameBoard extends JPanel {
 			jlist.addListSelectionListener(new ListSelectionListener() {
 				@Override
 				public void valueChanged(ListSelectionEvent e) {
-					// TODO Auto-generated method stub
 					Material selected = jlist.getSelectedValue();
 					choosen.setText(selected.toString());
 				}
@@ -715,8 +693,6 @@ public class GameBoard extends JPanel {
 			jp.setSize(100, 200);
 			jp.add(inventory, BorderLayout.CENTER);
 			JOptionPane.showMessageDialog(frame, jp);
-			//clicked = true;
-			//this.repaint();
 		});
 
 	}

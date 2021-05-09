@@ -262,7 +262,6 @@ public class Settler extends Movable {
 	{
 		if(!isHidden && ((Asteroid)currentField).StoreMaterial(material))
 		{
-		//((Asteroid)currentField).StoreMaterial(material);
 		inventoryMain.remove(material);
 		}
 		else
@@ -371,7 +370,7 @@ public class Settler extends Movable {
 		System.out.println("10. Bazis felepites");
 
 		Scanner myinput = new Scanner(System.in);
-		int valasz = myinput.nextInt(); // TO-DO: Ha bezarod akkor a System.in-is amit nem tudunk ujra megnyitni
+		int valasz = myinput.nextInt(); 
 		
 		switch(valasz)
 		{
@@ -442,7 +441,6 @@ public class Settler extends Movable {
 		try {
 			this.movableView = new SettlerView(x-20, y-60);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

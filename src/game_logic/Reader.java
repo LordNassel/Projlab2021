@@ -42,7 +42,6 @@ public class Reader {
             }
             Filereader.close();
         } catch (FileNotFoundException e) {
-            //helpful message for the user :D :D
             System.out.println("An error occurred.");
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@ import game_logic.Field;
 import game_logic.Teleport;
 
 import java.util.Vector;
-//Egyszeru függvény két field típus egymás szomszédjává tételére -> elvileg a goalasteroiddal is mukodnie kell
+
 public class SetNeighbor_funcion {
 
     public Vector<Field> TeenyTinyNeighboursetty(Vector<Field> fields, String[] command){

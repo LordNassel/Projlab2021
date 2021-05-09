@@ -19,7 +19,6 @@ public class View extends JLabel implements Drawable {
 	 */
 	protected ImageIcon icon;
 
-	//private static final long serialVersionUID = 4819391159119195619L;
 	/**
 	 * 
 	 *  Az MVC felosztasban segit nekunk kesobbb a GameController eltarolasa.
@@ -64,7 +63,6 @@ public class View extends JLabel implements Drawable {
 	public View() {
 		w = 500;
 		h = 500;
-		//this.baseGameController = baseGameController;
 		setOpaque(false);
 		setFocusable(false);
 	}
@@ -80,12 +78,12 @@ public class View extends JLabel implements Drawable {
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
 	public void drawAsteroidInfos(Graphics g) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
