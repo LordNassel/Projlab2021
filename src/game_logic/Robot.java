@@ -1,17 +1,17 @@
 package game_logic;
 
+import view.RobotView;
+
 import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
-
-import view.RobotView;
 
 /**
  * Egy mesterséges intelligencia által irányított Robot-ot reprezentál az aszteroidaövben.
  */
 public class Robot extends Movable {
 	/**
-	 * Random szám generáláshoz..
+	 * Random szám generáláshoz.
 	 */
 	Random rand = new Random();
 	
@@ -49,8 +49,8 @@ public class Robot extends Movable {
 
 
 	/**
-	 *  A robot egy egységnyivel mélyíti az aszteroida köpenyébe fúrt lyukat, ha az aszteroida
-	 *már teljesen át volt fúrva, akkor egy random szomszédos aszteroidára megy át.
+	 * A robot egy egységnyivel mélyíti az aszteroida köpenyébe fúrt lyukat, ha az aszteroida
+	 * már teljesen át volt fúrva, akkor egy random szomszédos aszteroidára megy át.
 	 */
 	@Override
     public void Step() {
@@ -65,7 +65,10 @@ public class Robot extends Movable {
 			Drill();
 		}
     }
-	
+
+	/**
+	 *  Létrehozza a Robot nézetét.
+	 */
 	@Override
 	public void createMovableView()
 	{
@@ -74,7 +77,6 @@ public class Robot extends Movable {
 		try {
 			this.movableView = new RobotView(x+60,y-60);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

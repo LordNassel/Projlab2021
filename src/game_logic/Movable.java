@@ -1,30 +1,30 @@
 package game_logic;
 
-import java.util.*;
-
-import view.AsteroidView;
-import view.SettlerView;
 import view.View;
-
 
 /**
  * A játékban előforduló, mozgóképes objektumokat reprezentálja egy mezőn. Tárolja az éppen aktuális helyét a pályán.
  */
 public abstract class Movable implements Steppable {
-	
-	protected View movableView;
+
 	/**
-	 * Egy segéd tagváltozó, ami megmondja,hogy az adott movableelbújt-e egy aszteroidában.
-	 * Ha az értéke true, akkorigen, ha false akkor nem
+	 * Movable nézete.
+	 */
+	protected View movableView;
+
+	/**
+	 * Egy segéd tagváltozó, ami megmondja, hogy az adott movable elbújt-e egy aszteroidában.
+	 * Ha az értéke true, akkor igen, ha false, akkor nem.
 	 */
 	protected boolean isHidden = false;
+
 	/**
-	 * Movable neve. Azonositast segit
+	 * Movable neve. Azonositast segiti.
 	 */
 	protected String movablesName;
 
 	/**
-	 * A movable aktuális pozíciója ahol éppen van
+	 * A movable aktuális mezője.
 	 */
 	protected Field currentField;
 
@@ -39,25 +39,23 @@ public abstract class Movable implements Steppable {
 	}	
 
 	/**
-	 * Konstruktor
+	 * Ha nincs elbújva a movable, akkor átmegy a kapott fieldre.
 	 * @param a
 	 */
 	public void Move(Field a)
 	{
-		
 		if(!isHidden)
 		{
-		this.currentField.RemovePlayer(this);
-		a.AcceptPlayer(this);
+			this.currentField.RemovePlayer(this);
+			a.AcceptPlayer(this);
 		}
 		else
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
-		
 	}
 
 	/**
-	 * Fúrja az aszteroidát körülvevő kérget aminek hatására eggyel csökkena kéreg (thickness).
-	 * Ha nincs már kérge az aszteroidánaknem történik semm
+	 * Fúrja az aszteroidát körülvevő kérget, aminek hatására eggyel csökken a kéreg (thickness).
+	 * Ha nincs már kérge az aszteroidának, akkor nem történik semmi.
 	 */
 	public void Drill()
 	{
@@ -70,31 +68,28 @@ public abstract class Movable implements Steppable {
 		}
 		else
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
-		
 	}
 
 	/**
-	 * Meghal, eltűnik az aszteroida övből (kiesika játékból) a RemovePlayer()fgv. hívással
+	 * Meghal a movable, eltűnik az aszteroida övből (kiesik a játékból) a RemovePlayer() függvény hívással.
 	 */
 	public void Die()
 	{
 		currentField.RemovePlayer(this);
 		Game.RemoveSteppable(this);
-			System.out.println("A(z) " + movablesName + " meghalt, beke poraira");
-		
+		System.out.println("A(z) " + movablesName + " meghalt, beke poraira");
 	}
 
 	/**
-	 * Movable-ként eléri a robbanása minek hatására meghívódik a Die() függvény.
+	 * Movable-ként eléri a robbanás, minek hatására meghívódik a Die() függvény.
 	 */
 	public void HitByExplosion()
 	{
 		Die();
-		
 	}
 	
 	/**
-	 * Movable-ként eléri a napviharaminek hatására rögtönmeghal ha nincs elbújva a Die() meghívásával.
+	 * Movable-ként eléri a napvihar, aminek hatására rögtön meghal, ha nincs elbújva a Die() meghívásával.
 	 */
 	public void HitBySunStorm()
 	{
@@ -109,9 +104,9 @@ public abstract class Movable implements Steppable {
 	 */
 	public abstract void Step();
 
-	
 	/**
-	 * Elbújik az aszteroidában ha az üregesezzel beállítja az isHide-otture-ra. Ha nem üres, akkor nem tud elbújni
+	 * Elbújik az aszteroidában, ha az üreges.
+	 * Ezzel beállítja az isHide-ot true-ra. Ha nem üres, akkor nem tud elbújni.
 	 */
 	public void Hide()
 	{
@@ -119,8 +114,7 @@ public abstract class Movable implements Steppable {
 	}
 	
 	/**
-	 * Getter
-	 * @return
+	 * Visszadja a movable aktuális mezőjét.
 	 */
 	public Field GetCurrentField()
 	{
@@ -128,7 +122,7 @@ public abstract class Movable implements Steppable {
 	}
 	
 	/**
-	 * Setter
+	 * Beállítja a movable aktuális mezőjét.
 	 * @param field
 	 */
 	public void SetCurrentField(Field field)
@@ -137,16 +131,16 @@ public abstract class Movable implements Steppable {
 	}
 
 	/**
-	 * Setter
+	 * Ha a movable el volt bújva, akkor előmászik.
+	 * Ha nem volt elbújva, akkor elbújik.
 	 */
 	public void SetIsHidden()
 	{
 		isHidden=!isHidden;
 	}
-	
-	
+
 	/**
-	 * Getter
+	 * Visszadja, hogy a movable el van-e bújva.
 	 * @return boolean
 	 */
 	public boolean GetIsHidden()
@@ -155,15 +149,21 @@ public abstract class Movable implements Steppable {
 	}
 	
 	/**
-	 * Getter
+	 * Visszadja movable nevét.
 	 * @return String
 	 */
 	public String Getname() {
 		return this.movablesName;
 	}
-	
+
+	/**
+	 * Absztrakt függvény nézet létrehozásához.
+	 */
 	public abstract void createMovableView();
-	
+
+	/**
+	 * Visszaadja a movable nézetét.
+	 */
 	public View getView()
 	{
 		return movableView;

@@ -2,30 +2,31 @@
 //Az ufo osztaly, egy AI iranyitott karater fuggvenyei, es osztalya
 package game_logic;
 
+import view.AlienView;
+
 import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
-
-import view.AlienView;
-import view.SettlerView;
 
 /**
  *  Az aszteroidaövben bóklászó földönkívüliek osztálya, amit egy mesterséges intelligencia vezérel.
  */
 public class Alien extends Movable  {
     /**
-     *  Ennek az ertelme limitalt, mert semmit nem tud kezdeni a nyersanyaggal. Mindegy vegulis elteszi a jatek logikaja szerint.
+     *  Ennek az ertelme limitalt, mert semmit nem tud kezdeni a nyersanyaggal.
+     *  Mindegy vegulis elteszi a jatek logikaja szerint.
      */
     private Vector<Material> items = new Vector<Material>();
 
     /**
-     *  mivel az aszteroida nem közli az aliennel hogy õ üres-e az alien eltárolja ezt. Ez az AI döntéshozását teszi lehetõvé.
+     *  Mivel az aszteroida nem közli az Alien-nel hogy õ üres-e az Alien eltárolja ezt.
+     *  Ez az AI döntéshozását teszi lehetõvé.
      */
     private boolean thisasteroidempty = false;
 
     /**
      *  Ez a default konstruktor. egyelore a field-el megegyezo.
-     *  F param, bolygon kell peldanyositani a movableket.
+     *  f param, bolygon kell peldanyositani a movableket.
      */
     public Alien(String name, Field f) {
         super(f);
@@ -35,7 +36,7 @@ public class Alien extends Movable  {
 
 
     /**
-     *  Az AI lépteti egy másik bolygóra vagy pedig bányászik a jelenlegin.
+     *  Az AI lépteti egy másik bolygóra, vagy pedig bányászik a jelenlegin.
      */
     public void Step(){
     	System.out.println("Alien step");
@@ -74,12 +75,19 @@ public class Alien extends Movable  {
         //elmegy egy random bolygora
         super.Move(neighbor.get(Dirgen.nextInt(neighbor.size())));
     }
-    
+
+    /**
+     *   A napvihar nincs hatással az Alien-re.
+     */
+    @Override
     public void HitBySunStorm()
     {
     	return;
     }
-    
+
+    /**
+     *  Létrehozza az Alien nézetét.
+     */
 	@Override
 	public void createMovableView()
 	{
@@ -88,7 +96,6 @@ public class Alien extends Movable  {
 		try {
 			this.movableView = new AlienView(x+110,y+10);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
