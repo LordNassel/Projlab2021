@@ -19,7 +19,7 @@ public class View extends JLabel implements Drawable {
 	 */
 	protected ImageIcon icon;
 
-	private static final long serialVersionUID = 4819391159119195619L;
+	//private static final long serialVersionUID = 4819391159119195619L;
 	/**
 	 * 
 	 *  Az MVC felosztasban segit nekunk kesobbb a GameController eltarolasa.

@@ -756,15 +756,23 @@ public class GameBoard extends JPanel {
 
 	public static void Wingame() {
 
-		Specialframe sf = new Specialframe();
-		sf.WinScreen();
+		SpecialFrame sf = new SpecialFrame();
+		try {
+			sf.WinScreen();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		frame.dispose();
 	}
 
 	public static void Losegame() {
 
-		Specialframe sf = new Specialframe();
-		sf.LoseScreen();
+		SpecialFrame sf = new SpecialFrame();
+		try {
+			sf.LoseScreen();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		frame.dispose();
 	}
 }

@@ -2,7 +2,7 @@ package game_logic;
 
 import view.AsteroidView;
 import view.Goal_AsteroidView;
-import view.Specialframe;
+import view.SpecialFrame;
 import view.View;
 
 import java.io.IOException;
