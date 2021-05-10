@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Every man's sky:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/Every_man_s_sky_jar</output-path>
+    <root id="archive" name="Every man's sky.jar">
+      <element id="module-output" name="Every man's sky" />
+    </root>
+  </artifact>
+</component>
