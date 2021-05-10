@@ -12,6 +12,10 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * A MenuView osztály.
+ * Pályaválasztáshoz
+ */
 public class MenuView extends JFrame {
 	
 	public MenuView()

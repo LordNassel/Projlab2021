@@ -6,10 +6,16 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * A SpecialFrame osztály.
+ * A Win és Lose Screenekért felel
+ */
 public class SpecialFrame extends View{
 
     JFrame frame;
+
     JPanel panel;
+
     protected Image image;
 
     public SpecialFrame(){

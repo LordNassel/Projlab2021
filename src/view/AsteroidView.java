@@ -1,28 +1,23 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
+import game_logic.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-import game_logic.*;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+/**
+ * Az Asteroid view osztaly
+ */
 public class AsteroidView extends View {
 
-
 	private Asteroid a;
-	
-	
+
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
+
     protected Image image;
 
 	public Asteroid getAsteroid() {
@@ -32,7 +27,10 @@ public class AsteroidView extends View {
 	public void setAsteroid(Asteroid t) {
 		this.a = t;
 	}
-	
+
+	/**
+	 * Kirajzolja az aszteroida információit (Név, kéreg vastagság, nyersanyag típus és szám)
+	 */
 	public void drawAsteroidInfos(Graphics g)
 	{
 		Graphics2D g2d = (Graphics2D) g;
@@ -67,6 +65,9 @@ public class AsteroidView extends View {
 		g2d.drawString(materialtype + numbofmat, x+10, y+170);
 	}
 
+	/**
+	 * Konstrukor.
+	 */
 	public AsteroidView(Asteroid a) throws IOException {
 		super();
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/asteroid.png"));
@@ -84,7 +85,10 @@ public class AsteroidView extends View {
 		} 
 		this.a = a;
 	}
-	
+
+	/**
+	 * Kirajzolja az Asteroid képét.
+	 */
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, x, y, null);

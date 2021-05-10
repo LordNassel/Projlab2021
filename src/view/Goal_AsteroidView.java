@@ -1,26 +1,21 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
+import game_logic.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-import game_logic.*;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+/**
+ * A Goal_Asteroid view osztaly
+ */
 public class Goal_AsteroidView extends AsteroidView {
 
 	private Goal_Asteroid a;
-	
-	
+
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
     
 	public Goal_Asteroid getAsteroid() {
@@ -30,7 +25,10 @@ public class Goal_AsteroidView extends AsteroidView {
 	public void setAsteroid(Goal_Asteroid t) {
 		this.a = t;
 	}
-	
+
+	/**
+	 * Kirajzolja az aszteroida információit (Név, kéreg vastagság, nyersanyag típus és szám)
+	 */
 	public void drawAsteroidInfos(Graphics g)
 	{
 		Graphics2D g2d = (Graphics2D) g;
@@ -65,6 +63,9 @@ public class Goal_AsteroidView extends AsteroidView {
 		g2d.drawString(materialtype + numbofmat, x+10, y+170);
 	}
 
+	/**
+	 * Konstrukor.
+	 */
 	public Goal_AsteroidView(Goal_Asteroid a) throws IOException {
 		super(a);
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/base.png"));
@@ -81,7 +82,10 @@ public class Goal_AsteroidView extends AsteroidView {
 		}
 		this.a = a;
 	}
-	
+
+	/**
+	 * Kirajzolja a Goal Asteroid képét.
+	 */
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, x, y, null);

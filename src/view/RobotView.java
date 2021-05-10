@@ -1,14 +1,16 @@
 package view;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import game_logic.*;
+import game_logic.Asteroid;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+/**
+ * A Robot view osztaly
+ */
 public class RobotView extends View {
 	private static final long serialVersionUID = 7891103595669365281L;
 
@@ -23,6 +25,9 @@ public class RobotView extends View {
 		this.a = t;
 	}
 
+	/**
+	 * Konstrukor, megkapja a koordinátákat.
+	 */
 	public RobotView(int x, int y) throws IOException {
 		super();
 		BufferedImage image = ImageIO.read(RobotView.class.getResource("/kep/robot.png"));
@@ -39,7 +44,10 @@ public class RobotView extends View {
 		this.x=x;
 		this.y=y;
 	}
-	
+
+	/**
+	 * Kirajzolja a Robot képét.
+	 */
 	@Override
 	public void draw(Graphics g)
 	{

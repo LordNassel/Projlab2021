@@ -1,21 +1,22 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import game_logic.*;
+import game_logic.Teleport;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+/**
+ * A Teleport view osztaly
+ */
 public class TeleportView extends View {
+
 	private static final long serialVersionUID = 7891103595669365281L;
 
 	private Teleport s;
+
 	protected Image image;
 
 	public Teleport getSettler() {
@@ -26,6 +27,9 @@ public class TeleportView extends View {
 		this.s = t;
 	}
 
+	/**
+	 * Konstrukor, megkapja a koordinátákat.
+	 */
 	public TeleportView(int x, int y) throws IOException {
 		super();
 		BufferedImage image = ImageIO.read(SettlerView.class.getResource("/kep/teleport.png"));
@@ -43,7 +47,9 @@ public class TeleportView extends View {
 		this.y=y;
 	}
 
-	
+	/**
+	 * Kirajzolja a Teleport képét.
+	 */
 	@Override
 	public void draw(Graphics g)
 	{
