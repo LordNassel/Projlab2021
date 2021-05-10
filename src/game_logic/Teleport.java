@@ -25,7 +25,7 @@ public class  Teleport extends Field {
     private boolean IsSunStroke;
 
     /**
-     * Az aktuális teleport párjaként szolgáló teleport,
+     * Az aktuális teleport párjaként szolgáló teleport.
      */
     private Teleport Pair;
 
@@ -82,26 +82,26 @@ public class  Teleport extends Field {
     }
 
     /**
-     * Visszaadja, hogy teleport aktív-e.
+     * Visszaadja, hogy a teleport aktív-e.
      */
     public boolean getIsActive(){
         return IsActive;
     }
 
     /**
-     * Beállítja, hogy teleport aktív-e.
+     * Beállítja, hogy a teleport aktív-e.
      */
     public void setIsActive() { 
         IsActive = !IsActive;
     }
 
     /**
-     * Visszaadja, hogy teleportot érte-e napszél.
+     * Visszaadja, hogy a teleportot érte-e napszél.
      */
     public boolean getIsSunStroke() {return IsSunStroke;}
 
     /**
-     * Beállítja, hogy teleportot érte-e napszél.
+     * Beállítja, hogy a teleportot érte-e napszél.
      */
     public void setIsSunStroke() {IsSunStroke = !IsSunStroke;}
 

@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Az Asteroid view osztaly
@@ -88,7 +87,7 @@ public class AsteroidView extends View {
 	}
 
 	/**
-	 * Konstrukor.
+	 * Konstruktor.
 	 */
 	public AsteroidView(Asteroid a) throws IOException {
 		super();

@@ -1,7 +1,5 @@
 package view;
 
-import game_logic.Teleport;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
