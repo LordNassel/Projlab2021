@@ -63,6 +63,8 @@ public class MenuView extends JFrame {
 		maps.add("2. Uranium explode test map");
 		maps.add("3. Move with teleport test map");
 		maps.add("4. Crafting test map");
+		maps.add("5. Build base test map");
+		maps.add("6. Put back material test map");
 		
 		JList<String> jlist = new JList<>(maps);
 		JTextField choosen = new JTextField("");
@@ -91,6 +93,10 @@ public class MenuView extends JFrame {
         	selected=3;
         else if(choosen.getText().equals("4. Crafting test map"))
         	selected=4;
+        else if(choosen.getText().equals("5. Build base test map"))
+        	selected=5;
+        else if(choosen.getText().equals("6. Put back material test map"))
+        	selected=6;
 		return selected;
 	}
 	

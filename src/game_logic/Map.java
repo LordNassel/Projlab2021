@@ -100,4 +100,13 @@ public class Map implements Steppable {
 	 *  Visszaadja az aszteroidaövben uralkodo sugarzas nagysagat.
 	 */
 	public int getSugarzas(){return sugarzas;}
+	
+	/**
+	 * Bellitja a sugarzast a parameterben adott ertekre
+	 * @param sugarzas
+	 */
+	public void setSugarzas(int sugarzas)
+	{
+		this.sugarzas++;
+	}
 }

@@ -150,7 +150,7 @@ public class Asteroid extends Field{
 	 * @param M
 	 */
 	public void GetHidden(Movable M) {
-		if(CoreMaterial.isEmpty())
+		if(CoreMaterial.isEmpty() && this.Thickness == 0)
 		{
 			M.SetIsHidden();
 			System.out.println("Success\n");
