@@ -15,7 +15,12 @@ import java.util.Vector;
  * Pályaválasztáshoz
  */
 public class MenuView extends JFrame {
-	
+
+	/**
+	 * Konstrukor.
+	 * Meghívja a selectMap() függvényt.
+	 * Legenerálja és elindítja a kiválasztott pályát.
+	 */
 	public MenuView()
 	{
 		JButton start_game = new JButton("Start Game");
@@ -52,7 +57,10 @@ public class MenuView extends JFrame {
 			this.dispose();
 		});
 	}
-	
+
+	/**
+	 * A játszani kivánt pálya kiválasztása.
+	 */
 	public int selectMap()
 	{
 		int selected = 0;
