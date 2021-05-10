@@ -14,16 +14,28 @@ import java.util.ArrayList;
  */
 public class AsteroidView extends View {
 
+	/**
+	 * A kirajzolni kívánt aszteroida.
+	 */
 	private Asteroid a;
 
     private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
 
+	/**
+	 * Az Asteroid képe.
+	 */
     protected Image image;
 
+	/**
+	 * Visszaadja a kirajzolni kívánt aszteroidát.
+	 */
 	public Asteroid getAsteroid() {
 		return a;
 	}
 
+	/**
+	 * Beállítja a kirajzolni kívánt aszteroidát.
+	 */
 	public void setAsteroid(Asteroid t) {
 		this.a = t;
 	}
@@ -36,14 +48,21 @@ public class AsteroidView extends View {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.black);
 		g2d.setFont(new Font("Verdana", Font.BOLD, 13));
-		/* Aszteroida neve */
+
+		/**
+		 * Aszteroida neve
+		 */
 		g2d.drawString(a.Getname(), x+15, y+130);
 		
-		/* Aszteroida vastagsaga */
+		/**
+		 * Aszteroida vastagsaga
+		 */
 		String thickness = String.valueOf(a.getThickness());
 		g2d.drawString("Thickness: "+thickness, x+10, y+150);
 		
-		/* Aszteroidaban levo nyersanyag es szama */
+		/**
+		 * Aszteroidaban levo nyersanyag es szama
+		 */
 		String materialtype = "";
 		if(!a.getMats().isEmpty())
 		{

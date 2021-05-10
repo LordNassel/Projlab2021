@@ -3,14 +3,12 @@ package view;
 import game_logic.Game;
 import game_logic.TempGenWorlds;
 
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.io.IOException;
-import java.util.Vector;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.*;
+import java.io.IOException;
+import java.util.Vector;
 
 /**
  * A MenuView osztály.

@@ -15,9 +15,12 @@ public class SettlerView extends View {
 
 	private static final long serialVersionUID = 7891103595669365281L;
 
-	private Settler s;
-
+	/**
+	 * A Settler képe.
+	 */
 	protected Image image;
+
+	private Settler s;
 
 	public Settler getSettler() {
 		return s;

@@ -11,13 +11,24 @@ import java.io.IOException;
  * A Win és Lose Screenekért felel
  */
 public class SpecialFrame extends View{
-
+    /**
+     * Frame.
+     */
     JFrame frame;
 
+    /**
+     * Panel.
+     */
     JPanel panel;
 
+    /**
+     * Képernyõre kirajzolt kép.
+     */
     protected Image image;
 
+    /**
+     * Konstrukor.
+     */
     public SpecialFrame(){
         frame = new JFrame();
         panel = new JPanel() {
@@ -33,7 +44,9 @@ public class SpecialFrame extends View{
         frame.setVisible(true);
     }
 
-
+    /**
+     * Win Screen
+     */
     public void WinScreen() throws IOException {
         try{
             BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/youWin.png"));
@@ -59,6 +72,9 @@ public class SpecialFrame extends View{
         }
     }
 
+    /**
+     * Lose Screen
+     */
     public void LoseScreen() throws IOException {
         try{
             BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/youLost.png"));

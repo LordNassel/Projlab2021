@@ -15,9 +15,12 @@ public class TeleportView extends View {
 
 	private static final long serialVersionUID = 7891103595669365281L;
 
-	private Teleport s;
-
+	/**
+	 * A Teleport képe.
+	 */
 	protected Image image;
+
+	private Teleport s;
 
 	public Teleport getSettler() {
 		return s;

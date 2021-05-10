@@ -14,8 +14,12 @@ import java.io.IOException;
 public class RobotView extends View {
 	private static final long serialVersionUID = 7891103595669365281L;
 
-	private Asteroid a;
+	/**
+	 * A Robot képe.
+	 */
 	protected Image image;
+
+	private Asteroid a;
 
 	public Asteroid getTile() {
 		return a;

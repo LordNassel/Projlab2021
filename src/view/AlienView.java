@@ -14,10 +14,22 @@ import java.io.IOException;
 public class AlienView extends View {
 	private static final long serialVersionUID = 7891103595669365281L;
 
-	private Asteroid a;
+	/**
+	 * Az Alien képe.
+	 */
 	protected Image image;
+
+	/**
+	 *  X koordináta.
+	 */
 	protected int posX;
+
+	/**
+	 *  Y koordináta.
+	 */
 	protected int posY;
+
+	private Asteroid a;
 
 	public Asteroid getTile() {
 		return a;
