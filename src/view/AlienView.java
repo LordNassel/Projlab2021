@@ -12,32 +12,16 @@ import java.io.IOException;
  * Az Alien view osztaly
  */
 public class AlienView extends View {
-	private static final long serialVersionUID = 7891103595669365281L;
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5543443860155187335L;
+	
 	/**
 	 * Az Alien képe.
 	 */
 	protected Image image;
-
-	/**
-	 *  X koordináta.
-	 */
-	protected int posX;
-
-	/**
-	 *  Y koordináta.
-	 */
-	protected int posY;
-
-	private Asteroid a;
-
-	public Asteroid getTile() {
-		return a;
-	}
-
-	public void setTile(Asteroid t) {
-		this.a = t;
-	}
 
 	/**
 	 * Konstrukor, megkapja a koordinátákat.
@@ -46,7 +30,6 @@ public class AlienView extends View {
 		super();
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/alien.png"));
 		ImageIcon tmp = new ImageIcon(image);
-		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(75, 75, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);
@@ -55,8 +38,8 @@ public class AlienView extends View {
 			icon = tmp;
 			this.setIcon(icon);
 		}
-		this.posX=x;
-		this.posY=y;
+		this.x=x;
+		this.y=y;
 	}
 
 	/**
@@ -65,7 +48,7 @@ public class AlienView extends View {
 	@Override
 	public void draw(Graphics g)
 	{
-		g.drawImage(image, posX, posY, null);
+		g.drawImage(image, x, y, null);
 	}
 }
 

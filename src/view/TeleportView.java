@@ -13,22 +13,15 @@ import java.io.IOException;
  */
 public class TeleportView extends View {
 
-	private static final long serialVersionUID = 7891103595669365281L;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3769115663583807203L;
+	
 	/**
 	 * A Teleport képe.
 	 */
 	protected Image image;
-
-	private Teleport s;
-
-	public Teleport getSettler() {
-		return s;
-	}
-
-	public void setSettler(Teleport t) {
-		this.s = t;
-	}
 
 	/**
 	 * Konstrukor, megkapja a koordinátákat.
@@ -37,7 +30,6 @@ public class TeleportView extends View {
 		super();
 		BufferedImage image = ImageIO.read(SettlerView.class.getResource("/kep/teleport.png"));
 		ImageIcon tmp = new ImageIcon(image);
-		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(75, 75, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);

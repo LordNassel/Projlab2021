@@ -13,22 +13,15 @@ import java.io.IOException;
  */
 public class SettlerView extends View {
 
-	private static final long serialVersionUID = 7891103595669365281L;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6360001034753594970L;
+	
 	/**
 	 * A Settler képe.
 	 */
 	protected Image image;
-
-	private Settler s;
-
-	public Settler getSettler() {
-		return s;
-	}
-
-	public void setSettler(Settler t) {
-		this.s = t;
-	}
 
 	/**
 	 * Konstrukor, megkapja a koordinátákat.
@@ -37,7 +30,6 @@ public class SettlerView extends View {
 		super();
 		BufferedImage image = ImageIO.read(SettlerView.class.getResource("/kep/settler.png"));
 		ImageIcon tmp = new ImageIcon(image);
-		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(75, 75, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);

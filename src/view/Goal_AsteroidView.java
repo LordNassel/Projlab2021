@@ -19,8 +19,6 @@ public class Goal_AsteroidView extends AsteroidView {
 	 */
 	private Goal_Asteroid a;
 
-    private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
-
 	/**
 	 * Visszaadja a kirajzolni kívánt Goal_Asteroid-ot.
 	 */
@@ -61,13 +59,13 @@ public class Goal_AsteroidView extends AsteroidView {
 		String materialtype = "";
 		if(!a.getMats().isEmpty())
 		{
-			if(a.getMats().get(0) instanceof Uranium)
+			if(a.getMats().get(0).getname().equals("Uranium"))
 				materialtype = "Uranium: ";
-			else if(a.getMats().get(0) instanceof Iron)
+			else if(a.getMats().get(0).getname().equals("Iron"))
 				materialtype = "Iron: ";
-			else if(a.getMats().get(0) instanceof Coal)
+			else if(a.getMats().get(0).getname().equals("Coal"))
 				materialtype = "Coal: ";
-			else if(a.getMats().get(0)instanceof Ice)
+			else if(a.getMats().get(0).getname().equals("Ice"))
 				materialtype = "Ice: ";
 		}
 		else
@@ -87,7 +85,6 @@ public class Goal_AsteroidView extends AsteroidView {
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/base.png"));
 
 		ImageIcon tmp = new ImageIcon(image);
-		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(110, 110, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);

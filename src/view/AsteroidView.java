@@ -15,11 +15,14 @@ import java.util.ArrayList;
 public class AsteroidView extends View {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2284815557747503978L;
+
+	/**
 	 * A kirajzolni kívánt aszteroida.
 	 */
 	private Asteroid a;
-
-    private ArrayList<SettlerView> parts = new ArrayList<SettlerView>();
 
 	/**
 	 * Az Asteroid képe.
@@ -93,7 +96,6 @@ public class AsteroidView extends View {
 		if(a.getSunSide() == true)
 			image = ImageIO.read(AsteroidView.class.getResource("/kep/sunside_asteroid.png"));
 		ImageIcon tmp = new ImageIcon(image);
-		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(110, 110, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);

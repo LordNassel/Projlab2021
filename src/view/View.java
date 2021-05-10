@@ -14,14 +14,14 @@ import java.awt.*;
 public class View extends JLabel implements Drawable {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6429772857027251567L;
+
+	/**
 	 * A felhasznalt kepeket taroljuk itt, minden view-hoz egy kulon .png kiterjesztesu fajlt.
 	 */
 	protected ImageIcon icon;
-
-	/**
-	 *  Az MVC felosztasban segit nekunk kesobbb a GameController eltarolasa.
-	 */
-	protected Game baseGameController;
 
 	/**
 	 *  X koordináta.
@@ -32,28 +32,6 @@ public class View extends JLabel implements Drawable {
 	 *  Y koordináta.
 	 */
 	protected int y;
-
-	/**
-	 *  Szélesség.
-	 */
-	protected int w;
-
-	/**
-	 *  Magasság.
-	 */
-	protected int h;
-
-	/**
-	 * Megjelenitesnel az egyes elemek poziciojat allitja be ezzel a metodus, mivel az ososztalyban van definialva,
-	 * igy az egyes szarmaztatott osztalyok
-	 * szelessegt es magassagat erjuk el.
-	 * 
-	 * @param x 
-	 * @param y 
-	 */
-	public void setPos(int x, int y) {
-		super.setBounds(x, y, w, h);
-	}
 
 	/**
 	 * Visszaadja az X koordinátát.
@@ -89,19 +67,9 @@ public class View extends JLabel implements Drawable {
 	 * Konstruktor.
 	 */
 	public View() {
-		w = 500;
-		h = 500;
 		setOpaque(false);
 		setFocusable(false);
 	}
-
-	/**
-	 * Kirajzolasert felelos fuggveny, mely eloszor validalja, majd ujrarajzolja a grafikus komponenst.
-	 */
-	/*public void Draw() {
-		this.getParent().validate();
-		this.getParent().repaint();
-	}*/
 
 	/**
 	 * Textúra kirajzolasa.

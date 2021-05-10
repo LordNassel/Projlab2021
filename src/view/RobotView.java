@@ -12,22 +12,15 @@ import java.io.IOException;
  * A Robot view osztaly
  */
 public class RobotView extends View {
-	private static final long serialVersionUID = 7891103595669365281L;
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1428911138691355996L;
 	/**
 	 * A Robot képe.
 	 */
 	protected Image image;
-
-	private Asteroid a;
-
-	public Asteroid getTile() {
-		return a;
-	}
-
-	public void setTile(Asteroid t) {
-		this.a = t;
-	}
 
 	/**
 	 * Konstrukor, megkapja a koordinátákat.
@@ -36,7 +29,6 @@ public class RobotView extends View {
 		super();
 		BufferedImage image = ImageIO.read(RobotView.class.getResource("/kep/robot.png"));
 		ImageIcon tmp = new ImageIcon(image);
-		Image img = tmp.getImage();
 		Image newimg = image.getScaledInstance(75, 75, Image.SCALE_SMOOTH);
 		this.image = newimg;
 		tmp = new ImageIcon(newimg);

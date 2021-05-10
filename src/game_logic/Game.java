@@ -10,16 +10,6 @@ import java.util.ArrayList;
 public class Game {
 
 	/**
-	 *  .
-	 */
-	public static boolean button=false;
-
-	/**
-	 *  .
-	 */
-	private static Game instance = null;
-
-	/**
 	 * Az aktív telepest.
 	 */
 	volatile private Settler activeSettler;
@@ -96,7 +86,6 @@ public class Game {
     			}
     			else 
     				steppableList.get(i).Step();
-    			button=false;
     		}
     		number++;
     	}
@@ -144,13 +133,6 @@ public class Game {
 			return false;
 		return true;
 	}
-    
-    public static Game getInstance()
-    {
-    	if(instance == null)
-    		instance = new Game();
-    	return instance;
-    }
 
 	/**
 	 * Visszaadja az aktuális pályát.
@@ -256,19 +238,6 @@ public class Game {
     {
     	getActiveSettler().Build();
     }
-
-	/**
-	 * Meghívja az aktív telepes függvényét, mely eltárolja a kibányászott nyersanyagot az inventory-ban.
-	 */
-	public void StoreAction(Material m)
-	{
-		getActiveSettler().Store(m);
-	}
-
-	/**
-	 *
-	 */
-	public void ExplodeAction()	{	}
 
 	/**
 	 *  Visszaadja az aszteroidaövben uralkodo sugarzas nagysagat.
