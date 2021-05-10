@@ -42,19 +42,6 @@ public class SettlerView extends View {
 		this.y=y;
 	}
 
-	/*public void drawSettlerInfos(Graphics g)
-	{
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.black);
-		g2d.setFont(new Font("Verdana", Font.BOLD, 13));
-		/* Settler neve */
-		/*g2d.drawString(s.Getname(), x+1000, y+130);
-		
-		/* Aszteroida vastagsaga */
-		//String thickness = String.valueOf(s.getThickness());
-		//g2d.drawString("Thickness: "+thickness, x+10, y+150);
-	/*}*/
-
 	/**
 	 * Kirajzolja a Settler képét.
 	 */

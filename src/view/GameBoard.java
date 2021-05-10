@@ -15,41 +15,103 @@ import java.util.Vector;
  * Ezen kerülnek elhelyezésre a panelek, labelek és View leszármazottak.
  */
 public class GameBoard extends JPanel {
+	/**
+	 * Nezethez tartozo game
+	 */
 	private static Game game;
+	/**
+	 * Nezethez tartozo frame
+	 */
 	private static GameFrame frame;
+	/**
+	 * Kirajzolando field-ek listaja
+	 */
 	private List<AsteroidView> fieldstoDraw = new ArrayList<>();
+	/**
+	 * Kirajzolando movable-k listaja
+	 */
 	private List<View> movablestoDraw = new ArrayList<>();
+	/**
+	 * Kirajzolando teleportok listaja
+	 */
 	private List<View> teleportstoDraw = new ArrayList<>();
+	/**
+	 * A Move() action gombja
+	 */
 	private JButton move = new JButton("Move");
+	/**
+	 * A Drill() action gombja
+	 */
 	private JButton drill = new JButton("Drill");
-	private Vector<Field> fieldlist = new Vector<Field>();
-	JButton mine = new JButton("Mine");
-	JButton craft_robot = new JButton("Craft Robot");
-	JButton craft_teleport = new JButton("Craft Teleports");
-	JButton hide = new JButton("Hide");
-	JButton putback = new JButton("Put back material");
-	JButton activate_teleport = new JButton("Activate teleport");
-	JButton store_in_base = new JButton("Store material on base");
-	JButton build = new JButton("Build base");
+	/**
+	 * A Mine() action gombja
+	 */
+	private JButton mine = new JButton("Mine");
+	/**
+	 * A Craft:Robot() action gombja
+	 */
+	private JButton craft_robot = new JButton("Craft Robot");
+	/**
+	 * A Craft_Teleport() action gombja
+	 */
+	private JButton craft_teleport = new JButton("Craft Teleports");
+	/**
+	 * A Hide() action gombja
+	 */
+	private JButton hide = new JButton("Hide");
+	/**
+	 * A Put() action gombja (visszarakja a nyersanyagot)
+	 */
+	private JButton putback = new JButton("Put back material");
+	/**
+	 * Az ActivateTeleport() action gombja
+	 */
+	private JButton activate_teleport = new JButton("Activate teleport");
+	/**
+	 * A base aszteroidan nyersanyag eltarolas action gombja
+	 */
+	private JButton store_in_base = new JButton("Store material on base");
+	/**
+	 * A bazis felepites action gombja
+	 */
+	private JButton build = new JButton("Build base");
 
 	/**
 	 * Az inventory gomb.
 	 */
-	JButton inventoryButton = new JButton("Inventory");
+	private JButton inventoryButton = new JButton("Inventory");
+	/**
+	 * Bal oldali panel, ahol a jatekter kirajzolodik
+	 */
 	JPanel asteroids = new JPanel(null);
+	/**
+	 * Jobb oldali panel, ahol a gombok es egyeb informaciok talalhatok talalhatok
+	 */
 	JPanel buttons = new JPanel(new GridBagLayout());
+	/**
+	 * Aktiv jatekost kiiro JLabel
+	 */
 	static JLabel active_player = new JLabel();
+	/**
+	 * Az aktic jatekos poziciojat kiiro JLabel
+	 */
 	static JLabel player_pos = new JLabel();
+	/**
+	 * Jobb oldali panelen belul a gombok listaja
+	 */
 	JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
 
 	/**
 	 * Az inventory label.
 	 */
 	JLabel inventory = new JLabel("");
+	/**
+	 * Tarolja ha az aktiv jatekos lepett-e a korben. Ha igen true
+	 */
 	volatile private static boolean clicked = false;
 
 	/**
-	 * Konstrukor.
+	 * Konstrukor. Bellitja a Panelt
 	 */
 	GameBoard(Game game, GameFrame frame) throws IOException {
 		this.game = game;
@@ -82,18 +144,23 @@ public class GameBoard extends JPanel {
 		buttonsCentered.add(inventoryButton, BorderLayout.SOUTH);
 
 		actionClickListeners();
-
-
 	}
 
+	/**
+	 * Kirajzolja az egyes aszteridak ala a vastagsagukat es belsejeben tartolt nyersanyag mennyiseget
+	 * @param g
+	 */
 	public void drawAsteroidsInfo(Graphics g) {
 		for (int i = 0; i < fieldstoDraw.size(); i++) {
 			fieldstoDraw.get(i).drawAsteroidInfos(g);
 		}
 	}
 
-
-	
+	/**
+	 * A jatek indulasakor elhelgyezi sorban egymas utan a mapbol bolvasott aszteroidakat.
+	 * Ha elerte az 5-ot, akkor uj sort kezd
+	 * @param game
+	 */
 	private void initAsteroids(Game game)
 	{
 		Map map = game.getMap();
@@ -121,6 +188,11 @@ public class GameBoard extends JPanel {
 		}
 	}
 
+	/**
+	 * Az aszteroidaovben elofordulo dolgok inicializalasa
+	 * @param game
+	 * @throws IOException
+	 */
 	private void initDrawable(Game game) throws IOException //init map lényegében
 	{
 		fieldstoDraw.clear();
@@ -162,7 +234,6 @@ public class GameBoard extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
 		try {
 			initDrawable(this.game);
 			g.setColor(new Color(250, 240, 170));
@@ -176,6 +247,10 @@ public class GameBoard extends JPanel {
 		}
 	}
 
+	/**
+	 * A beovlasott palya tartalmat kirajzolja a screenre
+	 * @param g
+	 */
 	public void drawMap(Graphics g)
 	{
 		Graphics2D g2d = (Graphics2D) g;
@@ -185,14 +260,12 @@ public class GameBoard extends JPanel {
 		for (int i = 0; i < fieldstoDraw.size(); i++)
 		{
 			fieldstoDraw.get(i).draw(g);;
-
 		}
 		
 		/* Karakterek kirajzolása */
 		for(int y=0; y<movablestoDraw.size(); y++)
 		{
 			movablestoDraw.get(y).draw(g);;
-			//view.draw(g);
 		}
 		
 		/* Teleportok kirajolása */
@@ -202,6 +275,10 @@ public class GameBoard extends JPanel {
 		}
 	}
 
+	/**
+	 * Szomszedos aszteroidakat egy vonal koti ossze
+	 * @param g
+	 */
 	public void drawLines(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 
@@ -226,7 +303,11 @@ public class GameBoard extends JPanel {
 		}
 	}
 
+	/**
+	 * Kulonbozo gobnyomasok hatasara torteno akciok kezelese
+	 */
 	public void actionClickListeners() {
+		/* Mozgas kezelese*/
 		move.addActionListener(e -> {
 			Vector<String> neighbors_name = new Vector<String>();
 			Vector<Field> neighbors = new Vector<Field>();
@@ -288,6 +369,7 @@ public class GameBoard extends JPanel {
 			}
 		});
 
+		// Furas
 		drill.addActionListener(e ->{
 			int thick = ((Asteroid) game.getActiveSettler().GetCurrentField()).getThickness();
 			game.DrillAction();
@@ -305,6 +387,7 @@ public class GameBoard extends JPanel {
 			this.repaint();
 		});
 
+		//Banyaszas
 		mine.addActionListener(e ->{
 			int matNum = ((Asteroid) game.getActiveSettler().GetCurrentField()).getMats().size();
 			game.MineAction();
@@ -326,6 +409,8 @@ public class GameBoard extends JPanel {
 			clicked=true;
 			this.repaint();
 		});
+		
+		//Robot craftolas
 		craft_robot.addActionListener(e -> {
 			Coal coal = new Coal();
 
@@ -346,6 +431,7 @@ public class GameBoard extends JPanel {
 			this.repaint();
 		});
 
+		//Teleport craftolas
 		craft_teleport.addActionListener(e -> {
 			Uranium uran = new Uranium();
 
@@ -379,6 +465,7 @@ public class GameBoard extends JPanel {
 			this.repaint();
 		});
 
+		//Bujas
 		hide.addActionListener(e ->{
 			game.HideAction();
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
@@ -406,6 +493,7 @@ public class GameBoard extends JPanel {
 			this.repaint();
 		});
 
+		//Nyersanyag vissza helyezes
 		putback.addActionListener(e ->{
 			List<Material> inInventory = new ArrayList<Material>();
 			Vector<Material> mat = new Vector<Material>();
@@ -490,6 +578,7 @@ public class GameBoard extends JPanel {
 			this.repaint();
 		});
 
+		// Teleport aktivalas
 		activate_teleport.addActionListener(e ->{
 			
 			List<Teleport> teleportInventory = new ArrayList<Teleport>();
@@ -558,6 +647,7 @@ public class GameBoard extends JPanel {
 			this.repaint();
 		});
 
+		// Base aszteroidan nyersanyag gyujtese -> lereakas
 		store_in_base.addActionListener(e ->{
 			List<Material> inInventory = new ArrayList<Material>();
 			Vector<Material> mat = new Vector<Material>();
@@ -627,6 +717,7 @@ public class GameBoard extends JPanel {
 			this.repaint();
 		});
 		
+		// Base felepitese
 		build.addActionListener(e ->{
 			game.BuildAction();
 			JPanel jp = new JPanel(new BorderLayout(5, 5));
@@ -686,6 +777,11 @@ public class GameBoard extends JPanel {
 
 	}
 
+	/**
+	 * Nyersanyag megfeleltetes neve es tipusa kozott
+	 * @param M
+	 * @return
+	 */
 	private int[] MaterialDictionary(List<Material> M) {
 
 		int[] temp = new int[5];
@@ -699,7 +795,9 @@ public class GameBoard extends JPanel {
 
 	}
 
-
+	/**
+	 * Jatekos kore, valamilyen actiont végre kell hajtania
+	 */
 	public static void selectAction() {
 		active_player.setText("Active player: " + game.getActiveSettler().Getname());
 		player_pos.setText("Position: " + game.getActiveSettler().GetCurrentField().Getname());
@@ -714,11 +812,17 @@ public class GameBoard extends JPanel {
 		return temp;
 	}
 
-
+	/**
+	 * fieldstoDraw getterje
+	 * @return
+	 */
 	public List<AsteroidView> getFieldstoDraw() {
 		return fieldstoDraw;
 	}
 
+	/**
+	 * Gyozelem eseten win kepernyo megjelenitese
+	 */
 	public static void Wingame() {
 
 		SpecialFrame sf = new SpecialFrame();
@@ -730,6 +834,9 @@ public class GameBoard extends JPanel {
 		frame.dispose();
 	}
 
+	/**
+	 * Vereseg eseten lose kepernyo megjelenitese
+	 */
 	public static void Losegame() {
 
 		SpecialFrame sf = new SpecialFrame();
