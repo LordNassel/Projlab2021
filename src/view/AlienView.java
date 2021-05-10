@@ -1,21 +1,35 @@
 package view;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import game_logic.*;
+import game_logic.Asteroid;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+/**
+ * Az Alien view osztaly
+ */
 public class AlienView extends View {
 	private static final long serialVersionUID = 7891103595669365281L;
 
-	private Asteroid a;
+	/**
+	 * Az Alien képe.
+	 */
 	protected Image image;
+
+	/**
+	 *  X koordináta.
+	 */
 	protected int posX;
+
+	/**
+	 *  Y koordináta.
+	 */
 	protected int posY;
+
+	private Asteroid a;
 
 	public Asteroid getTile() {
 		return a;
@@ -25,6 +39,9 @@ public class AlienView extends View {
 		this.a = t;
 	}
 
+	/**
+	 * Konstrukor, megkapja a koordinátákat.
+	 */
 	public AlienView(int x, int y) throws IOException {
 		super();
 		BufferedImage image = ImageIO.read(AsteroidView.class.getResource("/kep/alien.png"));
@@ -41,7 +58,10 @@ public class AlienView extends View {
 		this.posX=x;
 		this.posY=y;
 	}
-	
+
+	/**
+	 * Kirajzolja az Alien képét.
+	 */
 	@Override
 	public void draw(Graphics g)
 	{

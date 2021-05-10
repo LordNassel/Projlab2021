@@ -1,36 +1,19 @@
 package view;
 
-import java.awt.BasicStroke;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Stroke;
+import game_logic.*;
+
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Vector;
 
-import game_logic.*;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
+/**
+ * Ezen kerülnek elhelyezésre a panelek, labelek és View leszármazottak.
+ */
 public class GameBoard extends JPanel {
 	private static Game game;
 	private static GameFrame frame;
@@ -48,18 +31,26 @@ public class GameBoard extends JPanel {
 	JButton activate_teleport = new JButton("Activate teleport");
 	JButton store_in_base = new JButton("Store material on base");
 	JButton build = new JButton("Build base");
-	//Az inventory gomv
+
+	/**
+	 * Az inventory gomb.
+	 */
 	JButton inventoryButton = new JButton("Inventory");
 	JPanel asteroids = new JPanel(null);
 	JPanel buttons = new JPanel(new GridBagLayout());
 	static JLabel active_player = new JLabel();
 	static JLabel player_pos = new JLabel();
 	JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
-	//Az inventory label
+
+	/**
+	 * Az inventory label.
+	 */
 	JLabel inventory = new JLabel("");
 	volatile private static boolean clicked = false;
 
-
+	/**
+	 * Konstrukor.
+	 */
 	GameBoard(Game game, GameFrame frame) throws IOException {
 		this.game = game;
 		this.frame = frame;

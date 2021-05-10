@@ -3,10 +3,9 @@ package game_logic;
 import java.util.Scanner;
 
 public class Test {
-	//Van egy kulon beolvaso fgv
-
-	//A mozgasteszt
-
+	/**
+	 * Mozgas teszt
+	 */
 	private void MoveTest()
 	{
 		System.out.println("Mozgas teszt indul");
@@ -32,7 +31,10 @@ public class Test {
 		
 		this.TestMgr();
 	}
-	//A banyaszasi teszt
+
+	/**
+	 * Banyaszas teszt
+	 */
 	private void MineTest()
     {
         System.out.println("Furas Teszt indul");
@@ -62,7 +64,9 @@ public class Test {
         }
     }
 	
-	//a telepes fur
+	/**
+	 * Furas teszt
+	 */
 	private void SettlerDrillTest()
 	{
 		Asteroid a;
@@ -126,7 +130,10 @@ public class Test {
 		}
 
 	}
-	//Letrejon egy robot
+
+	/**
+	 * Robot craftolas teszt
+	 */
 	private void CraftRobotTest()
 	{
 		System.out.println("CraftRobotTest Started\n");
@@ -157,7 +164,10 @@ public class Test {
 		}
 
 	}
-	//Letrejon egy teleport
+
+	/**
+	 * Teleport craftolas teszt
+	 */
 	private void CraftTeleportTest()
 	{
 		System.out.println("CraftTeleportTest Started\n");
@@ -189,7 +199,10 @@ public class Test {
 			this.TestMgr();
 		}
 	}
-	//Elrejtozes ellenorzese
+
+	/**
+	 * Elrejtozes teszt
+	 */
 	private void HideTest()
 	{
 		System.out.println("Bújás teszt\n");
@@ -219,7 +232,10 @@ public class Test {
 			this.TestMgr();		
 		}
 	}
-	//A jatek veget meghatarozo teszt
+
+	/**
+	 * Jatek megnyerese teszt
+	 */
 	private void WinGameTest() 
 	{
 		System.out.println("Nyert játszma teszt\n");
@@ -244,7 +260,10 @@ public class Test {
 			this.TestMgr();	
 		}
 	}
-	//Elvesztettem a jatekot teszt
+
+	/**
+	 * Jatek elvesztese teszt
+	 */
 	private void LoseGameTest() 
 	{
 		System.out.println("Vesztett játszma teszt\n");
@@ -270,8 +289,10 @@ public class Test {
 			this.TestMgr();	
 		}
 	}
-	
-	
+
+	/**
+	 * Jatek elinditasa teszt
+	 */
 	private void StartGameTest() 
 	{
 		System.out.println("Játék kezdése teszt\n");
@@ -279,7 +300,10 @@ public class Test {
 		Game g = new Game();
 		g.StartGame();
 	}
-	
+
+	/**
+	 * Movable hozzaadasa teszt
+	 */
 	private void AddMovableTest()
 	{
 		System.out.println("Felveszünk egy új movable objektumot a rendszerbe teszt\n");
@@ -300,7 +324,10 @@ public class Test {
 		g.AddMovable(r, a2);
 		
 	}
-	
+
+	/**
+	 * Teleport elhelyezes teszt
+	 */
 	private void Place_TeleportTest()
 	{
 		System.out.println("\"Leteszünk egy teleportot teszt\n");
@@ -309,7 +336,10 @@ public class Test {
 		//m.Place_teleport();
 		
 	}
-	
+
+	/**
+	 * Nyersanyag vissza helyezése teszt
+	 */
 	private void PutMaterialIntoAsteroidTest()
 	{
 		System.out.println("Nyersanyag vissza helyezése teszt\n");
@@ -341,7 +371,10 @@ public class Test {
 		}
 		
 	}
-	
+
+	/**
+	 * Vízjég szublimál teszt
+	 */
 	private void IceGetsExposedTest()
 	{
 		
@@ -383,6 +416,9 @@ public class Test {
 		}
 	}
 
+	/**
+	 * Radioaktív maggal rendelkezõ aszteroida teszt
+	 */
 	private void SunHitsUraniumTest()
 	{
 		System.out.println("Radioaktív maggal rendelkezõ aszteroida teszt\n");
@@ -423,7 +459,10 @@ public class Test {
 			this.TestMgr();	
 		}
 	}
-	
+
+	/**
+	 * Aszteroia  felrobban teszt
+	 */
 	private void ExplodeTest()
 	{
 		System.out.println("Aszteroia  felrobban teszt\n");
@@ -468,7 +507,10 @@ public class Test {
 			this.TestMgr();	
 		}
 	}
-	
+
+	/**
+	 * Napvihar indul teszt
+	 */
 	private void SunStormStartsTest() {
 		
 		System.out.println("Napvihar indul teszt\n");
@@ -492,8 +534,11 @@ public class Test {
 		default:
 			this.TestMgr();	
 		}
-}
+	}
 
+	/**
+	 * Teleport utazas teszt
+	 */
 	private void TeleportTravelTest(){
 		//Egyszeru peldanyositas
 		Teleport T1, T2;
@@ -541,11 +586,11 @@ public class Test {
 		
 		
 	}
-	
-	
-	
-	
-	//Aktualis tesztek listaja
+
+
+	/**
+	 *  Aktualis tesztek listaja
+	 */
 	private void ListTests() {
 		System.out.println("Jelenlegi tesztek:");
 		System.out.println("1. Move Test");
@@ -566,9 +611,6 @@ public class Test {
 		System.out.println("16. Sun Storm Starts Test");
 		System.out.println("17. Teleport Travel Test");
 		System.out.println("18. Automatizalt tesztek DEMO!!!");
-
-
-		
 	}
 
 

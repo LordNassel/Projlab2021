@@ -1,22 +1,26 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import game_logic.*;
+import game_logic.Settler;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+/**
+ * A Settler view osztaly
+ */
 public class SettlerView extends View {
+
 	private static final long serialVersionUID = 7891103595669365281L;
 
-	private Settler s;
+	/**
+	 * A Settler képe.
+	 */
 	protected Image image;
+
+	private Settler s;
 
 	public Settler getSettler() {
 		return s;
@@ -26,6 +30,9 @@ public class SettlerView extends View {
 		this.s = t;
 	}
 
+	/**
+	 * Konstrukor, megkapja a koordinátákat.
+	 */
 	public SettlerView(int x, int y) throws IOException {
 		super();
 		BufferedImage image = ImageIO.read(SettlerView.class.getResource("/kep/settler.png"));
@@ -55,7 +62,10 @@ public class SettlerView extends View {
 		//String thickness = String.valueOf(s.getThickness());
 		//g2d.drawString("Thickness: "+thickness, x+10, y+150);
 	/*}*/
-	
+
+	/**
+	 * Kirajzolja a Settler képét.
+	 */
 	@Override
 	public void draw(Graphics g)
 	{

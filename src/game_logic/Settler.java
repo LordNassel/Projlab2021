@@ -1,15 +1,13 @@
 package game_logic;
 
-import java.io.BufferedReader;
+import view.SettlerView;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-	import java.util.List;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
-import view.SettlerView;
-import view.View;
 /**
  *   A játékosok által irányítható telepeseket reprezentálja.
  *   Nyersanyagot gyûjtenek és robotot vagy teleport kaput képesek craftolni.
@@ -51,7 +49,7 @@ public class Settler extends Movable {
 	}
 
 	/**
-	 * A telepes bányászik aminek hatására meghívja az aszteroida GetMined() függvényét ami egy egység nyersanyaggal tér vissza ha sikerrel járt.
+	 * A telepes bányászik, aminek hatására meghívja az aszteroida GetMined() függvényét ami egy egység nyersanyaggal tér vissza, ha sikerrel járt.
 	 * Ekkor a kibányászott nyersanyagot eltárolja a material inventoryba a Store() fgv. hívással.
 	 */
 	public void Mine()
@@ -67,7 +65,7 @@ public class Settler extends Movable {
 	}
 
 	/**
-	 * A kibányászott nyersanyagot eltárolja a material inventoryban ha van hely
+	 * A kibányászott nyersanyagot eltárolja a material inventoryban, ha van hely.
 	 */
 	public void Store(Material material)
 	{
@@ -216,7 +214,7 @@ public class Settler extends Movable {
 	}
 
 	/**
-	 *   Egy új teleportot aktivál az aszteroida övben, vagyis a teleport isActive setterét meghívja.
+	 *   Egy új teleportot aktivál az aszteroidaövben, vagyis a teleport isActive setterét meghívja.
 	 */
 	public void ActivateTeleport(Teleport teleport)
 	{
@@ -230,7 +228,6 @@ public class Settler extends Movable {
 		}
 		else
 			System.out.println("Sikertelen: Elobb buj elo a muvelet elvegzesehez");
-
 	}
 
 	/**
@@ -256,7 +253,7 @@ public class Settler extends Movable {
 	
 	/**
 	 *   Elhelyez egy egységnyi nyersanyagot az aszteroidába.
-	 *   Csak akkor siekres ha teljesen üres vagy pedig olyan nyersanyag van már benne amilyen tipusút szeretnék elraktározni.
+	 *   Csak akkor sikeres, ha teljesen üres, vagy pedig olyan nyersanyag van már benne, amilyen tipusút szeretnék elraktározni.
 	 */
 	public void PutMaterial(Material material)
 	{
@@ -419,20 +416,29 @@ public class Settler extends Movable {
 	}
 
 	/**
-	 *   Eltárol egy teleportot az inventoryban.
+	 *   Eltárol egy teleportot az inventory-ban.
 	 */
-	public void addTelportToInventory(Teleport t)
+	public void addTeleportToInventory(Teleport t)
 	{
 		inventoryTeleport.add(t);
 	}
-	
+
+	/**
+	 * Visszadja a Main inventory-t.
+	 */
 	public List<Material> GetInventory(){return this.inventoryMain ;}
-	
+
+	/**
+	 * Visszadja a Teleport inventory-t.
+	 */
 	public List<Teleport> getTeleportInventory()
 	{
 		return inventoryTeleport;
 	}
-	
+
+	/**
+	 *  Létrehozza a Settler nézetét.
+	 */
 	@Override
 	public void createMovableView()
 	{

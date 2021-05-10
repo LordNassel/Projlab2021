@@ -1,31 +1,47 @@
 package view;
 
-import java.awt.Graphics;
+import game_logic.Game;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import game_logic.*;
+import javax.swing.*;
+import java.awt.*;
 /**
  * 
- * Az alap view osztaly melybol minden view szarmazik majd, amit hasznalunk. Ez az osztaly a JLabel-bol szarmazik.
+ * Az alap view osztaly, melybol minden view szarmazik majd.
+ * Ez az osztaly a JLabel-bol szarmazik.
  * @author Gabor
  *
  */
 public class View extends JLabel implements Drawable {
 
 	/**
-	 * 
-	 * A felhasznalt kepeket taroljuk itt, midnen view-hoz egy kulon .png kiterjesztesu fajlt.
+	 * A felhasznalt kepeket taroljuk itt, minden view-hoz egy kulon .png kiterjesztesu fajlt.
 	 */
 	protected ImageIcon icon;
 
 	/**
-	 * 
 	 *  Az MVC felosztasban segit nekunk kesobbb a GameController eltarolasa.
 	 */
 	protected Game baseGameController;
 
-	protected int x, y, w, h;
+	/**
+	 *  X koordináta.
+	 */
+	protected int x;
+
+	/**
+	 *  Y koordináta.
+	 */
+	protected int y;
+
+	/**
+	 *  Szélesség.
+	 */
+	protected int w;
+
+	/**
+	 *  Magasság.
+	 */
+	protected int h;
 
 	/**
 	 * Megjelenitesnel az egyes elemek poziciojat allitja be ezzel a metodus, mivel az ososztalyban van definialva,
@@ -38,28 +54,40 @@ public class View extends JLabel implements Drawable {
 	public void setPos(int x, int y) {
 		super.setBounds(x, y, w, h);
 	}
-	
+
+	/**
+	 * Visszaadja az X koordinátát.
+	 */
 	public int getPosx()
 	{
 		return this.x;
 	}
-	
+
+	/**
+	 * Visszaadja az Y koordinátát.
+	 */
 	public int getPosy()
 	{
 		return this.y;
 	}
-	
+
+	/**
+	 * Beállítja a kapott koordinátákat.
+	 */
 	public void setViewPosition(int x, int y)
 	{
-		this.x= x;
-		this.y=y;
+		this.x = x;
+		this.y = y;
 	}
 	
 	public void scale(int w, int h)
 	{
 		icon.getImage().getScaledInstance(w, h, java.awt.Image.SCALE_DEFAULT);
 	}
-	
+
+	/**
+	 * Konstruktor.
+	 */
 	public View() {
 		w = 500;
 		h = 500;
@@ -68,7 +96,6 @@ public class View extends JLabel implements Drawable {
 	}
 
 	/**
-	 * 
 	 * Kirajzolasert felelos fuggveny, mely eloszor validalja, majd ujrarajzolja a grafikus komponenst.
 	 */
 	/*public void Draw() {
@@ -76,15 +103,15 @@ public class View extends JLabel implements Drawable {
 		this.getParent().repaint();
 	}*/
 
+	/**
+	 * Textúra kirajzolasa.
+	 */
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g) { }
 
-		
-	}
-
-	public void drawAsteroidInfos(Graphics g) {
-
-		
-	}
+	/**
+	 * Aszteroida információk kiírása.
+	 */
+	public void drawAsteroidInfos(Graphics g) {	}
 
 }

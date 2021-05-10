@@ -5,15 +5,27 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
+/**
+ * A beolvasásért felelõs osztály.
+ */
 public class Reader {
-    String[] filelist;
-    //A tesztek folderje ahonnan listï¿½zzuk a teszteket
 
+    /**
+     * A tesztfileok.
+     */
+    String[] filelist;
+
+    /**
+     * Konstruktor.
+     */
     public Reader(){
         File workfolder = new File("TestFiles");
         filelist = workfolder.list();
     }
 
+    /**
+     * Visszaadja a fájlok nevét a txt kiterjesztes nélkul.
+     */
     public String[] magicfiles(){
         String temp[];
         temp = filelist;
@@ -23,6 +35,9 @@ public class Reader {
         return temp;
     }
 
+    /**
+     * Beolvassa a tesztfajlt.
+     */
     public Vector<String[]> readtest(String whichtest) {
 
         Vector<String[]> temp = new Vector<String[]>();

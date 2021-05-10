@@ -1,12 +1,11 @@
 package game_logic;
 
-import java.io.IOException;
-import java.util.*;
-
-import view.AsteroidView;
-import view.Goal_AsteroidView;
 import view.TeleportView;
-import view.View;
+
+import java.io.IOException;
+import java.util.Random;
+import java.util.Vector;
+
 /**
  * A pálya egy másik lehetséges mezõje, õ reprezentáljaa teleportot az aszteroidaövben.
  * Tároljaa párjául szolgáló teleportot. Fõ feladata,
@@ -14,21 +13,29 @@ import view.View;
  * aszteroidájára, valamintrá specifikus választ kell tudniaadni a különbözõ egyéb eseményekre.
  */
 public class  Teleport extends Field {
-	/**
-	 * Egy boolean változó annak a nyilvántartására,hogy az aszteroidahasználatban van-e, vagyis aktív vagy sem. Ha igenaz értéke true, ha nem false
-	 */
-    private boolean IsActive;
     /**
-     * Egy boolean változó annak anyilvántartására, hogy a teleportot érte-e napszél.
+     * Egy boolean változó annak a nyilvántartására, hogy az aszteroida használatban van-e, vagyis aktív vagy sem.
+     * Ha aktív, akkor az értéke true, ha inaktív, akkor false.
+     */
+    private boolean IsActive;
+
+    /**
+     * Egy boolean változó annak a nyilvántartására, hogy a teleportot érte-e napszél.
      */
     private boolean IsSunStroke;
+
     /**
-     * Az aktuális teleport párjaként szolgáló teleport
+     * Az aktuális teleport párjaként szolgáló teleport,
      */
     private Teleport Pair;
-    protected Asteroid onAsteroid;
+
     /**
-     *Default Constructor
+     * Az aszteroida, amin a teleport van.
+     */
+    protected Asteroid onAsteroid;
+
+    /**
+     * Constructor
      */
     public Teleport(String name, Asteroid onField){
     	super(name);
@@ -37,18 +44,18 @@ public class  Teleport extends Field {
         onAsteroid = onField;
     }
 
+    /**
+     * Constructor
+     */
     public Teleport(String name){
         super(name);
         IsActive = false;
         IsSunStroke = false;
     }
 
-
     /**
-     * Two-member teleport vector
-     * @param WhichField
+     * A paraméterül kapott mezõt hozzáadja a neighbors listához.
      */
-
     @Override
     public void SetNeighbor(Field WhichField){
         Neighbors.add(WhichField);
@@ -75,31 +82,31 @@ public class  Teleport extends Field {
     }
 
     /**
-    * Getters and Setters
-    */
+     * Visszaadja, hogy teleport aktív-e.
+     */
     public boolean getIsActive(){
         return IsActive;
     }
 
     /**
-     * Getter
+     * Beállítja, hogy teleport aktív-e.
      */
     public void setIsActive() { 
         IsActive = !IsActive;
     }
 
     /**
-     * Getter
+     * Visszaadja, hogy teleportot érte-e napszél.
      */
     public boolean getIsSunStroke() {return IsSunStroke;}
 
     /**
-     * Setter
+     * Beállítja, hogy teleportot érte-e napszél.
      */
     public void setIsSunStroke() {IsSunStroke = !IsSunStroke;}
 
     /**
-     * We need this, so two teleport pairs cannot be crafted and set each other's mixed neighbors
+     * Beállítja a teleport párját.
      * @param givenTeleport
      */
     public void setPair(Teleport givenTeleport) {
@@ -108,7 +115,7 @@ public class  Teleport extends Field {
 
     /**
      * Teleportra lepest kezel
-     * A parjanak az aszteroidara leptet ha az aktiv
+     * A parjanak az aszteroidájára leptet, ha az aktiv.
      */
     @Override
     public void AcceptPlayer(Movable M) {
@@ -127,7 +134,7 @@ public class  Teleport extends Field {
     }
     
     /**
-     * Setter
+     * Beállítja a teleport aszteroidáját.
      * @param a
      */
     public void setOnAsteroid(Asteroid a)
@@ -136,7 +143,7 @@ public class  Teleport extends Field {
         createFieldView();
     }
     /**
-     * Getter
+     * Visszaadja a teleport párját.
      * @return
      */
     public Teleport getPair(){
@@ -144,13 +151,16 @@ public class  Teleport extends Field {
     }
 
     /**
-     * Getter
+     * A teleportot nem lehet megfúrni.
      */
 	@Override 
 	public boolean GetDrilled() {
 		return false;
 	}
 
+    /**
+     *  Létrehozza a Teleport nézetét.
+     */
 	@Override
 	public void createFieldView() {
 		try {

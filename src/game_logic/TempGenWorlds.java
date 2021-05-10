@@ -1,19 +1,19 @@
 package game_logic;
 
 import java.io.IOException;
-import java.util.*;
-
-import view.*;
+import java.util.Random;
+import java.util.Vector;
 
 public class TempGenWorlds {
 
-    //Ez most itt azert ilyen bajos, mert a game feladatat vegzem el. A game majd file-bol olvassa be ezeket.
-// Azonban a process jellege nem valtozik elore megtervezett vilagokkal dolgozunk majd
+    /**
+     * Ez most itt azert ilyen bajos, mert a game feladatat vegzem el. A game majd file-bol olvassa be ezeket.
+     * Azonban a process jellege nem valtozik elore megtervezett vilagokkal dolgozunk majd.
+     */
     public Game Generateworlds(int which) throws IOException{
-        Iron i = new Iron();
-        Coal c = new Coal();
-        Ice ice = new Ice();
-        Uranium u = new Uranium();
+        /**
+         * Normal map.
+         */
        if(which ==1){
 
                 System.out.println("Az inner worlds konstruktora hivodott meg. " +
@@ -48,7 +48,9 @@ public class TempGenWorlds {
                 int y = 5;
                 Random rand = new Random();
 
-                //Szomszedok
+               /**
+                * Szomszedok
+                */
                 Auchen.SetNeighbor(FormFoss);
                 Auchen.SetNeighbor(Timeston);
                 Auchen.SetNeighbor(MyreFall);
@@ -107,8 +109,8 @@ public class TempGenWorlds {
                 Teleport t2= new Teleport("hus");
                 t.setPair(t2);
                 t2.setPair(t);
-                S.addTelportToInventory(t);
-                S.addTelportToInventory(t2);
+                S.addTeleportToInventory(t);
+                S.addTeleportToInventory(t2);
 
 
                 Map map = new Map(true, fieldlist);
@@ -123,6 +125,9 @@ public class TempGenWorlds {
                 S.Move(goal);
                 return game;
         }
+       /**
+        * Uranium explode test map.
+        */
       else if (which == 2){
            System.out.println("A lonely worlds konstruktora hivodott meg. " +
                    "Ez azon resze a vilagnak, ahol relatív könny? meghalni");
@@ -134,7 +139,7 @@ public class TempGenWorlds {
            uran.IncreaseCounter();
            uran.IncreaseCounter();
            Asteroid A2 = new Asteroid("UranDepo", "Uranium", true, 0);
-       //   Asteroid A3 = new Asteroid("AhShitHereweBlowAgain", "Uranium", true, 0);
+           //Asteroid A3 = new Asteroid("AhShitHereweBlowAgain", "Uranium", true, 0);
 
            A1.SetNeighbor(A2);
            A2.SetNeighbor(A1);
@@ -166,7 +171,9 @@ public class TempGenWorlds {
           returngame.AddSteppable(map);
           return returngame;
        }
-       
+       /**
+        * Move with teleport test map.
+        */
        else if (which == 3){
            Asteroid A1 = new Asteroid("A1", "Iron", false, 0);
            Asteroid A2 = new Asteroid("A2", "Uranium", false, 0);
@@ -203,18 +210,23 @@ public class TempGenWorlds {
            returngame.AddSteppable(map);
            return returngame;
        }
-
-       //tesztvilag#4
+       /**
+        * Crafting test map.
+        */
        else if (which == 4){
            System.out.println("Ez egy nyersanyaggal tele rész, itt eleg konnyu kraftolni");
 
-           //Aszteroidak
+           /**
+            * Aszteroidak
+            */
            Asteroid A1 = new Asteroid("DummyAsteroid1", "Iron", false, 0);
            Asteroid A2 = new Asteroid("DummyAsteroid2", "Iron", false, 0);
            Asteroid A3 = new Asteroid("DummyAsteroid3", "Iron", false, 0);
            Asteroid A4 = new Asteroid("DummyAsteroid4", "Iron", false, 0);
 
-           //Szomszédság
+           /**
+            * Szomszédság
+            */
            A1.SetNeighbor(A2);
            A2.SetNeighbor(A1);
 
@@ -231,11 +243,15 @@ public class TempGenWorlds {
            temp.add(A3);
            //temp.add(A4);
 
-           //Movable
+           /**
+            * Movable
+            */
            Settler S1 = new Settler("Player", A1);
 
 
-           //Material hozzáadás
+           /**
+            * Material hozzáadás.
+            */
            Iron iron = new Iron();
            Iron iron2 = new Iron();
            Iron iron3 = new Iron();
@@ -265,8 +281,6 @@ public class TempGenWorlds {
        }
 
        return null;
-
-
 
     }
 }
