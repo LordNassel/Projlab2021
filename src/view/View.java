@@ -1,7 +1,5 @@
 package view;
 
-import game_logic.Game;
-
 import javax.swing.*;
 import java.awt.*;
 /**
