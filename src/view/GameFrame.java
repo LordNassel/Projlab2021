@@ -8,7 +8,8 @@ import javax.swing.JFrame;
 
 import game_logic.Game;
 
-public class GameFrame extends JFrame{
+public class
+GameFrame extends JFrame{
 	
 	GameFrame(Game game) throws IOException
 	{
