@@ -11,8 +11,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 /**
- * A MenuView osztály.
- * Pályaválasztáshoz
+ * Pályaválasztáshoz használt MenuView osztály.
  */
 public class MenuView extends JFrame {
 
