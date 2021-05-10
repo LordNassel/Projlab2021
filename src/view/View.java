@@ -23,7 +23,25 @@ public class View extends JLabel implements Drawable {
 	 */
 	protected Game baseGameController;
 
-	protected int x, y, w, h;
+	/**
+	 *  X koordináta.
+	 */
+	protected int x;
+
+	/**
+	 *  Y koordináta.
+	 */
+	protected int y;
+
+	/**
+	 *  Szélesség.
+	 */
+	protected int w;
+
+	/**
+	 *  Magasság.
+	 */
+	protected int h;
 
 	/**
 	 * Megjelenitesnel az egyes elemek poziciojat allitja be ezzel a metodus, mivel az ososztalyban van definialva,

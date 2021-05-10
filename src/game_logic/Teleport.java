@@ -53,10 +53,8 @@ public class  Teleport extends Field {
         IsSunStroke = false;
     }
 
-
     /**
-     * Two-member teleport vector
-     * @param WhichField
+     * A paraméterül kapott mezõt hozzáadja a neighbors listához.
      */
     @Override
     public void SetNeighbor(Field WhichField){

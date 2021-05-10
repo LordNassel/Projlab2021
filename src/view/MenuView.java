@@ -3,21 +3,23 @@ package view;
 import game_logic.Game;
 import game_logic.TempGenWorlds;
 
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.io.IOException;
-import java.util.Vector;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.*;
+import java.io.IOException;
+import java.util.Vector;
 
 /**
- * A MenuView osztály.
- * Pályaválasztáshoz
+ * Pályaválasztáshoz használt MenuView osztály.
  */
 public class MenuView extends JFrame {
-	
+
+	/**
+	 * Konstrukor.
+	 * Meghívja a selectMap() függvényt.
+	 * Legenerálja és elindítja a kiválasztott pályát.
+	 */
 	public MenuView()
 	{
 		JButton start_game = new JButton("Start Game");
@@ -54,7 +56,10 @@ public class MenuView extends JFrame {
 			this.dispose();
 		});
 	}
-	
+
+	/**
+	 * A játszani kivánt pálya kiválasztása.
+	 */
 	public int selectMap()
 	{
 		int selected = 0;

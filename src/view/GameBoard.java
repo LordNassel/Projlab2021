@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * Ezen kerülnek elhelyezésre a panelek, labelek és View leszármazottak.
+ */
 public class GameBoard extends JPanel {
 	private static Game game;
 	private static GameFrame frame;
@@ -28,18 +31,26 @@ public class GameBoard extends JPanel {
 	JButton activate_teleport = new JButton("Activate teleport");
 	JButton store_in_base = new JButton("Store material on base");
 	JButton build = new JButton("Build base");
-	//Az inventory gomv
+
+	/**
+	 * Az inventory gomb.
+	 */
 	JButton inventoryButton = new JButton("Inventory");
 	JPanel asteroids = new JPanel(null);
 	JPanel buttons = new JPanel(new GridBagLayout());
 	static JLabel active_player = new JLabel();
 	static JLabel player_pos = new JLabel();
 	JPanel buttonsCentered = new JPanel(new GridLayout(0, 1, 10, 10));
-	//Az inventory label
+
+	/**
+	 * Az inventory label.
+	 */
 	JLabel inventory = new JLabel("");
 	volatile private static boolean clicked = false;
 
-
+	/**
+	 * Konstrukor.
+	 */
 	GameBoard(Game game, GameFrame frame) throws IOException {
 		this.game = game;
 		this.frame = frame;
