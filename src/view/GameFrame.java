@@ -16,7 +16,8 @@ GameFrame extends JFrame{
 		GameBoard gameBoard = new GameBoard(game, this);
 		add(gameBoard);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setSize(screenSize.width, screenSize.height );
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//this.setSize(screenSize.width, screenSize.height );
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Aszteroidabanyaszat");
 		setLocationRelativeTo(null);

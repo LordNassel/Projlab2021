@@ -39,7 +39,8 @@ public class SpecialFrame extends View{
                 }
         };
 
-        frame.setSize(1920,1080);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //frame.setSize(1920,1080);
         frame.setLayout(null);
         frame.setVisible(true);
     }
